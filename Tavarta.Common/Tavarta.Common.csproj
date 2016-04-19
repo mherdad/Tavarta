@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EB36F1BC-25AC-4DF6-858C-080604C26FE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tavarta.Common</RootNamespace>
+    <AssemblyName>Tavarta.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.2.2\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PersianDateTime, Version=1.1.5082.36395, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PersianDateTime.1.1.5082.36395\lib\net40\PersianDateTime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TidyNetPortable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TidyNetPortable.1.0.0\lib\TidyNetPortable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtomActionResult.cs" />
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Constants\Application.cs" />
+    <Compile Include="Constants\CacheProfileName.cs" />
+    <Compile Include="Constants\CacheSetting.cs" />
+    <Compile Include="Constants\ContentDeliveryNetwork.cs" />
+    <Compile Include="Constants\ContentType.cs" />
+    <Compile Include="Constants\ControllerName.cs" />
+    <Compile Include="Constants\ErrorController\ErrorControllerAction.cs" />
+    <Compile Include="Constants\ErrorController\ErrorControllerRoute.cs" />
+    <Compile Include="Constants\HomeController\HomeControllerAction.cs" />
+    <Compile Include="Constants\HomeController\HomeControllerRoute.cs" />
+    <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\CookieTempDataProvider.cs" />
+    <Compile Include="Controller\DecimalModelBinder.cs" />
+    <Compile Include="Controller\ElmahResult.cs" />
+    <Compile Include="Controller\ISessionProvider.cs" />
+    <Compile Include="Controller\PersianDateModelBinder.cs" />
+    <Compile Include="Controller\PersianIntModelBinder.cs" />
+    <Compile Include="Controller\SecureTempDataProvider.cs" />
+    <Compile Include="Controller\SessionProvider.cs" />
+    <Compile Include="Controller\StringToDateModelBinder.cs" />
+    <Compile Include="CSharpRazorViewEngine.cs" />
+    <Compile Include="Experimental\ObjectPool\ObjectPool.cs" />
+    <Compile Include="Experimental\ObjectPool\ObjectPoolExtensions.cs" />
+    <Compile Include="Experimental\ObjectPool\PooledObject.cs" />
+    <Compile Include="Experimental\ObjectPool\Pools\ArrayBuilder.cs" />
+    <Compile Include="Experimental\ObjectPool\Pools\ListPool.cs" />
+    <Compile Include="Experimental\ObjectPool\Pools\PooledDictionary.cs" />
+    <Compile Include="Experimental\ObjectPool\Pools\PooledHashSet.cs" />
+    <Compile Include="Experimental\ObjectPool\Pools\PooledStream.cs" />
+    <Compile Include="Experimental\ObjectPool\Pools\StringBuilderPool.cs" />
+    <Compile Include="Experimental\ObjectPool\SharedPools.cs" />
+    <Compile Include="Experimental\ViewModel\ViewModel.cs" />
+    <Compile Include="Experimental\ViewModel\ViewModelT.cs" />
+    <Compile Include="Extentions\ControllerExtentions.cs" />
+    <Compile Include="Extentions\ConvertExtentions.cs" />
+    <Compile Include="Extentions\CookieExtention.cs" />
+    <Compile Include="Extentions\CspViolationException.cs" />
+    <Compile Include="Extentions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extentions\HttpRequestMessageExtensions.cs" />
+    <Compile Include="Extentions\IdentityExtensions.cs" />
+    <Compile Include="Extentions\SeoExtensions.cs" />
+    <Compile Include="Extentions\StringBuilderExtensions.cs" />
+    <Compile Include="Extentions\SyndicationFeedExtensions.cs" />
+    <Compile Include="Extentions\TypeExtentions.cs" />
+    <Compile Include="Extentions\UrlHelperExtensions.cs" />
+    <Compile Include="Extentions\XDocumentExtensions.cs" />
+    <Compile Include="Filters\AjaxOnlyAttribute.cs" />
+    <Compile Include="Filters\AllowUploadSafeFilesAttribute.cs" />
+    <Compile Include="Filters\AllowUploadSpecialFilesAttribute.cs" />
+    <Compile Include="Filters\ChallengeResult.cs" />
+    <Compile Include="Filters\CheckReferrerAttribute.cs" />
+    <Compile Include="Filters\CompressFilter.cs" />
+    <Compile Include="Filters\ContentSecurityPolicyFilterAttribute.cs" />
+    <Compile Include="Filters\DosFilterAttribute.cs" />
+    <Compile Include="Filters\ElmahHandledErrorLoggerFilter.cs" />
+    <Compile Include="Filters\ElmahRequestValidationErrorFilter.cs" />
+    <Compile Include="Filters\ETagAttribute.cs" />
+    <Compile Include="Filters\ForceWww.cs" />
+    <Compile Include="Filters\Mvc5AuthorizeAttribute.cs" />
+    <Compile Include="Filters\Mvc5ClaimAccessAuthorizeAttribute.cs" />
+    <Compile Include="Filters\MvcAuthorizeAttribute.cs" />
+    <Compile Include="Filters\NoBrowserCacheAttribute.cs" />
+    <Compile Include="Filters\NoCacheAttribute.cs" />
+    <Compile Include="Filters\NoTrailingSlashAttribute.cs" />
+    <Compile Include="Filters\RedirectToCanonicalUrlAttribute.cs" />
+    <Compile Include="Filters\RedirectToHttpsAttribute.cs" />
+    <Compile Include="Filters\RemoveServerHeaderFilterAttribute.cs" />
+    <Compile Include="Filters\SearchBotFilter.cs" />
+    <Compile Include="Filters\SetIfModifiedSinceAttribute.cs" />
+    <Compile Include="Filters\SignalrAuthorizeAttribute.cs" />
+    <Compile Include="Filters\ThrottleAttribute.cs" />
+    <Compile Include="Filters\TidyHtml.cs" />
+    <Compile Include="Filters\ValidateHeaderAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Filters\WhitespaceFilterAttribute.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\FieldValidationHelper.cs" />
+    <Compile Include="Helpers\FilePermissionHelper.cs" />
+    <Compile Include="Helpers\FriendlyUrlHelper.cs" />
+    <Compile Include="Helpers\RegexHelpers.cs" />
+    <Compile Include="HiddenField\ActionKey.cs" />
+    <Compile Include="HiddenField\ActionKeyService.cs" />
+    <Compile Include="HiddenField\EncryptSettingsProvider.cs" />
+    <Compile Include="HiddenField\IActionKeyService.cs" />
+    <Compile Include="HiddenField\IEncryptSettingsProvider.cs" />
+    <Compile Include="HiddenField\InputExtensions.cs" />
+    <Compile Include="HiddenField\IRijndaelStringEncrypter.cs" />
+    <Compile Include="HiddenField\MvcHtmlHelperExtentions.cs" />
+    <Compile Include="HiddenField\RijndaelStringEncrypter.cs" />
+    <Compile Include="HtmlCleaner\AntiXssModule.cs" />
+    <Compile Include="HtmlCleaner\HtmlSanitizer.cs" />
+    <Compile Include="HtmlCleaner\PersianProofWriter.cs" />
+    <Compile Include="HtmlHelpers\MvcHtmlHelperExtentions.cs" />
+    <Compile Include="HtmlHelpers\TreeView.cs" />
+    <Compile Include="HttpCompress\CompressingFilter.cs" />
+    <Compile Include="HttpCompress\DeflateFilter.cs" />
+    <Compile Include="HttpCompress\Enums.cs" />
+    <Compile Include="HttpCompress\GZipFilter.cs" />
+    <Compile Include="HttpCompress\HttpModule.cs" />
+    <Compile Include="HttpCompress\HttpOutputFilter.cs" />
+    <Compile Include="HttpCompress\SectionHandler.cs" />
+    <Compile Include="HttpCompress\Settings.cs" />
+    <Compile Include="HttpModules\DosAttackModule.cs" />
+    <Compile Include="HttpModules\IpBlockModule.cs" />
+    <Compile Include="Json\JsonExtensions.cs" />
+    <Compile Include="Json\JsonHelper.cs" />
+    <Compile Include="Json\JsonNetResult.cs" />
+    <Compile Include="Json\JsonNetValueProviderFactory.cs" />
+    <Compile Include="NegotiatedResult.cs" />
+    <Compile Include="Noty\AlertTypes.cs" />
+    <Compile Include="Noty\AnimationTypes.cs" />
+    <Compile Include="Noty\MessageCloseType.cs" />
+    <Compile Include="Noty\MessageLocation.cs" />
+    <Compile Include="Noty\Noty.cs" />
+    <Compile Include="Noty\NotyMessage.cs" />
+    <Compile Include="OpenGraph\Enums\DayOfWeekExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphAgeGroup.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphAgeGroupExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphAvailability.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphAvailabilityExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphCondition.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphConditionExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphDeterminer.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphDeterminerExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphGender.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphGenderExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphGenderTargetExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphMusicReleaseType.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphMusicReleaseTypeExtensions.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphTargetGender.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphType.cs" />
+    <Compile Include="OpenGraph\Enums\OpenGraphTypeExtensions.cs" />
+    <Compile Include="OpenGraph\HtmlHelperExtensions.cs" />
+    <Compile Include="OpenGraph\Media\OpenGraphAudio.cs" />
+    <Compile Include="OpenGraph\Media\OpenGraphImage.cs" />
+    <Compile Include="OpenGraph\Media\OpenGraphMedia.cs" />
+    <Compile Include="OpenGraph\Media\OpenGraphPreviewAudio.cs" />
+    <Compile Include="OpenGraph\Media\OpenGraphSizedMedia.cs" />
+    <Compile Include="OpenGraph\Media\OpenGraphVideo.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphBooksAuthor.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphBooksBook.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphBooksGenre.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphBusiness.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphFitnessCourse.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphGameAchievement.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphPlace.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphProduct.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphProductGroup.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphProductItem.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphRestaurant.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphRestaurantMenu.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphRestaurantMenuItem.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphRestaurantMenuSection.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphResteraunt.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphResterauntMenu.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphResterauntMenuItem.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Facebook\OpenGraphResterauntMenuSection.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\OpenGraphMetadata.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphArticle.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphBook.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphMusicAlbum.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphMusicPlaylist.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphMusicRadioStation.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphMusicSong.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphProfile.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphVideoEpisode.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphVideoMovie.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphVideoOther.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphVideoTvShow.cs" />
+    <Compile Include="OpenGraph\ObjectTypes\Standard\OpenGraphWebsite.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphActor.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphContactData.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphCurrency.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphDateTimeRange.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphFitnessActivityDataPoint.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphHours.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphLocation.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphMenuItemVariation.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphQuantity.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphRating.cs" />
+    <Compile Include="OpenGraph\Structs\OpenGraphSplit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Referrer\ReferrerMode.cs" />
+    <Compile Include="Referrer\ReferrerModeExtensions.cs" />
+    <Compile Include="RSS\CryptoUtils.cs" />
+    <Compile Include="RSS\FeedItem.cs" />
+    <Compile Include="RSS\FeedResult.cs" />
+    <Compile Include="RSS\RtlHelper.cs" />
+    <Compile Include="Sitemap\SitemapException.cs" />
+    <Compile Include="Sitemap\SitemapFrequency.cs" />
+    <Compile Include="Sitemap\SitemapGenerator.cs" />
+    <Compile Include="Sitemap\SitemapNode.cs" />
+    <Compile Include="StringWriterWithEncoding.cs" />
+    <Compile Include="Twitter\Cards\AppTwitterCard.cs" />
+    <Compile Include="Twitter\Cards\GalleryTwitterCard.cs" />
+    <Compile Include="Twitter\Cards\PhotoTwitterCard.cs" />
+    <Compile Include="Twitter\Cards\PlayerTwitterCard.cs" />
+    <Compile Include="Twitter\Cards\ProductTwitterCard.cs" />
+    <Compile Include="Twitter\Cards\SummaryLargeImageTwitterCard.cs" />
+    <Compile Include="Twitter\Cards\SummaryTwitterCard.cs" />
+    <Compile Include="Twitter\Enums\TwitterCardType.cs" />
+    <Compile Include="Twitter\Enums\TwitterCardTypeExtensions.cs" />
+    <Compile Include="Twitter\HtmlHelperExtensions.cs" />
+    <Compile Include="Twitter\Structs\TwitterImage.cs" />
+    <Compile Include="Twitter\Structs\TwitterPlayer.cs" />
+    <Compile Include="Twitter\TwitterCard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Experimental\ObjectPool\ObjectPool.dgml" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tavarta.Utility\Tavarta.Utility.csproj">
+      <Project>{90923e0e-38ed-4f26-b821-3a49cfc3ea5e}</Project>
+      <Name>Tavarta.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
