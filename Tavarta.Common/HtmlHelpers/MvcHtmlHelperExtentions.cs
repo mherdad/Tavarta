@@ -17,6 +17,8 @@ namespace Tavarta.Common.HtmlHelpers
         {
             return html.TextBoxFor(expression, new { @class = "form-control", autocomplete = "off" });
         }
+
+
         public static MvcHtmlString NoAutoCompleteTextBoxForLtr<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             return html.TextBoxFor(expression, new { @class = "form-control", autocomplete = "off", dir = "ltr" });
@@ -31,7 +33,7 @@ namespace Tavarta.Common.HtmlHelpers
         }
         public static MvcHtmlString FormControlPasswordFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
-            return html.PasswordFor(expression, new { @class = "form-control" });
+            return html.PasswordFor(expression, new { @class = "form-control password", placeholder = "پسورد" });
         }
         #endregion
 
