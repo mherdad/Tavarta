@@ -135,6 +135,10 @@
       <Project>{90923e0e-38ed-4f26-b821-3a49cfc3ea5e}</Project>
       <Name>Tavarta.Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tavarta.ViewModel\Tavarta.ViewModel.csproj">
+      <Project>{986E43D0-612B-46DC-8753-C7AFB540AE7E}</Project>
+      <Name>Tavarta.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

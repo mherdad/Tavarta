@@ -1,5 +1,7 @@
 ﻿@using System.Web.Optimization
 @using CaptchaMvc.HtmlHelpers
+@using Microsoft.Web.Mvc.Html
+@using Tavarta.Common.Extentions
 @using Tavarta.Common.HtmlHelpers
 @model Tavarta.ViewModel.Account.LoginViewModel
 @{
@@ -133,7 +135,10 @@
 
                         <div class="new-account">
                             اگر اکانت ندارید؟
-                            <a href="login_registration.html">
+
+
+                            <a href="@Url.Action("Create","User")">
+                                 @Url.Action("Create","User")
                                 عضو شوید
                             </a>
                         </div>

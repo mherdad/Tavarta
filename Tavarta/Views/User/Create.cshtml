@@ -1,0 +1,92 @@
+﻿@using Tavarta.Common.HtmlHelpers
+@model Tavarta.ViewModel.User.AddUserViewModel
+<!-- start: REGISTRATION -->
+<div class="row">
+    <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+        <div class="logo margin-top-30">
+            <img src="~/Content/assets/images/logo.png" alt="Clip-Two" />
+        </div>
+        <!-- start: REGISTER BOX -->
+        <div class="box-register">
+           
+                 @using (Html.BeginForm("Create", "User", FormMethod.Post,new {@class="form-register"}))
+                 {
+                     @Html.AntiForgeryToken()
+                <fieldset>
+                    <legend>
+                        عضویت
+                    </legend>
+                    <p>
+                        اطلاعات لازم را پر کنید
+                    </p>
+
+                   
+
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UserName, new {@class = "form-control", placeholder = "نام کاربری", autocomplete = "off"})
+                            @Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger"})
+
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.DisplayName, new {@class = "form-control", @placeholder = "نام کاربر"})
+                            @Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger"})
+                        </div>
+                        <p>
+                            اطلاعات کاربری را وارد کنید
+                        </p>
+                        @*<div class="form-group">
+                            <span class="input-icon">
+                                        @Html.TextBoxFor(x => x.Email, new {@class = "form-control text-center", @placeholder = "ایمیل",})
+                                        @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                        </div>*@
+                        <div class="form-group">
+                            <span class="input-icon">
+                                        @Html.FormControlPasswordFor(x => x.Password)
+
+                                        <i class="fa fa-lock"></i>
+                                        @Html.ValidationMessageFor(x => x.Password, "", new {@class = "text-danger"})
+                                    </span>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon">
+                                        @Html.FormControlPasswordFor(x => x.ConfirmPassword)
+
+                                        <i class="fa fa-lock"></i>
+                                        @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new {@class = "text-danger"})
+                                    </span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox clip-check check-primary">
+                                <input type="checkbox" id="agree" value="agree">
+                                <label for="agree">
+                                    موافق
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <p>
+                                آیا شما اکانت دارید؟
+                                <a href="@Url.Action("Login", "Account")">
+                                    ورود
+                                </a>
+                            </p>
+                            <button type="submit" class="btn btn-primary pull-right">
+                                ارسال <i class="fa fa-arrow-circle-left"></i>
+                            </button>
+                        </div>
+                   
+                        
+                        </fieldset>
+                    }
+            <!-- start: COPYRIGHT -->
+            <div class="copyright">
+                &copy; <span class="current-year"></span><span class="text-bold text-uppercase"> تاورتا</span>. <span>تمامی حقوق</span>
+            </div>
+            <!-- end: COPYRIGHT -->
+        </div>
+        <!-- end: REGISTER BOX -->
+    </div>
+</div>
+<!-- end: REGISTRATION -->

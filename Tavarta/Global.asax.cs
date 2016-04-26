@@ -28,7 +28,7 @@ namespace Tavarta
         #region Application_Start
         protected void Application_Start()
         {
-            ScheduledTasksRegistry.Init();
+            //ScheduledTasksRegistry.Init();
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
             try
             {

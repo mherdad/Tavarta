@@ -42,7 +42,7 @@ namespace Tavarta.DomainClasses.Entities.Users
         /// نشانده دهنده قفل بودن کاربر است
         /// 
         /// </summary>
-        [Index("IsBanned",IsUnique = true)]
+        [Index("IsBanned",IsUnique = false)]
         public bool IsBanned { get; set; }
 
         /// <summary>
