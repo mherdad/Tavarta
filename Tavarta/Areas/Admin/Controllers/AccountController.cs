@@ -1,15 +1,16 @@
-﻿using CaptchaMvc.Attributes;
+﻿using System;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using System.Web.UI;
+using CaptchaMvc.Attributes;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Web.Mvc;
-using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Web.UI;
 using Tavarta.Common.Controller;
 using Tavarta.Common.Extentions;
 using Tavarta.Common.Filters;
+using Tavarta.Controllers;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Common;
 using Tavarta.Filters;
@@ -17,7 +18,7 @@ using Tavarta.ServiceLayer.Contracts.Users;
 using Tavarta.Utility;
 using Tavarta.ViewModel.Account;
 
-namespace Tavarta.Controllers
+namespace Tavarta.Areas.Admin.Controllers
 {
     public partial class AccountController : BaseController
     {

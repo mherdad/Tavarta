@@ -3,13 +3,14 @@ using System.Web.Mvc;
 using Microsoft.Web.Mvc;
 using Tavarta.Common.Controller;
 using Tavarta.Common.Extentions;
+using Tavarta.Controllers;
 using Tavarta.DataLayer.Context;
 using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.Users;
 using Tavarta.Utility;
 using Tavarta.ViewModel.User;
 
-namespace Tavarta.Controllers
+namespace Tavarta.Areas.Admin.Controllers
 {
     public class UserController:BaseController
     {

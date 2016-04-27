@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using CaptchaMvc.HtmlHelpers
+@using Microsoft.Web.Mvc
 @using Microsoft.Web.Mvc.Html
 @using Tavarta.Common.Extentions
 @using Tavarta.Common.HtmlHelpers
@@ -136,9 +137,9 @@
                         <div class="new-account">
                             اگر اکانت ندارید؟
 
-
-                            <a href="@Url.Action("Create","User")">
-                                 @Url.Action("Create","User")
+                            
+                            <a href="@Url.Action("Create","User",new {area="admin"})">
+                                @Url.Action("Create","User")
                                 عضو شوید
                             </a>
                         </div>

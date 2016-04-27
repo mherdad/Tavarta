@@ -1276,9 +1276,9 @@
     <Compile Include="App_Start\StructureMapControllerFactory.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Filters\ActivityAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1325,7 +1325,7 @@
     <Content Include="images\Samim.ttf" />
     <Content Include="images\Samim-Bold.ttf" />
     <Content Include="images\IranNastaliq.ttf" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Content\js\TavartaModernizr.JsPagespeed.js" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="vendor\bootstrap\css\bootstrap-rtl.css.map" />
@@ -1428,12 +1428,12 @@
     <Content Include="Content\assets\images\Thumbs.db" />
     <Content Include="Content\assets\Samim-Bold.ttf" />
     <Content Include="Content\assets\Samim.ttf" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="Views\Home\Single.cshtml">
       <Generator>RazorGenerator</Generator>
     </None>
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1442,11 +1442,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="HtmlHelpers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tavarta.Common\Tavarta.Common.csproj">
