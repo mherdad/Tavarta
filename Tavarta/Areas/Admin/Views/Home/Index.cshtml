@@ -1,0 +1,653 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+  <div id="app">
+        <!-- sidebar -->
+        <div class="sidebar app-aside" id="sidebar">
+            <div class="sidebar-container perfect-scrollbar">
+                <nav>
+                    <!-- start: SEARCH FORM -->
+                    <div class="search-form">
+                        <a class="s-open" href="#">
+                            <i class="ti-search"></i>
+                        </a>
+                        <form class="navbar-form" role="search">
+                            <a class="s-remove" href="#" target=".navbar-form">
+                                <i class="ti-close"></i>
+                            </a>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <button class="btn search-button" type="submit">
+                                    <i class="ti-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end: SEARCH FORM -->
+                    <!-- start: MAIN NAVIGATION MENU -->
+                    <div class="navbar-title">
+                        <h5>تاورتا </h5>
+                    </div>
+                    <ul class="main-navigation-menu">
+                        <li class="active open">
+                            <a href="index.html">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="ti-home"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> پنل مدیریتی </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="ti-settings"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> نگهداری سیستم</span><i class="icon-arrow"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="ui_elements.html">
+                                        <span class="title"> Elements </span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="ti-layout-grid2"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> مدیریت </span><i class="icon-arrow"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="table_basic.html">
+                                        <span class="title">Basic Tables</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="table_responsive.html">
+                                        <span class="title">Responsive Tables</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="table_data.html">
+                                        <span class="title">Advanced Data Tables</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="ti-pencil-alt"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> مدیریت نوشته ها </span><i class="icon-arrow"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="form_elements.html">
+                                        <span class="title">نوشته جدید</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form_text_editor.html">
+                                        <span class="title">Text Editor</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form_wizard.html">
+                                        <span class="title">Form Wizard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form_validation.html">
+                                        <span class="title">Form Validation</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <i class="ti-user"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> مدیریت کاربران </span><i class="icon-arrow"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="login_signin.html">
+                                        <span class="title"> پروفایل کاربران </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login_registration.html">
+                                        <span class="title"> گروه های کاربری </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login_forgot.html">
+                                        <span class="title"> لیست کاربران </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login_lockscreen.html">
+                                        <span class="title">Lock Screen</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                  
+                    </ul>
+                    <!-- end: MAIN NAVIGATION MENU -->
+                    <!-- start: CORE FEATURES -->
+                    <div class="navbar-title">
+                        <span>ویژگی ها </span>
+                    </div>
+                    <ul class="folders">
+                        <li>
+                            <a href="pages_calendar.html">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> تاریخ </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pages_messages.html">
+                                <div class="item-content">
+                                    <div class="item-media">
+                                        <span class="fa-stack"> <i class="fa fa-square fa-stack-2x"></i> <i class="fa fa-folder-open-o fa-stack-1x fa-inverse"></i> </span>
+                                    </div>
+                                    <div class="item-inner">
+                                        <span class="title"> پیام ها </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- end: CORE FEATURES -->
+                  
+                </nav>
+            </div>
+        </div>
+        <!-- / sidebar -->
+        <div class="app-content">
+            <!-- start: TOP NAVBAR -->
+            <header class="navbar navbar-default navbar-static-top">
+                <!-- start: NAVBAR HEADER -->
+                <div class="navbar-header">
+                    <a href="#" class="sidebar-mobile-toggler pull-right hidden-md hidden-lg" class="btn btn-navbar sidebar-toggle" data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar">
+                        <i class="ti-align-justify"></i>
+                    </a>
+                    <a class="navbar-brand" href="index.html">
+ 
+                   
+                               
+                                    
+                                    <h3  style="font-family: Samim-Bold; font-size: 12px;margin-top: 15px">پایگاه خبری تحلیلی</h3>
+                                    <h1  style="font-family: iran; color: #0057a0 ">تاورتا</h1>
+                                 
+                               
+                          
+ 
+                    </a>
+                    <a href="#" class="sidebar-toggler pull-left visible-md visible-lg" data-toggle-class="app-sidebar-closed" data-toggle-target="#app">
+                        <i class="ti-align-justify"></i>
+                    </a>
+                    <a class="pull-left menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="ti-view-grid"></i>
+                    </a>
+                </div>
+                <!-- end: NAVBAR HEADER -->
+                <!-- start: NAVBAR COLLAPSE -->
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-right">
+                        <!-- start: MESSAGES DROPDOWN -->
+                        <li class="dropdown">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="dot-badge partition-red"></span> <i class="ti-comment"></i> <span>پیام ها</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-light dropdown-messages dropdown-large">
+                                <li>
+                                    <span class="dropdown-header"> Unread messages</span>
+                                </li>
+                                <li>
+                                    <div class="drop-down-wrapper ps-container">
+                                        <ul>
+                                            <li class="unread">
+                                                <a href="javascript:;" class="unread">
+                                                    <div class="clearfix">
+                                                        <div class="thread-image">
+                                                            <img src="~/Content/assets/images/avatar-2.jpg" alt="">
+                                                        </div>
+                                                        <div class="thread-content">
+                                                            <span class="author">Nicole Bell</span>
+                                                            <span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula...</span>
+                                                            <span class="time"> Just Now</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="unread">
+                                                    <div class="clearfix">
+                                                        <div class="thread-image">
+                                                            <img src="~/Content/assets/images/avatar-3.jpg" alt="">
+                                                        </div>
+                                                        <div class="thread-content">
+                                                            <span class="author">Steven Thompson</span>
+                                                            <span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula...</span>
+                                                            <span class="time">8 hrs</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <div class="clearfix">
+                                                        <div class="thread-image">
+                                                            <img src="~/Content/assets/images/avatar-5.jpg" alt="">
+                                                        </div>
+                                                        <div class="thread-content">
+                                                            <span class="author">Kenneth Ross</span>
+                                                            <span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula...</span>
+                                                            <span class="time">14 hrs</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="view-all">
+                                    <a href="#">
+                                        See All
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end: MESSAGES DROPDOWN -->
+                        <!-- start: ACTIVITIES DROPDOWN -->
+                        <li class="dropdown">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-check-box"></i> <span>فعالیت ها</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-light dropdown-messages dropdown-large">
+                                <li>
+                                    <span class="dropdown-header"> You have new notifications</span>
+                                </li>
+                                <li>
+                                    <div class="drop-down-wrapper ps-container">
+                                        <div class="list-group no-margin">
+                                            <a class="media list-group-item" href="">
+                                                <img class="img-circle" alt="..." src="~/Content/assets/images/avatar-1.jpg">
+                                                <span class="media-body block no-margin"> Use awesome animate.css <small class="block text-grey">10 minutes ago</small> </span>
+                                            </a>
+                                            <a class="media list-group-item" href="">
+                                                <span class="media-body block no-margin"> 1.0 initial released <small class="block text-grey">1 hour ago</small> </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="view-all">
+                                    <a href="#">
+                                        See All
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end: ACTIVITIES DROPDOWN -->
+                        <!-- start: LANGUAGE SWITCHER -->
+                        <li class="dropdown">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="ti-world"></i> فارسی
+                            </a>
+                            <ul role="menu" class="dropdown-menu dropdown-light fadeInUpShort">
+                                <li>
+                                    <a href="#" class="menu-toggler">
+                                        فارسی
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="menu-toggler">
+                                        انگلیسی
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <!-- start: LANGUAGE SWITCHER -->
+                        <!-- start: USER OPTIONS DROPDOWN -->
+                        <li class="dropdown current-user">
+                            <a href class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/Content/assets/images/avatar-1.jpg" alt="Peter"> <span class="username">عظیم <i class="ti-angle-down"></i></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-dark">
+                                <li>
+                                    <a href="pages_user_profile.html">
+                                        پروفایل
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="pages_calendar.html">
+                                        تاریخ
+                                    </a>
+                                </li>
+                                <li>
+                                    <a hef="pages_messages.html">
+                                       پیام ها (3)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login_lockscreen.html">
+                                        قفل صفحه
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="login_signin.html">
+                                        خروج
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end: USER OPTIONS DROPDOWN -->
+                    </ul>
+                    <!-- start: MENU TOGGLER FOR MOBILE DEVICES -->
+                    <div class="close-handle visible-xs-block menu-toggler" data-toggle="collapse" href=".navbar-collapse">
+                        <div class="arrow-left"></div>
+                        <div class="arrow-right"></div>
+                    </div>
+                    <!-- end: MENU TOGGLER FOR MOBILE DEVICES -->
+                </div>
+                
+              
+                <!-- end: NAVBAR COLLAPSE -->
+            </header>
+            <!-- end: TOP NAVBAR -->
+            <div class="main-content">
+                <div class="wrap-content container" id="container">
+                    <!-- start: DASHBOARD TITLE -->
+                    <section id="page-title" class="padding-top-15 padding-bottom-15">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <h1 class="mainTitle">پنل مدیریتی</h1>
+                                <span class="mainDescription">کنترل سیستم </span>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- end: DASHBOARD TITLE -->
+                    <!-- start: FEATURED BOX LINKS -->
+                    <div class="container-fluid container-fullw bg-white">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="panel panel-white no-radius text-center">
+                                    <div class="panel-body">
+                                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
+                                        <h2 class="StepTitle">مدیریت کاربران</h2>
+                                        <p class="text-small">
+                                            اضافه کردن کاربران
+                                        </p>
+                                        <p class="links cl-effect-1">
+                                            <a href>
+                                                بیشتر
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="panel panel-white no-radius text-center">
+                                    <div class="panel-body">
+                                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
+                                        <h2 class="StepTitle">نگهداری سیستم</h2>
+                                        <p class="text-small">
+                                            مدیریت خطاهای سیستم
+                                        </p>
+                                        <p class="cl-effect-1">
+                                            <a href>
+                                                بیشتر
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="panel panel-white no-radius text-center">
+                                    <div class="panel-body">
+                                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+                                        <h2 class="StepTitle">گزارشات</h2>
+                                        <p class="text-small">
+                                            در این قسمت گزارشات مدیریت می شود
+                                        </p>
+                                        <p class="links cl-effect-1">
+                                            <a href>
+                                                بیشتر
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- end: FEATURED BOX LINKS -->
+                <br/>
+                    <br/>
+                    <!-- start: FEATURED BOX LINKS2 -->
+                    <div class="container-fluid container-fullw bg-white padding-bottom-10">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="panel panel-indigo no-radius text-center">
+                                    <div class="panel-body">
+                                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
+                                        <h2 class="StepTitle">مدیریت کاربران</h2>
+                                        <p class="text-small">
+                                            اضافه کردن کاربران
+                                        </p>
+                                        <p class="links cl-effect-1">
+                                            <a href>
+                                                بیشتر
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="panel panel-indigo no-radius text-center">
+                                    <div class="panel-body">
+                                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
+                                        <h2 class="StepTitle">نگهداری سیستم</h2>
+                                        <p class="text-small">
+                                            مدیریت خطاهای سیستم
+                                        </p>
+                                        <p class="cl-effect-1">
+                                            <a href>
+                                                بیشتر
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="panel panel-indigo no-radius text-center">
+                                    <div class="panel-body">
+                                        <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+                                        <h2 class="StepTitle">گزارشات</h2>
+                                        <p class="text-small">
+                                            در این قسمت گزارشات مدیریت می شود
+                                        </p>
+                                        <p class="links cl-effect-1">
+                                            <a href>
+                                                بیشتر
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: FEATURED BOX LINKS2 -->
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        <!-- start: FOOTER -->
+        <footer>
+            <div class="footer-inner">
+                <div class="pull-right">
+                    &copy; <span class="current-year"></span><span class="text-bold text-uppercase"> تاورتا</span>. <span>تمام حقوق مطعلق به سایت</span>
+                </div>
+                <div class="pull-left">
+                    <span class="go-top"><i class="ti-angle-up"></i></span>
+                </div>
+            </div>
+        </footer>
+        <!-- end: FOOTER -->
+        <!-- start: OFF-SIDEBAR -->
+        
+        <!-- end: OFF-SIDEBAR -->
+        <!-- start: SETTINGS -->
+        <div class="settings panel panel-default hidden-xs hidden-sm" id="settings">
+            <button ct-toggle="toggle" data-toggle-class="active" data-toggle-target="#settings" class="btn btn-default">
+                <i class="fa fa-spin fa-gear"></i>
+            </button>
+            <div class="panel-heading">
+                Style Selector
+            </div>
+            <div class="panel-body">
+                <!-- start: FIXED HEADER -->
+                <div class="setting-box clearfix">
+                    <span class="setting-title pull-left"> Fixed header</span>
+                    <span class="setting-switch pull-right">
+                        <input type="checkbox" class="js-switch" id="fixed-header" />
+                    </span>
+                </div>
+                <!-- end: FIXED HEADER -->
+                <!-- start: FIXED SIDEBAR -->
+                <div class="setting-box clearfix">
+                    <span class="setting-title pull-left">Fixed sidebar</span>
+                    <span class="setting-switch pull-right">
+                        <input type="checkbox" class="js-switch" id="fixed-sidebar" />
+                    </span>
+                </div>
+                <!-- end: FIXED SIDEBAR -->
+                <!-- start: CLOSED SIDEBAR -->
+                <div class="setting-box clearfix">
+                    <span class="setting-title pull-left">Closed sidebar</span>
+                    <span class="setting-switch pull-right">
+                        <input type="checkbox" class="js-switch" id="closed-sidebar" />
+                    </span>
+                </div>
+                <!-- end: CLOSED SIDEBAR -->
+                <!-- start: FIXED FOOTER -->
+                <div class="setting-box clearfix">
+                    <span class="setting-title pull-left">Fixed footer</span>
+                    <span class="setting-switch pull-right">
+                        <input type="checkbox" class="js-switch" id="fixed-footer" />
+                    </span>
+                </div>
+                <!-- end: FIXED FOOTER -->
+                <!-- start: THEME SWITCHER -->
+                <div class="colors-row setting-box">
+                    <div class="color-theme theme-1">
+                        <div class="color-layout">
+                            <label>
+                                <input type="radio" name="setting-theme" value="theme-1">
+                                <span class="ti-check"></span>
+                                <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
+                                <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="color-theme theme-2">
+                        <div class="color-layout">
+                            <label>
+                                <input type="radio" name="setting-theme" value="theme-2">
+                                <span class="ti-check"></span>
+                                <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
+                                <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="colors-row setting-box">
+                    <div class="color-theme theme-3">
+                        <div class="color-layout">
+                            <label>
+                                <input type="radio" name="setting-theme" value="theme-3">
+                                <span class="ti-check"></span>
+                                <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
+                                <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="color-theme theme-4">
+                        <div class="color-layout">
+                            <label>
+                                <input type="radio" name="setting-theme" value="theme-4">
+                                <span class="ti-check"></span>
+                                <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
+                                <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="colors-row setting-box">
+                    <div class="color-theme theme-5">
+                        <div class="color-layout">
+                            <label>
+                                <input type="radio" name="setting-theme" value="theme-5">
+                                <span class="ti-check"></span>
+                                <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
+                                <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="color-theme theme-6">
+                        <div class="color-layout">
+                            <label>
+                                <input type="radio" name="setting-theme" value="theme-6">
+                                <span class="ti-check"></span>
+                                <span class="split header"> <span class="color th-header"></span> <span class="color th-collapse"></span> </span>
+                                <span class="split"> <span class="color th-sidebar"><i class="element"></i></span> <span class="color th-body"></span> </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: THEME SWITCHER -->
+            </div>
+        </div>
+        <!-- end: SETTINGS -->
+    </div>
+
