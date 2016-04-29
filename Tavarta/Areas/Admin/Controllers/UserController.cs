@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI;
 using Microsoft.Web.Mvc;
+using MvcSiteMapProvider;
 using Tavarta.Common.Controller;
 using Tavarta.Common.Extentions;
 using Tavarta.Controllers;
@@ -33,6 +36,33 @@ namespace Tavarta.Areas.Admin.Controllers
             _roleManager = roleManager;
             _permissionService = permissionService;
         }
+
+        #region List,ListAjax
+        [HttpGet]
+        [Activity(Description = "مشاهده کاربران")]
+        [MvcSiteMapNode(ParentKey = "Home_Index", Title = "مدیریت کاربران", Key = "User_List")]
+        public virtual async Task<ActionResult> List()
+        {
+            var viewModel = await _userManager.GetPageList(
+                new UserSearchRequest());
+            viewModel.Roles = await _roleManager.GetAllAsSelectList();
+            return View(viewModel);
+        }
+
+        //[CheckReferrer]
+        [AjaxOnly]
+        [HttpPost]
+        [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
+        public virtual async Task<ActionResult> ListAjax(UserSearchRequest search)
+        {
+            var viewModel = await _userManager.GetPageList(search);
+            if (viewModel.Users == null || !viewModel.Users.Any()) return Content("no-more-info");
+           return PartialView("_ListAjax", viewModel);
+           
+        }
+        #endregion
+
+
 
         #endregion
         [HttpGet]

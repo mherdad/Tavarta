@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode action="Index" controller="Home" title="پنل مدیریتی" key="Home_Index">
+    
+    <mvcSiteMapNode action="List" controller="Applicant"  title="مدیریت اساتید" key="Applicants">
+      <mvcSiteMapNode action="Create" controller="Applicant" title="درج متقاضی"/>
+      <mvcSiteMapNode action="Details" controller="Applicant" key="Applicant_Details" title="جزئیات متقاضی" preservedRouteParameters="ApplicantId"/>
+      <mvcSiteMapNode action="Edit" controller="Applicant" title="ویرایش متقاضی" preservedRouteParameters="ApplicantId"/>
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>
