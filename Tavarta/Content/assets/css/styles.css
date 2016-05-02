@@ -3504,7 +3504,7 @@ a.text-light:hover {
 /*  Panels
 /* ---------------------------------------------------------------------- */
 .panel {
-  background: none;
+  background: white;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3531,6 +3531,7 @@ a.text-light:hover {
   display: none;
 }
 
+
 .panel-footer {
   position: relative;
   border-top-width: 1px;
@@ -3538,6 +3539,12 @@ a.text-light:hover {
   border-top-color: inherit;
   padding: 15px;
   background: none;
+    background-color: #ecf0f1;
+    border-top: 1px solid #ecf0f1;
+}
+
+.padding-5-5 {
+    padding: 5px 5px !important;
 }
 
 .panel-heading {
@@ -3852,7 +3859,7 @@ a.text-light:hover {
   background-color: #ffffff;
   position: relative;
   color: #5b5b60;
-  border: 1px solid rgba(0, 0, 0, 0.07);
+    border: 1px solid #DDDDE8;
 }
 
 .panel-indigo, .partition-indigo {
@@ -8173,7 +8180,7 @@ Social Icons
 .btn-scroll {
   position: relative;
   overflow: hidden;
-  font-family: Helvetica, Arial, sans-serif !important;
+  font-family: Samim-Bold !important;
   line-height: inherit !important;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

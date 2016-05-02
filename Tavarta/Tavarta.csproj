@@ -265,6 +265,21 @@
     <Content Include="Content\assets\css\themes\theme-4.css" />
     <Content Include="Content\assets\css\themes\theme-5.css" />
     <Content Include="Content\assets\css\themes\theme-6.css" />
+    <Content Include="Content\assets\customs\ajax.methods.js" />
+    <Content Include="Content\assets\customs\ajax.methods.min.js" />
+    <Content Include="Content\assets\customs\jquery.ajax.querystring.js" />
+    <Content Include="Content\assets\customs\jquery.ajax.querystring.min.js" />
+    <Content Include="Content\assets\customs\jquery.form.config.js" />
+    <Content Include="Content\assets\customs\jquery.form.config.min.js" />
+    <Content Include="Content\assets\customs\jquery.mvc.modal-ajax-form.js" />
+    <Content Include="Content\assets\customs\jquery.mvc.postFormAjax.js" />
+    <Content Include="Content\assets\customs\jquery.noty.packaged.min.js" />
+    <Content Include="Content\assets\customs\jquery.PostMvcFormAjax.min.js" />
+    <Content Include="Content\assets\customs\jqueryval-default.js" />
+    <Content Include="Content\assets\customs\noty.alerts.js" />
+    <Content Include="Content\assets\customs\noty.alerts.min.js" />
+    <Content Include="Content\assets\customs\site.js" />
+    <Content Include="Content\assets\customs\site.min.js" />
     <Content Include="Content\assets\images\africa-17344_640.jpg" />
     <Content Include="Content\assets\images\avatar-1-big.jpg" />
     <Content Include="Content\assets\images\avatar-1-small.jpg" />
@@ -297,6 +312,13 @@
     <Content Include="Content\assets\images\picture.svg" />
     <Content Include="Content\assets\images\plane.png" />
     <Content Include="Content\assets\images\your-logo-here.png" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <None Include="Content\assets\jquery-2.1.4.intellisense.js" />
+    <Content Include="Content\assets\jquery-2.1.4.js" />
+    <Content Include="Content\assets\jquery-2.1.4.min.js" />
+    <Content Include="Content\assets\jquery-ui.css" />
+    <Content Include="Content\assets\jquery-ui.js" />
+    <Content Include="Content\assets\jquery.validate.js" />
     <Content Include="Content\assets\js\charts.js" />
     <Content Include="Content\assets\js\form-elements.js" />
     <Content Include="Content\assets\js\form-image-cropping.js" />
@@ -315,6 +337,15 @@
     <Content Include="Content\assets\js\ui-nestable.js" />
     <Content Include="Content\assets\js\ui-notifications.js" />
     <Content Include="Content\assets\js\ui-treeview.js" />
+    <Content Include="Content\assets\My\bootstrap-rtl.js" />
+    <Content Include="Content\assets\My\jquery-1.9.1.min.js" />
+    <Content Include="Content\assets\My\jquery.bootstrap-modal-ajax-form.js" />
+    <Content Include="Content\assets\My\jquery.bootstrap-modal-confirm.js" />
+    <Content Include="Content\assets\My\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\assets\My\jquery.validate.min.js" />
+    <Content Include="Content\assets\My\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\assets\My\respond.min.js" />
+    <Content Include="Content\assets\Test.js" />
     <Content Include="Content\css\960.css" />
     <Content Include="Content\css\base.css" />
     <Content Include="Content\css\devices\1000.css" />
@@ -1442,13 +1473,16 @@
     <Content Include="Areas\Admin\Views\User\_ListAjax.cshtml" />
     <Content Include="Areas\Admin\Views\User\_UserItem.cshtml" />
     <Content Include="Mvc.sitemap" />
+    <Content Include="Content\assets\customs\jquery.ajax.querystring.min.js.map" />
+    <Content Include="Content\assets\customs\jquery.form.config.min.js.map" />
+    <Content Include="Content\assets\customs\noty.alerts.min.js.map" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Views\Home\Single.cshtml">
       <Generator>RazorGenerator</Generator>
     </None>
-    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

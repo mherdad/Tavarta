@@ -1,58 +1,132 @@
 ﻿@model Tavarta.ViewModel.User.UserListViewModel
-@{
+@*@{
     ViewBag.Title = "مدیریت کاربران";
+}*@
+
+@{
+    ViewBag.Title = "Index";
+    var renderModalPartialViewUrl = Url.Action("Create", "User");
+    var postDataUrl = Url.Action("List", "User");
 }
 @Html.AntiForgeryToken()
 
-<div class="panel panel-default">
-    <div class="col-md-12 col-md-push-1">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-2">
-                    <a class="btn btn-default btn-sm" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createUserForm','modal')"
-                       data-ajax-update="#modal" data-ajax-url="@Url.Action("Create")" role="button"><i class="fa fa-plus"></i>درج کاربر جدید</a>
-                </div>
-                <div class="col-md-8">
-                    @using (Ajax.BeginForm("ListAjax", null, new AjaxOptions { AllowCache = false, HttpMethod = "POST", OnComplete = "searchOnComplete(xhr,status,'#progress','#userPager','#userList')" }, new { @class = "form-horizontal search", autocomplete = "off", id = "userSearchForm" }))
-                    {
-                        @Html.Hidden("PageIndex", Model.SearchRequest.PageIndex)
-                        <div class="row">
-                            <div class="col-lg-6">
-                                @Html.DropDownList("RoleId", Model.Roles, "همه گروه های کاربری", new { @class = "form-control" })
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="input-group">
-                                    <input type="text" name="UserName" class="form-control" placeholder="نام کاربری">
-                                    <span class="input-group-btn">
-                                        <button type="button" id="userSearchButton" autocomplete="off" onclick="directSearchPaging('#progress', 'userSearchForm', '#userPager', '#userList')" data-loading-text="درخواست" class="btn btn-success btn-sm search">
-                                            <i class="fa fa-search"></i>         جستجو
-                                        </button>
-                                    </span>
-                                </div><!-- /input-group -->
-                            </div><!-- /.col-lg-6 -->
-                        </div>
+<br/>
+
+@section JavaScript
+{
+        <script src="~/Content/assets/My/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/My/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/assets/My/bootstrap-rtl.js"></script>
+       <script src="~/Content/assets/My/jquery.bootstrap-modal-ajax-form.js"></script>
+    <script src="~/Content/assets/My/jquery.bootstrap-modal-confirm.js"></script>
+<script src="~/Content/assets/customs/ajax.methods.js"></script>
+<script src="~/Content/assets/customs/jqueryval-default.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnCreate').click(function (e) {
+                e.preventDefault(); //مي‌خواهيم لينك به صورت معمول عمل نكند
+
+                $.bootstrapModalAjaxForm({
+                    postUrl: '@postDataUrl',
+                    renderModalPartialViewUrl: '@renderModalPartialViewUrl',
+                    renderModalPartialViewData: {},
+                    loginUrl: '/login',
+                    beforePostHandler: function () {
+                        alert('beforePost');
+                    },
+                    completeHandler: function () {
+                        alert('completeHandler');
+                        // Refresh: براي حالتيكه نياز به به روز رساني كامل صفحه زيرين باشد
+                        // location.reload();
+                    },
+                    errorHandler: function () {
+                        alert('error');
                     }
-                </div>
+                });
+            });
+
+            $("#deleteBtn").click(function (e) {
+                e.preventDefault(); //می‌خواهیم لینک به صورت معمول عمل نکند
+                $.bootstrapModalConfirm({
+                    caption: 'تائید عملیات',
+                    body: 'آیا عملیات درخواستی اجرا شود؟',
+                    onConfirm: function () {
+                        alert('در حال انجام عملیات');
+                    },
+                    confirmText: 'تائید',
+                    closeText: 'انصراف'
+                });
+            });
+        });             
+    </script>
+}
+
+@section Scripts {
+    <script>
+
+      
+    </script>
+
+
+
+
+
+
+}
+<div class="panel panel-white">
+<a href="#" class="btn btn-danger" id="deleteBtn">حذف رکورد و افزونه تائيد</a>
+    <div class="panel-heading" style="background-color: #F7F7F8">
+           
+        <div class="row">
+            <div class="col-md-2">
+                @Html.AntiForgeryToken()
+                            <a href="#" class="btn btn-primary" id="btnCreate">ثبت اطلاعات  به كمك افزونه با فعال بودن اعتبارسنجي</a>
+                <a id="test" data-toggle="modal" data-target="#myModal" href="@renderModalPartialViewUrl" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createUserForm','modal')"
+                   data-ajax-update="#modal" data-ajax-url="@Url.Action("Create", "User")" role="button"><i class="fa fa-plus"></i>درج کاربر جدید</a>
+            </div>
+            <div class="col-md-8">
+                @using (Ajax.BeginForm("ListAjax", "", new AjaxOptions {AllowCache = false, HttpMethod = "POST", OnComplete = "searchOnComplete(xhr,status,'#progress','#userPager','#userList')"}, new {@class = "form-horizontal search", autocomplete = "off", id = "userSearchForm"}))
+                {
+                    @Html.Hidden("PageIndex", Model.SearchRequest.PageIndex)
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @Html.DropDownList("RoleId", Model.Roles, "همه گروه های کاربری", new {@class = "form-control"})
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" name="UserName" class="form-control" placeholder="نام کاربری">
+                                <span class="input-group-btn">
+                                    <button type="button" id="userSearchButton" autocomplete="off" onclick="directSearchPaging('#progress', 'userSearchForm', '#userPager', '#userList')" data-loading-text="درخواست" class="btn btn-wide btn-dark-green btn-scroll btn-scroll-left  fa fa-search">
+                                        <span><i class="fa fa-search"></i>  جستجو</span>
+                                    </button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-lg-6 -->
+                    </div>
+                }
             </div>
         </div>
+    </div>
 
-        <div class="panel-body">
-            <div class="row" id="userList">
-                @{ Html.RenderPartial("_ListAjax", Model);}
+    <div class="panel-body">
+        <div class="row" id="userList">
+            @{ Html.RenderPartial("_ListAjax", Model);}
+        </div>
+    </div>
+    <div class="panel-footer padding-5-5">
+
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <button data-page="2" id="userPager" onclick="doPaging(this, '#progress', 'userSearchForm')" class="btn btn-dark-blue btn-block btn-sm " type="button">
+                    بیشتر
+                </button>
             </div>
         </div>
-        <div class="panel-footer padding-5-5">
-
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <button data-page="2" id="userPager" onclick="doPaging(this, '#progress', 'userSearchForm')" class="btn btn-info btn-block btn-sm" type="button">
-                        بیشتر
-                    </button>
-                </div>
-            </div>
-            <div id="progress" align="center" style="display: none">
-                <img src="@Url.Content("~/Content/images/loading.gif")" alt="loading..." />
-            </div>
+        <div id="progress" align="center" style="display: none">
+            <img src="@Url.Content("~/Content/images/loading.gif")" alt="loading..." />
         </div>
     </div>
 </div>

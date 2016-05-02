@@ -6,6 +6,7 @@ using Microsoft.Web.Mvc;
 using MvcSiteMapProvider;
 using Tavarta.Common.Controller;
 using Tavarta.Common.Extentions;
+using Tavarta.Common.Json;
 using Tavarta.Controllers;
 using Tavarta.DataLayer.Context;
 using Tavarta.Filters;
@@ -36,6 +37,9 @@ namespace Tavarta.Areas.Admin.Controllers
             _roleManager = roleManager;
             _permissionService = permissionService;
         }
+
+       
+
 
         #region List,ListAjax
         [HttpGet]
@@ -69,27 +73,48 @@ namespace Tavarta.Areas.Admin.Controllers
         [AllowAnonymous]
         public  ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+
         [HttpPost]
         [Activity(Description = "درج کاربر جدید")]
         public async Task<ActionResult> Create(AddUserViewModel viewModel)
         {
-            if(_userManager.CheckUserNameExist(viewModel.UserName,null))
+            #region Validation
+            if (_userManager.CheckUserNameExist(viewModel.UserName, null))
                 this.AddErrors("UserName", "این نام کاربری قبلا در سیستم ثبت شده است");
             if (!viewModel.Password.IsSafePasword())
                 this.AddErrors("Password", "این کلمه عبور به راحتی قابل تشخیص است");
 
+            #endregion
+
             if (!ModelState.IsValid)
-                return View (viewModel);
-
-            var newUser =await  _userManager.AddUser(viewModel);
-
-            return this.RedirectToAction<HomeController>(action => action.Index());
+            {
+                return new JsonNetResult
+                {
+                    Data =
+                        new
+                        {
+                            success = false,
+                            View = this.RenderPartialViewToString("_Create", viewModel)
+                        }
+                };
+            }
+            var newUser =
+            await _userManager.AddUser(viewModel);
+            return new JsonNetResult
+            {
+                Data =
+                    new
+                    {
+                        success = true,
+                        View = this.RenderPartialViewToString("UserItem", newUser)
+                    }
+            };
 
         }
     }
+
 }

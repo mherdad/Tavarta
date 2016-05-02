@@ -17,6 +17,7 @@ using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.Users;
 using Tavarta.Utility;
 using Tavarta.ViewModel.Account;
+using Tavarta.ViewModel.User;
 
 namespace Tavarta.Areas.Admin.Controllers
 {
@@ -179,6 +180,22 @@ namespace Tavarta.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public async Task<ActionResult> Register(AddUserViewModel viewModel)
+        {
+            if (_userManager.CheckUserNameExist(viewModel.UserName, null))
+                this.AddErrors("UserName", "این نام کاربری قبلا در سیستم ثبت شده است");
+            if (!viewModel.Password.IsSafePasword())
+                this.AddErrors("Password", "این کلمه عبور به راحتی قابل تشخیص است");
+
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            var newUser = await _userManager.AddUser(viewModel);
+
+            return this.RedirectToAction<HomeController>(action => action.Index());
+        }
+
 
         //
         // POST: /Account/ForgotPassword

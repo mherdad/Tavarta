@@ -1,7 +1,6 @@
 ﻿@model Tavarta.ViewModel.User.UserViewModel
 <div class="col-md-6 data-item" id="user-@Model.Id">
-    <div class="col-md-8">
-        <div class="panel panel-white">
+        <div class="panel panel-white" style="background: white">
             <div class="panel-body">
                 <i class="fa fa-user"></i>
                 <label class="text-muted">
@@ -17,15 +16,15 @@
             <small class="text-muted">کاربر سیستمی</small>
             }
             </div>
-            <div class="panel-footer">
+            <div class="panel-footer" style="background-color: white">
                 <div class="pull-left">
 
-                    <a class="btn btn-primary btn-sm" data-ajax-oncomplete="editGetOnComplete(xhr,status)"
+                    <a class="btn  btn-dark-azure btn-scroll btn-scroll-left fa fa-edit" data-ajax-oncomplete="editGetOnComplete(xhr,status)"
                        data-ajax="true" data-ajax-method="GET"
                        data-ajax-begin="onBegin(xhr,this)"
                        data-ajax-mode="REPLACE-WITH" data-ajax-success="inlineEditGetOnSuccess(data, status, xhr,'@Model.Id')"
                        data-ajax-update="#user-@Model.Id"
-                       href="@Url.Action("")" role="button"><i class="fa fa-edit"></i>ویرایش</a>
+                       href="@Url.Action("")" role="button"><span><i class="fa fa-edit"></i> ویرایش</span></a>
 
                     @if (Model.IsBanned)
                 {
@@ -42,7 +41,7 @@
                 }
                 else
                 {
-                <a class="btn btn-danger btn-sm @(Model.IsSystemAccount ? "not-active" : "")"
+                <a class="btn btn-wide btn-dark-red btn-scroll btn-scroll-left fa fa-ban @(Model.IsSystemAccount ? "not-active" : "")"
                    data-ajax="true" data-ajax-method="POST"
                    data-ajax-begin="onBegin(xhr,this)"
                    data-ajax-mode="REPLACE-WITH"
@@ -50,8 +49,8 @@
                    disabled="@Model.IsSystemAccount"
                    data-ajax-update="#user-@Model.Id"
                    href="@Url.Action("")" role="button">
-                    <i class="fa fa-ban"></i>
-                    مسدود سازی
+                   
+                   <span><i class="fa fa-ban"></i> مسدود سازی</span>
                 </a>
                 }
                 </div>
@@ -62,4 +61,3 @@
 
     </div>
 
-       </div>
