@@ -302,6 +302,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         #region GetForEditAsync
         public async Task<EditUserViewModel> GetForEditAsync(Guid id)
         {
+
             var userWithRoles = await
                  _users.AsNoTracking()
                      .Include(a => a.Roles)
@@ -335,11 +336,18 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
             {
                 user.Roles.Clear();
             }
+            try
+            {
 
-            if (!await IsInRoleAsync(user.Id, StandardRoles.Administrators))
-                this.UpdateSecurityStamp(user.Id);
-            else await _unitOfWork.SaveAllChangesAsync();
 
+                if (!await IsInRoleAsync(user.Id, StandardRoles.Administrators))
+                    this.UpdateSecurityStamp(user.Id);
+                else await _unitOfWork.SaveAllChangesAsync();
+            }
+            catch
+            {
+                return await GetUserViewModel(viewModel.Id);
+            }
             return await GetUserViewModel(viewModel.Id);
         }
         #endregion

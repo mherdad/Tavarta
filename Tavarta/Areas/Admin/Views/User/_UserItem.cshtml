@@ -1,5 +1,65 @@
-﻿@model Tavarta.ViewModel.User.UserViewModel
-<div class="col-md-6 data-item" id="user-@Model.Id">
+﻿@using Tavarta.Common.Extentions
+@using Tavarta.Common.Helpers
+@model Tavarta.ViewModel.User.UserViewModel
+@{
+    ViewBag.Title = "Index";
+    var renderModalPartialViewUrl = Url.Action("Edit", "User");
+    var postDataUrl = Url.Action("List", "User");
+}
+@section Scripts
+{
+            <script src="~/Content/assets/My/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/My/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/assets/My/bootstrap-rtl.js"></script>
+       <script src="~/Content/assets/My/jquery.bootstrap-modal-ajax-form.js"></script>
+    <script src="~/Content/assets/My/jquery.bootstrap-modal-confirm.js"></script>
+    
+<script src="~/Content/assets/customs/noty.alerts.js"></script>
+<script src="~/Content/assets/customs/ajax.methods.js"></script>
+    <script src="~/Content/assets/customs/jqueryval-default.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnCreate').click(function (e) {
+                e.preventDefault(); //مي‌خواهيم لينك به صورت معمول عمل نكند
+
+                $.bootstrapModalAjaxForm({
+                    postUrl: '@postDataUrl',
+                    renderModalPartialViewUrl: '@renderModalPartialViewUrl',
+                    renderModalPartialViewData: {},
+                    loginUrl: '/login',
+                    beforePostHandler: function () {
+                        alert('beforePost');
+                    },
+                    completeHandler: function () {
+                        alert('completeHandler');
+                        // Refresh: براي حالتيكه نياز به به روز رساني كامل صفحه زيرين باشد
+                        // location.reload();
+                    },
+                    errorHandler: function () {
+                        alert('error');
+                    }
+                });
+            });
+
+            $("#deleteBtn").click(function (e) {
+                e.preventDefault(); //می‌خواهیم لینک به صورت معمول عمل نکند
+                $.bootstrapModalConfirm({
+                    caption: 'تائید عملیات',
+                    body: 'آیا عملیات درخواستی اجرا شود؟',
+                    onConfirm: function () {
+                        alert('در حال انجام عملیات');
+                    },
+                    confirmText: 'تائید',
+                    closeText: 'انصراف'
+                });
+            });
+        });             
+    </script>
+} <div class="" id="user-@Model.Id">
+<div class="col-md-6 data-item" >
         <div class="panel panel-white" style="background: white">
             <div class="panel-body">
                 <i class="fa fa-user"></i>
@@ -18,41 +78,40 @@
             </div>
             <div class="panel-footer" style="background-color: white">
                 <div class="pull-left">
-
                     <a class="btn  btn-dark-azure btn-scroll btn-scroll-left fa fa-edit" data-ajax-oncomplete="editGetOnComplete(xhr,status)"
                        data-ajax="true" data-ajax-method="GET"
                        data-ajax-begin="onBegin(xhr,this)"
                        data-ajax-mode="REPLACE-WITH" data-ajax-success="inlineEditGetOnSuccess(data, status, xhr,'@Model.Id')"
                        data-ajax-update="#user-@Model.Id"
-                       href="@Url.Action("")" role="button"><span><i class="fa fa-edit"></i> ویرایش</span></a>
+                       href="@Url.AbsoluteAction("Edit", "User", new {Model.Id})" role="button"><span><i class="fa fa-edit"></i> ویرایش</span></a>
 
                     @if (Model.IsBanned)
-                {
-                <a class="btn btn-success btn-sm "
-                   data-ajax="true" data-ajax-method="POST"
-                   data-ajax-mode="REPLACE-WITH"
-                   data-ajax-begin="onBegin(xhr,this)"
-                   data-ajax-oncomplete="onComplete(xhr,status)"
-                   data-ajax-update="#user-@Model.Id"
-                   href="@Url.Action("")" role="button">
-                    <i class="fa fa-check-square-o"></i>
-                    آزاد سازی
-                </a>
-                }
-                else
-                {
-                <a class="btn btn-wide btn-dark-red btn-scroll btn-scroll-left fa fa-ban @(Model.IsSystemAccount ? "not-active" : "")"
-                   data-ajax="true" data-ajax-method="POST"
-                   data-ajax-begin="onBegin(xhr,this)"
-                   data-ajax-mode="REPLACE-WITH"
-                   data-ajax-oncomplete="onComplete(xhr,status)"
-                   disabled="@Model.IsSystemAccount"
-                   data-ajax-update="#user-@Model.Id"
-                   href="@Url.Action("")" role="button">
-                   
-                   <span><i class="fa fa-ban"></i> مسدود سازی</span>
-                </a>
-                }
+                    {
+                        <a class="btn  btn-success btn-scroll btn-scroll-top fa fa-check-square-o "
+                           data-ajax="true" data-ajax-method="POST"
+                           data-ajax-mode="REPLACE-WITH"
+                           data-ajax-begin="onBegin(xhr,this)"
+                           data-ajax-oncomplete="onComplete(xhr,status)"
+                           data-ajax-update="#user-@Model.Id"
+                           href="@Url.Action("EnableUser", new {Model.Id})" role="button">
+                            <span><i class="fa fa-check-square-o"></i> آزاد سازی</span>
+                    
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn  btn-dark-red btn-scroll btn-scroll-top fa fa-ban @(Model.IsSystemAccount ? "not-active" : "")"
+                           data-ajax="true" data-ajax-method="POST"
+                           data-ajax-begin="onBegin(xhr,this)"
+                           data-ajax-mode="REPLACE-WITH"
+                           data-ajax-oncomplete="onComplete(xhr,status)"
+                           disabled="@Model.IsSystemAccount"
+                           data-ajax-update="#user-@Model.Id"
+                           href="@Url.Action("BanUser", new {Model.Id})" role="button">
+                            <span><i class="fa fa-ban"></i>مسدود سازی  </span>
+
+                        </a>
+                    }
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -61,3 +120,4 @@
 
     </div>
 
+</div>

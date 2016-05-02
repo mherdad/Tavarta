@@ -1,0 +1,77 @@
+﻿@using Tavarta.Common.HtmlHelpers
+@model Tavarta.ViewModel.User.EditUserViewModel
+
+<div class="main-login  col-sm-8 col-md-6">
+    <div class="box-register">
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+        {
+            <fieldset>
+                <legend>
+                    ویرایش
+                </legend>
+
+                @Html.HiddenFor(a => a.Id)
+                @Html.HiddenFor(a => a.RowVersion)
+
+                <div class="row form-group">
+
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "نام کاربری", autocomplete = "off" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    @Html.LabelFor(m => m.DisplayName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(x => x.DisplayName, new { @class = "form-control", @placeholder = "نام کاربر" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+
+                        @Html.FormControlPasswordFor(x => x.Password)
+
+                        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
+
+                        @Html.FormControlPasswordFor(x => x.ConfirmPassword)
+
+                        @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+
+                    @Html.LabelFor(model => Model.RoleId, new { @class = "control-label col-md-3" })
+
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.RoleId, Model.Roles, "انتخاب گروه کاربری", new { @class = "  dropdown-toggle " })
+                        @Html.ValidationMessageFor(model => model.RoleId, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="panel-footer block">
+                    <div class="pull-left">
+                        <button type="submit">انجام عملیات</button>
+                        <a class="btn btn-default btn-sm" data-ajax="true"
+                           data-ajax-mode="REPLACE-WITH" data-ajax-complete="cancelEditOnComplete(xhr, status)"
+                           data-ajax-update="#user-@Model.Id" data-ajax-method="POST"
+                           href="@Url.Action("CancelEdit", new {Model.Id})" role="button">
+                            <i class="fa fa-arrow-right"></i>
+                            انصراف
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>

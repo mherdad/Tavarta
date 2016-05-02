@@ -82,6 +82,9 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Persia">
+      <HintPath>..\packages\Persia.NET.3.0.4727\lib\Persia.dll</HintPath>
+    </Reference>
     <Reference Include="PersianDateTime, Version=1.1.5082.36395, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PersianDateTime.1.1.5082.36395\lib\net40\PersianDateTime.dll</HintPath>
       <Private>True</Private>
@@ -154,6 +157,7 @@
     <Compile Include="Controller\SessionProvider.cs" />
     <Compile Include="Controller\StringToDateModelBinder.cs" />
     <Compile Include="CSharpRazorViewEngine.cs" />
+    <Compile Include="DateAndTime\DateAndTime.cs" />
     <Compile Include="Experimental\ObjectPool\ObjectPool.cs" />
     <Compile Include="Experimental\ObjectPool\ObjectPoolExtensions.cs" />
     <Compile Include="Experimental\ObjectPool\PooledObject.cs" />
@@ -207,11 +211,19 @@
     <Compile Include="Filters\TidyHtml.cs" />
     <Compile Include="Filters\ValidateHeaderAntiForgeryTokenAttribute.cs" />
     <Compile Include="Filters\WhitespaceFilterAttribute.cs" />
+    <Compile Include="Helpers\AjaxDialog.cs" />
+    <Compile Include="Helpers\DialogOptions.cs" />
+    <Compile Include="Helpers\DropDownList.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\FieldValidationHelper.cs" />
     <Compile Include="Helpers\FilePermissionHelper.cs" />
     <Compile Include="Helpers\FriendlyUrlHelper.cs" />
+    <Compile Include="Helpers\HtmlHelper.cs" />
     <Compile Include="Helpers\RegexHelpers.cs" />
+    <Compile Include="Helpers\TreeView.cs" />
+    <Compile Include="Helpers\UrlExtensions.cs" />
+    <Compile Include="Helpers\UrlGenerator.cs" />
+    <Compile Include="Helpers\UserAvatarHelper.cs" />
     <Compile Include="HiddenField\ActionKey.cs" />
     <Compile Include="HiddenField\ActionKeyService.cs" />
     <Compile Include="HiddenField\EncryptSettingsProvider.cs" />
