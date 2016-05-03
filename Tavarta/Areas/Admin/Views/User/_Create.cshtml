@@ -1,61 +1,76 @@
 ﻿@using Tavarta.Common.HtmlHelpers
 @model Tavarta.ViewModel.User.AddUserViewModel
+<div class="row">
+<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 
 <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header  alert alert-success">
+    <div class="modal-content bg-white">
+        <div class="modal-header  bg-dark-purple">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h6 class="modal-title">درج کاربر</h6>
         </div>
-        <div class="modal-body">
-            @using (Ajax.BeginForm("Create", null,new AjaxOptions { HttpMethod = "POST", OnComplete = "createOnComplete(xhr, status, 'userList', '#modal','createUserForm','#createUserButton')" }, new { @class = "form-horizontal", id = "createUserForm", autocomplete = "off" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="row">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-9">
-                            @Html.NoAutoCompleteTextBoxForLtr(m => m.UserName)
-                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+        <div class="box-register">
+            <div class="modal-body">
+                @using (Html.BeginForm("Create", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        <legend>
+                           درج کاربر جدید
+                        </legend>
+                        <p>
+                            اطلاعات لازم را پر کنید
+                        </p>
+                        <div class="row form-group">
+
+                            @Html.LabelFor(m => m.UserName, new {@class = "col-md-3 control-label"})
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.UserName, new {@class = "form-control", placeholder = "نام کاربری", autocomplete = "off"})
+                                @Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger"})
+                            </div>
                         </div>
-                    </div>
-                  
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.DisplayName, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-9">
-                            @Html.NoAutoCompleteTextBoxFor(m => m.DisplayName)
-                            @Html.ValidationMessageFor(m => m.DisplayName, "", new { @class = "text-danger" })
+
+                        <div class="row form-group">
+                            @Html.LabelFor(m => m.DisplayName, new {@class = "col-md-3 control-label"})
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(x => x.DisplayName, new {@class = "form-control", @placeholder = "نام کاربر"})
+                                @Html.ValidationMessageFor(m => m.UserName, "", new {@class = "text-danger"})
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-9">
-                            @Html.FormControlPasswordFor(m => m.Password)
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                        <div class="row form-group">
+                            @Html.LabelFor(m => m.Password, new {@class = "col-md-3 control-label"})
+                            <div class="col-md-9">
+                                @Html.FormControlPasswordFor(m => m.Password)
+                                @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-9">
-                            @Html.FormControlPasswordFor(m => m.ConfirmPassword)
-                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                       
+                        <div class=" row form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-3 control-label"})
+                            <div class="col-md-9">
+                                @Html.FormControlPasswordFor(m => m.ConfirmPassword)
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new {@class = "text-danger"})
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-2">
-                            <button type="button" id="createUserButton" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'createUserForm')" data-loading-text="در حال ارسال اطلاعات" class="btn btn-success btn-md">
-                                ثبت کاربر
-                            </button>
-                            <button class="btn btn-default btn-md" data-dismiss="modal" aria-hidden="true">
-                                انصراف
-                            </button>
+
+                        <div class="row pull-left">
+                            <div class="row form-group ">
+                                <div class="col-md-12 col-md-pull-1 " >
+                                    <button data-loading-text="در حال ارسال اطلاعات" class="btn btn-primary btn-md" type="submit">ثبت کاربر</button>
+                                    @*<button type="button" id="createUserButton" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'createUserForm')" data-loading-text="در حال ارسال اطلاعات" class="btn btn-success btn-md">
+                                        ثبت کاربر
+                                    </button>*@
+                                    <button class="btn btn-default btn-md" data-dismiss="modal" aria-hidden="true">
+                                        انصراف
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            }
+                    </fieldset>
+                }
+            </div>
         </div>
     </div>
 </div>
-
+</div></div>

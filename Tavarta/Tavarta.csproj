@@ -267,6 +267,8 @@
     <Content Include="Content\assets\css\themes\theme-6.css" />
     <Content Include="Content\assets\customs\ajax.methods.js" />
     <Content Include="Content\assets\customs\ajax.methods.min.js" />
+    <Content Include="Content\assets\customs\angular-scenario.js" />
+    <Content Include="Content\assets\customs\angular.js" />
     <Content Include="Content\assets\customs\jquery.ajax.querystring.js" />
     <Content Include="Content\assets\customs\jquery.ajax.querystring.min.js" />
     <Content Include="Content\assets\customs\jquery.form.config.js" />
@@ -276,6 +278,7 @@
     <Content Include="Content\assets\customs\jquery.noty.packaged.min.js" />
     <Content Include="Content\assets\customs\jquery.PostMvcFormAjax.min.js" />
     <Content Include="Content\assets\customs\jqueryval-default.js" />
+    <Content Include="Content\assets\customs\json2.js" />
     <Content Include="Content\assets\customs\noty.alerts.js" />
     <Content Include="Content\assets\customs\noty.alerts.min.js" />
     <Content Include="Content\assets\customs\site.js" />

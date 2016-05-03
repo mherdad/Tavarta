@@ -216,7 +216,7 @@ function editOnComplete(xhr, status, formId, btn) {
         warningNoty("اطلاعات درخواستی شما جز پیش فرض سیستم است و امکان تغییر آن ممکن نیست.");
     }
     else if (data.success) {
-        infoNoty("عملیات  با موفقیت انجام شد");
+       // infoNoty("عملیات  با موفقیت انجام شد");
         $('#' + $('#' + formId).data('ajaxUpdate')).replaceWith($boxes);
     }
     else if (!data.success) {

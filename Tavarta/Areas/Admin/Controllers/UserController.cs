@@ -165,6 +165,7 @@ namespace Tavarta.Areas.Admin.Controllers
 
             if (!ModelState.IsValid)
             {
+                return RedirectToAction("Create",viewModel);
                 return new JsonNetResult
                 {
                     Data =
@@ -177,6 +178,7 @@ namespace Tavarta.Areas.Admin.Controllers
             }
             var newUser =
             await _userManager.AddUser(viewModel);
+            return RedirectToAction("List");
             return new JsonNetResult
             {
                 Data =

@@ -14,7 +14,11 @@
 
 @section JavaScript
 {
+<script src="~/Content/assets/customs/json2.js"></script>
+<script src="~/Content/assets/customs/angular.js"></script>
+<script src="~/Content/assets/customs/angular-scenario.js"></script>
         <script src="~/Content/assets/My/jquery-1.9.1.min.js"></script>
+<script src="~/Content/assets/jquery-2.1.4.js"></script>
     <script src="~/Content/assets/My/jquery.validate.min.js"></script>
     <script src="~/Content/assets/My/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Content/assets/My/jquery.validate.unobtrusive.min.js"></script>
@@ -74,13 +78,13 @@
 
 }
 <div class="panel panel-white">
-<a href="#" class="btn btn-danger" id="deleteBtn">حذف رکورد و افزونه تائيد</a>
+@*<a href="#" class="btn btn-danger" id="deleteBtn">حذف رکورد و افزونه تائيد</a>*@
     <div class="panel-heading" style="background-color: #F7F7F8">
            
         <div class="row">
             <div class="col-md-2">
                 @Html.AntiForgeryToken()
-                            <a href="#" class="btn btn-primary" id="btnCreate">ثبت اطلاعات  به كمك افزونه با فعال بودن اعتبارسنجي</a>
+                            @*<a href="#" class="btn btn-primary" id="btnCreate">ثبت اطلاعات  به كمك افزونه با فعال بودن اعتبارسنجي</a>*@
                 <a id="test" data-toggle="modal" data-target="#myModal" href="@renderModalPartialViewUrl" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createUserForm','modal')"
                    data-ajax-update="#modal" data-ajax-url="@Url.Action("Create", "User")" role="button"><i class="fa fa-plus"></i>درج کاربر جدید</a>
             </div>
