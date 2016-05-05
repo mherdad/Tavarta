@@ -1,7 +1,7 @@
 ﻿@using Tavarta.Common.HtmlHelpers
 @model Tavarta.ViewModel.User.AddUserViewModel
 <div class="row">
-<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4 col-md-pull-1">
 
 <div class="modal-dialog">
     <div class="modal-content bg-white">
@@ -13,14 +13,12 @@
             <div class="modal-body">
                 @using (Html.BeginForm("Create", "User", FormMethod.Post))
                 {
-                    @Html.AntiForgeryToken()
+                    @*@Html.AntiForgeryToken()*@
                     <fieldset>
                         <legend>
                            درج کاربر جدید
                         </legend>
-                        <p>
-                            اطلاعات لازم را پر کنید
-                        </p>
+                       
                         <div class="row form-group">
 
                             @Html.LabelFor(m => m.UserName, new {@class = "col-md-3 control-label"})
