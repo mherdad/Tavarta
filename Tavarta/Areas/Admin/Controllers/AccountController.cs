@@ -181,7 +181,14 @@ namespace Tavarta.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Register(AddUserViewModel viewModel)
+        public ActionResult Register()
+        {
+            return View("Register");
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> Register(RegisterViewModel viewModel)
         {
             if (_userManager.CheckUserNameExist(viewModel.UserName, null))
                 this.AddErrors("UserName", "این نام کاربری قبلا در سیستم ثبت شده است");

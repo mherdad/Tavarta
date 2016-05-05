@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Tavarta.AutoMapperProfiles.Extentions;
 using Tavarta.DomainClasses.Entities.Users;
+using Tavarta.ViewModel.Account;
 using Tavarta.ViewModel.User;
 
 namespace Tavarta.AutoMapperProfiles
@@ -18,9 +19,13 @@ namespace Tavarta.AutoMapperProfiles
             CreateMap<User, UserViewModel>()
 
                 .IgnoreAllNonExisting();
+            CreateMap<User, RegisterViewModel>()
+                .IgnoreAllNonExisting();
 
             CreateMap<AddUserViewModel, User>()
 
+                .IgnoreAllNonExisting();
+            CreateMap<RegisterViewModel, User>()
                 .IgnoreAllNonExisting();
 
             CreateMap<EditUserViewModel, User>()
@@ -34,9 +39,6 @@ namespace Tavarta.AutoMapperProfiles
                .ForMember(d => d.Value, m => m.MapFrom(s => s.Id)).IgnoreAllNonExisting();
         }
 
-        public override string ProfileName
-        {
-            get { return GetType().Name; }
-        }
+        public override string ProfileName => GetType().Name;
     }
 }

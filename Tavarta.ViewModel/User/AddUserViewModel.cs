@@ -38,6 +38,10 @@ namespace Tavarta.ViewModel.User
         [RegularExpression(@"^[\u0600-\u06FF,\u0590-\u05FF,۰-۹\s]*$", ErrorMessage = "لطفا فقط ازاعداد و حروف  فارسی استفاده کنید")]
         public string DisplayName { get; set; }
 
+ //       [Required(AllowEmptyStrings = false),
+ //EmailAddress()]
+ //       public string Email { get; set; }
+
 
     }
 }

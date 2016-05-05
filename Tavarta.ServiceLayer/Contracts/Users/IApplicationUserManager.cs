@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using Tavarta.DomainClasses.Entities.Users;
+using Tavarta.ViewModel.Account;
 using Tavarta.ViewModel.User;
 
 namespace Tavarta.ServiceLayer.Contracts.Users
@@ -571,6 +572,7 @@ namespace Tavarta.ServiceLayer.Contracts.Users
         bool CheckPhoneNumberExist(string phoneNumber, Guid? id);
         Task<string> CustomValidatePasswordAsync(string pass);
         Task<UserViewModel> AddUser(AddUserViewModel viewModel);
+        Task<RegisterViewModel> AddUser(RegisterViewModel viewModel);
         Task FillForEdit(EditUserViewModel viewModel);
         IUserEmailStore<User, Guid> GetEmailStore();
         

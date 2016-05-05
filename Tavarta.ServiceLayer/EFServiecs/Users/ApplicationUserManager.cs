@@ -28,6 +28,7 @@ using Tavarta.ServiceLayer.CustomAspNetIdentity;
 using Tavarta.ServiceLayer.Security;
 using RefactorThis.GraphDiff;
 using Tavarta.Utility;
+using Tavarta.ViewModel.Account;
 using Tavarta.ViewModel.User;
 
 namespace Tavarta.ServiceLayer.EFServiecs.Users
@@ -369,6 +370,14 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         }
         #endregion
 
+        public async Task<RegisterViewModel> AddUser(RegisterViewModel viewModel)
+        {
+            var user = _mappingEngine.Map<User>(viewModel);
+            
+            await CreateAsync(user, viewModel.Password);
+            return await  GetUserRegisterViewModel(user.Id);
+        } 
+
         #region Validations
 
         public bool CheckUserNameExist(string userName, Guid? id)
@@ -614,6 +623,10 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         public Task<UserViewModel> GetUserViewModel(Guid id)
         {
             return _users.AsNoTracking().ProjectTo<UserViewModel>(_mappingEngine).FirstOrDefaultAsync(a => a.Id == id);
+        }
+        public Task<RegisterViewModel> GetUserRegisterViewModel(Guid id)
+        {
+            return _users.AsNoTracking().ProjectTo<RegisterViewModel>(_mappingEngine).FirstOrDefaultAsync(a => a.Id == id);
         }
         #endregion
 

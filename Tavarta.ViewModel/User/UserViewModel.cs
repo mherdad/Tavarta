@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Tavarta.ViewModel.User
 {
@@ -24,5 +25,13 @@ namespace Tavarta.ViewModel.User
         /// نام /نام خانوادگی
         /// </summary>
         public string DisplayName { get; set; }
+        /// <summary>
+        /// ایمیل
+        /// </summary>
+        [Required(ErrorMessage = "فیلد خالی است")]
+        [RegularExpression(@"^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,4})$", ErrorMessage = "ایمیل را بدرستی وارد نمائید")]
+        [Display(Name = "ایمیل")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
     }
 }
