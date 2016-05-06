@@ -1,0 +1,7 @@
+﻿@model  Tavarta.ViewModel.Role.RoleListViewModel
+
+
+@foreach (var role in Model.Roles)
+{
+    @Html.Partial("_RoleItem", role)
+}
