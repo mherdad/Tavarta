@@ -1,5 +1,8 @@
 ﻿@model Tavarta.ViewModel.Role.RoleViewModel
 
+
+
+
 <div class="col-md-12 data-item" id="role-@Model.Id">
     <div class="panel panel-default">
         <div class="panel-body">
@@ -32,6 +35,14 @@
         </div>
         <div class="panel-footer block">
             <div class="pull-left">
+                @section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+
+        })
+    </script>
+}
                 <a class="btn btn-primary btn-sm @(Model.IsSystemRole ? "not-active" : "")"
                    data-ajax-oncomplete="editGetOnComplete(xhr,status)"
                    disabled="@Model.IsSystemRole"
@@ -39,11 +50,12 @@
                    data-ajax="true" data-ajax-method="GET"
                    data-ajax-mode="REPLACE-WITH" data-ajax-success="inlineEditGetOnSuccess(data, status, xhr,'@Model.Id')"
                    data-ajax-update="#role-@Model.Id"
-                   href="@Url.Action("Edit", new { Model.Id})" role="button"><i class="fa fa-edit"></i>ویرایش</a>
+                   href="@Url.Action("Edit", new {Model.Id})" role="button"><i class="fa fa-edit"></i>ویرایش</a>
 
-                <button class="btn-sm btn btn-danger @(Model.IsSystemRole ? "not-active" : "")"
+                @*<a href="#" class="btn btn-danger tes" id="deleteBtn-@Model.Id">حذف رکورد و افزونه تائيد</a>*@
+                <button  class="btn-sm btn btn-danger @(Model.IsSystemRole ? "not-active" : "")"
                         disabled="@Model.IsSystemRole"
-                        type="button" data-delete-url="@Url.Action("Delete")" data-refresh-btn="#refreshBtn" data-removal-element="#role-@Model.Id" id="remove-@Model.Id">
+                        type="button" data-delete-url="@Url.Action("Delete", "Role", new {Model.Id})" data-refresh-btn="#refreshBtn" data-removal-element="#role-@Model.Id" id="remove-@Model.Id">
                     <i class="fa fa-trash-o"></i>
                     حذف
                 </button>

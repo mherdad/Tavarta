@@ -1,4 +1,71 @@
 ﻿@model Tavarta.ViewModel.Role.RoleListViewModel
+    @{
+    ViewBag.Title = "Index";
+    var renderModalPartialViewUrl = Url.Action("Create", "Role");
+    var postDataUrl = Url.Action("List", "Role");
+}
+@section JavaScript
+{
+<script src="~/Content/assets/customs/json2.js"></script>
+<script src="~/Content/assets/customs/angular.js"></script>
+<script src="~/Content/assets/customs/angular-scenario.js"></script>
+        <script src="~/Content/assets/My/jquery-1.9.1.min.js"></script>
+<script src="~/js/jquery-1.12.3.js"></script>
+<script src="~/Content/assets/jquery-2.1.4.js"></script>
+<script src="~/js/bootstrap-notify.js"></script>
+<script src="~/js/notify.js"></script>
+<script src="~/Content/assets/customs/jquery.noty.packaged.min.js"></script>
+<script src="~/Content/assets/customs/noty.alerts.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/My/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/assets/My/bootstrap-rtl.js"></script>
+<script src="~/Content/assets/customs/fileinput.min.js"></script>
+       <script src="~/Content/assets/My/jquery.bootstrap-modal-ajax-form.js"></script>
+    <script src="~/Content/assets/My/jquery.bootstrap-modal-confirm.js"></script>
+<script src="~/Content/assets/customs/ajax.methods.js"></script>
+<script src="~/Content/assets/customs/jqueryval-default.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnCreate').click(function (e) {
+                e.preventDefault(); //مي‌خواهيم لينك به صورت معمول عمل نكند
+
+                $.bootstrapModalAjaxForm({
+                    postUrl: '@postDataUrl',
+                    renderModalPartialViewUrl: '@renderModalPartialViewUrl',
+                    renderModalPartialViewData: {},
+                    loginUrl: '/login',
+                    beforePostHandler: function () {
+                        alert('beforePost');
+                    },
+                    completeHandler: function () {
+                        alert('completeHandler');
+                        // Refresh: براي حالتيكه نياز به به روز رساني كامل صفحه زيرين باشد
+                        // location.reload();
+                    },
+                    errorHandler: function () {
+                        alert('error');
+                    }
+                });
+            });
+
+                        $("").click(function(e) {
+                e.preventDefault(); //می‌خواهیم لینک به صورت معمول عمل نکند
+                $.bootstrapModalConfirm({
+                    caption: 'تائید عملیات',
+                    body: 'آیا عملیات درخواستی اجرا شود؟',
+                    onConfirm: function() {
+                        @*@Url.Action("Delete", "Role",new {Model.Roles.})*@
+                    },
+                    confirmText: 'تائید',
+                    closeText: 'انصراف'
+                });
+            });
+      
+        });             
+    </script>
+}
 
 
 @{
@@ -10,8 +77,10 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-2">
-                <a class="btn btn-default btn-sm" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createRoleForm','modal')"
-                   data-ajax-update="#modal" data-ajax-url="@Url.Action("Create")" role="button"><i class="fa fa-plus"></i>درج گروه کاربری جدید</a>
+                <a id="test" data-toggle="modal" data-target="#myModal" href="@renderModalPartialViewUrl" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createRoleForm','modal')"
+                   data-ajax-update="#modal" data-ajax-url="@Url.Action("Create", "Role")" role="button"><i class="fa fa-plus"></i>درج کاربر جدید</a>
+                @*<a class="btn btn-default btn-sm" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createRoleForm','modal')"
+                   data-ajax-update="#modal" data-ajax-url="@Url.Action("Create")" role="button"><i class="fa fa-plus"></i>درج گروه کاربری جدید</a>*@
             </div>
             <div class="col-md-9">
                 @using (Ajax.BeginForm("ListAjax",null, new AjaxOptions { HttpMethod = "POST", OnComplete = "searchOnComplete(xhr,status,'#progress','#rolePager','#roleList')" }, new { @class = "form-horizontal search", autocomplete = "off", id = "roleSearchForm" }))

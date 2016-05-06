@@ -269,6 +269,7 @@
     <Content Include="Content\assets\customs\ajax.methods.min.js" />
     <Content Include="Content\assets\customs\angular-scenario.js" />
     <Content Include="Content\assets\customs\angular.js" />
+    <Content Include="Content\assets\customs\fileinput.min.js" />
     <Content Include="Content\assets\customs\jquery.ajax.querystring.js" />
     <Content Include="Content\assets\customs\jquery.ajax.querystring.min.js" />
     <Content Include="Content\assets\customs\jquery.form.config.js" />
@@ -321,6 +322,8 @@
     <Content Include="Areas\Admin\Views\Role\List.cshtml" />
     <Content Include="Areas\Admin\Views\Role\_ListAjax.cshtml" />
     <Content Include="Areas\Admin\Views\Role\_RoleItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\_Edit.cshtml" />
     <None Include="Content\assets\jquery-2.1.4.intellisense.js" />
     <Content Include="Content\assets\jquery-2.1.4.js" />
     <Content Include="Content\assets\jquery-2.1.4.min.js" />
@@ -538,6 +541,7 @@
     <Content Include="img\trash\author.png" />
     <Content Include="img\twitterfeed.png" />
     <Content Include="js\1.8.2.min.js" />
+    <Content Include="js\bootstrap-notify.js" />
     <Content Include="js\carouFredSel.js" />
     <Content Include="js\customM.js" />
     <Content Include="js\easing.min.js" />
@@ -545,9 +549,11 @@
     <Content Include="js\html5.js" />
     <Content Include="js\JavaScript.js" />
     <Content Include="js\jflickrfeed.min.js" />
+    <Content Include="js\jquery-1.12.3.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\mobilemenu.js" />
     <Content Include="js\mypassion.js" />
+    <Content Include="js\notify.js" />
     <Content Include="js\superfish.js" />
     <Content Include="js\timeago.js" />
     <Content Include="js\tweetable.js" />

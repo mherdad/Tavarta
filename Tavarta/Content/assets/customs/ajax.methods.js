@@ -1,7 +1,7 @@
 ﻿
 /*############### OnBegins ##############*/
 function onBegin(xhr, a) {
-    //infoNoty("در حال ارسال اطلاعات");
+    infoNoty("در حال ارسال اطلاعات");
     $(a).attr('disabled', 'disabled');
 }
 
@@ -80,7 +80,7 @@ function onComplete(xhr, status) {
     else if (data == "system") {
         warningNoty("اطلاعات درخواستی شما جز پیش فرض سیستم است و امکان تغییر آن ممکن نیست.");
     }
-    //infoNoty("عملیات  با موفقیت انجام شد");
+    infoNoty("عملیات  با موفقیت انجام شد");
     $("[data-toggle='tooltip']").tooltip();
 }
 
@@ -216,7 +216,7 @@ function editOnComplete(xhr, status, formId, btn) {
         warningNoty("اطلاعات درخواستی شما جز پیش فرض سیستم است و امکان تغییر آن ممکن نیست.");
     }
     else if (data.success) {
-       // infoNoty("عملیات  با موفقیت انجام شد");
+        infoNoty("عملیات  با موفقیت انجام شد");
         $('#' + $('#' + formId).data('ajaxUpdate')).replaceWith($boxes);
     }
     else if (!data.success) {
