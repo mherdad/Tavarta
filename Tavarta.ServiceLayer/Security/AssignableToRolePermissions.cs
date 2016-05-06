@@ -66,7 +66,7 @@ namespace Tavarta.ServiceLayer.Security
         #endregion
 
         #region Permissions
-        public static readonly PermissionModel CanViewApplicantDetailsPermission = new PermissionModel { Name = CanViewApplicantDetails, Category = CanViewCategory, Description = "میتوانند  فرم جزئیات اساتید را مشاهده کنند" };
+        public static readonly PermissionModel CanViewApplicantDetailsPermission = new PermissionModel { Name = CanViewApplicantDetails, Category = CanViewCategory, Description = "میتوانند  فرم جزئیات کاربران را مشاهده کنند" };
         public static readonly PermissionModel CanViewApplicantListPermission = new PermissionModel { Name = CanViewApplicantList, Category = CanViewCategory, Description = "میتوانند  لیست اساتید را مشاهده کنند" };
         public static readonly PermissionModel CanManageArticleEvaluationPermission = new PermissionModel { Name = CanManageArticleEvaluation, Category = CanManageCategory, Description = "میتوانند ارزیابی های به عمل آمده از مقالات را مدیریت کنند" };
         public static readonly PermissionModel CanUsePrivateMessagePermission = new PermissionModel { Name = CanUsePrivateMessage, Category = CanManageCategory, Description = "میتوانند از سیستم پیغام خصوصی استفاده کنند" };
@@ -74,16 +74,16 @@ namespace Tavarta.ServiceLayer.Security
         public static readonly PermissionModel CanCreateApplicantPermission = new PermissionModel { Name = CanCreateApplicant, Category = CanCreateCategory, Description = "میتوانند متقاضی درج کنند" };
         public static readonly PermissionModel CanReferApplicantPermission = new PermissionModel { Name = CanReferApplicant, Category = CanEditCategory, Description = "میتوانند اساتید را ارجاع دهند" };
         public static readonly PermissionModel CanCancelReferApplicantPermission = new PermissionModel { Name = CanCancelReferApplicant, Category = CanEditCategory, Description = "میتوانند متقاضی ارجاع داده شده را لغو ارجاع کنند" };
-        public static readonly PermissionModel CanDeleteApplicantPermission = new PermissionModel { Name = CanDeleteApplicant, Category = CanDeleteCategroy, Description = "میتواند اساتید را حذف کنند" };
+        public static readonly PermissionModel CanDeleteApplicantPermission = new PermissionModel { Name = CanDeleteApplicant, Category = CanDeleteCategroy, Description = "میتواند خبر ها را حذف کنند" };
         public static readonly PermissionModel CanApproveApplicantPermission = new PermissionModel { Name = CanApproveApplicant, Category = CanEditCategory, Description = "میتوانند اساتید درج شده را تأیید کنند" };
         public static readonly PermissionModel CanManageEntireEvaluationPermission = new PermissionModel { Name = CanManageEntireEvaluation, Category = CanManageCategory, Description = "میتواند ارزیابی های به عمل آمده از اساتید را مدیریت کند" };
         public static readonly PermissionModel CanManageAdoptedPriorityPermission = new PermissionModel { Name = CanManageAddoptedPriority, Category = CanManageCategory, Description = "میتواند الویت های تصویب شده اساتید را مدیریت کند" };
         
         public static readonly PermissionModel CanManageAddressPermission = new PermissionModel { Name = CanManageAddress, Category = CanManageCategory, Description = "می توانند آدرس را مدیریت کنند" };
         public static readonly PermissionModel CanManageAppraiserPermission = new PermissionModel { Name = CanManageAppraiser, Category = CanManageCategory, Description = "می توانند ارزیاب را مدیریت کنند" };
-        public static readonly PermissionModel CanManageEducationalBackgroundPermission = new PermissionModel { Name = CanManageEducationalBackground, Category = CanManageCategory, Description = "می توانند سوابق تحصیلی را مدیریت کنند" };
+        public static readonly PermissionModel CanManageEducationalBackgroundPermission = new PermissionModel { Name = CanManageEducationalBackground, Category = CanManageCategory, Description = "می توانند نوشته ها را مدیریت کنند" };
         public static readonly PermissionModel CanManageFavoriteIssuePermission = new PermissionModel { Name = CanManageFavoriteIssue, Category = CanManageCategory, Description = "می توانند موضوعات مورد علاقه را مدیریت کنند" };
-        public static readonly PermissionModel CanManageInstitutionPermission = new PermissionModel { Name = CanManageInstitution, Category = CanManageCategory, Description = "می توانند موسسه آموزشی را مدیریت کنند" };
+        public static readonly PermissionModel CanManageInstitutionPermission = new PermissionModel { Name = CanManageInstitution, Category = CanManageCategory, Description = "می توانند سایت را مدیریت کنند" };
         public static readonly PermissionModel CanManageInterviewPermission = new PermissionModel { Name = CanManageInterview, Category = CanManageCategory, Description = "می توانند مصحاحبه ها را مدیریت کنند" };
         public static readonly PermissionModel CanManageApplicantInServiceCourseTypePermission = new PermissionModel { Name = CanManageApplicantInServiceCourseType, Category = CanManageCategory, Description = "می توانند دوره های ضمن خدمت را مدیریت کنند" };
         public static readonly PermissionModel CanManageArticlePermission = new PermissionModel { Name = CanManageArticle, Category = CanManageCategory, Description = "می توانند مقالات را مدیریت کنند" };

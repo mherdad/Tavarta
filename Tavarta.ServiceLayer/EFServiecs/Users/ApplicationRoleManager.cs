@@ -169,11 +169,11 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
 
         public bool IsUserInRole(Guid userId, string roleName)
         {
-            var userRolesQuery = from role in Roles
-                                 where role.Name == roleName
-                                 from user in role.Users
-                                 where user.UserId == userId
-                                 select role;
+            var userRolesQuery =
+                Roles.Where(role => role.Name == roleName)
+                    .SelectMany(role => role.Users, (role, user) => new {role, user})
+                    .Where(@t => @t.user.UserId == userId)
+                    .Select(@t => @t.role);
             var userRole = userRolesQuery.FirstOrDefault();
             return userRole != null;
         }
@@ -198,16 +198,16 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         {
             var standardRoles = StandardRoles.SystemRolesWithPermissions;
 
-            foreach (var role in from record in standardRoles
-                                 let role = this.FindByName(record.RoleName)
-                                 where role == null
-                                 select new Role
-                                 {
-                                     Name = record.RoleName,
-                                     IsSystemRole = true,
-                                     XmlPermissions =
-                                             _permissionService.GetPermissionsAsXml(record.Permissions.Select(a => a.Name).ToArray())
-                                 })
+            foreach (var role in
+                standardRoles.Select(record => new {record, role = this.FindByName(record.RoleName)})
+                    .Where(@t => @t.role == null)
+                    .Select(@t => new Role
+                    {
+                        Name = @t.record.RoleName,
+                        IsSystemRole = true,
+                        XmlPermissions =
+                            _permissionService.GetPermissionsAsXml(@t.record.Permissions.Select(a => a.Name).ToArray())
+                    }))
             {
                 _roles.Add(role);
             }
@@ -219,9 +219,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
 
         #region DeleteAll
 
-        public async Task RemoteAll()
+        public Task RemoteAll()
         {
-            await Roles.DeleteAsync();
+            return Roles.DeleteAsync();
         }
 
         #endregion DeleteAll
@@ -307,7 +307,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
 
         public bool CheckForExisByName(string name, Guid? id)
         {
-            var roles = _roles.Select(a => new { Id = a.Id, Name = a.Name }).ToList();
+            var roles = _roles.Select(a => new {a.Id, a.Name }).ToList();
             return id == null ? roles.Any(a => a.Name.GetFriendlyPersianName() == name.GetFriendlyPersianName())
                 : roles.Any(a => id.Value != a.Id && a.Name.GetFriendlyPersianName() == name.GetFriendlyPersianName());
         }
@@ -343,18 +343,18 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
 
         #region RemoveById
 
-        public async Task RemoveById(Guid id)
+        public Task RemoveById(Guid id)
         {
-            await _roles.Where(a => a.Id == id).DeleteAsync();
+            return _roles.Where(a => a.Id == id).DeleteAsync();
         }
 
         #endregion RemoveById
 
         #region CheckRoleIsSystemRoleAsync
 
-        public async Task<bool> CheckRoleIsSystemRoleAsync(Guid id)
+        public Task<bool> CheckRoleIsSystemRoleAsync(Guid id)
         {
-            return await _roles.AnyAsync(a => a.Id == id && a.IsSystemRole);
+            return _roles.AnyAsync(a => a.Id == id && a.IsSystemRole);
         }
 
         #endregion CheckRoleIsSystemRoleAsync

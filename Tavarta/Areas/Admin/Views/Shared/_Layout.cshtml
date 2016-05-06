@@ -55,7 +55,7 @@
 <!-- end: HEAD -->
 <!-- start: BODY -->
 <body>
-@if (User.Identity.IsAuthenticated)
+@if (!User.Identity.IsAuthenticated)
 {
     @Html.Partial("_LoginPartial")
 }
