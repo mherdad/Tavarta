@@ -10,6 +10,7 @@ using EntityFramework.Filters;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Tavarta.DomainClasses.Configurations.Users;
 using Tavarta.DomainClasses.Entities.Common;
+using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.DomainClasses.Entities.Users;
 using Tavarta.Utility;
 
@@ -51,9 +52,12 @@ namespace Tavarta.DataLayer.Context
 
             //for full text search  DbInterception.Add(new FtsInterceptor());
             modelBuilder.Ignore<BaseEntity>();
-
+            modelBuilder.Ignore<BaseContent>();
+            modelBuilder.Ignore<BaseComment>();
             modelBuilder.Configurations.AddFromAssembly(typeof(UserConfig).Assembly);
             LoadEntities(typeof(User).Assembly, modelBuilder, "Tavarta.DomainClasses.Entities");
+
+          
 
         }
 

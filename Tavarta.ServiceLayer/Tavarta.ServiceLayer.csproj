@@ -171,6 +171,7 @@
     <Compile Include="Contracts\Common\IRunOnError.cs" />
     <Compile Include="Contracts\Common\ISettingService.cs" />
     <Compile Include="Contracts\Common\IStateService.cs" />
+    <Compile Include="Contracts\Posts\IPostService.cs" />
     <Compile Include="Contracts\Users\IActivityLogService.cs" />
     <Compile Include="Contracts\Users\IApplicationRoleManager.cs" />
     <Compile Include="Contracts\Users\IApplicationSignInManager.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="EFServiecs\Common\SmsService.cs" />
     <Compile Include="EFServiecs\Common\TransactionPerRequest.cs" />
     <Compile Include="Contracts\Schedulers\IIndexService.cs" />
+    <Compile Include="EFServiecs\Posts\PostService.cs" />
     <Compile Include="EFServiecs\Schedulers\IndexService.cs" />
     <Compile Include="EFServiecs\Users\ActivityLogService.cs" />
     <Compile Include="EFServiecs\Users\ApplicationRoleManager.cs" />

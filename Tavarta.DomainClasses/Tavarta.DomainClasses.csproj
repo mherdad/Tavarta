@@ -61,9 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\Comment\PostCommentConfig.cs" />
     <Compile Include="Configurations\Common\AttachmentConfig.cs" />
     <Compile Include="Configurations\Common\AuditLogConfig.cs" />
     <Compile Include="Configurations\Common\SettingConfig.cs" />
+    <Compile Include="Configurations\Postes\PostConfig.cs" />
     <Compile Include="Configurations\Users\RoleConfig.cs" />
     <Compile Include="Configurations\Users\UserClaimConfig.cs" />
     <Compile Include="Configurations\Users\UserConfig.cs" />
