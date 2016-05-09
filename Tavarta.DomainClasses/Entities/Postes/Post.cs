@@ -44,6 +44,12 @@ namespace Tavarta.DomainClasses.Entities.Postes
         /// </summary>
         public virtual ICollection<User> Contributors { get; set; }
 
+
+        /// <summary>
+        /// get or set of category that Contribute on this post
+        /// </summary>
+        public Category Category { get; set; }
+
         #endregion
     }
 }

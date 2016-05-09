@@ -86,6 +86,7 @@
     <Compile Include="Entities\Common\Tag.cs" />
     <Compile Include="Entities\Polling\Poll.cs" />
     <Compile Include="Entities\Polling\PollOption.cs" />
+    <Compile Include="Entities\Postes\Category.cs" />
     <Compile Include="Entities\Postes\LinkBackStatus.cs" />
     <Compile Include="Entities\Postes\Post.cs" />
     <Compile Include="Entities\Users\ActivityLog.cs" />

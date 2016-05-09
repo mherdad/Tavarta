@@ -1,6 +1,7 @@
 ﻿using System;
 using Tavarta.DomainClasses.Entities.Comment;
 using Tavarta.DomainClasses.Entities.Users;
+using Tavarta.Utility;
 
 namespace Tavarta.DomainClasses.Entities.Common
 {
@@ -9,11 +10,20 @@ namespace Tavarta.DomainClasses.Entities.Common
  /// </summary>
     public class BaseComment
     {
+        #region Ctor
+        /// <summary>
+        /// Create one Instance of <see cref="BaseComment"/>
+        /// </summary>
+        public BaseComment()
+        {
+            Id = SequentialGuidGenerator.NewSequentialGuid();
+        }
+#endregion
         #region Properties
         /// <summary>
         /// get or set identifier of record
         /// </summary>
-        public virtual long Id { get; set; }
+        public virtual Guid Id { get; set; }
         /// <summary>
         /// gets or sets date of creation
         /// </summary>

@@ -32,7 +32,7 @@ namespace Tavarta.DomainClasses.Entities.Common
         /// <summary>
         /// sets or gets Tag's posts
         /// </summary>
-        public virtual ICollection<Post> BlogPosts { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
         #endregion
     }
 }
