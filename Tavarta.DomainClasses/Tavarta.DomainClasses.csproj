@@ -69,13 +69,25 @@
     <Compile Include="Configurations\Users\UserConfig.cs" />
     <Compile Include="Configurations\Users\UserLoginConfig.cs" />
     <Compile Include="Configurations\Users\UserRoleConfig.cs" />
+    <Compile Include="Entities\Announcements\Announcement.cs" />
+    <Compile Include="Entities\Comment\CommentStatus.cs" />
+    <Compile Include="Entities\Comment\PostComment.cs" />
     <Compile Include="Entities\Common\Attachment.cs" />
     <Compile Include="Entities\Common\AuditAction.cs" />
     <Compile Include="Entities\Common\AuditLog.cs" />
     <Compile Include="Entities\Common\AuditLogType.cs" />
+    <Compile Include="Entities\Common\BaseComment.cs" />
+    <Compile Include="Entities\Common\BaseContent.cs" />
     <Compile Include="Entities\Common\BaseEntity.cs" />
     <Compile Include="Entities\Common\Entity.cs" />
+    <Compile Include="Entities\Common\LinkBack.cs" />
+    <Compile Include="Entities\Common\LinkBackType.cs" />
     <Compile Include="Entities\Common\Setting.cs" />
+    <Compile Include="Entities\Common\Tag.cs" />
+    <Compile Include="Entities\Polling\Poll.cs" />
+    <Compile Include="Entities\Polling\PollOption.cs" />
+    <Compile Include="Entities\Postes\LinkBackStatus.cs" />
+    <Compile Include="Entities\Postes\Post.cs" />
     <Compile Include="Entities\Users\ActivityLog.cs" />
     <Compile Include="Entities\Users\ActivityLogType.cs" />
     <Compile Include="Entities\Users\Notification.cs" />
@@ -97,6 +109,7 @@
       <Name>Tavarta.Utility</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
