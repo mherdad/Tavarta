@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 using Decision.DomainClasses.Entities.Users;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.Utility;
 
 namespace Tavarta.DomainClasses.Entities.Users
@@ -165,6 +166,7 @@ namespace Tavarta.DomainClasses.Entities.Users
         ///// لیست آگاه سازی های مربوط به کاربر
         ///// </summary>
         public ICollection<Notification> Notifications { get; set; }
+        public ICollection<Post> Posts { get; set; }
 
         #endregion
 

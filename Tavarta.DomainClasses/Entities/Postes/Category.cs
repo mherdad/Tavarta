@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Tavarta.Utility;
 
 namespace Tavarta.DomainClasses.Entities.Postes
 {
     public class Category
     {
+        public Category()
+        {
+            Id = SequentialGuidGenerator.NewSequentialGuid();
+        }
         /// <summary>
         /// get or set identifier of record
         /// </summary>
+        
         public Guid Id { get; set; }
 
 

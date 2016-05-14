@@ -65,6 +65,7 @@
     <Compile Include="Configurations\Common\AttachmentConfig.cs" />
     <Compile Include="Configurations\Common\AuditLogConfig.cs" />
     <Compile Include="Configurations\Common\SettingConfig.cs" />
+    <Compile Include="Configurations\Postes\CategoryConfig.cs" />
     <Compile Include="Configurations\Postes\PostConfig.cs" />
     <Compile Include="Configurations\Users\RoleConfig.cs" />
     <Compile Include="Configurations\Users\UserClaimConfig.cs" />

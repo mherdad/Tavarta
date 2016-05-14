@@ -183,6 +183,14 @@ namespace Tavarta.DomainClasses.Entities.Common
         public virtual string TagNames { get; set; }
 
         /// <summary>
+        /// سر تیتیر
+        /// </summary>
+        public string HeadTitle { get; set; }
+
+
+
+
+        /// <summary>
         /// gets or sets counter for Content's report
         /// </summary>
        // public virtual int ReportsCount { get; set; }
@@ -199,7 +207,7 @@ namespace Tavarta.DomainClasses.Entities.Common
         /// <summary>
         /// gets or sets Id of user that create this record
         /// </summary>
-        public virtual long AuthorId { get; set; }
+        public virtual Guid AuthorId { get; set; }
 
         /// <summary>
         /// get or set  the tags integrated with content

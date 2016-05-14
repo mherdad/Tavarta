@@ -9,9 +9,10 @@ namespace Tavarta.DomainClasses.Entities.Postes
     /// <summary>
     /// Represents a  post
     /// </summary>
-    public class Post:BaseContent
+    public class Post : BaseContent
     {
         #region Ctor
+
         /// <summary>
         /// Create one Instance of <see cref="Post"/>
         /// </summary>
@@ -20,14 +21,17 @@ namespace Tavarta.DomainClasses.Entities.Postes
             //Rating = new Rating();
             PublishedOn = DateTime.Now;
         }
-        #endregion
+
+        #endregion Ctor
 
         #region Properties
+
         /// <summary>
         /// gets or sets Status of LinkBack Notifications
         /// </summary>
         public virtual LinkBackStatus LinkBackStatus { get; set; }
-        #endregion
+
+        #endregion Properties
 
         #region NavigationProperties
 
@@ -35,21 +39,22 @@ namespace Tavarta.DomainClasses.Entities.Postes
         /// get or set  blog post's Reviews
         /// </summary>
         public virtual ICollection<PostComment> Comments { get; set; }
+
         /// <summary>
         /// get or set collection of links that reference to this blog post
         /// </summary>
         public virtual ICollection<LinkBack> LinkBacks { get; set; }
+
         /// <summary>
         /// get or set Collection of Users that Contribute on this post
         /// </summary>
         public virtual ICollection<User> Contributors { get; set; }
-
 
         /// <summary>
         /// get or set of category that Contribute on this post
         /// </summary>
         public Category Category { get; set; }
 
-        #endregion
+        #endregion NavigationProperties
     }
 }
