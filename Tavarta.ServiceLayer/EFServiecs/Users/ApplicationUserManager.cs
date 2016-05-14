@@ -239,9 +239,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         #endregion
 
         #region DeleteAll
-        public async Task RemoveAll()
+        public Task RemoveAll()
         {
-            await Users.DeleteAsync();
+            return Users.DeleteAsync();
         }
         #endregion
 
