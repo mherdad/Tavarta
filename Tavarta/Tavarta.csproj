@@ -324,6 +324,10 @@
     <Content Include="Areas\Admin\Views\Role\_RoleItem.cshtml" />
     <Content Include="Areas\Admin\Views\Role\_Create.cshtml" />
     <Content Include="Areas\Admin\Views\Role\_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\_ListAjax.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\_PostItem.cshtml" />
     <None Include="Content\assets\jquery-2.1.4.intellisense.js" />
     <Content Include="Content\assets\jquery-2.1.4.js" />
     <Content Include="Content\assets\jquery-2.1.4.min.js" />

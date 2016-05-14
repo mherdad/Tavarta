@@ -64,9 +64,6 @@ namespace Tavarta.ViewModel.Account
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        public static explicit operator RegisterViewModel(Task<UserViewModel> v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
     }

@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.Posts.PostListViewModel
+
+@foreach (var post in Model.Posts)
+{
+    @Html.Partial("_PostItem", post)
+}

@@ -119,6 +119,7 @@
     <Compile Include="Extentions\NullableDateTimeToStringResolver.cs" />
     <Compile Include="Extentions\StringToDateConverter.cs" />
     <Compile Include="Extentions\ToPersianDateTimeConverter.cs" />
+    <Compile Include="PostProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleProfile.cs" />
     <Compile Include="UserProfile.cs" />
