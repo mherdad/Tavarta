@@ -6,7 +6,7 @@ namespace Tavarta.ServiceLayer.Contracts.Posts
 {
     public interface IPostService
     {
-        Task<PostViewModel> Create (AddPostViewModel viewModel);
+        Task<PostViewModel> AddPost (AddPostViewModel viewModel);
         Task<PostListViewModel> GetPageList(UserSearchRequest search);
     }
 }

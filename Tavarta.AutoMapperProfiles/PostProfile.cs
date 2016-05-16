@@ -12,7 +12,9 @@ namespace Tavarta.AutoMapperProfiles
         {
             CreateMap<AddPostViewModel, Post>()
                 .IgnoreAllNonExisting();
-            CreateMap<User, PostViewModel>()
+            //CreateMap<User, PostViewModel>()
+            //    .IgnoreAllNonExisting();
+            CreateMap<Post, AddPostViewModel>()
                 .IgnoreAllNonExisting();
 
             CreateMap<Post, PostViewModel>()

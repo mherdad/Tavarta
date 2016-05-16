@@ -6,10 +6,10 @@ namespace Tavarta.ViewModel.Posts
 {
     public class AddPostViewModel
     {
-        /// <summary>
-        /// شناسه
-        /// </summary>
-        public virtual Guid Id { get; set; }
+        ///// <summary>
+        ///// شناسه
+        ///// </summary>
+        //public virtual Guid Id { get; set; }
 
         /// <summary>
         /// gets or sets the blog pot body
@@ -48,5 +48,7 @@ namespace Tavarta.ViewModel.Posts
 
         [Display(Name = "سر تیتر")]
         public string HeadTitle { get; set; }
+
+        public Guid AuthorId { get; set; }
     }
 }

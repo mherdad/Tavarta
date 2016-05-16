@@ -45,7 +45,7 @@ namespace Tavarta.ViewModel.Posts
         /// </summary>
         public DomainClasses.Entities.Users.User Author { get; set; }
 
- 
+        public Guid AuthorId { get; set; }
 
         /// <summary>
         /// سر تیتر

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,27 +36,49 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
 
         #endregion ctor
 
-        #region Create
+        #region AddPost
 
-        public async Task<PostViewModel> Create(AddPostViewModel viewModel)
+        public async Task<PostViewModel> AddPost(AddPostViewModel viewModel)
         {
             var post = _mappingEngine.Map<Post>(viewModel);
+            //var post = new Post();
+            //post.Body = "hgfdsdhgfd";
+            //post.Title = "hghfds";
+            //post.TagNames = "fghjk";
+            //post.HeadTitle = "dfghjk";
+            post.PublishedOn=DateTime.Now;
+            post.Category=new Category {Name="temp"};
+            post.LinkBackStatus = LinkBackStatus.Disable;
+            post.DaysCountForSupportComment = 12;
+            post.ShowWithRss = true;
+            post.Agent = "ali";
+            post.AllowCommentForAnonymous = true;
+            post.ApprovedCommentsCount = 1;
+            post.CanonicalUrl = "asfds";
+            post.FocusKeyword = "gf";
+            post.IsDeleted = false;
+            post.MetaTitle = "gfd";
+            post.ModifiedOn=DateTime.Now;
+            post.SlugUrl = "fddf";
+            
+
             _posts.Add(post);
+            
             await _unitOfWork.SaveChangesAsync();
-            return await _posts
-                .ProjectTo<PostViewModel>(_mappingEngine)
-                .FirstOrDefaultAsync(x => x.Id == post.Id);
+            return await GetPostViewModel(post.Id);
         }
 
+        public Task<PostViewModel> GetPostViewModel(Guid guid)
+        {
+            return _posts
+                .ProjectTo<PostViewModel>(_mappingEngine)
+                .FirstOrDefaultAsync(x => x.Id == guid);
+        }
 
-
-        #endregion Create
-
+        #endregion AddPost
 
         public async Task<PostListViewModel> GetPageList(UserSearchRequest search)
         {
-            
-            
             var posts = _posts.AsNoTracking().OrderBy(x => x.PublishedOn).AsQueryable();
             var query = await posts
                 .Skip((search.PageIndex - 1) * 10).Take(10).ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
@@ -65,7 +88,6 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
                 SearchRequest = search,
                 Posts = query
             };
-
         }
     }
 }

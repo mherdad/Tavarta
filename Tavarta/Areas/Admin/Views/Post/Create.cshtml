@@ -7,7 +7,7 @@
         <div class="box-register">
             <div class="modal-body">
 
-                @using (Html.BeginForm("Create", "Post"))
+                @using (Html.BeginForm("Create", "Post",FormMethod.Post,new {enctype="multipart/form-data"}))
                 {
 
                     <fieldset>

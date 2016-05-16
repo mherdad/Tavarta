@@ -5,6 +5,7 @@ using Microsoft.Web.Mvc;
 using Tavarta.Common.Controller;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts.Posts;
+using Tavarta.ServiceLayer.Contracts.Users;
 using Tavarta.ViewModel.Posts;
 using Tavarta.ViewModel.User;
 
@@ -15,11 +16,13 @@ namespace Tavarta.Areas.Admin.Controllers
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPostService _postService;
+        private readonly IApplicationUserManager _userManager;
 
-        public PostController(IUnitOfWork unitOfWork, IPostService postService)
+        public PostController(IUnitOfWork unitOfWork, IPostService postService,IApplicationUserManager userManager)
         {
             _unitOfWork = unitOfWork;
             _postService = postService;
+            _userManager = userManager;
         }
        
         public ActionResult Create()
@@ -31,6 +34,11 @@ namespace Tavarta.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(AddPostViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+            viewModel.AuthorId = _userManager.GetCurrentUserId();
+            _postService.AddPost(viewModel);
+
            return  RedirectToAction("Create");
         }
 
