@@ -5,6 +5,7 @@ using Microsoft.Web.Mvc;
 using Tavarta.Common.Controller;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts.Posts;
+using Tavarta.ViewModel.Posts;
 using Tavarta.ViewModel.User;
 
 namespace Tavarta.Areas.Admin.Controllers
@@ -20,10 +21,17 @@ namespace Tavarta.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
             _postService = postService;
         }
-
+       
         public ActionResult Create()
         {
             return View();
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult Create(AddPostViewModel viewModel)
+        {
+           return  RedirectToAction("Create");
         }
 
 

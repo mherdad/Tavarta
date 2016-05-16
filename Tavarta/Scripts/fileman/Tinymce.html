@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/tiny_mce_popup.js"></script>
+    <script src="js/main.js"></script>
+    <textarea id="tinymce" name="tinymce" rows="10" cols="80"></textarea>
+    <script>
+        // This must be set to the absolute path from the site root.
+        var roxyFileman = 'index.html?integration=tinymce4';
+        $(function () {
+            tinymce.init({
+                selector: "textarea",
+                valid_elements: "*[*]",
+                convert_urls: false,
+                valid_children: "+body[i],+body[section],+div[i]",
+                theme: "modern",
+                height: 300,
+                plugins: [
+             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+             "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                content_css: "/Plugins/tinymce/content.css",
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+                file_browser_callback: RoxyFileBrowser,
+                style_formats: [
+            { title: 'Bold text', inline: 'b' },
+            { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+            { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+            { title: 'Example 1', inline: 'span', classes: 'example1' },
+            { title: 'Example 2', inline: 'span', classes: 'example2' },
+            { title: 'Table styles' },
+            { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+                ]
+            });
+        });
+
+        function RoxyFileBrowser(field_name, url, type, win) {
+            var cmsURL = roxyFileman;  // script URL - use an absolute path!
+            if (cmsURL.indexOf("?") < 0) {
+                cmsURL = cmsURL + "?type=" + type;
+            }
+            else {
+                cmsURL = cmsURL + "&type=" + type;
+            }
+            cmsURL += '&input=' + field_name + '&value=' + win.document.getElementById(field_name).value;
+            tinyMCE.activeEditor.windowManager.open({
+                file: cmsURL,
+                title: 'Roxy File Browser',
+                width: 850, // Your dimensions may differ - toy around with them!
+                height: 650,
+                resizable: "yes",
+                plugins: "media",
+                inline: "yes", // This parameter only has an effect if you use the inlinepopups plugin!
+                close_previous: "no"
+            }, {
+                window: win,
+                input: field_name
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>

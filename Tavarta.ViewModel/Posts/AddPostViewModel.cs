@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Tavarta.ViewModel.Posts
 {
@@ -14,13 +15,14 @@ namespace Tavarta.ViewModel.Posts
         /// gets or sets the blog pot body
         /// </summary>
         [Display(Name = "نوشته")]
+        [AllowHtml]
         public virtual string Body { get; set; }
 
         /// <summary>
         /// تیتر عنوان
         /// </summary>
 
-            [Display(Name = "عنوان")]
+        [Display(Name = "عنوان")]
         public virtual string Title { get; set; }
 
         /// <summary>
@@ -33,20 +35,18 @@ namespace Tavarta.ViewModel.Posts
         /// </summary>
         public virtual long ViewCount { get; set; }
 
-
         /// <summary>
         /// gets or sets name of tags seperated by comma that assosiated with this content fo increase performance
         /// </summary>
 
-            [Display(Name = "تگ")]
+        [Display(Name = "تگ")]
         public virtual string TagNames { get; set; }
-
 
         /// <summary>
         /// سر تیتر
         /// </summary>
 
-            [Display(Name = "سر تیتر")]
+        [Display(Name = "سر تیتر")]
         public string HeadTitle { get; set; }
     }
 }
