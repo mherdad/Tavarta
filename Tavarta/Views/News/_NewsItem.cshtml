@@ -1,0 +1,17 @@
+﻿@model Tavarta.ViewModel.News.NewsViewModel
+
+<div class="col-xxs-12 col-xs-6 col-sm-6">
+    <a href='@Url.Action("Details", "News", new {Model.Id})'>
+        <div class="media">
+            <div class="media-right">
+                <img alt="@Model.Title" width="120" height="80" data-original="http://static.90tv.ir/8b7b31c2909195f69542339facad6d94_120_80_cropCenter.jpg" class="hotnews" src=""/>
+            </div>
+            <div class="media-body">
+                <h6>@Model.Headline</h6>
+                <h5 class="media-heading">
+                    @Model.Title
+                </h5>
+            </div>
+        </div>
+    </a>
+</div>

@@ -1,0 +1,103 @@
+﻿@using DNT.Extensions
+@using Tavarta.Utility
+@model Tavarta.ViewModel.News.NewsDetailsViewModel
+
+<div class="widget widget-bordered title-b content-view">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <input type="hidden" id="news_id" value="192802" />
+            <article class="no-gutter separator-left">
+                <section class="meta meta-top">
+                    <div class="content-infos pull-left">
+                        <span>
+                            <i class="glyphicon glyphicon-calendar"></i>
+                            <span class="numbers">
+                                @Model.PublishedOn.ToPersianDate()
+                            </span>
+                        </span>
+                        <span>
+                            <i class="glyphicon glyphicon-time"></i>
+                            <span class="numbers">
+                                @Model.PublishedOn.ToRelativeDate()
+                            </span>
+                        </span>
+                        <span>
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span class="numbers">۲۵۵۵۶</span>
+                        </span>
+                    </div>
+                </section>
+
+                <header>
+                    <h5 style="color: #0057A0;padding-bottom: 10px">@Model.Headline</h5>
+
+                    <h2>
+                        @Model.Title
+                    </h2>
+                </header>
+                <div class="row">
+                    <main class="content">
+                        <figure>
+                            <img alt="@Model.Title" data-remote="http://static.90tv.ir/cd57f3f002cc1c2dce7adb393d4ea4ec_800_450.jpg" width="240" height="150" src="http://static.90tv.ir/cd57f3f002cc1c2dce7adb393d4ea4ec_240_150_cropCenter.jpg"/>
+                        </figure>
+                        <div class="rtc" style="font-family: Samim; font-size: 14px">
+                            @Html.Raw(Model.Body)
+                        </div>
+                        <section class="meta meta-bottom">
+                            <div class="pull-left">
+                                <a class="btn-share-ico btn-share btn-facebook" data-share="facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a class="btn-share-ico btn-share btn-twitter" data-share="twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a class="btn-share-ico btn-share btn-googleplus" data-share="googleplus">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </section>
+                        <div class="clearfix"></div>
+                        <ul class="list-inline tags">
+                            <li class="label">
+                                <a href="/frontcms/tag/viewcontents/id/51">
+                                    <i class="fa fa-tag"></i>
+                                    بارسلونا
+                                </a>
+                            </li>
+                            <li class="label">
+                                <a href="/frontcms/tag/viewcontents/id/55">
+                                    <i class="fa fa-tag"></i>
+                                    اختصاصی
+                                </a>
+                            </li>
+                            <li class="label">
+                                <a href="/frontcms/tag/viewcontents/id/434">
+                                    <i class="fa fa-tag"></i>
+                                    ویژه
+                                </a>
+                            </li>
+                            <li class="label">
+                                <a href="/frontcms/tag/viewcontents/id/11287">
+                                    <i class="fa fa-tag"></i>
+                                    یوهان کرایف
+                                </a>
+                            </li>
+                            <li class="label">
+                                <a href="/frontcms/tag/viewcontents/id/14493">
+                                    <i class="fa fa-tag"></i>
+                                    مربیگری فوتبال
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="source">
+                            <i class="glyphicon glyphicon-link"></i>
+                            اختصاصی
+                        </div>
+                    </main>
+                </div>
+            </article>
+            <div class="row" style="background-color: white">
+            </div>
+        </div>
+    </div>
+</div>
