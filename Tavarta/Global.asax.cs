@@ -32,6 +32,9 @@ namespace Tavarta
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
             try
             {
+                ViewEngines.Engines.Clear();
+                ViewEngines.Engines.Add(new RazorViewEngine());
+
                 AreaRegistration.RegisterAllAreas();
                 WebApiConfig.Register(GlobalConfiguration.Configuration);
                 RoutingConfig.RegisterRoutes(RouteTable.Routes);

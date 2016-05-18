@@ -50,7 +50,7 @@ namespace Tavarta.ViewModel.Posts
         /// <summary>
         /// سر تیتر
         /// </summary>
-        //public string HeadTitle { get; set; }
+        //public string Headline { get; set; }
 
 
 

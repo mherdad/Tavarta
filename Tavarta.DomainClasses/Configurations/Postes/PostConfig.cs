@@ -8,6 +8,7 @@ namespace Tavarta.DomainClasses.Configurations.Postes
         public PostConfig()
         {
             Property(p => p.RowVersion).IsRowVersion();
+            Property(p => p.CategoryId).IsOptional();
             Property(p => p.ModifiedOn).IsOptional();
             Property(p => p.LinkBackStatus).IsOptional();
             Property(p => p.UseCanonicalUrl).IsOptional();
@@ -24,7 +25,7 @@ namespace Tavarta.DomainClasses.Configurations.Postes
             Property(p => p.ShowWithRss).IsOptional();
             Property(p => p.DaysCountForSupportComment).IsOptional();
             Property(p => p.AuthorId).IsOptional();
-            Property(p => p.HeadTitle).HasMaxLength(200);
+            Property(p => p.Headline).HasMaxLength(200);
             Property(p => p.Title).HasMaxLength(200);
 
 

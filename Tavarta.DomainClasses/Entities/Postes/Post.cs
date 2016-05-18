@@ -53,7 +53,10 @@ namespace Tavarta.DomainClasses.Entities.Postes
         /// <summary>
         /// get or set of category that Contribute on this post
         /// </summary>
+
+        
         public Category Category { get; set; }
+        public Guid CategoryId { get; set; }
 
         #endregion NavigationProperties
     }

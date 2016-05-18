@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -49,6 +50,11 @@ namespace Tavarta.ViewModel.Posts
         [Display(Name = "سر تیتر")]
         public string HeadTitle { get; set; }
 
+        public IEnumerable<SelectListItem> Categorizes { get; set; }
+
+
         public Guid AuthorId { get; set; }
+
+        public Guid CategoryId { get; set; }
     }
 }

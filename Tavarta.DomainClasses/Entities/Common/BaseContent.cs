@@ -185,7 +185,7 @@ namespace Tavarta.DomainClasses.Entities.Common
         /// <summary>
         /// سر تیتیر
         /// </summary>
-        public string HeadTitle { get; set; }
+        public string Headline { get; set; }
 
 
 
