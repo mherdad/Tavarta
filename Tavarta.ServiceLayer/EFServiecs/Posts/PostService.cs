@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.ServiceLayer.Contracts.Posts;
@@ -21,7 +23,6 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
         private readonly IMappingEngine _mappingEngine;
         private readonly IApplicationUserManager _userManager;
         private readonly IDbSet<Post> _posts;
-
         #endregion Fileds
 
         #region ctor
@@ -41,13 +42,16 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
         public async Task<PostViewModel> AddPost(AddPostViewModel viewModel)
         {
             var post = _mappingEngine.Map<Post>(viewModel);
+          
+               // viewModel.Categorizes.ToList().ForEach(a => a.Selected = post.CategoryId.ToString() == a.Value);
+            post.CategoryId = viewModel.CategoryId;
             //var post = new Post();
             //post.Body = "hgfdsdhgfd";
             //post.Title = "hghfds";
             //post.TagNames = "fghjk";
-            //post.HeadTitle = "dfghjk";
+            //post.Headline = "dfghjk";
             post.PublishedOn=DateTime.Now;
-            post.Category=new Category {Name="temp"};
+            //post.Category.Id=viewModel.Categorizes.;
             post.LinkBackStatus = LinkBackStatus.Disable;
             post.DaysCountForSupportComment = 12;
             post.ShowWithRss = true;
@@ -89,5 +93,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
                 Posts = query
             };
         }
+
+        
     }
 }

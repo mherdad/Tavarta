@@ -113,12 +113,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryProfile.cs" />
     <Compile Include="Extentions\AutoIgnore.cs" />
     <Compile Include="Extentions\DateTimeExtention.cs" />
     <Compile Include="Extentions\DateTimeToStringResolver.cs" />
     <Compile Include="Extentions\NullableDateTimeToStringResolver.cs" />
     <Compile Include="Extentions\StringToDateConverter.cs" />
     <Compile Include="Extentions\ToPersianDateTimeConverter.cs" />
+    <Compile Include="NewsProfile.cs" />
     <Compile Include="PostProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleProfile.cs" />

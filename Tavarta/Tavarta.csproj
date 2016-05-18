@@ -62,18 +62,6 @@
     <Reference Include="CKEditor.NET">
       <HintPath>..\..\..\..\..\Desktop\CKEditor.NET.dll</HintPath>
     </Reference>
-    <Reference Include="CKFinder">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\ckfinder_aspnet_2.6.1\ckfinder\bin\Release\CKFinder.dll</HintPath>
-    </Reference>
-    <Reference Include="CKFinder_FileEditor">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\ckfinder_aspnet_2.6.1\ckfinder\bin\Release\CKFinder_FileEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="CKFinder_ImageResize">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\ckfinder_aspnet_2.6.1\ckfinder\bin\Release\CKFinder_ImageResize.dll</HintPath>
-    </Reference>
-    <Reference Include="CKFinder_Watermark">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\ckfinder_aspnet_2.6.1\ckfinder\bin\Release\CKFinder_Watermark.dll</HintPath>
-    </Reference>
     <Reference Include="DelegateDecompiler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=93b26a10a04705bd, processorArchitecture=MSIL">
       <HintPath>..\packages\DelegateDecompiler.0.18.1\lib\net40-Client\DelegateDecompiler.dll</HintPath>
       <Private>True</Private>
@@ -1964,6 +1952,7 @@
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Filters\ActivityAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2154,6 +2143,13 @@
       <Generator>RazorGenerator</Generator>
     </None>
     <Content Include="Areas\Admin\Views\User\_Create.cshtml" />
+    <None Include="Views\News\Details.cshtml" />
+    <None Include="Views\News\Index.cshtml" />
+    <None Include="Views\News\List.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\News\_LastNewsAjax.cshtml" />
+    <None Include="Views\News\_NewsItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2170,7 +2166,6 @@
     <Folder Include="Scripts\fileman\Uploads\Documents\" />
     <Folder Include="Scripts\fileman\Uploads\FLV\" />
     <Folder Include="uploads\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tavarta.Common\Tavarta.Common.csproj">

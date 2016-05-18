@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Microsoft.Web.Mvc;
 using Tavarta.Common.Controller;
 using Tavarta.DataLayer.Context;
+using Tavarta.ServiceLayer.Contracts.Category;
 using Tavarta.ServiceLayer.Contracts.Posts;
 using Tavarta.ServiceLayer.Contracts.Users;
 using Tavarta.ViewModel.Posts;
@@ -17,17 +18,21 @@ namespace Tavarta.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPostService _postService;
         private readonly IApplicationUserManager _userManager;
+        private readonly ICategoryService _categoryService;
 
-        public PostController(IUnitOfWork unitOfWork, IPostService postService,IApplicationUserManager userManager)
+        public PostController(IUnitOfWork unitOfWork, IPostService postService,IApplicationUserManager userManager, ICategoryService categoryService)
         {
             _unitOfWork = unitOfWork;
             _postService = postService;
             _userManager = userManager;
+            _categoryService = categoryService;
         }
        
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var viewModel =new AddPostViewModel ();
+            viewModel.Categorizes =await  _categoryService.GetAllAsSelectList();
+            return View(viewModel);
         }
 
         [ValidateInput(false)]
@@ -37,6 +42,7 @@ namespace Tavarta.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return View(viewModel);
             viewModel.AuthorId = _userManager.GetCurrentUserId();
+          
             _postService.AddPost(viewModel);
 
            return  RedirectToAction("Create");
@@ -47,6 +53,7 @@ namespace Tavarta.Areas.Admin.Controllers
         {
             var viewModel = await _postService.GetPageList(
                 new UserSearchRequest());
+           
             return View(viewModel);
         }
         [AjaxOnly]
