@@ -201,6 +201,7 @@
     <Compile Include="Filters\NoBrowserCacheAttribute.cs" />
     <Compile Include="Filters\NoCacheAttribute.cs" />
     <Compile Include="Filters\NoTrailingSlashAttribute.cs" />
+    <Compile Include="Filters\PageViewAttribute.cs" />
     <Compile Include="Filters\RedirectToCanonicalUrlAttribute.cs" />
     <Compile Include="Filters\RedirectToHttpsAttribute.cs" />
     <Compile Include="Filters\RemoveServerHeaderFilterAttribute.cs" />

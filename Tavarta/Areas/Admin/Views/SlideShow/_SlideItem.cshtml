@@ -1,0 +1,57 @@
+﻿@model Tavarta.ViewModel.SlideShow.SlideShowItemModel
+
+<div class="" id="user-@Model.Id">
+    <div class="col-md-12 data-item">
+
+        <tr>
+            <td class="center"><img src="@Model.Image" class="img-rounded" width="180" height="100" alt="image" /></td>
+            <td>@Model.Title</td>
+            <td class="hidden-xs">@Model.Link</td>
+                   
+            <td class="hidden-xs">@Model.Order</td>          
+            
+            
+           @* <td class="hidden-xs">@Model..ToLongPersianDate()</td>*@
+            <td class="center">
+                <div class="visible-md visible-lg hidden-sm hidden-xs">
+                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
+                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                </div>
+                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span></button>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu">
+                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                            </ul>
+                    </div>
+                    <div class="btn-group" dropdown>
+                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
+                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                                <li>
+                                    <a href="#">
+                                        Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Share
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Remove
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </td>
+        </tr>
+    </div>
+</div>

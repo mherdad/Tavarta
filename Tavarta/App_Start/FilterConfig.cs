@@ -14,8 +14,9 @@ namespace Tavarta
             //filters.Add(new ElmahRequestValidationErrorFilter());
             
             filters.Add(new RemoveServerHeaderFilterAttribute());
+            filters.Add(new PageViewAttribute());
 
-            //filters.Add(new ForceWww("http://localhost:25890/"));
+            filters.Add(new ForceWww("http://localhost:4269/"));
             
         }
     }

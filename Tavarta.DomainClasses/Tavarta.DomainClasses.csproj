@@ -67,6 +67,7 @@
     <Compile Include="Configurations\Common\SettingConfig.cs" />
     <Compile Include="Configurations\Postes\CategoryConfig.cs" />
     <Compile Include="Configurations\Postes\PostConfig.cs" />
+    <Compile Include="Configurations\SlideShows\SlideShowConfig.cs" />
     <Compile Include="Configurations\Users\RoleConfig.cs" />
     <Compile Include="Configurations\Users\UserClaimConfig.cs" />
     <Compile Include="Configurations\Users\UserConfig.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Entities\Postes\Category.cs" />
     <Compile Include="Entities\Postes\LinkBackStatus.cs" />
     <Compile Include="Entities\Postes\Post.cs" />
+    <Compile Include="Entities\SlideShows\SlideShowImage.cs" />
     <Compile Include="Entities\Users\ActivityLog.cs" />
     <Compile Include="Entities\Users\ActivityLogType.cs" />
     <Compile Include="Entities\Users\Notification.cs" />

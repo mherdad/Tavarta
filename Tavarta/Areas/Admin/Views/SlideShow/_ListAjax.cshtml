@@ -1,0 +1,8 @@
+﻿@model Tavarta.ViewModel.SlideShow.SlideShowListViewModel
+
+
+
+@foreach (var slideShows in Model.SlideShow)
+{
+    @Html.Partial("_SlideItem", slideShows)
+}

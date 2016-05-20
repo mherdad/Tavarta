@@ -86,6 +86,7 @@
     <Compile Include="Common\PageSize.cs" />
     <Compile Include="Common\SortByMode.cs" />
     <Compile Include="Common\SortDirectionMode.cs" />
+    <Compile Include="News\CarouselViewModel.cs" />
     <Compile Include="News\NewsDetailsViewModel.cs" />
     <Compile Include="News\NewsListViewModel.cs" />
     <Compile Include="News\NewsViewModel.cs" />
@@ -98,6 +99,10 @@
     <Compile Include="Role\RoleListViewModel.cs" />
     <Compile Include="Role\RoleSearchRequest.cs" />
     <Compile Include="Role\RoleViewModel.cs" />
+    <Compile Include="SlideShow\AddSlideShowViewModel.cs" />
+    <Compile Include="SlideShow\SlideShowItemModel.cs" />
+    <Compile Include="SlideShow\SlideShowListViewModel.cs" />
+    <Compile Include="SlideShow\SlideShowViewModel.cs" />
     <Compile Include="User\AddUserViewModel.cs" />
     <Compile Include="User\EditUserViewModel.cs" />
     <Compile Include="User\UserListViewModel.cs" />

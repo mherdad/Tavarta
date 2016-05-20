@@ -124,6 +124,7 @@
     <Compile Include="PostProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleProfile.cs" />
+    <Compile Include="SlideShowProfile.cs" />
     <Compile Include="UserProfile.cs" />
   </ItemGroup>
   <ItemGroup>

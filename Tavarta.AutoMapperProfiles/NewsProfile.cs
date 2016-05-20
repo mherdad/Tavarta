@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Tavarta.AutoMapperProfiles.Extentions;
 using Tavarta.DomainClasses.Entities.Postes;
+using Tavarta.DomainClasses.Entities.SlideShows;
 using Tavarta.ViewModel.News;
 
 namespace Tavarta.AutoMapperProfiles
@@ -13,6 +14,9 @@ namespace Tavarta.AutoMapperProfiles
                 .IgnoreAllNonExisting();
 
             CreateMap<Post, NewsDetailsViewModel>()
+                .IgnoreAllNonExisting();
+
+            CreateMap<SlideShowImage, CarouselViewModel>()
                 .IgnoreAllNonExisting();
 
         }
