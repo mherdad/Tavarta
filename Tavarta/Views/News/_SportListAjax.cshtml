@@ -1,0 +1,7 @@
+﻿
+@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var sport in Model.Sports)
+{
+    @Html.Partial("_OtherContents",sport)
+}

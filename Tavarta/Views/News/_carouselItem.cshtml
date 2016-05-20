@@ -1,0 +1,23 @@
+﻿@model Tavarta.ViewModel.News.CarouselViewModel
+
+    <div id="temp" class="item ">
+        <a href="@Model.Link">
+           
+            <img src="@Model.Image" alt="@Model.Title"  width="760" height="348"  id="@Model.Id" />
+        </a>
+        <div class="carousel-caption">
+            <h2>
+                <a href="@Url.Action("Details",new {Model.Id})">
+                   @Model.Text
+                </a>
+            </h2>
+            <div class="col-sx-12 description">
+                <p class="hidden-xs summary">
+                    @Model.Title
+                </p>
+                <span class="view-count numbers">
+                    75766 <i class="glyphicon glyphicon-stats"></i>
+                </span>
+            </div>
+        </div>
+    </div>

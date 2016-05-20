@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var environment in Model.Environment)
+{
+    @Html.Partial("_OtherContents",environment)
+}

@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var healthEvent in Model.HealthEvents)
+{
+    @Html.Partial("_OtherContents",healthEvent)
+}

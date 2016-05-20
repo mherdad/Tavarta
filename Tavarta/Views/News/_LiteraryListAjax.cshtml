@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var literary in Model.Literary)
+{
+    @Html.Partial("_OtherContents",literary)
+}

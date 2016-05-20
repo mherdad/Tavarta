@@ -331,6 +331,10 @@
     <Content Include="Areas\Admin\Views\Post\List.cshtml" />
     <Content Include="Areas\Admin\Views\Post\_ListAjax.cshtml" />
     <Content Include="Areas\Admin\Views\Post\_PostItem.cshtml" />
+    <None Include="Areas\Admin\Views\SlideShow\Create.cshtml" />
+    <None Include="Areas\Admin\Views\SlideShow\List.cshtml" />
+    <None Include="Areas\Admin\Views\SlideShow\_ListAjax.cshtml" />
+    <None Include="Areas\Admin\Views\SlideShow\_SlideItem.cshtml" />
     <None Include="Content\assets\jquery-2.1.4.intellisense.js" />
     <Content Include="Content\assets\jquery-2.1.4.js" />
     <Content Include="Content\assets\jquery-2.1.4.min.js" />
@@ -1178,6 +1182,7 @@
     <Content Include="Scripts\fileman\Uploads\Images\DSC_5744.jpg" />
     <Content Include="Scripts\fileman\Uploads\LICENSE.txt" />
     <Content Include="Scripts\fileman\Uploads\roxy-fileman-logo.gif" />
+    <Content Include="Scripts\fileman\Uploads\SlideShow\frmmvc02.png" />
     <Content Include="vendor\animate.css\animate.css" />
     <Content Include="vendor\animate.css\animate.min.css" />
     <Content Include="vendor\autosize\autosize.js" />
@@ -1935,6 +1940,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionType.cs" />
     <Compile Include="App_Start\ApplicationStart.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EntityFrameworkProfilerBootstrapper.cs" />
@@ -1950,6 +1956,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideShowController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -2148,8 +2155,17 @@
     <None Include="Views\News\List.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\News\_carouselItem.cshtml" />
+    <None Include="Views\News\_CarouselListAjax.cshtml" />
+    <None Include="Views\News\_EnvironmentListAjax.cshtml" />
+    <None Include="Views\News\_HealthEventsListAjax.cshtml" />
     <None Include="Views\News\_LastNewsAjax.cshtml" />
+    <None Include="Views\News\_LiteraryListAjax.cshtml" />
+    <None Include="Views\News\_MostViewedListAjax.cshtml" />
     <None Include="Views\News\_NewsItem.cshtml" />
+    <None Include="Views\News\_NotesListAjax.cshtml" />
+    <None Include="Views\News\_OtherContents.cshtml" />
+    <None Include="Views\News\_SportListAjax.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

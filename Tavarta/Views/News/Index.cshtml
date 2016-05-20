@@ -1,222 +1,443 @@
 ﻿@model Tavarta.ViewModel.News.NewsListViewModel
+@section scripts
+{
+    <script type="text/javascript">
+        
+        $('#temp').addClass('active');
 
- <!--Ads Box-->
+    </script>
+}
+<h1>@ViewBag.te</h1>
+<main class="col-xs-12 col-md-8">
+
+    
+                        <!--Carousel-->
                         <div class="row">
-                            <div class="col-xxs-12 col-xs-12 col-sm-12">
-                                <div class="widget widget-bordered widget-clear ads-boxes-wrapper">
-                                    <div class="content">
-                                        <div class="ads-boxes">
-                                            <div class="ad-box-wrapper">
-                                                <div class="ads-box text-center" data-adzone="leaderboard">
-                                                </div>
-                                                <i class="ads-box-close fa fa-times"></i>
-                                            </div>
-                                            @*<div class="ad-box-wrapper">
-                                                    <div class="ads-box text-center">
-                                                        <script type="text/javascript" src="http://ads.goldiran.ir/showad.aspx?s=58&u=635816268298929319"></script>
-                                                    </div>
-                                                    <i class="ads-box-close fa fa-times"></i>
-                                                </div>*@
+                            <div class="col-xs-12 col-sm-12">
+                                <div id="news-slider" class="widget carousel slide" data-ride="carousel" data-lazyload="true">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#news-slider" data-slide-to="0" class="active numbers">1</li>
+                                        <li data-target="#news-slider" data-slide-to="1" class=" numbers ">2</li>
+                                        <li data-target="#news-slider" data-slide-to="2" class=" numbers">3</li>
+                                        <li data-target="#news-slider" data-slide-to="3" class=" numbers">4</li>
+                                        <li data-target="#news-slider" data-slide-to="4" class=" numbers">5</li>
+                                        <li data-target="#news-slider" data-slide-to="4" class=" numbers">6</li>
+                                    </ol>
+                                    <div class="carousel-inner">
+
+                                          @{ Html.RenderPartial("_CarouselListAjax", Model);}
+                                        
+
+                                        
+                                    </div>
+                                    <a class="right carousel-control" href="#news-slider" data-slide="next">
+                                        <span class="glyphicon glyphicon-menu-right"></span>
+                                    </a>
+                                    <a class="left carousel-control" href="#news-slider" data-slide="prev">
+                                        <span class="glyphicon glyphicon-menu-left"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/Carousel-->
+
+
+<!--Ads Box-->
+<div class="row">
+    <div class="col-xxs-12 col-xs-12 col-sm-12">
+        <div class="widget widget-bordered widget-clear ads-boxes-wrapper">
+            <div class="content">
+                <div class="ads-boxes">
+                    <div class="ad-box-wrapper">
+                        <div class="ads-box text-center" data-adzone="leaderboard">
+                        </div>
+                        <i class="ads-box-close fa fa-times"></i>
+                    </div>
+                    @*<div class="ad-box-wrapper">
+                            <div class="ads-box text-center">
+                                <script type="text/javascript" src="http://ads.goldiran.ir/showad.aspx?s=58&u=635816268298929319"></script>
+                            </div>
+                            <i class="ads-box-close fa fa-times"></i>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/Ads Box-->
+<!--Last news-->
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="widget widget-bordered title-a hot-news">
+            <h2>
+                آخرین اخبار
+            </h2>
+            <div class="content">
+                <div class="row">
+                    @{ Html.RenderPartial("_LastNewsAjax", Model);}
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <!--Sport-->
+    <div class="col-xxs-12 col-xs-6 col-sm-6">
+        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+            <h2>
+                ورزشی
+            </h2>
+
+
+            <div class="content padding-xx" id="poll-result-placeholder">
+                @{ Html.RenderPartial("_SportListAjax", Model);}
+
+
+            </div>
+        </div>
+    </div>
+    <!--/Sport-->
+    <!--Environment-->
+    <div class="col-xxs-12 col-xs-6 col-sm-6">
+        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+            <h2>
+                محیط زیست
+            </h2>
+            <div class="content padding-xx" id="poll-result-placeholder">
+                @{ Html.RenderPartial("_EnvironmentListAjax", Model);}
+
+            </div>
+        </div>
+    </div>
+    <!-- /Environment -->
+</div>
+
+<br/>
+
+<div class="row">
+    <!--HealthEvents -->
+    <div class="col-xxs-12 col-xs-6 col-sm-6">
+        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+            <h2>
+                سلامت و حوادث
+            </h2>
+            <div class="content padding-xx" id="poll-result-placeholder">
+                @{ Html.RenderPartial("_HealthEventsListAjax", Model);}
+
+            </div>
+        </div>
+    </div>
+    <!--/HealthEvents-->
+    <!--Literary-->
+    <div class="col-xxs-12 col-xs-6 col-sm-6">
+        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+            <h2>
+                ادبی
+            </h2>
+            <div class="content padding-xx" id="poll-result-placeholder">
+                @{ Html.RenderPartial("_LiteraryListAjax", Model);}
+
+            </div>
+        </div>
+    </div>
+    <!--/Literary-->
+</div>
+
+<!--latest Video-->
+<br/>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="widget widget-bordered title-a widget-thumbnail videogallerylistwidget">
+            <h2>
+                گالری تصاویر
+            </h2>
+            <div class="content videogallerylist">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228388/گفتگو-عیدانه-با-علی-انصاریان" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 14:22:00" class="video-timestamp">
+                                    40 دقیقه پیش
+                                </time>
+                                <img alt="گفتگو-عیدانه-با-علی-انصاریان" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/b92d0d1fa169d918807eda071e3a5dc3_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    گفتگو عیدانه با علی انصاریان
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228376/10-حرکت-برتر-بسکتبال-nba-شنبه-941229" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 12:05:00" class="video-timestamp">
+                                    3 ساعت پیش
+                                </time>
+                                <img alt="10-حرکت-برتر-بسکتبال-nba-شنبه-941229" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/1e1f8f19625a81b55f92c1dc550b0627_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    10 حرکت برتر بسکتبال NBA: شنبه 94/12/29
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228344/سوپرگلهای-انفرادی-کریستیانو-رونالدو-از-2003-تا-2016" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 09:30:00" class="video-timestamp">
+                                    6 ساعت پیش
+                                </time>
+                                <img alt="سوپرگلهای-انفرادی-کریستیانو-رونالدو-از-2003-تا-2016" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/f2b90d2e5a1a72e06254d19b7c7a3cbe_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    سوپرگلهای انفرادی کریستیانو رونالدو از 2003 تا 2016
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228343/تمرین-تیکی-تاکا-و-شوت-زنی-از-راه-دور-بازیکنان-رئال" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 09:00:00" class="video-timestamp">
+                                    6 ساعت پیش
+                                </time>
+                                <img alt="تمرین-تیکی-تاکا-و-شوت-زنی-از-راه-دور-بازیکنان-رئال" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/e6795bdce77a935abcc2b35556cb6a54_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    تمرین تیکی تاکا و شوت زنی از راه دور بازیکنان رئال
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228347/نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-دوم" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 03:36:00" class="video-timestamp">
+                                    11 ساعت پیش
+                                </time>
+                                <img alt="نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-دوم" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/f3b7f23064598b2064b999dad5a203ab_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    نسخه کامل ویژه برنامه نوروزی نود - بخش دوم
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228346/نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-اول" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 03:35:00" class="video-timestamp">
+                                    11 ساعت پیش
+                                </time>
+                                <img alt="نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-اول" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/b142a6fa3604a224080a6b7ed7e76fb4_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    نسخه کامل ویژه برنامه نوروزی نود - بخش اول
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <a href="/video/228340/گلهای-بازی-مارسی-2-5-رن" class="video-thumbnail thumbnail">
+                            <figure>
+                                <time datetime="2016-03-19 02:45:00" class="video-timestamp">
+                                    12 ساعت پیش
+                                </time>
+                                <img alt="گلهای-بازی-مارسی-2-5-رن" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/1e8a05609b2bda29b4adae35193e9b5a_315_183_cropCenter.jpg" src=""/> <figcaption>
+                                    گلهای بازی: مارسی 2-5 رن
+                                </figcaption>
+                            </figure>
+                            <div class="fa fa-play"></div>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <div class="thumbnail blank-box">
+                            <div class="blank-box-row">
+                                <div class="blank-box-cell">
+                                    <span class="glyphicon glyphicon-facetime-video"></span>
+                                    <span class="glyphicon small glyphicon-plus"></span>
+                                    <a href="frontcms/video/list">
+                                        <span class="text">
+                                                                    ویدئو های بیشتر
+                                                                </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /latest Video-->
+
+
+
+</main>
+<!--/Last news-->
+
+   <aside class="col-xs-12 col-md-4">
+
+                 <!--Note-->
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-12 col-sm-12">
+                        <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                            <h2 class="">یاداشت ها</h2>
+                            <div class="content">
+                                <div class="ads-boxes" >
+                                   
+                                    <div class="row" style="margin-top: 15px;margin-right: 3px">
+                                         @{ Html.RenderPartial("_NotesListAjax", Model);}
+                                        
+
+                                        <div class="col-md-5 col-xs-5 col-xxs-6">
+
+                                            <a href="Index.cshtml">
+                                                <h3 style="color: #304FFE;">
+                                                    سایر یادداشت
+                                                    <i class="fa fa-angle-left"></i>
+                                                </h3>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--/Ads Box-->
-                        <!--Last news-->
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12">
-                                <div class="widget widget-bordered title-a hot-news">
-                                    <h2>
-                                        آخرین اخبار
-                                    </h2>
-                                    <div class="content">
-                                        <div class="row">
-                                            @{ Html.RenderPartial("_LastNewsAjax", Model);}
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/228256/%D9%87%D9%85%D8%B1%D8%A7%D9%87-%D8%A8%D8%A7-%D9%88%DB%8C%DA%98%D9%87-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%D8%B1%D9%88%D8%B2%DB%8C-%D9%86%D9%88%D8%AF-%D8%B4%D8%A7%D8%AF%D8%AA%D8%B1%DB%8C%D9%86-%D9%86%D9%88%D8%AF-%D8%B3%D8%A7%D9%84-%D8%A8%D8%A7-%D8%A7%D8%B9%D9%84%D8%A7%D9%85-%D8%B1%D8%B6%D8%A7%DB%8C%D8%AA-%D8%B4%D9%85%D8%A7/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="همراه با ویژه برنامه نوروزی نود / شادترین نود سال با اعلام رضایت شما" width="120" height="80" data-original="http://static.90tv.ir/8b7b31c2909195f69542339facad6d94_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                همراه با ویژه برنامه نوروزی نود / شادترین نود سال با اعلام رضایت شما
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/228166/%D8%AE%D8%A7%D8%B7%D8%B1%D8%A7%D8%AA-%D8%AE%D9%88%D8%A8-%D9%84%DB%8C%D9%88%D8%B1%D9%BE%D9%88%D9%84-%D8%A7%D8%B2-%D8%AF%D9%88%D8%B1%D8%AA%D9%85%D9%88%D9%86%D8%AF-%D8%B9%D9%84%DB%8C%D8%B1%D8%BA%D9%85-%D8%AF%D8%BA%D8%AF%D8%BA%D9%87-%DA%A9%D9%84%D9%88%D9%BE/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="خاطرات خوب لیورپول از دورتموند علیرغم دغدغه کلوپ" width="120" height="80" data-original="http://static.90tv.ir/609afd854f5e689cd6e2262f5599fd1d_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                خاطرات خوب لیورپول از دورتموند علیرغم دغدغه کلوپ
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/228151/%D9%86%DA%A9%D8%A7%D8%AA-%D8%AE%D9%88%D8%A7%D9%86%D8%AF%D9%86%DB%8C-%D8%A7%D8%B2-%D9%82%D8%B1%D8%B9%D9%87-%DA%A9%D8%B4%DB%8C-%DB%8C%DA%A9-%DA%86%D9%87%D8%A7%D8%B1%D9%85-%D9%86%D9%87%D8%A7%DB%8C%DB%8C-%D9%84%DB%8C%DA%AF-%D9%82%D9%87%D8%B1%D9%85%D8%A7%D9%86%D8%A7%D9%86-%D8%A7%D8%B1%D9%88%D9%BE%D8%A7/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="نکات خواندنی از قرعه کشی یک چهارم نهایی لیگ قهرمانان اروپا" width="120" height="80" data-original="http://static.90tv.ir/a084aab44888ed2f171fe3f5139f87f8_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                نکات خواندنی از قرعه کشی یک چهارم نهایی لیگ قهرمانان اروپا
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/228151/%D9%86%DA%A9%D8%A7%D8%AA-%D8%AE%D9%88%D8%A7%D9%86%D8%AF%D9%86%DB%8C-%D8%A7%D8%B2-%D9%82%D8%B1%D8%B9%D9%87-%DA%A9%D8%B4%DB%8C-%DB%8C%DA%A9-%DA%86%D9%87%D8%A7%D8%B1%D9%85-%D9%86%D9%87%D8%A7%DB%8C%DB%8C-%D9%84%DB%8C%DA%AF-%D9%82%D9%87%D8%B1%D9%85%D8%A7%D9%86%D8%A7%D9%86-%D8%A7%D8%B1%D9%88%D9%BE%D8%A7/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="نکات خواندنی از قرعه کشی یک چهارم نهایی لیگ قهرمانان اروپا" width="120" height="80" data-original="http://static.90tv.ir/a084aab44888ed2f171fe3f5139f87f8_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                نکات خواندنی از قرعه کشی یک چهارم نهایی لیگ قهرمانان اروپا
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/228151/%D9%86%DA%A9%D8%A7%D8%AA-%D8%AE%D9%88%D8%A7%D9%86%D8%AF%D9%86%DB%8C-%D8%A7%D8%B2-%D9%82%D8%B1%D8%B9%D9%87-%DA%A9%D8%B4%DB%8C-%DB%8C%DA%A9-%DA%86%D9%87%D8%A7%D8%B1%D9%85-%D9%86%D9%87%D8%A7%DB%8C%DB%8C-%D9%84%DB%8C%DA%AF-%D9%82%D9%87%D8%B1%D9%85%D8%A7%D9%86%D8%A7%D9%86-%D8%A7%D8%B1%D9%88%D9%BE%D8%A7/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="نکات خواندنی از قرعه کشی یک چهارم نهایی لیگ قهرمانان اروپا" width="120" height="80" data-original="http://static.90tv.ir/a084aab44888ed2f171fe3f5139f87f8_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                نکات خواندنی از قرعه کشی یک چهارم نهایی لیگ قهرمانان اروپا
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/227840/%D8%A8%DB%8C%D8%B1%D8%A7%D9%86%D9%88%D9%86%D8%AF-%D9%BE%D9%88%D8%B1%D9%82%D8%A7%D8%B2-%DA%A9%D9%86%D8%B9%D8%A7%D9%86%DB%8C%D8%B2%D8%A7%D8%AF%DA%AF%D8%A7%D9%86-%D9%85%D8%A7%D9%87%DB%8C%D9%86%DB%8C-%D8%AA%D8%A8%D8%B1%DB%8C%D8%B2%DB%8C-%D9%88-%DA%A9%D8%A7%D9%88%D9%87-%D8%B1%D8%B6%D8%A7%DB%8C%DB%8C-%D8%AF%D8%B1-%D9%84%DB%8C%D8%B3%D8%AA-%D8%A8%D8%B1%D8%A7%D9%86%DA%A9%D9%88/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="بیرانوند، پورقاز، کنعانی‌زادگان، ماهینی، تبریزی و کاوه رضایی در لیست برانکو" width="120" height="80" data-original="http://static.90tv.ir/f2fd36ab5455320b7f08f8937557f546_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                بیرانوند، پورقاز، کنعانی‌زادگان، ماهینی، تبریزی و کاوه رضایی در لیست برانکو
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/227815/%D9%85%D8%B9%D8%B1%D9%81%DB%8C-%D8%BA%D9%88%D9%84%D9%90-%D8%A2%D8%B3%DB%8C%D8%A7-%D8%B2%D9%84%D8%A7%D8%AA%D8%A7%D9%86-%D9%88-%D8%A2%D8%AF%D8%B1%DB%8C%D8%A7%D9%86%D9%88-%D9%88-%D8%A8%DA%86%D9%87%D9%87%D8%A7/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="معرفی غولِ آسیا: زلاتان و آدریانو و بچه‌ها!" width="120" height="80" data-original="http://static.90tv.ir/22da43d2cbf79b7bc9e8f10daf0518d9_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                معرفی غولِ آسیا: زلاتان و آدریانو و بچه‌ها!
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/227812/%D8%B3%D9%87%D9%85%DB%8C%D9%87-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3-%D8%AF%D8%B1-%D9%84%DB%8C%DA%AF-%D9%82%D9%87%D8%B1%D9%85%D8%A7%D9%86%D8%A7%D9%86-4-%D8%A8%D8%A7%D9%82%DB%8C-%D9%85%D8%A7%D9%86%D8%AF-%D8%B4%DA%A9%D8%B3%D8%AA-%DB%8C%D9%88%D9%88%D9%87-%D8%AA%D9%84%D8%AE-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%A7%DB%8C%D8%AA%D8%A7%D9%84%DB%8C%D8%A7%DB%8C%DB%8C-%D9%87%D8%A7/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="سهمیه انگلیس در لیگ قهرمانان 4 باقی ماند/ شکست یووه تلخ برای ایتالیایی ها" width="120" height="80" data-original="http://static.90tv.ir/0d47ff571805066b6fad50f1c2ff0b6e_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                سهمیه انگلیس در لیگ قهرمانان 4 باقی ماند/ شکست یووه تلخ برای ایتالیایی ها
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
+                    </div>
+                </div>
+       <!--/Note-->
+
+                           <!--MostViewed-->
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-12 col-sm-12">
+                        <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                            <h2 class="">پربازدیدترین ها</h2>
+                            <div class="content">
+                                <div class="ads-boxes">
+
+                                    <div class="row">
+                                        <br/>
+                                        <div class="col-md-12">
+                                            <div class="ad-box-wrapper">
                                                 <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
                                                     <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل" width="120" height="80" data-original="http://static.90tv.ir/3fcc478034bc22f4d806954105cef1ec_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
                                                         <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
                                                             <h5 class="media-heading">
+                                                                <i class="fa fa-angle-left"></i>
                                                                 اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
                                                             </h5>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/223246/%D8%B4%D9%85%D8%A7-%D8%A7%D9%86%D8%AA%D8%AE%D8%A7%D8%A8-%DA%A9%D9%86%DB%8C%D8%AF-%D8%B1%D9%82%D8%A7%D8%A8%D8%AA-%D9%86%D8%B2%D8%AF%DB%8C%DA%A9-%D8%B9%D8%A7%D8%AF%D9%84-%D9%88-%D8%AA%DB%8C%D9%85-%D9%86%D9%88%D8%AF-%D8%A8%D8%A7-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D8%B3%D8%A7%D8%B2%D8%A7%D9%86-%D8%AF%DB%8C%DA%AF%D8%B1-%D8%AF%D8%B1-%D8%B1%D8%A7%DB%8C-%DA%AF%DB%8C%D8%B1%DB%8C-%D8%A8%D9%87%D8%AA%D8%B1%DB%8C%D9%86-%D9%87%D8%A7%DB%8C-%D8%B3%D8%A7%D9%84/">
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="ad-box-wrapper">
+                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
                                                     <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="شما انتخاب کنید/ رقابت نزدیک عادل و تیم نود با برنامه سازان دیگر در رای گیری بهترین های سال" width="120" height="80" data-original="http://static.90tv.ir/705cdff28a78f1e1be5fccd0f54ee0fb_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
                                                         <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
                                                             <h5 class="media-heading">
-                                                                شما انتخاب کنید/ رقابت نزدیک عادل و تیم نود با برنامه سازان دیگر در رای گیری بهترین های سال
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/227716/%D9%86%DA%A9%D9%88%D9%86%D8%A7%D9%85-%D9%87%D8%B1-%DA%A9%D8%B3-%D8%A8%D9%87-%D8%AE%D8%A7%D8%B7%D8%B1-%D9%85%D8%AE%D8%A7%D9%84%D9%81-%D8%A8%D8%A7-%DA%A9%DB%8C-%D8%B1%D9%88%D8%B4-%DA%86%D9%88%D8%A8-%D9%84%D8%A7%DB%8C-%DA%86%D8%B1%D8%AE-%D8%AA%DB%8C%D9%85-%D9%85%D9%84%DB%8C-%D8%A8%DA%AF%D8%B0%D8%A7%D8%B1%D8%AF-%D8%AE%DB%8C%D8%A7%D9%86%D8%AA-%D9%85%DB%8C-%DA%A9%D9%86%D8%AF/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="نکونام: هر کس به خاطر مخالفت با کی روش چوب لای چرخ تیم ملی بگذارد، خیانت می کند! " width="120" height="80" data-original="http://static.90tv.ir/c1c0e3410e776068ebcc16fa82bd8c17_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                نکونام: هر کس به خاطر مخالفت با کی روش چوب لای چرخ تیم ملی بگذارد، خیانت می کند!
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 col-sm-6">
-                                                <a href="/news/227704/%D8%B9%DA%A9%D8%B3-%D9%81%D8%B1%D9%87%D8%A7%D8%AF-%D9%85%D8%AC%DB%8C%D8%AF%DB%8C-%D8%AA%D9%85%D8%A7%D8%B4%D8%A7%DA%AF%D8%B1-%D8%A8%D8%A7%D8%B2%DB%8C-%D8%A8%D8%A7%D8%B1%D8%B3%D8%A7-%D9%88-%D8%A2%D8%B1%D8%B3%D9%86%D8%A7%D9%84/">
-                                                    <div class="media">
-                                                        <div class="media-right">
-                                                            <img alt="عکس/ فرهاد مجیدی تماشاگر بازی بارسا و آرسنال" width="120" height="80" data-original="http://static.90tv.ir/f1145128c21d3a802361005a93e55f62_120_80_cropCenter.jpg" class="hotnews" src=""/>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h6>سر تیتر یک</h6>
-                                                            <h5 class="media-heading">
-                                                                عکس/ فرهاد مجیدی تماشاگر بازی بارسا و آرسنال
+                                                                <i class="fa fa-angle-left"></i>
+                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
                                                             </h5>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="ad-box-wrapper">
+                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
+                                                    <div class="media">
+                                                        <div class="media-body">
+                                                            <h5 class="media-heading">
+                                                                <i class="fa fa-angle-left"></i>
+                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="ad-box-wrapper">
+                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
+                                                    <div class="media">
+                                                        <div class="media-body">
+                                                            <h5 class="media-heading">
+                                                                <i class="fa fa-angle-left"></i>
+                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+
+                                            <div class="ad-box-wrapper">
+
+
+                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
+                                                    <div class="media">
+
+                                                        <div class="media-body">
+
+                                                            <h5 class="media-heading">
+                                                                <i class="fa fa-angle-left"></i>
+                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                        <br />
-                        <!--/Last news-->
+                    </div>
+                </div>
+       <!--MostViewed-->
+
+                       <!--Nezar sangi-->
+                <div class="row">
+                    <div class="col-xxs-12 col-xs-12 col-sm-12">
+                        <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                            <h2 class=""> نظرسنجی</h2>
+                            <div class="content padding-xx" id="poll-result-placeholder">
+                                <div class="col-xs-12">
+                                    <h4>
+                                        آیا از عملکرد سایت در سال 1394 راضی هستید؟
+                                    </h4>
+                                </div>
+                                <div class="col-xs-12">
+                                    بله
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 79.927346115035%;">
+                                            80%
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    خیر
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 20.072653884965%;">
+                                            20%
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Nezar sangi-->
+
+   </aside>

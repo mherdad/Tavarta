@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var mostViewed in Model.MostViewed)
+{
+    @Html.Partial("_OtherContents",mostViewed)
+}

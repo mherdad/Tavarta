@@ -10,10 +10,12 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using StructureMap;
 using StructureMap.Web.Pipeline;
-
+using Tavarta.DataLayer.Context;
+using Tavarta.DomainClasses;
 using Tavarta.IocConfig;
 using Tavarta.Scheduler;
 using Tavarta.ServiceLayer.Contracts.Common;
+using Tavarta.Utility;
 
 namespace Tavarta
 {
@@ -155,6 +157,9 @@ namespace Tavarta
             if (Context.User == null)
                 return;
         }
+
+        
+
 
         #region Application_Error
         protected void Application_Error()

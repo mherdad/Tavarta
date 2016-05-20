@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var notes in Model.Notes)
+{
+    @Html.Partial("_OtherContents",notes)
+}

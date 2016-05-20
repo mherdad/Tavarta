@@ -34,14 +34,10 @@ function FileSelected(file){
    * 
    */
 
-      // Set the value of field sent to Fileman via URL param "field".
-  opener.document.getElementById(RoxyUtils.GetUrlParam('field')).value = file.fullPath;
-  // Set the source of an image which id is sent to Fileman via URL param "img".
-  opener.document.getElementById(RoxyUtils.GetUrlParam('img')).src = file.fullPath;
-  // Close file manager if it's opened in separate window. 
-  self.close();
-  // Close file manager if it's opened in JQuery dialog.
-  $(opener.document).find('#dialog_element_id').dialog('close'); 
+    var fieldId = RoxyUtils.GetUrlParam('txtFieldId');
+    $(window.parent.document).find('#' + fieldId).attr('value', file.fullPath);
+    $(window.parent.document).find('#customRoxyImage').attr('src', file.fullPath);
+    window.parent.closeCustomRoxy();
   //alert('"' + file.fullPath + "\" selected.\n To integrate with CKEditor or TinyMCE change INTEGRATION setting in conf.json. For more details see the Installation instructions at http://www.roxyfileman.com/install.");
 }
 function GetSelectedValue(){

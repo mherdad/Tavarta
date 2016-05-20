@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Tavarta.Common.Filters;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts;
 
@@ -21,11 +22,15 @@ namespace Tavarta.Controllers
         }
 
         [HttpGet]
+        [PageView]
         public virtual async Task<ActionResult> Index()
         {
+            var Page = new PageViewAttribute.PageViewValue();
+            ViewBag.te = Page.Value;
+
             var viewModel = await _newsService.GetPagedListAsync();
             if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
-
+           //viewModel.Sports = await _newsService.GetPagedSportNewsAsync(Guid.Parse("7ab8bc23-091a-b846-8662-39d7ccf5af64"));
             return View(viewModel);
         }
 
@@ -34,46 +39,52 @@ namespace Tavarta.Controllers
             return View();
         }
 
+        [PageView]
         public virtual async Task<ActionResult> LastNewsAjax()
         {
            // var viewModel = await _newsService.GetPagedListAsync();
             //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_LastNewsAjax");
         }
-
+        [PageView]
         public ActionResult SportListAjax()
         {
-            return null;
+            return PartialView("_SportListAjax");
         }
-
+        [PageView]
         public ActionResult EnvironmentListAjax()
         {
-            return null;
+            return PartialView("_EnvironmentListAjax");
         }
-
+        [PageView]
         public ActionResult HealthEventsListAjax()
         {
-            return null;
+            return PartialView("_HealthEventsListAjax");
         }
-
+        [PageView]
         public ActionResult LiteraryListAjax()
         {
-            return null;
+            return PartialView("_LiteraryListAjax");
         }
 
         public ActionResult PhotoGalleryListAjax()
         {
             return null;
         }
-
+        [PageView]
         public ActionResult NotesListAjax()
         {
-            return null;
+            return PartialView("_NotesListAjax");
         }
 
         public ActionResult MostViewedListAjax()
         {
-            return null;
+            return PartialView("_MostViewedListAjax");
+        }
+
+        public ActionResult CarouselListAjax()
+        {
+            return PartialView("_CarouselListAjax");
         }
 
         public ActionResult SurveyListAjax()
