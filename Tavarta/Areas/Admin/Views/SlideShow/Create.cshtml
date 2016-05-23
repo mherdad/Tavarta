@@ -35,7 +35,7 @@
                         <div class="row form-group">
                             @Html.LabelFor(m => m.Link, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(m => m.Link,new { @class = "form-control", @placeholder = "نام کاربر" })
+                                @Html.TextBoxFor(m => m.Link, new { @class = "form-control", @placeholder = "نام کاربر" })
                                 @Html.ValidationMessageFor(m => m.Link, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -74,93 +74,89 @@
                             </div>
                         </div>
 
-                      
                         <div class="row pull-left">
                             <div class="row form-group ">
                                 <div class="col-md-12 col-md-pull-1 ">
                                     <button class="btn btn-success"> <i class="fa fa-save fa-lg"></i> ذخیره</button>
                                     <a href="@Url.Action("List", "SlideShow")" class="btn btn-default"> <i class="fa fa-list fa-lg"></i> فهرست اسلاید‌ها</a>
-                                    
-              
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
 
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
-                                    <div id="roxyCustomPanel2"  style="display: none;">
-                                        
-                                            
-                                            <iframe src="/Scripts/fileman/index.html?integration=custom&txtFieldId=@Html.IdFor(model => model.Image)" style="width: 100%; height: 100%; display: block;"></iframe>
-                                        
-                                    </div>
-                                    @section scripts
+<div id="roxyCustomPanel2" style="display: none;">
+
+    <iframe src="/Scripts/fileman/index.html?integration=custom&txtFieldId=@Html.IdFor(model => model.Image)" style="width: 100%; height: 100%; display: block;"></iframe>
+</div>
+@section scripts
 {
-                                        <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-                                        <script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script>
 
-                                            function openCustomRoxy() {
-                                                $('#roxyCustomPanel2').dialog({ modal: true, width: 850, height: 600 });
-                                            }
+        function openCustomRoxy() {
+            $('#roxyCustomPanel2').dialog({ modal: true, width: 850, height: 600 });
+        }
 
-                                            function closeCustomRoxy() {
-                                                $('#roxyCustomPanel2').dialog('close');
-                                            }
+        function closeCustomRoxy() {
+            $('#roxyCustomPanel2').dialog('close');
+        }
 
-                                            $("#slideShowImages")
-                                                .sortable({
-                                                    cancel: ".list-group-item-disabled",
-                                                    revert: true,
-                                                    forcePlaceholderSize: true,
-                                                    placeholder: 'ui-state-highlight',
-                                                    cursor: "move",
-                                                    update: function(event, ui) {
-                                                        $(this)
-                                                            .children("li")
-                                                            .each(function(index, item) {
-                                                                $(item).find("input[name='Order']").val(index);
-                                                            });
-                                                    }
-                                                })
-                                                .disableSelection();
-                                        </script>
-                                        <script type="text/javascript">
-                                            $('.pnlDirs').remove('width');
-                                        </script>
+        $("#slideShowImages")
+            .sortable({
+                cancel: ".list-group-item-disabled",
+                revert: true,
+                forcePlaceholderSize: true,
+                placeholder: 'ui-state-highlight',
+                cursor: "move",
+                update: function (event, ui) {
+                    $(this)
+                        .children("li")
+                        .each(function (index, item) {
+                            $(item).find("input[name='Order']").val(index);
+                        });
+                }
+            })
+            .disableSelection();
+    </script>
+    <script type="text/javascript">
+        $('.pnlDirs').remove('width');
+    </script>
 
-                                    }
-                                    @section JavaScript{
-                                        <style>
-                                            .list-group-item-disabled {
-                                                opacity: .6;
-                                            }
+}
+@section JavaScript{
+    <style>
+        .list-group-item-disabled {
+            opacity: .6;
+        }
 
-                                            #slideShowImages li img {
-                                                height: 100px;
-                                            }
-                                            .pnlDirs {
-                                                width: 100px;
-                                            }
+        #slideShowImages li img {
+            height: 100px;
+        }
 
-                                            .ui-state-highlight {
-                                                height: 120px;
-                                            }
+        .pnlDirs {
+            width: 100px;
+        }
 
-                                            #slideShowImages li a#chooseImage {
-                                                height: 120px;
-                                                display: block;
-                                                overflow: hidden;
-                                                border: 1px dashed #ccc;
-                                            }
+        .ui-state-highlight {
+            height: 120px;
+        }
 
-                                                #slideShowImages li a#chooseImage span {
-                                                    display: block;
-                                                    padding-top: 55px;
-                                                }
-                                        </style>
-                                    }
+        #slideShowImages li a#chooseImage {
+            height: 120px;
+            display: block;
+            overflow: hidden;
+            border: 1px dashed #ccc;
+        }
+
+            #slideShowImages li a#chooseImage span {
+                display: block;
+                padding-top: 55px;
+            }
+    </style>
+}

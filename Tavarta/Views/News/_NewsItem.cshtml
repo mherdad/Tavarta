@@ -4,7 +4,7 @@
     <a href='@Url.Action("Details", "News", new {Model.Id})'>
         <div class="media">
             <div class="media-right">
-                <img alt="@Model.Title" width="120" height="80" data-original="http://static.90tv.ir/8b7b31c2909195f69542339facad6d94_120_80_cropCenter.jpg" class="hotnews" src=""/>
+                <img src="" alt="@Model.Title" width="120" height="80" data-original="@Model.Image" class="hotnews" />
             </div>
             <div class="media-body">
                 <h6>@Model.Headline</h6>

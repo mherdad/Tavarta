@@ -18,5 +18,7 @@ namespace Tavarta.ViewModel.News
         /// سر تیتر
         /// </summary>
         public string Headline { get; set; }
+
+        public String Image { get; set; }
     }
 }

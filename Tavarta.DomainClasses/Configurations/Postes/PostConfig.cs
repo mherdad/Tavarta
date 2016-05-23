@@ -27,6 +27,7 @@ namespace Tavarta.DomainClasses.Configurations.Postes
             Property(p => p.AuthorId).IsOptional();
             Property(p => p.Headline).HasMaxLength(200);
             Property(p => p.Title).HasMaxLength(200);
+            Property(x => x.Image).IsOptional();
 
 
         }

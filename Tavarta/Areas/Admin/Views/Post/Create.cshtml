@@ -1,52 +1,85 @@
 ﻿@using Microsoft.Web.Mvc.Html
 @model Tavarta.ViewModel.Posts.AddPostViewModel
 
-
 <div class="row">
     <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-4 col-md-pull-4">
         <div class="box-register">
             <div class="modal-body">
 
-                @using (Html.BeginForm("Create", "Post",FormMethod.Post,new {enctype="multipart/form-data"}))
+                @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
 
                     <fieldset>
                         <legend>
                             درج نوشته جدید
                         </legend>
-                         <div class="row form-group">
-                        @Html.DropDownList("CategoryId", Model.Categorizes, "همه گروه های کاربری", new {@class = "form-control"})
- </div>
                         <div class="row form-group">
-
-                            @Html.LabelFor(m => m.HeadTitle, new {@class = "col-md-3 control-label"})
+                            @Html.DropDownList("CategoryId", Model.Categorizes, "همه گروه های کاربری", new {@class = "form-control"})
+                        </div>
+                        <div class="row form-group">
+                            @Html.LabelFor(model => model.Image, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(m => m.HeadTitle, new {@class = "form-control", placeholder = "سر تیتر", autocomplete = "off"})
-                                @Html.ValidationMessageFor(m => m.HeadTitle, "", new {@class = "text-danger"})
+                                <ul id="slideShowImages" class="list-group text-center">
+                                   
+                                        <li class="list-group-item">
+                                            <a id="chooseImage" href="javascript:openCustomRoxy()">
+                                                <img id="customRoxyImage">
+                                                <span> انتخاب عکس</span>
+                                            </a>
+                                            @Html.HiddenFor(model => model.Image)
+                                            @*<input type="hidden" name="@Html.NameFor(model => model.Order)" value="0" />*@
+                                        </li>
+                                  
+
+                                    <li class="list-group-item hidden">
+                                        <a id="chooseImage" href="javascript:openCustomRoxy()">
+                                            <img id="customRoxyImage" src="@Model.Image">
+                                            <span> انتخاب عکس</span>
+                                        </a>
+                                        @Html.HiddenFor(model => model.Image)
+                                        @*@Html.HiddenFor(model => model.Order)*@
+                                    </li>
+
+                                    <li class="list-group-item list-group-item-disabled hidden">
+                                        <input type="hidden" name="SlideShowImages.Index" value="" />
+                                        @*@Html.HiddenFor(x => Model.Id)*@
+                                        <img src="@Model.Image" />
+                                        @*@Html.HiddenFor(x => Model.Order)*@
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
                         <div class="row form-group">
-                            @Html.LabelFor(m => m.Title, new {@class = "col-md-3 control-label"})
+
+                            @Html.LabelFor(m => m.HeadTitle, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(x => x.Title, new {@class = "form-control", @placeholder = "نام کاربر"})
-                                @Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
+                                @Html.TextBoxFor(m => m.HeadTitle, new { @class = "form-control", placeholder = "سر تیتر", autocomplete = "off" })
+                                @Html.ValidationMessageFor(m => m.HeadTitle, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="row form-group">
-                            @Html.LabelFor(m => m.TagNames, new {@class = "col-md-3 control-label"})
+                            @Html.LabelFor(m => m.Title, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "نام کاربر" })
+                                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            @Html.LabelFor(m => m.TagNames, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
                                 @Html.TextBoxFor(m => m.TagNames)
-                                @Html.ValidationMessageFor(m => m.TagNames, "", new {@class = "text-danger"})
+                                @Html.ValidationMessageFor(m => m.TagNames, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">
 
-                            @Html.LabelFor(m => m.Body, new {@class = "col-md-3 control-label"})
+                            @Html.LabelFor(m => m.Body, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
                                 @Html.TextAreaFor(m => m.Body)
-                                @Html.ValidationMessageFor(m => m.Body, "", new {@class = "text-danger"})
+                                @Html.ValidationMessageFor(m => m.Body, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -55,8 +88,8 @@
                                 <div class="col-md-12 col-md-pull-1 ">
                                     <button data-loading-text="در حال ارسال اطلاعات" class="btn btn-primary btn-md" type="submit">ثبت نوشته</button>
                                     @*<button type="button" id="createUserButton" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'createUserForm')" data-loading-text="در حال ارسال اطلاعات" class="btn btn-success btn-md">
-                                        ثبت کاربر
-                                    </button>*@
+                                            ثبت کاربر
+                                        </button>*@
                                     <button class="btn btn-default btn-md" data-dismiss="modal" aria-hidden="true">
                                         انصراف
                                     </button>
@@ -65,24 +98,54 @@
                         </div>
                     </fieldset>
 
-
-
                 }
-
             </div>
         </div>
     </div>
 </div>
 
-
 @section scripts
 {
-    
- 
-<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+      <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script>
+
+        function openCustomRoxy() {
+            $('#roxyCustomPanel2').dialog({ modal: true, width: 700, height: 500 });
+        }
+
+        function closeCustomRoxy() {
+            $('#roxyCustomPanel2').dialog('close');
+        }
+
+        $("#slideShowImages")
+            .sortable({
+                cancel: ".list-group-item-disabled",
+                revert: true,
+                forcePlaceholderSize: true,
+                placeholder: 'ui-state-highlight',
+                cursor: "move",
+                update: function (event, ui) {
+                    $(this)
+                        .children("li")
+                        .each(function (index, item) {
+                            $(item).find("input[name='Order']").val(index);
+                        });
+                }
+            })
+            .disableSelection();
+    </script>
+    <script type="text/javascript">
+        $('.pnlDirs').remove('width');
+    </script>
+
+
+
 
     <script type="text/javascript">
-        var roxyFileman ='@Url.Content("~/Scripts/fileman/index.html?integration=ckeditor")'; 
+        var roxyFileman = '@Url.Content("~/Scripts/fileman/index.html?integration=ckeditor")';
         // CKFinder.SetupCKEditor(null, '@Url.Content("~/Content/ckfinder/")');
         var editor = CKEDITOR.instances['Body'];
         if (editor) {
@@ -91,11 +154,48 @@
         CKEDITOR.replace('Body',
         {
             enterMode: CKEDITOR.ENTER_BR
-            
-        });
 
+        });
     </script>
 
+}
 
+<div id="roxyCustomPanel2" style="display: none;">
 
+    <iframe src="/Scripts/fileman/index.html?integration=custom&txtFieldId=@Html.IdFor(model => model.Image)" style="width: 100%; height: 100%; display: block;"></iframe>
+</div>
+
+  
+
+}
+@section JavaScript{
+    <style>
+        .list-group-item-disabled {
+            opacity: .6;
+        }
+
+        #slideShowImages li img {
+            height: 100px;
+        }
+
+        .pnlDirs {
+            width: 100px;
+        }
+
+        .ui-state-highlight {
+            height: 120px;
+        }
+
+        #slideShowImages li a#chooseImage {
+            height: 120px;
+            display: block;
+            overflow: hidden;
+            border: 1px dashed #ccc;
+        }
+
+            #slideShowImages li a#chooseImage span {
+                display: block;
+                padding-top: 55px;
+            }
+    </style>
 }
