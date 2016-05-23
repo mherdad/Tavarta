@@ -4,6 +4,7 @@ namespace Tavarta.ViewModel.News
 {
     public class NewsDetailsViewModel
     {
+
         /// <summary>
         /// gets or sets the blog pot body
         /// </summary>

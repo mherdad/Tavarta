@@ -8,7 +8,7 @@
 
         <tr>
             <td class="center"><img src="~/Content/assets/images/avatar-1.jpg" class="img-rounded" alt="image" /></td>
-            <td>@Model.Title</td>
+            <td class="hidden-xs">@Model.Title</td>
             <td class="hidden-xs">@Model.TagNames</td>
             <td class="hidden-xs">@Model.Category.Name</td>          
             <td class="hidden-xs">@Model.Author.DisplayName</td>          
@@ -16,10 +16,10 @@
             
             <td class="hidden-xs">
                 <a href="#" rel="nofollow" target="_blank">
-                    @Html.Raw(@Model.Body)
+                  
                 </a>
             </td>
-            <td class="hidden-xs">@Model.PublishedOn.ToLongPersianDate()</td>
+            <td class="hidden-xs">@Model.PublishedOn.ToFriendlyDateString("YYY-MM-dd").ToLongPersianDate()</td>
             <td class="center">
                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                     <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>

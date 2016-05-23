@@ -17,6 +17,7 @@ namespace Tavarta.ViewModel.News
         public IList<NewsViewModel> Surveys { get; set; }
 
         public IList<CarouselViewModel> Carousel { get; set; }
+        public IList<LastArticleViewModel> LastArticle { get; set; }
 
     }
 }

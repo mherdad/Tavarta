@@ -10,6 +10,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using StructureMap;
 using StructureMap.Web.Pipeline;
+using Tavarta.Common;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses;
 using Tavarta.IocConfig;
@@ -35,8 +36,9 @@ namespace Tavarta
             try
             {
                 ViewEngines.Engines.Clear();
-                ViewEngines.Engines.Add(new RazorViewEngine());
-
+                ViewEngines.Engines.Add(new CSharpRazorViewEngine());
+                MvcHandler.DisableMvcResponseHeader = true;
+                
                 AreaRegistration.RegisterAllAreas();
                 WebApiConfig.Register(GlobalConfiguration.Configuration);
                 RoutingConfig.RegisterRoutes(RouteTable.Routes);

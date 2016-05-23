@@ -15,10 +15,11 @@ namespace Tavarta.AutoMapperProfiles
 
             CreateMap<Post, NewsDetailsViewModel>()
                 .IgnoreAllNonExisting();
+            CreateMap<Post, LastArticleViewModel>()
+                .IgnoreAllNonExisting();
 
             CreateMap<SlideShowImage, CarouselViewModel>()
                 .IgnoreAllNonExisting();
-
         }
 
         public override string ProfileName => GetType().Name;

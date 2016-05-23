@@ -1,4 +1,6 @@
-﻿@model Tavarta.ViewModel.News.NewsListViewModel
+﻿@using AttributeRouting.Helpers
+@using DNT.Extensions
+@model Tavarta.ViewModel.News.NewsListViewModel
 @section scripts
 {
     <script type="text/javascript">
@@ -316,85 +318,8 @@
 
                                     <div class="row">
                                         <br/>
-                                        <div class="col-md-12">
-                                            <div class="ad-box-wrapper">
-                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
-                                                    <div class="media">
-                                                        <div class="media-body">
-                                                            <h5 class="media-heading">
-                                                                <i class="fa fa-angle-left"></i>
-                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                         @{ Html.RenderPartial("_MostViewedListAjax", Model);}
 
-                                        <div class="col-md-12">
-                                            <div class="ad-box-wrapper">
-                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
-                                                    <div class="media">
-                                                        <div class="media-body">
-                                                            <h5 class="media-heading">
-                                                                <i class="fa fa-angle-left"></i>
-                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="ad-box-wrapper">
-                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
-                                                    <div class="media">
-                                                        <div class="media-body">
-                                                            <h5 class="media-heading">
-                                                                <i class="fa fa-angle-left"></i>
-                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="ad-box-wrapper">
-                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
-                                                    <div class="media">
-                                                        <div class="media-body">
-                                                            <h5 class="media-heading">
-                                                                <i class="fa fa-angle-left"></i>
-                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و 15 پاس گل
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-
-                                            <div class="ad-box-wrapper">
-
-
-                                                <a href="/news/227791/%D8%A7%DB%8C%D9%86%D9%81%D9%88%DA%AF%D8%B1%D8%A7%D9%81%DB%8C-%D8%B3%D9%87%D9%85-%DA%98%D8%A7%D9%BE%D9%86%DB%8C%D9%87%D8%A7-%D8%A7%D8%B2-%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%84%DB%8C%DA%AF-%D8%A8%D8%B1%D8%AA%D8%B1-%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%D8%9B-19-%DA%AF%D9%84-%D9%88-15-%D9%BE%D8%A7%D8%B3-%DA%AF%D9%84/">
-                                                    <div class="media">
-
-                                                        <div class="media-body">
-
-                                                            <h5 class="media-heading">
-                                                                <i class="fa fa-angle-left"></i>
-                                                                اینفوگرافی/ سهم ژاپنی‌ها از تاریخ لیگ برتر انگلیس؛ 19 گل و
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
 
                                     </div>
 
@@ -438,6 +363,164 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Nezar sangi-->
+       <!-- /Nezar sangi-->
+
+
+                       <!-- LastArticle -->
+                <div class="row">
+                <div class="hidden-xxs hidden-xs col-sm-12" id="main-news-sidebar">
+                    <div class="widget widget-bordered title-a latest-news-widget">
+                        <h2 class="">
+                            آخرین مطالب
+                        </h2>
+                        <div role="tabpanel">
+                            <div class="latest-news">
+                                <ul class="padding-x nav nav-tabs nav-justified" role="tablist">
+                                    <li role="presentation" class="  active">
+                                        <a href="#news-all" data-toggle="tab">همه</a>
+                                    </li>
+                                    <li role="presentation" class="  ">
+                                        <a href="#news-internal" data-toggle="tab">استان بوشهر</a>
+                                    </li>
+                                    <li role="presentation" class="  ">
+                                        <a href="#news-external" data-toggle="tab">ایران و جهان</a>
+                                    </li>
+                                    
+                                    <li role="presentation" class="  special ">
+                                        <a href="#news-special" data-toggle="tab">اختصاصی</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="news-all">
+                                        <ul class="list zebra">
+                                            @foreach (var tt in Model.LastArticle)
+                                            {
+                                                if (tt.Category.Name == "اختصاصی")
+                                                {
+
+                                                    <li>
+                                                        <time class="special" datetime="">
+                                                            ۱۴:۲۲
+                                                        </time>
+                                                        <span class="text-default fa fa-video-camera"></span>
+                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                           
+                                                                @tt.Title
+                                                            
+                                                        </a>
+                                                    </li>
+
+                                                }
+                                                else
+                                                {
+
+
+                                                    <li>
+                                                        <time class="" datetime="">
+                                                            @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                        </time>
+                                                      
+                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                            @tt.Title
+                                                        </a>
+                                                    </li>
+                                                    }
+
+                                            }
+                                        </ul>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane" id="news-internal">
+                                        <ul class="list zebra">
+                                            @foreach (var tt in Model.LastArticle)
+                                            {
+                                                if (tt.Category.Name == "استان بوشهر")
+                                                {
+
+                                                    <li>
+                                                        <time class="" datetime="">
+                                                            @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                        </time>
+                                                       
+                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                           
+                                                                @tt.Title
+                                                            
+                                                        </a>
+                                                    </li>
+
+                                                }
+
+                                            }
+                                        </ul>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane" id="news-external">
+                                        <ul class="list zebra">
+                                            @foreach (var tt in Model.LastArticle)
+                                            {
+                                                if (tt.Category.Name == "ایران و جهان")
+                                                {
+
+                                                    <li>
+                                                        <time class="" datetime="">
+                                                            ۱۴:۲۲
+                                                        </time>
+                                                        <span class="text-default fa fa-video-camera"></span>
+                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                             @tt.Title
+                                                        </a>
+                                                    </li>
+
+                                                }
+
+                                            }
+                                        </ul>
+                                    </div>
+
+
+                                    
+
+                                    <div role="tabpanel" class="tab-pane" id="news-special">
+                                        <ul class="list zebra">
+                                            @foreach (var tt in Model.LastArticle)
+                                            {
+                                                if (tt.Category.Name == "اختصاصی")
+                                                {
+
+                                                    <li>
+                                                        <time class="special" datetime="">
+                                                            ۱۴:۲۲
+                                                        </time>
+                                                        <span class="text-default fa fa-video-camera"></span>
+                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                          
+                                                                @tt.Title
+                                                           
+                                                        </a>
+                                                    </li>
+
+                                                }
+
+                                            }
+                                        </ul>
+                                    </div>
+                                    
+
+                                    
+
+                                    @*@{ Html.RenderPartial("_LatestArticlesAjax", Model);}*@
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                    </div>
+                <!-- LastArticle -->
+
+
 
    </aside>

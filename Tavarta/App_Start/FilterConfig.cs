@@ -16,8 +16,14 @@ namespace Tavarta
             filters.Add(new RemoveServerHeaderFilterAttribute());
             filters.Add(new PageViewAttribute());
 
-            filters.Add(new ForceWww("http://localhost:4269/"));
+           // filters.Add(new ForceWww("http://localhost:4269/"));
+            filters.Add(new CompressFilter());
             
+            filters.Add(new WhitespaceFilterAttribute());
+           // filters.Add(new ETagAttribute());
+           // filters.Add(new ContentSecurityPolicyFilterAttribute());
+          
+
         }
     }
 }

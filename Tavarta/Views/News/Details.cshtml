@@ -1,7 +1,7 @@
 ﻿@using DNT.Extensions
 @using Tavarta.Utility
 @model Tavarta.ViewModel.News.NewsDetailsViewModel
-
+<h1>@Model.Body.MinReadTime()</h1>
 <div class="widget widget-bordered title-b content-view">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
@@ -23,8 +23,9 @@
                         </span>
                         <span>
                             <i class="glyphicon glyphicon-user"></i>
-                            <span class="numbers">۲۵۵۵۶</span>
+                            <span class="numbers">@Model.ViewCount</span>
                         </span>
+                   
                     </div>
                 </section>
 

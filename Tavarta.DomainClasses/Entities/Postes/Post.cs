@@ -26,6 +26,8 @@ namespace Tavarta.DomainClasses.Entities.Postes
 
         #region Properties
 
+        public string Image { get; set; }
+
         /// <summary>
         /// gets or sets Status of LinkBack Notifications
         /// </summary>

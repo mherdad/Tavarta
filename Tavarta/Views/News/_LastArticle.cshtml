@@ -1,0 +1,55 @@
+﻿@model Tavarta.ViewModel.News.LastArticleViewModel
+
+@{
+    int temp = 0;
+}
+
+@if (Model.Category.Name == "اختصاصی")
+{
+    temp++;
+
+    if (temp == 1)
+    {
+        <div role="tabpanel" class="tab-pane active" id="news-all">
+            <ul class="list zebra">
+                <li>
+                    <time class="@if (Model.Category.Name == "اختصاصی")
+                                 {
+                                     @:special
+                                 }" datetime="">
+                        ۱۴:۳۱
+                    </time>
+                    <span class="text-default 1"></span>
+                    <a target="_blank" href="@Url.Action("Details", new {Model.Id})" class="detail">
+                        @Model.Title
+                    </a>
+                </li>
+                }
+            </ul>
+        </div>
+    }
+
+    temp++;
+
+     if (temp == 2)
+    {
+        <div role="tabpanel" class="tab-pane active" id="news-internal">
+            <ul class="list zebra">
+                <li>
+                    <time class="@if (Model.Category.Name == "استان بوشهر")
+                                 {
+                                     
+                                 }" datetime="">
+                        ۱۴:۳۱
+                    </time>
+                    <span class="text-default 1"></span>
+                    <a target="_blank" href="@Url.Action("Details", new {Model.Id})" class="detail">
+                        @Model.Title
+                    </a>
+                </li>
+                }
+            </ul>
+        </div>
+    }
+
+}

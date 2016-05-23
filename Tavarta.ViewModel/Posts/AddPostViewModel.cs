@@ -12,6 +12,8 @@ namespace Tavarta.ViewModel.Posts
         ///// </summary>
         //public virtual Guid Id { get; set; }
 
+        public string Image { get; set; }
+
         /// <summary>
         /// gets or sets the blog pot body
         /// </summary>

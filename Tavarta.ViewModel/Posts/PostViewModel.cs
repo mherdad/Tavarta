@@ -16,6 +16,7 @@ namespace Tavarta.ViewModel.Posts
         /// </summary>
         public virtual string Body { get; set; }
 
+
         /// <summary>
         /// تیتر عنوان
         /// </summary>
