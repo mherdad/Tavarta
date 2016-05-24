@@ -13,7 +13,7 @@
             <td class="hidden-xs">@Model.TagNames</td>
             <td class="hidden-xs">@Model.Category.Name</td>
             <td class="hidden-xs">@Model.Author.DisplayName</td>
-
+             <td class="hidden-xs"> <a href="@Url.Action("Edit",new {Model.Id})"> dfgff</a>   </td>
 
             <td class="hidden-xs">
                 <a href="#" rel="nofollow" target="_blank">
@@ -43,7 +43,7 @@
                         </button>
                         <ul class="dropdown-menu pull-right dropdown-light" role="menu">
                             <li>
-                                <a href="#">
+                                <a href="@Url.Action("Edit",new {Model.Id})">
                                     Edit
                                 </a>
                             </li>

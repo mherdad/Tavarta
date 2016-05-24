@@ -66,7 +66,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         public Task UpdateViewCountAsync(Guid? id)
         {
-            var one = 1;
+          
 
             var post = _news.FirstOrDefault(x => x.Id == id);
 

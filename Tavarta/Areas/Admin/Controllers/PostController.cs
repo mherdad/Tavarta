@@ -1,10 +1,14 @@
-﻿using Microsoft.Web.Mvc;
+﻿using System;
+using Microsoft.Web.Mvc;
 using PagedList;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI;
 using Tavarta.Common.Controller;
 using Tavarta.DataLayer.Context;
+using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.Category;
 using Tavarta.ServiceLayer.Contracts.Posts;
 using Tavarta.ServiceLayer.Contracts.Users;
@@ -70,6 +74,21 @@ namespace Tavarta.Areas.Admin.Controllers
             if (viewModel.Posts == null || !viewModel.Posts.Any()) return Content("no-more-info");
             IPagedList<PostViewModel> pageOrders = new StaticPagedList<PostViewModel>(viewModel.Posts,null);
             return PartialView("_ListAjax", pageOrders);
+        }
+
+        [HttpGet]
+        // [AjaxOnly]
+        [Activity(Description = "ویرایش پست")]
+        [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
+        [ActionName("Edit")]
+        public virtual async Task<ActionResult> Edit(Guid? id)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var viewModel = await _postService.GetForEditAsync(id.Value);
+            viewModel.Categorizes = await _categoryService.GetAllAsSelectList();
+            if (viewModel == null) return HttpNotFound();
+
+            return View("Create", viewModel);
         }
     }
 }

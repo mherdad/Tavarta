@@ -287,9 +287,10 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
 
             if (search.UserName.HasValue())
                 users = users.Where(a => a.UserName.Contains(search.UserName));
-
-            var query = await users
-                    .Skip((search.PageIndex - 1) * 10).Take(10).ProjectTo<UserViewModel>(_mappingEngine)
+            var resultSkip = (search.PageIndex - 1)*10;
+            var item = 10;
+            var query = await users.ToPagedQuery(item,resultSkip)
+                   .ProjectTo<UserViewModel>(_mappingEngine)
                     .ToListAsync();
 
             return new UserListViewModel

@@ -7,11 +7,12 @@ namespace Tavarta.ViewModel.Posts
 {
     public class AddPostViewModel
     {
-        ///// <summary>
-        ///// شناسه
-        ///// </summary>
-        //public virtual Guid Id { get; set; }
+        /// <summary>
+        /// شناسه
+        /// </summary>
+        public virtual Guid Id { get; set; }
 
+        [Display(Name = "عکس")]
         public string Image { get; set; }
 
         /// <summary>

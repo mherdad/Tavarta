@@ -324,11 +324,11 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
                 roles = roles.Where(a => a.Name.Contains(request.Term));
 
             var selectedTitles = roles.ProjectTo<RoleViewModel>(_mappingEngine);
-
+            var resultSkip = (request.PageIndex - 1)*5;
+            var item = 5;
             var query = await selectedTitles
                 .OrderBy(a => a.Name)
-                .Skip((request.PageIndex - 1) * 5)
-                .Take(5)
+                .ToPagedQuery(item,resultSkip)
                 .ToListAsync();
 
             query.ForEach(a =>
@@ -364,7 +364,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         public async Task<IEnumerable<SelectListItem>> GetAllAsSelectList()
         {
             var roles =
-                await _roles.AsNoTracking().Project(_mappingEngine).To<SelectListItem>().Cacheable().ToListAsync();
+                await _roles.AsNoTracking().Take(20).Project(_mappingEngine).To<SelectListItem>().Cacheable().ToListAsync();
             return roles;
         }
 

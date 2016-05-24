@@ -8,6 +8,7 @@ using EFSecondLevelCache;
 using Tavarta.Common.Extentions;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
+using Tavarta.ServiceLayer.Contracts.Category;
 using Tavarta.ServiceLayer.Contracts.Posts;
 using Tavarta.ServiceLayer.Contracts.Users;
 using Tavarta.Utility;
@@ -23,17 +24,19 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMappingEngine _mappingEngine;
         private readonly IApplicationUserManager _userManager;
+        private readonly ICategoryService _categoryService;
         private readonly IDbSet<Post> _posts;
 
         #endregion Fileds
 
         #region ctor
 
-        public PostService(IUnitOfWork unitOfWork, IMappingEngine mappingEngine, IApplicationUserManager userManager)
+        public PostService(IUnitOfWork unitOfWork, IMappingEngine mappingEngine, IApplicationUserManager userManager, ICategoryService categoryService)
         {
             _unitOfWork = unitOfWork;
             _mappingEngine = mappingEngine;
             _userManager = userManager;
+            _categoryService = categoryService;
             _posts = _unitOfWork.Set<Post>();
         }
 
@@ -47,6 +50,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
 
             // viewModel.Categorizes.ToList().ForEach(a => a.Selected = post.CategoryId.ToString() == a.Value);
             post.CategoryId = viewModel.CategoryId;
+            post.Id = SequentialGuidGenerator.NewSequentialGuid();
             //var post = new Post();
             //post.Body = "hgfdsdhgfd";
             //post.Title = "hghfds";
@@ -113,7 +117,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
           .ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
 
            //todo Cache checked with time
-          var  totalCount = _posts.Select(x=>x.Id).Cacheable().Count();//return the number of pages
+          var  totalCount = _posts.Select(x=>x.Id).Count();//return the number of pages
 
             return new PostListViewModel
             {
@@ -138,5 +142,24 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
                 Posts = query
             };
         }
+
+
+        #region GetForEditAsync
+        public async Task<AddPostViewModel> GetForEditAsync(Guid id)
+        {
+
+            var post = await _posts.FirstOrDefaultAsync(x => x.Id == id);
+                
+            if (post == null) return null;
+            var viewModel = _mappingEngine.Map<AddPostViewModel>(post);
+           
+            return viewModel;
+        }
+
+        #endregion
+
+
+
+
     }
 }
