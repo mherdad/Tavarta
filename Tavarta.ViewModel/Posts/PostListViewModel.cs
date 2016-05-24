@@ -18,5 +18,7 @@ namespace Tavarta.ViewModel.Posts
         /// </summary>
         public IEnumerable<SelectListItem> Category { get; set; }
 
+        public int TotalCount { get; set; }
+
     }
 }

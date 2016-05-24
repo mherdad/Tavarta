@@ -1,11 +1,74 @@
-﻿@model Tavarta.ViewModel.Posts.PostListViewModel
+﻿@using PagedList.Mvc
+@using Tavarta.Common.Extentions
+@model PagedList.IPagedList<Tavarta.ViewModel.Posts.PostViewModel>
 
 @{
     ViewBag.Title = "Index";
     var renderModalPartialViewUrl = Url.Action("Create", "Post");
     var postDataUrl = Url.Action("List", "Post");
 }
+@section JavaScript
+{
+<script src="~/Content/assets/customs/json2.js"></script>
+<script src="~/Content/assets/customs/angular.js"></script>
+<script src="~/Content/assets/customs/angular-scenario.js"></script>
+        <script src="~/Content/assets/My/jquery-1.9.1.min.js"></script>
+<script src="~/js/jquery-1.12.3.js"></script>
+<script src="~/Content/assets/jquery-2.1.4.js"></script>
+<script src="~/js/bootstrap-notify.js"></script>
+<script src="~/js/notify.js"></script>
+<script src="~/Content/assets/customs/jquery.noty.packaged.min.js"></script>
+<script src="~/Content/assets/customs/noty.alerts.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/My/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/assets/My/bootstrap-rtl.js"></script>
+<script src="~/Content/assets/customs/fileinput.min.js"></script>
+       <script src="~/Content/assets/My/jquery.bootstrap-modal-ajax-form.js"></script>
+    <script src="~/Content/assets/My/jquery.bootstrap-modal-confirm.js"></script>
+<script src="~/Content/assets/customs/ajax.methods.js"></script>
+<script src="~/Content/assets/customs/jqueryval-default.js"></script>
 
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnCreate').click(function (e) {
+                e.preventDefault(); //مي‌خواهيم لينك به صورت معمول عمل نكند
+
+                $.bootstrapModalAjaxForm({
+                    postUrl: '@postDataUrl',
+                    renderModalPartialViewUrl: '@renderModalPartialViewUrl',
+                    renderModalPartialViewData: {},
+                    loginUrl: '/login',
+                    beforePostHandler: function () {
+                        alert('beforePost');
+                    },
+                    completeHandler: function () {
+                        alert('completeHandler');
+                        // Refresh: براي حالتيكه نياز به به روز رساني كامل صفحه زيرين باشد
+                        // location.reload();
+                    },
+                    errorHandler: function () {
+                        alert('error');
+                    }
+                });
+            });
+
+            $("#deleteBtn").click(function (e) {
+                e.preventDefault(); //می‌خواهیم لینک به صورت معمول عمل نکند
+                $.bootstrapModalConfirm({
+                    caption: 'تائید عملیات',
+                    body: 'آیا عملیات درخواستی اجرا شود؟',
+                    onConfirm: function () {
+                        alert('در حال انجام عملیات');
+                    },
+                    confirmText: 'تائید',
+                    closeText: 'انصراف'
+                });
+            });
+        });             
+    </script>
+}
 
 
 <div class="panel panel-white">
@@ -22,7 +85,7 @@
             <div class="col-md-8">
                 @using (Ajax.BeginForm("ListAjax", "", new AjaxOptions { AllowCache = false, HttpMethod = "POST", OnComplete = "searchOnComplete(xhr,status,'#progress','#userPager','#userList')" }, new { @class = "form-horizontal search", autocomplete = "off", id = "userSearchForm" }))
                 {
-                    @Html.Hidden("PageIndex", Model.SearchRequest.PageIndex)
+                    @*@Html.Hidden("PageIndex", Model.SearchRequest.PageIndex)*@
                     <div class="row">
                         <div class="col-lg-6">
                             @* @Html.DropDownList("RoleId", Model.Category, "همه گروه ها", new {@class = "form-control"})*@
@@ -74,16 +137,22 @@
         </div>
     </div>
     <div class="panel-footer padding-5-5">
+          @Html.PagedListPager(Model, page => Url.Action("List", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+        @*<p>
 
+            @Html.PagedListPager(Model, page => Url.Action("List", new {page = page}), PagedListRenderOptions.PageNumbersOnly)
+        </p>
+        @Html.BootstrapPager(5, index => Url.Action("List", "Post", new {page = index}), 50, numberOfLinks: 10)*@
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <button data-page="2" id="userPager" onclick="doPaging(this, '#progress', 'userSearchForm')" class="btn btn-dark-blue btn-block btn-sm " type="button">
+                <button data-page="2" id="userPager" onclick="
+doPaging(this, '#progress', 'userSearchForm')" class="btn btn-dark-blue btn-block btn-sm " type="button">
                     بیشتر
                 </button>
             </div>
         </div>
         <div id="progress" align="center" style="display: none">
-            <img src="@Url.Content("~/Content/images/loading.gif")" alt="loading..." />
+            <img src="@Url.Content("~/Content/images/loading.gif")" alt="loading..."/>
         </div>
     </div>
 </div>

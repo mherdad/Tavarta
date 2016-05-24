@@ -65,13 +65,13 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         #endregion GetLastNewsDetails
 
         public Task UpdateViewCountAsync(Guid? id)
-        {   
-                   
+        {
+            var one = 1;
 
             var post = _news.FirstOrDefault(x => x.Id == id);
 
             if (post == null) throw new ArgumentNullException(nameof(post));
-            post.ViewCount = post.ViewCount + 1;
+            post.ViewCount += 1;
             return _unitOfWork.SaveChangesAsync();
         }
 
@@ -116,17 +116,19 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<NewsViewModel>> GetNewsAsync()
         {
+            var ostan = "استان بوشهر";
+            var iran = "ایران و جهان";
             var news = _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).AsQueryable();
-            var query = await news.Where(x=>x.Category.Name !="استان بوشهر" && x.Category.Name !="ایران و جهان")
+            var query = await news.Where(x=>x.Category.Name !=ostan && x.Category.Name !=iran)
                 .Take(10).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query;
         }
 
         private async Task<List<NewsViewModel>> GetSportAsync()
         {
-            var sportId = Guid.Parse("7ab8bc23-091a-b846-8662-39d7ccf5af64");
+            var sportName = "ورزشی";
             var sport =
-                _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.CategoryId == sportId).AsQueryable();
+                _news.AsNoTracking().Include(x=>x.Category).OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == sportName).AsQueryable();
             var query1 = await sport
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query1;
@@ -143,11 +145,11 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<NewsViewModel>> GetEnvironmentAsync()
         {
-            var environmentId = Guid.Parse("f6114793-82fa-8bce-f38a-39d7d04bbb79");
+            var environmentName = "محیط زیست";
             var environment =
                 _news.AsNoTracking()
                 .OrderByDescending(x => x.PublishedOn)
-                .Where(x => x.CategoryId == environmentId).AsQueryable();
+                .Where(x => x.Category.Name == environmentName ).AsQueryable();
             var query2 = await environment
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query2;
@@ -155,12 +157,12 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<NewsViewModel>> GetHealthEventAsync()
         {
-            var healthId = Guid.Parse("107e473a-7bc4-43e4-6738-39d7d262fc00");
-            var eventsId = Guid.Parse("7ab8bc23-091a-b846-8662-39d7bcf5cf64");
+            var healthName = "سلامت";
+            var eventsName = "حوادث";
             var healthEvent =
                 _news.AsNoTracking()
                     .OrderByDescending(x => x.PublishedOn)
-                    .Where(x => x.CategoryId == healthId || x.CategoryId == eventsId)
+                    .Where(x => x.Category.Name == healthName || x.Category.Name == eventsName)
                     .AsQueryable();
             var query3 = await healthEvent
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
@@ -169,9 +171,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<NewsViewModel>> GetLiteraryAsync()
         {
-            var literaryId = Guid.Parse("551f25b0-3746-0df1-5b55-39d7cd719f28");
+            var literaryName = "ادبی";
             var literary =
-                _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.CategoryId == literaryId).AsQueryable();
+                _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == literaryName).AsQueryable();
             var query4 = await literary
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query4;
@@ -179,9 +181,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<NewsViewModel>> GetNotesAsync()
         {
-            var noteId = Guid.Parse("31af9ba5-cf59-25ec-826a-39d7d73cf170");
+            var noteName = "یادداشت ها";
             var notes =
-                _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.CategoryId == noteId).AsQueryable();
+                _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == noteName).AsQueryable();
             var query5 = await notes
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query5;
@@ -199,7 +201,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         {
             var lastArticle = _news.AsNoTracking().Include(x=>x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
             var query6 = await lastArticle
-                .ProjectTo<LastArticleViewModel>(_mappingEngine).ToListAsync();
+               .Take(30) .ProjectTo<LastArticleViewModel>(_mappingEngine).ToListAsync();
             return query6;
         }
 

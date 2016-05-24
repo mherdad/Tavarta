@@ -1,4 +1,5 @@
 ﻿@using DNT.Extensions
+
 @using Tavarta.DataLayer.Context
 @model Tavarta.ViewModel.Posts.PostViewModel
 
@@ -7,16 +8,16 @@
     <div class="col-md-12 data-item">
 
         <tr>
-            <td class="center"><img src="~/Content/assets/images/avatar-1.jpg" class="img-rounded" alt="image" /></td>
+            <td class="center"><img src="~/Content/assets/images/avatar-1.jpg" class="img-rounded" alt="image"/></td>
             <td class="hidden-xs">@Model.Title</td>
             <td class="hidden-xs">@Model.TagNames</td>
-            <td class="hidden-xs">@Model.Category.Name</td>          
-            <td class="hidden-xs">@Model.Author.DisplayName</td>          
-            
-            
+            <td class="hidden-xs">@Model.Category.Name</td>
+            <td class="hidden-xs">@Model.Author.DisplayName</td>
+
+
             <td class="hidden-xs">
                 <a href="#" rel="nofollow" target="_blank">
-                  
+
                 </a>
             </td>
             <td class="hidden-xs">@Model.PublishedOn.ToFriendlyDateString("YYY-MM-dd").ToLongPersianDate()</td>
@@ -34,33 +35,34 @@
                             <li><a href="#fakelink">Sub Menu Element</a></li>
                             <li><a href="#fakelink">Sub Menu Element</a></li>
                             <li><a href="#fakelink">Sub Menu Element</a></li>
-                            </ul>
+                        </ul>
                     </div>
                     <div class="btn-group" dropdown>
-                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
-                                <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu pull-right dropdown-light" role="menu">
-                                <li>
-                                    <a href="#">
-                                        Edit
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Share
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Remove
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
+                            <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                            <li>
+                                <a href="#">
+                                    Edit
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Share
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Remove
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </td>
         </tr>
+
     </div>
 </div>
 <!-- end: STRIPED ROWS -->

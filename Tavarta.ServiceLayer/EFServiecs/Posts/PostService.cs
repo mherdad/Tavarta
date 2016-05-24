@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Mvc;
+using EFSecondLevelCache;
+using Tavarta.Common.Extentions;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.ServiceLayer.Contracts.Posts;
 using Tavarta.ServiceLayer.Contracts.Users;
+using Tavarta.Utility;
 using Tavarta.ViewModel.Posts;
 using Tavarta.ViewModel.User;
 
@@ -23,6 +24,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
         private readonly IMappingEngine _mappingEngine;
         private readonly IApplicationUserManager _userManager;
         private readonly IDbSet<Post> _posts;
+
         #endregion Fileds
 
         #region ctor
@@ -42,15 +44,15 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
         public async Task<PostViewModel> AddPost(AddPostViewModel viewModel)
         {
             var post = _mappingEngine.Map<Post>(viewModel);
-          
-               // viewModel.Categorizes.ToList().ForEach(a => a.Selected = post.CategoryId.ToString() == a.Value);
+
+            // viewModel.Categorizes.ToList().ForEach(a => a.Selected = post.CategoryId.ToString() == a.Value);
             post.CategoryId = viewModel.CategoryId;
             //var post = new Post();
             //post.Body = "hgfdsdhgfd";
             //post.Title = "hghfds";
             //post.TagNames = "fghjk";
             //post.Headline = "dfghjk";
-            post.PublishedOn=DateTime.Now;
+            post.PublishedOn = DateTime.Now;
             //post.Category.Id=viewModel.Categorizes.;
             post.LinkBackStatus = LinkBackStatus.Disable;
             post.DaysCountForSupportComment = 12;
@@ -62,14 +64,18 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
             post.FocusKeyword = "gf";
             post.IsDeleted = false;
             post.MetaTitle = "gfd";
-            post.ModifiedOn=DateTime.Now;
+            post.ModifiedOn = DateTime.Now;
             post.SlugUrl = "fddf";
-            
 
             _posts.Add(post);
-            
+
             await _unitOfWork.SaveChangesAsync();
             return await GetPostViewModel(post.Id);
+        }
+
+        public Task<PostListViewModel> GetPageList(UserSearchRequest search, int page, int itemsPerPage)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<PostViewModel> GetPostViewModel(Guid guid)
@@ -83,9 +89,14 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
 
         public async Task<PostListViewModel> GetPageList(UserSearchRequest search)
         {
+            //var posts = _posts.AsNoTracking().OrderBy(x => x.PublishedOn).AsQueryable();
+            //var query = await posts
+            //    .Skip((search.PageIndex - 1) * 10).Take(10).ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
+
             var posts = _posts.AsNoTracking().OrderBy(x => x.PublishedOn).AsQueryable();
+            int total;
             var query = await posts
-                .Skip((search.PageIndex - 1) * 10).Take(10).ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
+              .ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
 
             return new PostListViewModel
             {
@@ -94,6 +105,38 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
             };
         }
 
-        
+        public async Task<PostListViewModel> GetOrderPage(int page, int itemsPerPage )
+        {
+            var resultsToSkip = page *itemsPerPage;
+            var query1 = await _posts.OrderByDescending(x=>x.PublishedOn)
+                .ToPagedQuery(itemsPerPage,page)          
+          .ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
+
+           //todo Cache checked with time
+          var  totalCount = _posts.Select(x=>x.Id).Cacheable().Count();//return the number of pages
+
+            return new PostListViewModel
+            {
+                Posts = query1,TotalCount = totalCount
+            };
+        }
+
+        public async Task<PostListViewModel> GetPaged(UserSearchRequest search, int pageNumber, int pageSize)
+        {
+            var posts = _posts.AsNoTracking().OrderBy(x => x.PublishedOn).AsQueryable();
+            var query = await posts
+                .ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
+
+            //var posts = _posts.AsNoTracking().OrderBy(x => x.PublishedOn).AsQueryable();
+            //int total;
+            //var query = await posts
+            //  .PagedResult(pageNumber, pageSize, x => x.PublishedOn, false, out total).ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
+
+            return new PostListViewModel
+            {
+                SearchRequest = search,
+                Posts = query
+            };
+        }
     }
 }

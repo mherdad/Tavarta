@@ -176,6 +176,7 @@
     <Compile Include="Extentions\HtmlHelperExtensions.cs" />
     <Compile Include="Extentions\HttpRequestMessageExtensions.cs" />
     <Compile Include="Extentions\IdentityExtensions.cs" />
+    <Compile Include="Extentions\PagedResultExtentions.cs" />
     <Compile Include="Extentions\SeoExtensions.cs" />
     <Compile Include="Extentions\StringBuilderExtensions.cs" />
     <Compile Include="Extentions\SyndicationFeedExtensions.cs" />

@@ -98,6 +98,7 @@
     <Compile Include="HttpExtentions.cs" />
     <Compile Include="HumanReadableInteger.cs" />
     <Compile Include="ImageManage.cs" />
+    <Compile Include="QueryableExtensions.cs" />
     <Compile Include="LinqExtensions.cs" />
     <Compile Include="MimeTypeHelpers\AttachmentType.cs" />
     <Compile Include="MimeTypeHelpers\IAttachmentType.cs" />

@@ -1,6 +1,8 @@
-﻿@model Tavarta.ViewModel.Posts.PostListViewModel
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Tavarta.ViewModel.Posts.PostViewModel>
 
-@foreach (var post in Model.Posts)
+@foreach (var post in Model)
 {
     @Html.Partial("_PostItem", post)
 }
+
