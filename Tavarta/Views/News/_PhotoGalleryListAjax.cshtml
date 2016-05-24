@@ -1,0 +1,6 @@
+﻿@model Tavarta.ViewModel.News.NewsListViewModel
+
+@foreach (var photo in Model.PhotoGallery)
+{
+    @Html.Partial("_PhotoGalleryItem",photo)
+}

@@ -99,6 +99,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
             var carousel = await GetCarouselAsync();
             var lastArticle = await GetLastArticleAsync();
+            var photoGallery = await GetPhotoGalleryAsync();
 
             return new NewsListViewModel
             {
@@ -110,7 +111,8 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 Notes = notes,
                 Carousel = carousel,
                 MostViewed = mostViewed,
-                LastArticle = lastArticle
+                LastArticle = lastArticle,
+                PhotoGallery = photoGallery
             };
         }
 
@@ -131,6 +133,16 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 _news.AsNoTracking().Include(x=>x.Category).OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == sportName).AsQueryable();
             var query1 = await sport
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
+            return query1;
+        }
+
+        private async Task<List<NewsViewModel>> GetPhotoGalleryAsync()
+        {
+            var gallery = "گالری تصاویر";
+            var sport =
+                _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == gallery).AsQueryable();
+            var query1 = await sport
+                .Take(7).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query1;
         }
 

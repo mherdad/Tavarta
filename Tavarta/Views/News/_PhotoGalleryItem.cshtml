@@ -1,0 +1,13 @@
+﻿@model Tavarta.ViewModel.News.NewsViewModel
+
+    <div class="col-xs-6 col-sm-6 col-md-3">
+        <a href="@Url.Action("",new {Model.Id})" class="camera-thumbnail thumbnail">
+            <figure>
+               
+                <img alt="@Model.Title" style="height:110px" class="img-responsive lazy" width="315" height="183" data-original="@Model.Image" src="@Model.Image" /> <figcaption>
+                  @Model.Title
+                </figcaption>
+            </figure>
+            <div class="fa fa-camera"></div>
+        </a>
+    </div>

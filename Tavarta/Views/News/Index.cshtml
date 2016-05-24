@@ -4,262 +4,159 @@
 @section scripts
 {
     <script type="text/javascript">
-        
-        $('#temp').addClass('active');
 
+        $('#temp').addClass('active');
     </script>
 }
 <h1>@ViewBag.te</h1>
 <main class="col-xs-12 col-md-8 ">
 
-    
-                        <!--Carousel-->
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12">
-                                <div id="news-slider" class="widget carousel slide" data-ride="carousel" data-lazyload="true">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#news-slider" data-slide-to="0" class="active numbers">1</li>
-                                        <li data-target="#news-slider" data-slide-to="1" class=" numbers ">2</li>
-                                        <li data-target="#news-slider" data-slide-to="2" class=" numbers">3</li>
-                                        <li data-target="#news-slider" data-slide-to="3" class=" numbers">4</li>
-                                        <li data-target="#news-slider" data-slide-to="4" class=" numbers">5</li>
-                                        <li data-target="#news-slider" data-slide-to="4" class=" numbers">6</li>
-                                    </ol>
-                                    <div class="carousel-inner">
+    <!--Carousel-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div id="news-slider" class="widget carousel slide" data-ride="carousel" data-lazyload="true">
+                <ol class="carousel-indicators">
+                    <li data-target="#news-slider" data-slide-to="0" class="active numbers">1</li>
+                    <li data-target="#news-slider" data-slide-to="1" class=" numbers ">2</li>
+                    <li data-target="#news-slider" data-slide-to="2" class=" numbers">3</li>
+                    <li data-target="#news-slider" data-slide-to="3" class=" numbers">4</li>
+                    <li data-target="#news-slider" data-slide-to="4" class=" numbers">5</li>
+                    <li data-target="#news-slider" data-slide-to="4" class=" numbers">6</li>
+                </ol>
+                <div class="carousel-inner">
 
-                                          @{ Html.RenderPartial("_CarouselListAjax", Model);}
-                                        
-
-                                        
-                                    </div>
-                                    <a class="right carousel-control" href="#news-slider" data-slide="next">
-                                        <span class="glyphicon glyphicon-menu-right"></span>
-                                    </a>
-                                    <a class="left carousel-control" href="#news-slider" data-slide="prev">
-                                        <span class="glyphicon glyphicon-menu-left"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/Carousel-->
-
-
-<!--Ads Box-->
-<div class="row">
-    <div class="col-xxs-12 col-xs-12 col-sm-12">
-        <div class="widget widget-bordered widget-clear ads-boxes-wrapper">
-            <div class="content">
-                <div class="ads-boxes">
-                    <div class="ad-box-wrapper">
-                        <div class="ads-box text-center" data-adzone="leaderboard">
-                        </div>
-                        <i class="ads-box-close fa fa-times"></i>
-                    </div>
-                    @*<div class="ad-box-wrapper">
-                            <div class="ads-box text-center">
-                                <script type="text/javascript" src="http://ads.goldiran.ir/showad.aspx?s=58&u=635816268298929319"></script>
+                    @{ Html.RenderPartial("_CarouselListAjax", Model);}
+                </div>
+                <a class="right carousel-control" href="#news-slider" data-slide="next">
+                    <span class="glyphicon glyphicon-menu-right"></span>
+                </a>
+                <a class="left carousel-control" href="#news-slider" data-slide="prev">
+                    <span class="glyphicon glyphicon-menu-left"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--/Carousel-->
+    <!--Ads Box-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered widget-clear ads-boxes-wrapper">
+                <div class="content">
+                    <div class="ads-boxes">
+                        <div class="ad-box-wrapper">
+                            <div class="ads-box text-center" data-adzone="leaderboard">
                             </div>
                             <i class="ads-box-close fa fa-times"></i>
-                        </div>*@
+                        </div>
+                        @*<div class="ad-box-wrapper">
+                                <div class="ads-box text-center">
+                                    <script type="text/javascript" src="http://ads.goldiran.ir/showad.aspx?s=58&u=635816268298929319"></script>
+                                </div>
+                                <i class="ads-box-close fa fa-times"></i>
+                            </div>*@
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--/Ads Box-->
-<!--Last news-->
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="widget widget-bordered title-a hot-news">
-            <h2>
-                آخرین اخبار
-            </h2>
-            <div class="content">
-                <div class="row">
-                    @{ Html.RenderPartial("_LastNewsAjax", Model);}
+    <!--/Ads Box-->
+    <!--Last news-->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="widget widget-bordered title-a hot-news">
+                <h2>
+                    آخرین اخبار
+                </h2>
+                <div class="content">
+                    <div class="row">
+                        @{ Html.RenderPartial("_LastNewsAjax", Model);}
+                    </div>
+                    <br />
                 </div>
-                <br/>
             </div>
         </div>
     </div>
+    <div class="row">
+        <!--Sport-->
+        <div class="col-xxs-12 col-xs-6 col-sm-6">
+            <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+                <h2>
+                    ورزشی
+                </h2>
 
-</div>
-<div class="row">
-    <!--Sport-->
-    <div class="col-xxs-12 col-xs-6 col-sm-6">
-        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
-            <h2>
-                ورزشی
-            </h2>
-
-
-            <div class="content padding-xx" id="poll-result-placeholder">
-                @{ Html.RenderPartial("_SportListAjax", Model);}
-
-
+                <div class="content padding-xx" id="poll-result-placeholder">
+                    @{ Html.RenderPartial("_SportListAjax", Model);}
+                </div>
             </div>
         </div>
-    </div>
-    <!--/Sport-->
-    <!--Environment-->
-    <div class="col-xxs-12 col-xs-6 col-sm-6">
-        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
-            <h2>
-                محیط زیست
-            </h2>
-            <div class="content padding-xx" id="poll-result-placeholder">
-                @{ Html.RenderPartial("_EnvironmentListAjax", Model);}
-
+        <!--/Sport-->
+        <!--Environment-->
+        <div class="col-xxs-12 col-xs-6 col-sm-6">
+            <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+                <h2>
+                    محیط زیست
+                </h2>
+                <div class="content padding-xx" id="poll-result-placeholder">
+                    @{ Html.RenderPartial("_EnvironmentListAjax", Model);}
+                </div>
             </div>
         </div>
+        <!-- /Environment -->
     </div>
-    <!-- /Environment -->
-</div>
 
-<br/>
+    <br />
 
-<div class="row">
-    <!--HealthEvents -->
-    <div class="col-xxs-12 col-xs-6 col-sm-6">
-        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
-            <h2>
-                سلامت و حوادث
-            </h2>
-            <div class="content padding-xx" id="poll-result-placeholder">
-                @{ Html.RenderPartial("_HealthEventsListAjax", Model);}
-
+    <div class="row">
+        <!--HealthEvents -->
+        <div class="col-xxs-12 col-xs-6 col-sm-6">
+            <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+                <h2>
+                    سلامت و حوادث
+                </h2>
+                <div class="content padding-xx" id="poll-result-placeholder">
+                    @{ Html.RenderPartial("_HealthEventsListAjax", Model);}
+                </div>
             </div>
         </div>
-    </div>
-    <!--/HealthEvents-->
-    <!--Literary-->
-    <div class="col-xxs-12 col-xs-6 col-sm-6">
-        <div id="polling" class="polling poll-widget widget widget-bordered title-a">
-            <h2>
-                ادبی
-            </h2>
-            <div class="content padding-xx" id="poll-result-placeholder">
-                @{ Html.RenderPartial("_LiteraryListAjax", Model);}
-
+        <!--/HealthEvents-->
+        <!--Literary-->
+        <div class="col-xxs-12 col-xs-6 col-sm-6">
+            <div id="polling" class="polling poll-widget widget widget-bordered title-a">
+                <h2>
+                    ادبی
+                </h2>
+                <div class="content padding-xx" id="poll-result-placeholder">
+                    @{ Html.RenderPartial("_LiteraryListAjax", Model);}
+                </div>
             </div>
         </div>
+        <!--/Literary-->
     </div>
-    <!--/Literary-->
-</div>
 
-<!--latest Video-->
-<br/>
-<div class="row">
-    <div class="col-xs-12 col-sm-12">
-        <div class="widget widget-bordered title-a widget-thumbnail videogallerylistwidget">
-            <h2>
-                گالری تصاویر
-            </h2>
-            <div class="content videogallerylist">
-                <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228388/گفتگو-عیدانه-با-علی-انصاریان" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 14:22:00" class="video-timestamp">
-                                    40 دقیقه پیش
-                                </time>
-                                <img alt="گفتگو-عیدانه-با-علی-انصاریان" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/b92d0d1fa169d918807eda071e3a5dc3_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    گفتگو عیدانه با علی انصاریان
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228376/10-حرکت-برتر-بسکتبال-nba-شنبه-941229" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 12:05:00" class="video-timestamp">
-                                    3 ساعت پیش
-                                </time>
-                                <img alt="10-حرکت-برتر-بسکتبال-nba-شنبه-941229" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/1e1f8f19625a81b55f92c1dc550b0627_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    10 حرکت برتر بسکتبال NBA: شنبه 94/12/29
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228344/سوپرگلهای-انفرادی-کریستیانو-رونالدو-از-2003-تا-2016" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 09:30:00" class="video-timestamp">
-                                    6 ساعت پیش
-                                </time>
-                                <img alt="سوپرگلهای-انفرادی-کریستیانو-رونالدو-از-2003-تا-2016" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/f2b90d2e5a1a72e06254d19b7c7a3cbe_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    سوپرگلهای انفرادی کریستیانو رونالدو از 2003 تا 2016
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
+    <!--latest Video-->
+    <br />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="widget widget-bordered title-a widget-thumbnail videogallerylistwidget">
+                <h2>
+                    گالری تصاویر
+                </h2>
+                <div class="content videogallerylist">
+                    <div class="row">
+                        @{ Html.RenderPartial("_PhotoGalleryListAjax", Model);}
 
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228343/تمرین-تیکی-تاکا-و-شوت-زنی-از-راه-دور-بازیکنان-رئال" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 09:00:00" class="video-timestamp">
-                                    6 ساعت پیش
-                                </time>
-                                <img alt="تمرین-تیکی-تاکا-و-شوت-زنی-از-راه-دور-بازیکنان-رئال" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/e6795bdce77a935abcc2b35556cb6a54_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    تمرین تیکی تاکا و شوت زنی از راه دور بازیکنان رئال
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228347/نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-دوم" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 03:36:00" class="video-timestamp">
-                                    11 ساعت پیش
-                                </time>
-                                <img alt="نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-دوم" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/f3b7f23064598b2064b999dad5a203ab_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    نسخه کامل ویژه برنامه نوروزی نود - بخش دوم
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228346/نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-اول" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 03:35:00" class="video-timestamp">
-                                    11 ساعت پیش
-                                </time>
-                                <img alt="نسخه-کامل-ویژه-برنامه-نوروزی-نود-بخش-اول" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/b142a6fa3604a224080a6b7ed7e76fb4_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    نسخه کامل ویژه برنامه نوروزی نود - بخش اول
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <a href="/video/228340/گلهای-بازی-مارسی-2-5-رن" class="video-thumbnail thumbnail">
-                            <figure>
-                                <time datetime="2016-03-19 02:45:00" class="video-timestamp">
-                                    12 ساعت پیش
-                                </time>
-                                <img alt="گلهای-بازی-مارسی-2-5-رن" class="img-responsive lazy" width="315" height="183" data-original="http://static.90tv.ir/1e8a05609b2bda29b4adae35193e9b5a_315_183_cropCenter.jpg" src=""/> <figcaption>
-                                    گلهای بازی: مارسی 2-5 رن
-                                </figcaption>
-                            </figure>
-                            <div class="fa fa-play"></div>
-                        </a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <div class="thumbnail blank-box">
-                            <div class="blank-box-row">
-                                <div class="blank-box-cell">
-                                    <span class="glyphicon glyphicon-facetime-video"></span>
-                                    <span class="glyphicon small glyphicon-plus"></span>
-                                    <a href="frontcms/video/list">
-                                        <span class="text">
-                                                                    ویدئو های بیشتر
-                                                                </span>
-                                    </a>
+                        <div class="col-xs-6 col-sm-6 col-md-3">
+                            <div class="thumbnail blank-box">
+                                <div class="blank-box-row">
+                                    <div class="blank-box-cell">
+                                        <span class=" glyphicon glyphicon-camera"></span>
+                                        <span class="glyphicon small glyphicon-plus"></span>
+                                        <a href="frontcms/video/list">
+                                            <span class="text">
+                                                تصاویر بیشتر
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -268,259 +165,244 @@
             </div>
         </div>
     </div>
-</div>
 
-<!-- /latest Video-->
-
-
-
+    <!-- /latest Video-->
 </main>
 <!--/Last news-->
 
-   <aside class="col-xs-12 col-md-4">
+<aside class="col-xs-12 col-md-4">
 
-                 <!--Note-->
-                <div class="row">
-                    <div class="col-xxs-12 col-xs-12 col-sm-12">
-                        <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
-                            <h2 class="">یاداشت ها</h2>
-                            <div class="content">
-                                <div class="ads-boxes" >
-                                   
-                                    <div class="row" style="margin-top: 15px;margin-right: 3px">
-                                         @{ Html.RenderPartial("_NotesListAjax", Model);}
-                                        
+    <!--Note-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                <h2 class="">یاداشت ها</h2>
+                <div class="content">
+                    <div class="ads-boxes">
 
-                                        <div class="col-md-5 col-xs-5 col-xxs-6">
+                        <div class="row" style="margin-top: 15px;margin-right: 3px">
+                            @{ Html.RenderPartial("_NotesListAjax", Model);}
 
-                                            <a href="Index.cshtml">
-                                                <h3 style="color: #304FFE;">
-                                                    سایر یادداشت
-                                                    <i class="fa fa-angle-left"></i>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-md-5 col-xs-5 col-xxs-6">
+
+                                <a href="Index.cshtml">
+                                    <h3 style="color: #304FFE;">
+                                        سایر یادداشت
+                                        <i class="fa fa-angle-left"></i>
+                                    </h3>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-       <!--/Note-->
+            </div>
+        </div>
+    </div>
+    <!--/Note-->
+    <!--MostViewed-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                <h2 class="">پربازدیدترین ها</h2>
+                <div class="content">
+                    <div class="ads-boxes">
 
-                           <!--MostViewed-->
-                <div class="row">
-                    <div class="col-xxs-12 col-xs-12 col-sm-12">
-                        <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
-                            <h2 class="">پربازدیدترین ها</h2>
-                            <div class="content">
-                                <div class="ads-boxes">
-
-                                    <div class="row">
-                                        <br/>
-                                         @{ Html.RenderPartial("_MostViewedListAjax", Model);}
-
-
-                                    </div>
-
-                                </div>
-                            </div>
+                        <div class="row">
+                            <br />
+                            @{ Html.RenderPartial("_MostViewedListAjax", Model);}
                         </div>
                     </div>
                 </div>
-       <!--MostViewed-->
-
-                       <!--Nezar sangi-->
-                <div class="row">
-                    <div class="col-xxs-12 col-xs-12 col-sm-12">
-                        <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
-                            <h2 class=""> نظرسنجی</h2>
-                            <div class="content padding-xx" id="poll-result-placeholder">
-                                <div class="col-xs-12">
-                                    <h4>
-                                        آیا از عملکرد سایت در سال 1394 راضی هستید؟
-                                    </h4>
-                                </div>
-                                <div class="col-xs-12">
-                                    بله
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 79.927346115035%;">
-                                            80%
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    خیر
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 20.072653884965%;">
-                                            20%
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <br/>
-                                </div>
+            </div>
+        </div>
+    </div>
+    <!--MostViewed-->
+    <!--Nezar sangi-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                <h2 class=""> نظرسنجی</h2>
+                <div class="content padding-xx" id="poll-result-placeholder">
+                    <div class="col-xs-12">
+                        <h4>
+                            آیا از عملکرد سایت در سال 1394 راضی هستید؟
+                        </h4>
+                    </div>
+                    <div class="col-xs-12">
+                        بله
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 79.927346115035%;">
+                                80%
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-12">
+                        خیر
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 20.072653884965%;">
+                                20%
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                    </div>
                 </div>
-       <!-- /Nezar sangi-->
+            </div>
+        </div>
+    </div>
+    <!-- /Nezar sangi-->
+    <!-- LastArticle -->
+    <div class="row">
+        <div class="hidden-xxs hidden-xs col-sm-12" id="main-news-sidebar">
+            <div class="widget widget-bordered title-a latest-news-widget">
+                <h2 class="">
+                    آخرین مطالب
+                </h2>
+                <div role="tabpanel">
+                    <div class="latest-news">
+                        <ul class="padding-x nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="  active">
+                                <a href="#news-all" data-toggle="tab">همه</a>
+                            </li>
+                            <li role="presentation" class="  ">
+                                <a href="#news-internal" data-toggle="tab">استان بوشهر</a>
+                            </li>
+                            <li role="presentation" class="  ">
+                                <a href="#news-external" data-toggle="tab">ایران و جهان</a>
+                            </li>
 
+                            <li role="presentation" class="  special ">
+                                <a href="#news-special" data-toggle="tab">اختصاصی</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="news-all">
+                                <ul class="list zebra">
+                                    @foreach (var tt in Model.LastArticle)
+                                    {
+                                        if (tt.Category.Name == "اختصاصی")
+                                        {
 
-                       <!-- LastArticle -->
-                <div class="row">
-                <div class="hidden-xxs hidden-xs col-sm-12" id="main-news-sidebar">
-                    <div class="widget widget-bordered title-a latest-news-widget">
-                        <h2 class="">
-                            آخرین مطالب
-                        </h2>
-                        <div role="tabpanel">
-                            <div class="latest-news">
-                                <ul class="padding-x nav nav-tabs nav-justified" role="tablist">
-                                    <li role="presentation" class="  active">
-                                        <a href="#news-all" data-toggle="tab">همه</a>
-                                    </li>
-                                    <li role="presentation" class="  ">
-                                        <a href="#news-internal" data-toggle="tab">استان بوشهر</a>
-                                    </li>
-                                    <li role="presentation" class="  ">
-                                        <a href="#news-external" data-toggle="tab">ایران و جهان</a>
-                                    </li>
-                                    
-                                    <li role="presentation" class="  special ">
-                                        <a href="#news-special" data-toggle="tab">اختصاصی</a>
-                                    </li>
+                                            <li>
+                                                <time class="special" datetime="">
+                                                    @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
+                                                <span class="text-default fa fa-video-camera"></span>
+                                                <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+
+                                        }
+                                        else if (tt.Category.Name == "گالری تصاویر")
+                                        {
+                                            <li>
+                                                <time class="" datetime="">
+                                                    @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
+                                                <span class="text-default fa fa-camera"></span>
+                                                <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+
+                                            <li>
+                                                <time class="" datetime="">
+                                                    @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
+
+                                                <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+                                        }
+
+                                    }
                                 </ul>
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="news-all">
-                                        <ul class="list zebra">
-                                            @foreach (var tt in Model.LastArticle)
-                                            {
-                                                if (tt.Category.Name == "اختصاصی")
-                                                {
-
-                                                    <li>
-                                                        <time class="special" datetime="">
-                                                            ۱۴:۲۲
-                                                        </time>
-                                                        <span class="text-default fa fa-video-camera"></span>
-                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
-                                                           
-                                                                @tt.Title
-                                                            
-                                                        </a>
-                                                    </li>
-
-                                                }
-                                                else
-                                                {
-
-
-                                                    <li>
-                                                        <time class="" datetime="">
-                                                            @tt.PublishedOn.TimeOfDay.ToHHMM()
-                                                        </time>
-                                                      
-                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
-                                                            @tt.Title
-                                                        </a>
-                                                    </li>
-                                                    }
-
-                                            }
-                                        </ul>
-                                    </div>
-
-                                    <div role="tabpanel" class="tab-pane" id="news-internal">
-                                        <ul class="list zebra">
-                                            @foreach (var tt in Model.LastArticle)
-                                            {
-                                                if (tt.Category.Name == "استان بوشهر")
-                                                {
-
-                                                    <li>
-                                                        <time class="" datetime="">
-                                                            @tt.PublishedOn.TimeOfDay.ToHHMM()
-                                                        </time>
-                                                       
-                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
-                                                           
-                                                                @tt.Title
-                                                            
-                                                        </a>
-                                                    </li>
-
-                                                }
-
-                                            }
-                                        </ul>
-                                    </div>
-
-                                    <div role="tabpanel" class="tab-pane" id="news-external">
-                                        <ul class="list zebra">
-                                            @foreach (var tt in Model.LastArticle)
-                                            {
-                                                if (tt.Category.Name == "ایران و جهان")
-                                                {
-
-                                                    <li>
-                                                        <time class="" datetime="">
-                                                            ۱۴:۲۲
-                                                        </time>
-                                                        <span class="text-default fa fa-video-camera"></span>
-                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
-                                                             @tt.Title
-                                                        </a>
-                                                    </li>
-
-                                                }
-
-                                            }
-                                        </ul>
-                                    </div>
-
-
-                                    
-
-                                    <div role="tabpanel" class="tab-pane" id="news-special">
-                                        <ul class="list zebra">
-                                            @foreach (var tt in Model.LastArticle)
-                                            {
-                                                if (tt.Category.Name == "اختصاصی")
-                                                {
-
-                                                    <li>
-                                                        <time class="special" datetime="">
-                                                            ۱۴:۲۲
-                                                        </time>
-                                                        <span class="text-default fa fa-video-camera"></span>
-                                                        <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
-                                                          
-                                                                @tt.Title
-                                                           
-                                                        </a>
-                                                    </li>
-
-                                                }
-
-                                            }
-                                        </ul>
-                                    </div>
-                                    
-
-                                    
-
-                                    @*@{ Html.RenderPartial("_LatestArticlesAjax", Model);}*@
-
-
-                                </div>
                             </div>
+
+                            <div role="tabpanel" class="tab-pane" id="news-internal">
+                                <ul class="list zebra">
+                                    @foreach (var tt in Model.LastArticle)
+                                    {
+                                        if (tt.Category.Name == "استان بوشهر")
+                                        {
+
+                                            <li>
+                                                <time class="" datetime="">
+                                                    @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
+
+                                                <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+
+                                        }
+
+                                    }
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="news-external">
+                                <ul class="list zebra">
+                                    @foreach (var tt in Model.LastArticle)
+                                    {
+                                        if (tt.Category.Name == "ایران و جهان")
+                                        {
+
+                                            <li>
+                                                <time class="" datetime="">
+                                                   @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
+                                                <span class="text-default fa fa-video-camera"></span>
+                                                <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+
+                                        }
+
+                                    }
+                                </ul>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="news-special">
+                                <ul class="list zebra">
+                                    @foreach (var tt in Model.LastArticle)
+                                    {
+                                        if (tt.Category.Name == "اختصاصی")
+                                        {
+
+                                            <li>
+                                                <time class="special" datetime="">
+                                                  @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
+                                                <span class="text-default fa fa-video-camera"></span>
+                                                <a target="_blank" href="@Url.Action("Details", new {tt.Id})" class="detail">
+
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+
+                                        }
+
+                                    }
+                                </ul>
+                            </div>
+
+                            @*@{ Html.RenderPartial("_LatestArticlesAjax", Model);}*@
                         </div>
                     </div>
-
                 </div>
-                    </div>
-                <!-- LastArticle -->
-
-
-
-   </aside>
+            </div>
+        </div>
+    </div>
+    <!-- LastArticle -->
+</aside>

@@ -72,7 +72,7 @@ namespace Tavarta.Controllers
 
         public ActionResult PhotoGalleryListAjax()
         {
-            return null;
+            return PartialView("_PhotoGalleryListAjax");
         }
         [PageView]
         public async Task< ActionResult>  NotesListAjax()

@@ -2218,6 +2218,8 @@
     <None Include="Views\News\_NewsItem.cshtml" />
     <None Include="Views\News\_NotesListAjax.cshtml" />
     <None Include="Views\News\_OtherContents.cshtml" />
+    <Content Include="Views\News\_PhotoGalleryListAjax.cshtml" />
+    <Content Include="Views\News\_PhotoGalleryItem.cshtml" />
     <None Include="Views\News\_SportListAjax.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
