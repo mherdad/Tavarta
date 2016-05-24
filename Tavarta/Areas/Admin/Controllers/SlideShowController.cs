@@ -1,8 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI;
+using Tavarta.Common.Json;
 using Tavarta.DataLayer.Context;
+using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.SlideShows;
+using Tavarta.ViewModel.Posts;
 using Tavarta.ViewModel.SlideShow;
 
 namespace Tavarta.Areas.Admin.Controllers
@@ -47,6 +53,50 @@ namespace Tavarta.Areas.Admin.Controllers
             _slideShowService.AddSlide(viewModel);
             return RedirectToAction("List");
 
+        }
+
+
+
+        [HttpGet]
+        // [AjaxOnly]
+        [Activity(Description = "ویرایش پست")]
+        [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
+        [ActionName("Edit")]
+        public virtual async Task<ActionResult> Edit(Guid? id)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var viewModel = await _slideShowService.GetForEditAsync(id.Value);
+            
+            if (viewModel == null) return HttpNotFound();
+
+            return View("Create", viewModel);
+        }
+
+
+        [HttpPost]
+        //[AjaxOnly]
+        // [Route("Edit/{id}")]
+        //[CheckReferrer]
+
+        public virtual async Task<ActionResult> Edit(AddSlideShowViewModel viewModel)
+        {
+
+            var post = _slideShowService.FindByIdAsync(viewModel.Id);
+
+            if (post == null) return HttpNotFound();
+           
+
+            await _slideShowService.EditSlideShow(viewModel);
+            return RedirectToAction("List");
+            return new JsonNetResult
+            {
+                Data =
+                new
+                {
+                    success = true,
+                    View = View("_UserItem")
+                }
+            };
         }
 
     }

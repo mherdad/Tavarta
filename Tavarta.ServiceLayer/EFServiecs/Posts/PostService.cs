@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using EFSecondLevelCache;
+using EFSecondLevelCache.Contracts;
+using EntityFramework.Extensions;
 using Tavarta.Common.Extentions;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
@@ -148,7 +150,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
         public async Task<AddPostViewModel> GetForEditAsync(Guid id)
         {
 
-            var post = await _posts.FirstOrDefaultAsync(x => x.Id == id);
+            var post = await FindByIdAsync(id);
                 
             if (post == null) return null;
             var viewModel = _mappingEngine.Map<AddPostViewModel>(post);
@@ -158,6 +160,32 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
 
         #endregion
 
+        public async Task<Post> FindByIdAsync(Guid id)
+        {
+            var post = await _posts.FirstOrDefaultAsync(x => x.Id == id);
+
+            return post;
+        }
+
+
+        public async Task EditUser(AddPostViewModel viewModel )
+        {
+            //var ff = viewModel.PublishedOn.Date;
+            var post = await FindByIdAsync(viewModel.Id);
+            _mappingEngine.Map(viewModel, post);
+
+            if (viewModel.CategoryId != Guid.Empty)
+            {
+
+                //post.PublishedOn=ff;
+                post.ModifiedOn=DateTime.Now;
+                
+
+                await _unitOfWork.SaveChangesAsync();
+              
+            }
+
+        }
 
 
 

@@ -92,6 +92,7 @@
     <Compile Include="News\NewsListViewModel.cs" />
     <Compile Include="News\NewsViewModel.cs" />
     <Compile Include="Posts\AddPostViewModel.cs" />
+    <Compile Include="Posts\EditPostViewModel.cs" />
     <Compile Include="Posts\PostListViewModel.cs" />
     <Compile Include="Posts\PostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

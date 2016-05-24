@@ -29,10 +29,10 @@ namespace Tavarta.ViewModel.Posts
         [Display(Name = "عنوان")]
         public virtual string Title { get; set; }
 
-        /// <summary>
-        /// تاریخ انتشار
-        /// </summary>
-        public virtual DateTime PublishedOn { get; set; }
+        ///// <summary>
+        ///// تاریخ انتشار
+        ///// </summary>
+        //public virtual DateTime PublishedOn { get; set; }
 
         /// <summary>
         /// تعداد بازیدید

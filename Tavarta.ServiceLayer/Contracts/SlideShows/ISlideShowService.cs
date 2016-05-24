@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Tavarta.DomainClasses.Entities.SlideShows;
 using Tavarta.ViewModel.SlideShow;
 
 namespace Tavarta.ServiceLayer.Contracts.SlideShows
@@ -7,5 +9,8 @@ namespace Tavarta.ServiceLayer.Contracts.SlideShows
     {
         Task<SlideShowListViewModel> GetPageList();
         Task<SlideShowViewModel> AddSlide(AddSlideShowViewModel viewModel);
+        Task<AddSlideShowViewModel> GetForEditAsync(Guid id);
+        Task<SlideShowImage> FindByIdAsync(Guid id);
+        Task EditSlideShow(AddSlideShowViewModel viewModel);
     }
 }

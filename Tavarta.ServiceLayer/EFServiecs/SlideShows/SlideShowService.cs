@@ -56,6 +56,44 @@ namespace Tavarta.ServiceLayer.EFServiecs.SlideShows
 
         }
 
+        public async Task<AddSlideShowViewModel> GetForEditAsync(Guid id)
+        {
+            var slideShow = await FindByIdAsync(id);
+
+            if (slideShow == null) return null;
+            var viewModel = _mappingEngine.Map<AddSlideShowViewModel>(slideShow);
+
+            return viewModel;
+        }
+
+        public async Task<SlideShowImage> FindByIdAsync(Guid id)
+        {
+            var post = await _slideShow.FirstOrDefaultAsync(x => x.Id == id);
+
+            return post;
+        }
+
+
+        public async Task EditSlideShow(AddSlideShowViewModel viewModel)
+        {
+            //var ff = viewModel.PublishedOn.Date;
+            var slideShow = await FindByIdAsync(viewModel.Id);
+            _mappingEngine.Map(viewModel, slideShow);
+
+            if (viewModel.Id != Guid.Empty)
+            {
+
+                //post.PublishedOn=ff;
+                //slideShow. = DateTime.Now;
+
+
+                await _unitOfWork.SaveChangesAsync();
+
+            }
+
+        }
+
+
         public Task<SlideShowViewModel> GetSlideShowViewModel(Guid guid)
         {
             return _slideShow
@@ -77,19 +115,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.SlideShows
             }).ToListAsync();
         }
 
-        public void Add(SlideShowImage slideShowItem)
-        {
-            _slideShow.Add(slideShowItem);
-            _unitOfWork.SaveChanges();
-        }
-
-        public void Edit(SlideShowImage slideShowItem)
-        {
-            _slideShow.Attach(slideShowItem);
-
-            //_slideShow.Entry(slideShowItem).State = EntityState.Modified;
-
-        }
+    
 
         public void Delete(Guid slideShowItemId)
         {

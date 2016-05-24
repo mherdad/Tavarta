@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.UI;
 using Tavarta.Common.Controller;
+using Tavarta.Common.Extentions;
+using Tavarta.Common.Json;
 using Tavarta.DataLayer.Context;
 using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.Category;
 using Tavarta.ServiceLayer.Contracts.Posts;
 using Tavarta.ServiceLayer.Contracts.Users;
+using Tavarta.Utility;
 using Tavarta.ViewModel.Posts;
 using Tavarta.ViewModel.User;
 
@@ -90,5 +93,35 @@ namespace Tavarta.Areas.Admin.Controllers
 
             return View("Create", viewModel);
         }
+
+
+        [HttpPost]
+        //[AjaxOnly]
+        // [Route("Edit/{id}")]
+        //[CheckReferrer]
+
+        public virtual async Task<ActionResult> Edit(AddPostViewModel viewModel)
+        {
+
+            var post =  _postService.FindByIdAsync(viewModel.Id);
+
+            if (post == null) return HttpNotFound();
+            viewModel.AuthorId = _userManager.GetCurrentUserId();
+
+            await _postService.EditUser(viewModel);
+            return RedirectToAction("List");
+            return new JsonNetResult
+            {
+                Data =
+                new
+                {
+                    success = true,
+                    View = View("_UserItem")
+                }
+            };
+        }
+
+
+
     }
 }
