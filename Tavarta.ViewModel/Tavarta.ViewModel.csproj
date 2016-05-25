@@ -86,6 +86,8 @@
     <Compile Include="Common\PageSize.cs" />
     <Compile Include="Common\SortByMode.cs" />
     <Compile Include="Common\SortDirectionMode.cs" />
+    <Compile Include="Gallery\GalleryListViewModel.cs" />
+    <Compile Include="Gallery\GalleryViewModel.cs" />
     <Compile Include="News\CarouselViewModel.cs" />
     <Compile Include="News\LastArticleViewModel.cs" />
     <Compile Include="News\NewsDetailsViewModel.cs" />

@@ -172,6 +172,7 @@
     <Compile Include="Contracts\Common\IRunOnError.cs" />
     <Compile Include="Contracts\Common\ISettingService.cs" />
     <Compile Include="Contracts\Common\IStateService.cs" />
+    <Compile Include="Contracts\Galleryes\IGalleryService.cs" />
     <Compile Include="Contracts\INewsService.cs" />
     <Compile Include="Contracts\Posts\IPostService.cs" />
     <Compile Include="Contracts\SlideShows\ISlideShowService.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="EFServiecs\Common\SmsService.cs" />
     <Compile Include="EFServiecs\Common\TransactionPerRequest.cs" />
     <Compile Include="Contracts\Schedulers\IIndexService.cs" />
+    <Compile Include="EFServiecs\Galleryes\GalleryService.cs" />
     <Compile Include="EFServiecs\News\NewsService.cs" />
     <Compile Include="EFServiecs\Posts\PostService.cs" />
     <Compile Include="EFServiecs\Schedulers\IndexService.cs" />

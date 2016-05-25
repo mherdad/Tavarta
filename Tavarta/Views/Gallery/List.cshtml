@@ -1,0 +1,35 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Tavarta.ViewModel.Gallery.GalleryViewModel>
+
+<main class="col-xxs-12 col-xs-12 col-md-8">
+    <div class="row" id="gallery-page-list">
+        <div class="col-xxs-12 col-xs-12 col-md-12">
+            <div class="widget widget-bordered title-a widget-thumbnail gallerylistwidget">
+                <h3>آخرین تصاویر</h3>
+                <div class="content gallerylist">
+                    <div class="row rowlist">
+                        @foreach (var gallery in Model)
+                        {
+                            <div class="col-xs-6 col-sm-6 col-md-4">
+                                <a href="@Url.Action("Details","News",new {gallery.Id})" class="gallery-thumbnail thumbnail">
+                                    <figure>
+                                        <img alt="@gallery.Title" class="img-responsive lazy" style="width: 315px;height: 183px" width="315" height="183" data-original="@gallery.Image" src="@gallery.Image" /> <figcaption>
+                                            @gallery.Title
+                                        </figcaption>
+                                    </figure>
+                                    <div class="glyphicon glyphicon glyphicon-camera"></div>
+                                </a>
+                            </div>
+                        }
+
+                        
+                        
+                    </div>
+                    <div class="text-left">
+                        @Html.PagedListPager(Model, page => Url.Action("List", new { page,category= "گالری تصاویر" }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< اولین", ContainerDivClasses = new[] { "col-md-pull-3", "col-md-6" }, LinkToPreviousPageFormat = " قبلی ", LinkToNextPageFormat = "بعدی ", LinkToLastPageFormat = "&Uacute;آخرین >>" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

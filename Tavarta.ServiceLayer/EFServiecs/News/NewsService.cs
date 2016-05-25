@@ -116,8 +116,10 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         public async Task<NewsListViewModel> GetOrderPage(int page, int itemsPerPage, string category)
         {
             List<NewsViewModel> query;
+            int totalCount = 0;
             if (category == "اخبار")
             {
+                 totalCount = _news.Select(x => x.Id).Count();//return the number of pages
                 query = await _news.OrderByDescending(x => x.PublishedOn)
                               .ToPagedQuery(itemsPerPage, page)
                               .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
@@ -127,16 +129,19 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 query = await _news.OrderByDescending(x => x.PublishedOn).Where(x=>x.Category.Name=="سلامت" || x.Category.Name=="حوادث")
                               .ToPagedQuery(itemsPerPage, page)
                               .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                 totalCount = _news.Where(x => x.Category.Name == "سلامت" || x.Category.Name == "حوادث").Select(x => x.Id).Count();//return the number of pages
             }
             else
             {
                 query = await _news.OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == category)
                               .ToPagedQuery(itemsPerPage, page)
                               .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                 totalCount = _news.Where(x => x.Category.Name == category).Select(x => x.Id).Count();//return the number of pages
             }
 
+            
             //todo Cache checked with time
-            var totalCount = _news.Select(x => x.Id).Count();//return the number of pages
+            //var totalCount = _news.Where(x=>x.Category.Name==category).Select(x => x.Id).Count();//return the number of pages
 
             return new NewsListViewModel()
             {

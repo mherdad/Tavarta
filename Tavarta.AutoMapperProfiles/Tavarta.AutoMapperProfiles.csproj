@@ -120,6 +120,7 @@
     <Compile Include="Extentions\NullableDateTimeToStringResolver.cs" />
     <Compile Include="Extentions\StringToDateConverter.cs" />
     <Compile Include="Extentions\ToPersianDateTimeConverter.cs" />
+    <Compile Include="GalleryProfile.cs" />
     <Compile Include="NewsProfile.cs" />
     <Compile Include="PostProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

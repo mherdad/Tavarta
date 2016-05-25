@@ -1971,6 +1971,7 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideShowController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -2196,6 +2197,7 @@
     <Content Include="Scripts\fileman\lang\pt.json" />
     <Content Include="Scripts\fileman\web.config" />
     <Content Include="Scripts\fileman\lang\fa.json" />
+    <Content Include="Views\Gallery\List.cshtml" />
     <None Include="Views\Home\Single.cshtml">
       <Generator>RazorGenerator</Generator>
     </None>
