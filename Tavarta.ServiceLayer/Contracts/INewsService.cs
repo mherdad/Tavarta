@@ -12,5 +12,6 @@ namespace Tavarta.ServiceLayer.Contracts
        Task<NewsDetailsViewModel> GetLastNewsDetailsAsync(Guid? id);
        Task<NewsListViewModel> GetPagedListAsync();
        Task<NewsListViewModel> GetPagedSportNewsAsync(Guid id);
+       Task<NewsListViewModel> GetOrderPage(int page, int itemsPerPage, string category);
     }
 }

@@ -20,5 +20,13 @@ namespace Tavarta.ViewModel.News
         public string Headline { get; set; }
 
         public string Image { get; set; }
+        public string ViewCount { get; set; }
+
+        /// <summary>
+        /// تاریخ انتشار
+        /// </summary>
+        public virtual DateTime PublishedOn { get; set; }
+
+
     }
 }

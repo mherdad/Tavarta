@@ -70,6 +70,7 @@
                 <div class="content">
                     <div class="row">
                         @{ Html.RenderPartial("_LastNewsAjax", Model);}
+                        <a class="color blue" style=" color: #304FFE;" href="@Url.Action("List", new {category="اخبار"})">سایر</a>
                     </div>
                     <br />
                 </div>
@@ -86,6 +87,7 @@
 
                 <div class="content padding-xx" id="poll-result-placeholder">
                     @{ Html.RenderPartial("_SportListAjax", Model);}
+                    <a class="color blue" style=" color: #304FFE;" href="@Url.Action("List", new {category="ورزشی"})">سایر</a>
                 </div>
             </div>
         </div>
@@ -98,6 +100,7 @@
                 </h2>
                 <div class="content padding-xx" id="poll-result-placeholder">
                     @{ Html.RenderPartial("_EnvironmentListAjax", Model);}
+                    <a class="color blue" style=" color: #304FFE;" href="@Url.Action("List", new {category="محیط زیست"})">سایر</a>
                 </div>
             </div>
         </div>
@@ -115,6 +118,7 @@
                 </h2>
                 <div class="content padding-xx" id="poll-result-placeholder">
                     @{ Html.RenderPartial("_HealthEventsListAjax", Model);}
+                    <a class="color blue" style=" color: #304FFE;" href="@Url.Action("List", new {category="سلامت و حوادث"})">سایر</a>
                 </div>
             </div>
         </div>
@@ -127,6 +131,7 @@
                 </h2>
                 <div class="content padding-xx" id="poll-result-placeholder">
                     @{ Html.RenderPartial("_LiteraryListAjax", Model);}
+                    <a class="color blue" style=" color: #304FFE;" href="@Url.Action("List", new {category="ادبی"})">سایر</a>
                 </div>
             </div>
         </div>

@@ -5,14 +5,13 @@ using EFSecondLevelCache.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using EntityFramework.Extensions;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.DomainClasses.Entities.SlideShows;
 using Tavarta.ServiceLayer.Contracts;
+using Tavarta.Utility;
 using Tavarta.ViewModel.News;
 
 namespace Tavarta.ServiceLayer.EFServiecs.News
@@ -66,8 +65,6 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         public Task UpdateViewCountAsync(Guid? id)
         {
-          
-
             var post = _news.FirstOrDefault(x => x.Id == id);
 
             if (post == null) throw new ArgumentNullException(nameof(post));
@@ -116,12 +113,44 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             };
         }
 
+        public async Task<NewsListViewModel> GetOrderPage(int page, int itemsPerPage, string category)
+        {
+            List<NewsViewModel> query;
+            if (category == "اخبار")
+            {
+                query = await _news.OrderByDescending(x => x.PublishedOn)
+                              .ToPagedQuery(itemsPerPage, page)
+                              .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+            }
+            else if (category=="سلامت و حوادث")
+            {
+                query = await _news.OrderByDescending(x => x.PublishedOn).Where(x=>x.Category.Name=="سلامت" || x.Category.Name=="حوادث")
+                              .ToPagedQuery(itemsPerPage, page)
+                              .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+            }
+            else
+            {
+                query = await _news.OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == category)
+                              .ToPagedQuery(itemsPerPage, page)
+                              .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+            }
+
+            //todo Cache checked with time
+            var totalCount = _news.Select(x => x.Id).Count();//return the number of pages
+
+            return new NewsListViewModel()
+            {
+                News = query,
+                TotalCount = totalCount
+            };
+        }
+
         private async Task<List<NewsViewModel>> GetNewsAsync()
         {
             var ostan = "استان بوشهر";
             var iran = "ایران و جهان";
             var news = _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).AsQueryable();
-            var query = await news.Where(x=>x.Category.Name !=ostan && x.Category.Name !=iran)
+            var query = await news.Where(x => x.Category.Name != ostan && x.Category.Name != iran)
                 .Take(10).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query;
         }
@@ -130,7 +159,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         {
             var sportName = "ورزشی";
             var sport =
-                _news.AsNoTracking().Include(x=>x.Category).OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == sportName).AsQueryable();
+                _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == sportName).AsQueryable();
             var query1 = await sport
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query1;
@@ -161,7 +190,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             var environment =
                 _news.AsNoTracking()
                 .OrderByDescending(x => x.PublishedOn)
-                .Where(x => x.Category.Name == environmentName ).AsQueryable();
+                .Where(x => x.Category.Name == environmentName).AsQueryable();
             var query2 = await environment
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return query2;
@@ -211,13 +240,11 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<LastArticleViewModel>> GetLastArticleAsync()
         {
-            var lastArticle = _news.AsNoTracking().Include(x=>x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
+            var lastArticle = _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
             var query6 = await lastArticle
-               .Take(30) .ProjectTo<LastArticleViewModel>(_mappingEngine).ToListAsync();
+               .Take(30).ProjectTo<LastArticleViewModel>(_mappingEngine).ToListAsync();
             return query6;
         }
-
-
 
         #endregion GetPagedList
 

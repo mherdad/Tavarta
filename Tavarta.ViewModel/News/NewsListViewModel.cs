@@ -18,6 +18,6 @@ namespace Tavarta.ViewModel.News
 
         public IList<CarouselViewModel> Carousel { get; set; }
         public IList<LastArticleViewModel> LastArticle { get; set; }
-
+        public int TotalCount { get; set; }
     }
 }

@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using PagedList;
 using Tavarta.Common.Filters;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts;
 using Tavarta.Utility;
+using Tavarta.ViewModel.News;
+using Tavarta.ViewModel.Posts;
 
 namespace Tavarta.Controllers
 {
@@ -36,10 +39,22 @@ namespace Tavarta.Controllers
             return View(viewModel);
         }
 
-        public ActionResult List()
+
+        public async Task<ViewResult> List(int? page,string category)
         {
-            return View();
+            var pagenumber = (page ?? 1) - 1;
+            ViewBag.Category = category;
+            var totalCount = 0;
+            var news = await _newsService.GetOrderPage(pagenumber, 5,category);
+
+            totalCount = news.TotalCount;
+
+            IPagedList<NewsViewModel> pageOrders = new StaticPagedList<NewsViewModel>(news.News, pagenumber + 1, 5, totalCount);
+            return View(pageOrders);
+
         }
+
+
 
         [PageView]
         public virtual async Task<ActionResult> LastNewsAjax()
