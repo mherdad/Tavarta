@@ -2209,12 +2209,11 @@
     <None Include="Views\News\_CarouselListAjax.cshtml" />
     <None Include="Views\News\_EnvironmentListAjax.cshtml" />
     <None Include="Views\News\_HealthEventsListAjax.cshtml" />
-    <None Include="Views\News\_LastArticle.cshtml" />
     <None Include="Views\News\_LastNewsAjax.cshtml" />
-    <None Include="Views\News\_LatestArticlesAjax.cshtml" />
+    <None Include="Views\Shared\_LatestArticlesAjax.cshtml" />
     <None Include="Views\News\_LiteraryListAjax.cshtml" />
-    <None Include="Views\News\_MostViewed.cshtml" />
-    <None Include="Views\News\_MostViewedListAjax.cshtml" />
+    <None Include="Views\Shared\_MostViewed.cshtml" />
+    <None Include="Views\Shared\_MostViewedListAjax.cshtml" />
     <None Include="Views\News\_NewsItem.cshtml" />
     <None Include="Views\News\_NotesListAjax.cshtml" />
     <None Include="Views\News\_OtherContents.cshtml" />

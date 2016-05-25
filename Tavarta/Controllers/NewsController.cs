@@ -27,8 +27,7 @@ namespace Tavarta.Controllers
         [PageView]
         public virtual async Task<ActionResult> Index()
         {
-            var Page = new PageViewAttribute.PageViewValue();
-            ViewBag.te = Page.Value;
+            
 
             var viewModel = await _newsService.GetPagedListAsync();
             if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
@@ -45,49 +44,65 @@ namespace Tavarta.Controllers
         [PageView]
         public virtual async Task<ActionResult> LastNewsAjax()
         {
-           // var viewModel = await _newsService.GetPagedListAsync();
-            //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
-            return PartialView("_LastNewsAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_LastNewsAjax",viewModel);
         }
         [PageView]
         public async Task< ActionResult> SportListAjax()
         {
-            return PartialView("_SportListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_SportListAjax",viewModel);
         }
         [PageView]
         public async Task< ActionResult> EnvironmentListAjax()
         {
-            return PartialView("_EnvironmentListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_EnvironmentListAjax",viewModel);
         }
         [PageView]
-        public async Task<PartialViewResult> HealthEventsListAjax()
+        public async Task<ActionResult> HealthEventsListAjax()
         {
-            return PartialView("_HealthEventsListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_HealthEventsListAjax",viewModel);
         }
         [PageView]
         public async Task< ActionResult> LiteraryListAjax()
         {
-            return PartialView("_LiteraryListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_LiteraryListAjax",viewModel);
         }
 
-        public ActionResult PhotoGalleryListAjax()
+        public async Task<ActionResult> PhotoGalleryListAjax()
         {
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_PhotoGalleryListAjax");
         }
         [PageView]
         public async Task< ActionResult>  NotesListAjax()
         {
-            return PartialView("_NotesListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_NotesListAjax",viewModel);
         }
 
         public async Task <ActionResult> MostViewedListAjax()
         {
-            return PartialView("_MostViewedListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_MostViewedListAjax",viewModel);
         }
 
         public async Task<ActionResult> CarouselListAjax()
         {
-            return PartialView("_CarouselListAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_CarouselListAjax",viewModel);
         }
 
         public ActionResult SurveyListAjax()
@@ -95,9 +110,11 @@ namespace Tavarta.Controllers
             return null;
         }
 
-        public ActionResult LatestArticlesAjax()
+        public async Task<ActionResult> LatestArticlesAjax()
         {
-            return PartialView("_LatestArticlesAjax");
+            var viewModel = await _newsService.GetPagedListAsync();
+            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            return PartialView("_LatestArticlesAjax",viewModel);
         }
 
         [HttpGet]

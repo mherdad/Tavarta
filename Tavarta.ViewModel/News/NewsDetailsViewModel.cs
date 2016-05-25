@@ -35,6 +35,8 @@ namespace Tavarta.ViewModel.News
         /// </summary>
         public string Headline { get; set; }
 
+        public string Image { get; set; }
+
         
     }
 }

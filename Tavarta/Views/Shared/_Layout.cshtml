@@ -157,8 +157,98 @@
 <div class="container  wrapper-padding-top">
     <div class="row">
 
+       
+        
         @RenderBody()
 
+        <aside class="col-xs-12 col-md-4">
+
+    <!--Note-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                <h2 class="">یاداشت ها</h2>
+                <div class="content">
+                    <div class="ads-boxes">
+
+                        <div class="row" style="margin-top: 15px; margin-right: 3px">
+                             @Html.Action("NotesListAjax", "News")
+                           
+
+                            <div class="col-md-5 col-xs-5 col-xxs-6">
+
+                                <a href="Index.cshtml">
+                                    <h3 style="color: #304FFE;">
+                                        سایر یادداشت
+                                        <i class="fa fa-angle-left"></i>
+                                    </h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/Note-->
+    <!--MostViewed-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                <h2 class="">پربازدیدترین ها</h2>
+                <div class="content">
+                    <div class="ads-boxes">
+
+                        <div class="row">
+                            <br/>
+                           
+                             @Html.Action("MostViewedListAjax", "News")
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MostViewed-->
+    <!--Nezar sangi-->
+    <div class="row">
+        <div class="col-xxs-12 col-xs-12 col-sm-12">
+            <div class="widget widget-bordered  ads-boxes-wrapper title-a latest-news-widget">
+                <h2 class=""> نظرسنجی</h2>
+                <div class="content padding-xx" id="poll-result-placeholder">
+                    <div class="col-xs-12">
+                        <h4>
+                            آیا از عملکرد سایت در سال 1395 راضی هستید؟
+                        </h4>
+                    </div>
+                    <div class="col-xs-12">
+                        بله
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 79.927346115035%;">
+                                80%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        خیر
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped progress progress-striped active progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 20.072653884965%;">
+                                20%
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Nezar sangi-->
+    <!-- LastArticle -->
+      @Html.Action("LatestArticlesAjax", "News")
+    <!-- LastArticle -->
+</aside>
 
     </div>
 </div>

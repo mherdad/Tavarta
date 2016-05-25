@@ -1,8 +1,8 @@
 ﻿@using DNT.Extensions
 @using Tavarta.Utility
 @model Tavarta.ViewModel.News.NewsDetailsViewModel
-<h1>@Model.Body.MinReadTime()</h1>
-<div class="widget widget-bordered title-b content-view">
+
+<div class="col-md-8 widget widget-bordered title-b content-view">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
             <input type="hidden" id="news_id" value="192802" />
@@ -25,7 +25,15 @@
                             <i class="glyphicon glyphicon-user"></i>
                             <span class="numbers">@Model.ViewCount</span>
                         </span>
-                   
+                    </div>
+                    <div class="content-infos pull-right">
+
+                        <span>
+                            <i class="glyphicon glyphicon-time"></i>
+                            <span class="numbers blue">
+                                مدت زمان مطالعه مطلب : @Model.Body.MinReadTime()
+                            </span>
+                        </span>
                     </div>
                 </section>
 
@@ -39,7 +47,7 @@
                 <div class="row">
                     <main class="content">
                         <figure>
-                            <img alt="@Model.Title" data-remote="http://static.90tv.ir/cd57f3f002cc1c2dce7adb393d4ea4ec_800_450.jpg" width="240" height="150" src="http://static.90tv.ir/cd57f3f002cc1c2dce7adb393d4ea4ec_240_150_cropCenter.jpg"/>
+                            <img alt="@Model.Title" data-remote="@Model.Image" width="240" height="150" src="@Model.Image" />
                         </figure>
                         <div class="rtc" style="font-family: Samim; font-size: 14px">
                             @Html.Raw(Model.Body)
