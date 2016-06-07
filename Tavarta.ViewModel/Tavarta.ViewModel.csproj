@@ -79,6 +79,10 @@
   <ItemGroup>
     <Compile Include="Account\LoginViewModel.cs" />
     <Compile Include="Account\RegisterViewModel.cs" />
+    <Compile Include="Comments\AddCommentsViewModel.cs" />
+    <Compile Include="Comments\CommentListViewModel.cs" />
+    <Compile Include="Comments\CommentViewModel.cs" />
+    <Compile Include="Comments\ReplyViewModel.cs" />
     <Compile Include="Common\BaseIsDelete.cs" />
     <Compile Include="Common\BaseRowVersion.cs" />
     <Compile Include="Common\BaseSearchRequest.cs" />

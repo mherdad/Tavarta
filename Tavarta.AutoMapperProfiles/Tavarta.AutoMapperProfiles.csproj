@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryProfile.cs" />
+    <Compile Include="CommentProfile.cs" />
     <Compile Include="Extentions\AutoIgnore.cs" />
     <Compile Include="Extentions\DateTimeExtention.cs" />
     <Compile Include="Extentions\DateTimeToStringResolver.cs" />

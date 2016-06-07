@@ -8,7 +8,8 @@ namespace Tavarta.DomainClasses.Configurations.Comment
 
         public PostCommentConfig()
         {
-            
+            Property(x => x.PostId).IsOptional();
+
         }
     }
 }

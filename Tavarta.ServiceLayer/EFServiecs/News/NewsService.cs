@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using EntityFramework.Extensions;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.DomainClasses.Entities.SlideShows;
@@ -117,26 +118,26 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         {
             List<NewsViewModel> query;
             int totalCount = 0;
-            if (category == "اخبار")
+            switch (category)
             {
-                 totalCount = _news.Select(x => x.Id).Count();//return the number of pages
-                query = await _news.OrderByDescending(x => x.PublishedOn)
-                              .ToPagedQuery(itemsPerPage, page)
-                              .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
-            }
-            else if (category=="سلامت و حوادث")
-            {
-                query = await _news.OrderByDescending(x => x.PublishedOn).Where(x=>x.Category.Name=="سلامت" || x.Category.Name=="حوادث")
-                              .ToPagedQuery(itemsPerPage, page)
-                              .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
-                 totalCount = _news.Where(x => x.Category.Name == "سلامت" || x.Category.Name == "حوادث").Select(x => x.Id).Count();//return the number of pages
-            }
-            else
-            {
-                query = await _news.OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == category)
-                              .ToPagedQuery(itemsPerPage, page)
-                              .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
-                 totalCount = _news.Where(x => x.Category.Name == category).Select(x => x.Id).Count();//return the number of pages
+                case "اخبار":
+                    totalCount = _news.Select(x => x.Id).Count();//return the number of pages
+                    query = await _news.OrderByDescending(x => x.PublishedOn)
+                        .ToPagedQuery(itemsPerPage, page)
+                        .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                    break;
+                case "سلامت و حوادث":
+                    query = await _news.OrderByDescending(x => x.PublishedOn).Where(x=>x.Category.Name=="سلامت" || x.Category.Name=="حوادث")
+                        .ToPagedQuery(itemsPerPage, page)
+                        .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                    totalCount = _news.Where(x => x.Category.Name == "سلامت" || x.Category.Name == "حوادث").Select(x => x.Id).Count();//return the number of pages
+                    break;
+                default:
+                    query = await _news.OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == category)
+                        .ToPagedQuery(itemsPerPage, page)
+                        .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                    totalCount = _news.Where(x => x.Category.Name == category).Select(x => x.Id).Count();//return the number of pages
+                    break;
             }
 
             

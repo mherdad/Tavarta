@@ -1,3 +1,5 @@
+using System.IO;
+using System.IO.Compression;
 using System.Web.Mvc;
 using Tavarta.Common.Filters;
 
@@ -20,6 +22,7 @@ namespace Tavarta
             filters.Add(new CompressFilter());
             
             filters.Add(new WhitespaceFilterAttribute());
+            //filters.Add(new GZipFilter(new GZipStream(new BufferedStream(Stream.Null), CompressionMode.Compress )));
            // filters.Add(new ETagAttribute());
            // filters.Add(new ContentSecurityPolicyFilterAttribute());
           

@@ -164,6 +164,7 @@
   <ItemGroup>
     <Compile Include="Contracts\ApplicantInfo\IPresenterService.cs" />
     <Compile Include="Contracts\Category\ICategoryService.cs" />
+    <Compile Include="Contracts\Comments\ICommentsService.cs" />
     <Compile Include="Contracts\Common\ICityService.cs" />
     <Compile Include="Contracts\Common\IRunAfterEachRequest.cs" />
     <Compile Include="Contracts\Common\IRunAtInit.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="CustomAspNetIdentity\CustomSecurityStampValidator.cs" />
     <Compile Include="CustomAspNetIdentity\CustomUserValidator.cs" />
     <Compile Include="EFServiecs\Category\CategoryService.cs" />
+    <Compile Include="EFServiecs\Comments\CommentsService.cs" />
     <Compile Include="EFServiecs\Common\ApplicationSignInManager.cs" />
     <Compile Include="EFServiecs\Common\CityService.cs" />
     <Compile Include="EFServiecs\Common\EmailService.cs" />

@@ -355,6 +355,7 @@
     <Compile Include="Twitter\Structs\TwitterImage.cs" />
     <Compile Include="Twitter\Structs\TwitterPlayer.cs" />
     <Compile Include="Twitter\TwitterCard.cs" />
+    <Compile Include="TwoLevelViewCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

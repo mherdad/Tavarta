@@ -5,7 +5,7 @@
 <div class="col-md-8 widget widget-bordered title-b content-view">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
-            <input type="hidden" id="news_id" value="192802" />
+            <input type="hidden" id="news_id" value="192802"/>
             <article class="no-gutter separator-left">
                 <section class="meta meta-top">
                     <div class="content-infos pull-left">
@@ -38,7 +38,7 @@
                 </section>
 
                 <header>
-                    <h5 style="color: #0057A0;padding-bottom: 10px">@Model.Headline</h5>
+                    <h5 style="color: #0057A0; padding-bottom: 10px">@Model.Headline</h5>
 
                     <h2>
                         @Model.Title
@@ -47,7 +47,7 @@
                 <div class="row">
                     <main class="content">
                         <figure>
-                            <img alt="@Model.Title" data-remote="@Model.Image" width="240" height="150" src="@Model.Image" />
+                            <img alt="@Model.Title" data-remote="@Model.Image" width="240" height="150" src="@Model.Image"/>
                         </figure>
                         <div class="rtc" style="font-family: Samim; font-size: 14px">
                             @Html.Raw(Model.Body)
@@ -104,9 +104,22 @@
                         </div>
                     </main>
                 </div>
+
+
+
             </article>
-            <div class="row" style="background-color: white">
+            <div class="row" style="background-color: #F0F0F0">
+                <br/>
+                <br/>
             </div>
+            <footer>
+                @Html.Action("PostComments", "Comment",new {postId=Model.Id})
+
+
+            </footer>
         </div>
+
     </div>
+
 </div>
+

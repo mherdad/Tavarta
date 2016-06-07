@@ -1,0 +1,90 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Tavarta.ViewModel.Comments.CommentViewModel>
+    
+
+<div class="panel panel-white">
+    @*<a href="#" class="btn btn-danger" id="deleteBtn">حذف رکورد و افزونه تائيد</a>*@
+    <div class="panel-heading" style="background-color: #F7F7F8">
+
+        <div class="row">
+            <div class="col-md-2">
+                @Html.AntiForgeryToken()
+                @*<a href="#" class="btn btn-primary" id="btnCreate">ثبت اطلاعات  به كمك افزونه با فعال بودن اعتبارسنجي</a>*@
+                @*<a id="test" data-toggle="modal" data-target="#myModal" href="@renderModalPartialViewUrl" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createUserForm','modal')"
+                    data-ajax-update="#modal" data-ajax-url="@Url.Action("Create", "Post")" role="button"><i class="fa fa-plus"></i>درج نوشته جدید</a>*@
+            </div>
+            <div class="col-md-8">
+                @using (Ajax.BeginForm("ListAjax", "", new AjaxOptions { AllowCache = false, HttpMethod = "POST", OnComplete = "searchOnComplete(xhr,status,'#progress','#userPager','#userList')" }, new { @class = "form-horizontal search", autocomplete = "off", id = "userSearchForm" }))
+                {
+                    @*@Html.Hidden("PageIndex", Model.SearchRequest.PageIndex)*@
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @* @Html.DropDownList("RoleId", Model.Category, "همه گروه ها", new {@class = "form-control"})*@
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" name="UserName" class="form-control" placeholder="نام کاربری">
+                                <span class="input-group-btn">
+                                    <button type="button" id="userSearchButton" autocomplete="off" onclick="directSearchPaging('#progress', 'userSearchForm', '#userPager', '#userList')" data-loading-text="درخواست" class="btn btn-wide btn-dark-green btn-scroll btn-scroll-left  fa fa-search">
+                                        <span><i class="fa fa-search"></i>  جستجو</span>
+                                    </button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-lg-6 -->
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="row" id="userList">
+            <div class="panel panel-white" >
+                <div class="panel-body">
+                    <!-- start: STRIPED ROWS -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table table-striped  table-hover table-bordered " id="sample-table-2">
+                                <thead>
+                                    <tr>
+                                        <th class="center">Photo</th>
+                                        <th class="hidden-xs">Full Name</th>
+                                        <th class="hidden-xs">Role</th>
+                                        <th class="hidden-xs">Email</th>
+                                        <th class="hidden-xs">Phone</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ Html.RenderPartial("_ListAjax", Model);}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer padding-5-5">
+          @Html.PagedListPager(Model, page => Url.Action("List", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+        @*<p>
+
+            @Html.PagedListPager(Model, page => Url.Action("List", new {page = page}), PagedListRenderOptions.PageNumbersOnly)
+        </p>
+        @Html.BootstrapPager(5, index => Url.Action("List", "Post", new {page = index}), 50, numberOfLinks: 10)*@
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <button data-page="2" id="userPager" onclick="
+doPaging(this, '#progress', 'userSearchForm')" class="btn btn-dark-blue btn-block btn-sm " type="button">
+                    بیشتر
+                </button>
+            </div>
+        </div>
+        <div id="progress" align="center" style="display: none">
+            <img src="@Url.Content("~/Content/images/loading.gif")" alt="loading..."/>
+        </div>
+    </div>
+</div>
+

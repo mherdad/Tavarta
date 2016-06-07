@@ -1,0 +1,218 @@
+﻿@model  Tavarta.ViewModel.Comments.CommentListViewModel
+
+@*@section scripts
+    {
+        <script>
+
+        function NestedComment(ParentID) {
+        $.ajax({
+        url: "/Comment/InsertComment",
+        data: { ParentID: ParentID },
+        type:"Get"
+        }).done(function(result) {
+        $('#Comment_' + ParentID).append(result);
+        });
+
+        }
+        </script>
+    }
+
+    @foreach (var item in Model)
+        {
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img alt="64x64" class="media-object" style="width: 64px; height: 64px;" src="/Content/anonymous_user_profile.jpg" data-holder-rendered="true">
+                    </a>
+                </div>
+                <div class="media-body" id="Comment_@(item.Id)" style="padding: 3px;width: 100%">
+                    <h4 class="media-heading">
+                        @item.Email
+                        <label class="badge pull-left" style="font-weight: normal">@item.CreatedOn.ToString("dddd, dd MMMM yyyy - HH:mm")</label>
+                    </h4>
+                    <div class="clearfix">
+                        @item.Body
+                    </div>
+
+                    <a class="btn btn-xs pull-left btn-primary" onclick="NestedComment(@item.Id)" style="clear: both">ارسال پاسخ</a>
+
+                    @foreach (var child in item.Children.ToList())
+                    {
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img alt="64x64" class="media-object" style="width: 64px; height: 64px;" src="/Content/anonymous_user_profile.jpg" data-holder-rendered="true">
+                                </a>
+                            </div>
+                            <div class="media-body" style="padding: 3px;width: 100%">
+                                <h4 class="media-heading">@child.Email</h4>
+                                <div class="clearfix">
+                                    @child.Body
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr class="clearfix" />
+        }*@
+
+@{
+    ViewBag.Title = "Index";
+    var renderModalPartialViewUrl = Url.Action("Temp", "Comment");
+    var postDataUrl = Url.Action("Temp", "Comment");
+}
+@Html.AntiForgeryToken()
+
+<br />
+
+@section scripts
+{
+    <script src="~/Content/assets/customs/json2.js"></script>
+    <script src="~/Content/assets/customs/angular.js"></script>
+    <script src="~/Content/assets/customs/angular-scenario.js"></script>
+    <script src="~/Content/assets/My/jquery-1.9.1.min.js"></script>
+    <script src="~/js/jquery-1.12.3.js"></script>
+    <script src="~/Content/assets/jquery-2.1.4.js"></script>
+    <script src="~/js/bootstrap-notify.js"></script>
+    <script src="~/js/notify.js"></script>
+    <script src="~/Content/assets/customs/jquery.noty.packaged.min.js"></script>
+    <script src="~/Content/assets/customs/noty.alerts.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.min.js"></script>
+    <script src="~/Content/assets/My/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/assets/My/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/assets/My/bootstrap-rtl.js"></script>
+    <script src="~/Content/assets/customs/fileinput.min.js"></script>
+    <script src="~/Content/assets/My/jquery.bootstrap-modal-ajax-form.js"></script>
+    <script src="~/Content/assets/My/jquery.bootstrap-modal-confirm.js"></script>
+    <script src="~/Content/assets/customs/ajax.methods.js"></script>
+    <script src="~/Content/assets/customs/jqueryval-default.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#btnCreate').click(function (e) {
+                e.preventDefault(); //مي‌خواهيم لينك به صورت معمول عمل نكند
+
+                $.bootstrapModalAjaxForm({
+                    postUrl: '@postDataUrl',
+                    renderModalPartialViewUrl: '@renderModalPartialViewUrl',
+                    renderModalPartialViewData: {},
+                    loginUrl: '/login',
+                    beforePostHandler: function () {
+                        alert('beforePost');
+                    },
+                    completeHandler: function () {
+                        alert('completeHandler');
+                        // Refresh: براي حالتيكه نياز به به روز رساني كامل صفحه زيرين باشد
+                        // location.reload();
+                    },
+                    errorHandler: function () {
+                        alert('error');
+                    }
+                });
+            });
+
+            $("#deleteBtn").click(function (e) {
+                e.preventDefault(); //می‌خواهیم لینک به صورت معمول عمل نکند
+                $.bootstrapModalConfirm({
+                    caption: 'تائید عملیات',
+                    body: 'آیا عملیات درخواستی اجرا شود؟',
+                    onConfirm: function () {
+                        alert('در حال انجام عملیات');
+                    },
+                    confirmText: 'تائید',
+                    closeText: 'انصراف'
+                });
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12" style="background-color: white">
+
+        <div class="post-media post-comments margin-top-30">
+            <h4>نظرات (3)</h4>
+            <div class="media">
+
+                @foreach (var tt in Model.Comments1)
+                {
+                <a href="#" class="pull-right"> <img src="~/Content/assets/images/avatar-1-small.jpg" alt="" class="media-object img-circle"> </a>
+                <div class="media-body">
+                    <h5 class="media-heading">@tt.Email </h5>
+                    <a id="btnCreate" data-toggle="modal" data-target="#myModal" href="@Url.Action("Reply", "Comment")">ffgf</a>
+                    <a id="test" data-toggle="modal" data-target="#myModal" href="@renderModalPartialViewUrl" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createUserForm','modal')"
+                       data-ajax-update="#modal" data-ajax-url="@Url.Action("Reply", "Comment")" role="button"><i class="fa fa-plus"></i>درج کاربر جدید</a>
+                    <span class="reply"> <span> <a href="@Url.Action()"><i class="fa fa-reply"></i> پاسخ</a></span> </span>
+                    <p style="margin-right: 20px; margin-top: 10px">
+                        @tt.Body
+                    </p>
+                    <span class="date">1391</span>
+                    <hr>
+                    @foreach (var postComment in Model.Comments2)
+                        {
+                            if (tt.Id == postComment.ReplyId)
+                            {
+                        <div class="media">
+                            <a href="#" class="pull-right"><img src="~/Content/assets/images/avatar-1-small.jpg" alt="" class="media-object img-circle"> </a>
+                            <div class="media-body">
+                                <h5 class="media-heading">@postComment.Email </h5>
+                                <span class="reply"> <span> <a href="#"><i class="fa fa-reply"></i> پاسخ</a></span> </span>
+                                <p style="margin-right: 20px; margin-top: 10px">
+                                    @postComment.Body
+                                </p>
+                                <span class="date">1391</span>
+                            </div>
+                        </div>
+                            }
+
+                        }
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="row" style="background-color: #F0F0F0"><br/><br/>
+        </div>
+
+        @using (Html.BeginForm("Showcomment", "Comment", FormMethod.Post))
+        {
+
+
+                <div class="post-block post-leave-comment border-top border-dark">
+                    <h3>ارسال نظر</h3>
+                    <form action="" type="post">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(x=>Model.TempViewModel.Title)
+                                    @Html.TextBoxFor(x=>Model.TempViewModel.Title,new {@class="form-control"})  
+                                   
+                                </div>
+                                <div class="col-md-6">
+                                      @Html.LabelFor(x=>Model.TempViewModel.Email)
+                                     @Html.TextBoxFor(x=>Model.TempViewModel.Email,new {@class="form-control"})  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                      @Html.LabelFor(x=>Model.TempViewModel.Body)
+                                    @Html.TextAreaFor(x=>Model.TempViewModel.Body,new {@class="form-control",maxlength="5000",rows="10"}) 
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="blog_post.html" class="btn btn-primary btn-wide btn-scroll btn-scroll-top fa-arrow-right margin-top-15 pull-right" data-caption-class="fadeIn" data-caption-delay="900"> <span>ارسال نظر</span> </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+      
+        }
+
+    </div>
+</div>

@@ -24,7 +24,7 @@ namespace Tavarta.DomainClasses.Entities.Comment
         /// <summary>
         /// gets or sets BlogComment's identifier for Replying and impelemention self referencing
         /// </summary>
-        public virtual long? ReplyId { get; set; }
+        public virtual Guid? ReplyId { get; set; }
         /// <summary>
         /// gets or sets blog's comment for Replying and impelemention self referencing
         /// </summary>
@@ -40,7 +40,7 @@ namespace Tavarta.DomainClasses.Entities.Comment
         /// <summary>
         /// gets or sets post'Id that this comment sent to it
         /// </summary>
-        public virtual long PostId { get; set; }
+        public virtual Guid PostId { get; set; }
         #endregion
     }
 }

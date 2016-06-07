@@ -1,0 +1,6 @@
+﻿@model PagedList.IPagedList<Tavarta.ViewModel.Comments.CommentViewModel>
+
+@foreach (var post in Model)
+{
+    @Html.Partial("_CommentItem", post)
+}

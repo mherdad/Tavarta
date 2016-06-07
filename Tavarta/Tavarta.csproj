@@ -339,6 +339,9 @@
     <Content Include="Areas\Admin\Views\Post\List.cshtml" />
     <Content Include="Areas\Admin\Views\Post\_ListAjax.cshtml" />
     <Content Include="Areas\Admin\Views\Post\_PostItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\_ListAjax.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\_CommentItem.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\Create.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\List.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\_ListAjax.cshtml" />
@@ -1967,10 +1970,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideShowController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
@@ -2198,6 +2203,12 @@
     <Content Include="Scripts\fileman\web.config" />
     <Content Include="Scripts\fileman\lang\fa.json" />
     <Content Include="Views\Gallery\List.cshtml" />
+    <Content Include="Views\Comment\Showcomment.cshtml" />
+    <Content Include="Views\Comment\InsertComment.cshtml" />
+    <None Include="Views\Comment\PostComments.cshtml" />
+    <None Include="Views\Comment\Temp.cshtml" />
+    <None Include="Views\Comment\_AddPostComments.cshtml" />
+    <None Include="Views\Comment\_Reply.cshtml" />
     <None Include="Views\Home\Single.cshtml">
       <Generator>RazorGenerator</Generator>
     </None>

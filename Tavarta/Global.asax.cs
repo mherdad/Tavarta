@@ -36,7 +36,9 @@ namespace Tavarta
             try
             {
                 ViewEngines.Engines.Clear();
-                ViewEngines.Engines.Add(new CSharpRazorViewEngine());
+                var razorEngine =new CSharpRazorViewEngine();
+                razorEngine.ViewLocationCache=new TwoLevelViewCache(razorEngine.ViewLocationCache);
+                ViewEngines.Engines.Add(razorEngine);
                 MvcHandler.DisableMvcResponseHeader = true;
                 
                 AreaRegistration.RegisterAllAreas();

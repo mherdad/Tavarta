@@ -4,6 +4,7 @@ namespace Tavarta.ViewModel.News
 {
     public class NewsDetailsViewModel
     {
+        public Guid Id { get; set; }
 
         /// <summary>
         /// gets or sets the blog pot body
