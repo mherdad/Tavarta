@@ -1,25 +1,23 @@
-﻿using System;
-using Microsoft.Web.Mvc;
+﻿using Microsoft.Web.Mvc;
 using PagedList;
+using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.UI;
 using Tavarta.Common.Controller;
-using Tavarta.Common.Extentions;
-using Tavarta.Common.Json;
 using Tavarta.DataLayer.Context;
 using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.Category;
 using Tavarta.ServiceLayer.Contracts.Posts;
 using Tavarta.ServiceLayer.Contracts.Users;
-using Tavarta.Utility;
 using Tavarta.ViewModel.Posts;
 using Tavarta.ViewModel.User;
 
 namespace Tavarta.Areas.Admin.Controllers
 {
+    [Authorize]
     public class PostController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -52,30 +50,29 @@ namespace Tavarta.Areas.Admin.Controllers
 
             _postService.AddPost(viewModel);
 
-            return RedirectToAction("Create");
+            return RedirectToAction("List");
         }
 
         public async Task<ViewResult> List(int? page)
         {
-            var pagenumber = (page ?? 1) - 1; 
+            var pagenumber = (page ?? 1) - 1;
 
             var totalCount = 0;
-            var posts = await _postService.GetOrderPage( pagenumber, 5);
+            var posts = await _postService.GetOrderPage(pagenumber, 5);
 
             totalCount = posts.TotalCount;
 
             IPagedList<PostViewModel> pageOrders = new StaticPagedList<PostViewModel>(posts.Posts, pagenumber + 1, 5, totalCount);
             return View(pageOrders);
-
         }
 
         [AjaxOnly]
         [HttpPost]
         public async Task<ActionResult> ListAjax(UserSearchRequest search)
         {
-            var viewModel = await _postService.GetPageList(search,1,10);
+            var viewModel = await _postService.GetPageList(search, 1, 10);
             if (viewModel.Posts == null || !viewModel.Posts.Any()) return Content("no-more-info");
-            IPagedList<PostViewModel> pageOrders = new StaticPagedList<PostViewModel>(viewModel.Posts,null);
+            IPagedList<PostViewModel> pageOrders = new StaticPagedList<PostViewModel>(viewModel.Posts, null);
             return PartialView("_ListAjax", pageOrders);
         }
 
@@ -94,7 +91,6 @@ namespace Tavarta.Areas.Admin.Controllers
             return View("Create", viewModel);
         }
 
-
         [HttpPost]
         //[AjaxOnly]
         // [Route("Edit/{id}")]
@@ -102,26 +98,38 @@ namespace Tavarta.Areas.Admin.Controllers
 
         public virtual async Task<ActionResult> Edit(AddPostViewModel viewModel)
         {
-
-            var post =  _postService.FindByIdAsync(viewModel.Id);
+            var post = _postService.FindByIdAsync(viewModel.Id);
 
             if (post == null) return HttpNotFound();
             viewModel.AuthorId = _userManager.GetCurrentUserId();
 
             await _postService.EditUser(viewModel);
             return RedirectToAction("List");
-            return new JsonNetResult
-            {
-                Data =
-                new
-                {
-                    success = true,
-                    View = View("_UserItem")
-                }
-            };
+            //return new JsonNetResult
+            //{
+            //    Data =
+            //    new
+            //    {
+            //        success = true,
+            //        View = View("_UserItem")
+            //    }
+            //};
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var post = await _postService.GetDeletePostAsync(id);
+            if (post == null) return HttpNotFound();
 
+            return View(post);
+        }
 
+        [HttpPost]
+        public ActionResult Delete(DeleteViewModel viewModel)
+        {
+            _postService.DeletePost(viewModel.Id);
+            return RedirectToAction("List");
+        }
     }
 }

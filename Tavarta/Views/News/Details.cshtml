@@ -2,6 +2,12 @@
 @using Tavarta.Utility
 @model Tavarta.ViewModel.News.NewsDetailsViewModel
 
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.Headline;
+    ViewBag.Keywords = Model.ViewCount;
+}
+
 <div class="col-md-8 widget widget-bordered title-b content-view">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
@@ -66,7 +72,7 @@
                             </div>
                         </section>
                         <div class="clearfix"></div>
-                        <ul class="list-inline tags">
+                        @*<ul class="list-inline tags">
                             <li class="label">
                                 <a href="/frontcms/tag/viewcontents/id/51">
                                     <i class="fa fa-tag"></i>
@@ -97,7 +103,7 @@
                                     مربیگری فوتبال
                                 </a>
                             </li>
-                        </ul>
+                        </ul>*@
                         <div class="source">
                             <i class="glyphicon glyphicon-link"></i>
                             اختصاصی
@@ -113,7 +119,9 @@
                 <br/>
             </div>
             <footer>
-                @Html.Action("PostComments", "Comment",new {postId=Model.Id})
+               
+                @Html.Action("Showcomment", "Comment",new {postId=Model.Id})
+                 @Html.Action("PostComments", "Comment",new {postId=Model.Id})
 
 
             </footer>

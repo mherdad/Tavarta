@@ -10,7 +10,7 @@ namespace Tavarta.ViewModel.Comments
         public int TotalCount { get; set; }
         //public IList<CommentViewModel> Comments1 { get; set; }
         //public IList<CommentViewModel> Comments2 { get; set; }
-        public AddCommentsViewModel AddComments { get; set; }
+        //public AddCommentsViewModel AddComments { get; set; }
         public Guid PostId { get; set; }
     }
 }

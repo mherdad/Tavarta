@@ -1,9 +1,9 @@
 ﻿<!-- sidebar -->
-<div class="sidebar app-aside" id="sidebar">
+<div class="sidebar app-aside" style="margin-top: 1px;" id="sidebar">
     <div class="sidebar-container perfect-scrollbar">
         <nav>
             <!-- start: SEARCH FORM -->
-            <div class="search-form">
+            @*<div class="search-form">
                 <a class="s-open" href="#">
                     <i class="ti-search"></i>
                 </a>
@@ -18,15 +18,17 @@
                         </button>
                     </div>
                 </form>
-            </div>
+            </div>*@
             <!-- end: SEARCH FORM -->
             <!-- start: MAIN NAVIGATION MENU -->
             <div class="navbar-title">
                 <h5>تاورتا </h5>
             </div>
+            
+
             <ul class="main-navigation-menu">
                 <li class="active open">
-                    <a href="index.html">
+                    <a href="@Url.Action("Index","Home",new {area="admin"})">
                         <div class="item-content">
                             <div class="item-media">
                                 <i class="ti-home"></i>
@@ -37,7 +39,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                @*<li>
                     <a href="javascript:void(0)">
                         <div class="item-content">
                             <div class="item-media">
@@ -55,8 +57,8 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li>
+                </li>*@
+                @*<li>
                     <a href="javascript:void(0)">
                         <div class="item-content">
                             <div class="item-media">
@@ -84,7 +86,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>*@
                 <li>
                     <a href="javascript:void(0)">
                         <div class="item-content">
@@ -98,25 +100,25 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="form_elements.html">
+                            <a href="@Url.Action("Create","Post",new {area="admin"})">
                                 <span class="title">نوشته جدید</span>
                             </a>
                         </li>
                         <li>
-                            <a href="form_text_editor.html">
-                                <span class="title">Text Editor</span>
+                            <a href="@Url.Action("List","Post")">
+                                <span class="title">نوشته ها</span>
                             </a>
                         </li>
                         <li>
-                            <a href="form_wizard.html">
-                                <span class="title">Form Wizard</span>
+                            <a href="@Url.Action("List","SlideShow",new {area="admin"})">
+                                <span class="title">مدیریت سلاید شو</span>
                             </a>
                         </li>
-                        <li>
+                        @*<li>
                             <a href="form_validation.html">
                                 <span class="title">Form Validation</span>
                             </a>
-                        </li>
+                        </li>*@
                     </ul>
                 </li>
                 <li>
@@ -132,16 +134,16 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="login_signin.html">
-                                <span class="title"> پروفایل کاربران </span>
+                            <a href="@Url.Action("List","User" ,new {area="admin"})">
+                                <span class="title">  لیست کاربران </span>
                             </a>
                         </li>
                         <li>
-                            <a href="login_registration.html">
+                            <a href="@Url.Action("List","Role")">
                                 <span class="title"> گروه های کاربری </span>
                             </a>
                         </li>
-                        <li>
+                        @*<li>
                             <a href="login_forgot.html">
                                 <span class="title"> لیست کاربران </span>
                             </a>
@@ -150,13 +152,13 @@
                             <a href="login_lockscreen.html">
                                 <span class="title">Lock Screen</span>
                             </a>
-                        </li>
+                        </li>*@
                     </ul>
                 </li>
             </ul>
             <!-- end: MAIN NAVIGATION MENU -->
             <!-- start: CORE FEATURES -->
-            <div class="navbar-title">
+            @*<div class="navbar-title">
                 <span>ویژگی ها </span>
             </div>
             <ul class="folders">
@@ -184,7 +186,7 @@
                         </div>
                     </a>
                 </li>
-            </ul>
+            </ul>*@
             <!-- end: CORE FEATURES -->
         </nav>
     </div>

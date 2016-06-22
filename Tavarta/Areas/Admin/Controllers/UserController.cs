@@ -18,6 +18,7 @@ using Tavarta.ViewModel.User;
 
 namespace Tavarta.Areas.Admin.Controllers
 {
+    [Authorize]
     public class UserController:BaseController
     {
         #region Fields
@@ -163,19 +164,19 @@ namespace Tavarta.Areas.Admin.Controllers
 
             #endregion
 
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction("Create",viewModel);
-                return new JsonNetResult
-                {
-                    Data =
-                        new
-                        {
-                            success = false,
-                            View = this.RenderPartialViewToString("_Create", viewModel)
-                        }
-                };
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return RedirectToAction("Create",viewModel);
+            //    return new JsonNetResult
+            //    {
+            //        Data =
+            //            new
+            //            {
+            //                success = false,
+            //                View = this.RenderPartialViewToString("_Create", viewModel)
+            //            }
+            //    };
+            //}
             var newUser =
             await _userManager.AddUser(viewModel);
             return RedirectToAction("List");

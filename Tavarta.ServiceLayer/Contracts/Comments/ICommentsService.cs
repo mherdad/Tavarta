@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Tavarta.DomainClasses.Entities.Comment;
+using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.ViewModel.Comments;
 using Tavarta.ViewModel.News;
 
@@ -11,6 +12,8 @@ namespace Tavarta.ServiceLayer.Contracts.Comments
     {
         Task<CommentListViewModel> GetOrderPage(int page, int itemsPerPage);
         Task<CommentListViewModel> GetComments(Guid postId);
-        Task<CommentViewModel> AddComment(AddCommentsViewModel viewModel, Guid postId);
+        Task<CommentViewModel> AddComment(AddCommentsViewModel viewModel);
+        Task<AddCommentsViewModel> GetPost(Guid postId);
+        Task<Post> FindById(Guid id);
     }
 }

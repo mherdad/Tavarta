@@ -4,31 +4,74 @@
     <div class="col-md-12 data-item">
 
         <tr>
-            <td class="center"><img src="@Model.Image" class="img-rounded" width="180" height="100" alt="image" /></td>
+            <td class="center"><img src="@Model.Image" class="img-rounded img-responsive" style="display: inline-table" width="180" height="100" alt="image" /></td>
             <td>@Model.Title</td>
             <td class="hidden-xs">@Model.Link</td>
-                   
-            <td class="hidden-xs">@Model.Order</td>          
-              <td class="hidden-xs"> <a href="@Url.Action("Edit",new {Model.Id})">hhh</a> </td> 
-            
-           @* <td class="hidden-xs">@Model..ToLongPersianDate()</td>*@
-            <td class="center">
+
+            <td class="hidden-xs">@Model.Order</td>
+            @*<td class=""> <a href="@Url.Action("Edit", new {Model.Id})>ویرایش</a> </td>
+            <td class=""> <a href="@Url.Action("Delete", new {Model.Id})">حذف</a> </td>*@
+                 <td class="center">
                 <div class="visible-md visible-lg hidden-sm hidden-xs">
-                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
-                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                    <a href="@Url.Action("Edit",new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="ویرایش"><i class="fa fa-pencil"></i></a>
+                    <a href="@Url.Action("Delete",new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="حذف"><i class="fa fa-times fa fa-white"></i></a>
+                    @*<a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>*@
+                    @*<a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>*@
                 </div>
                 <div class="visible-xs visible-sm hidden-md hidden-lg">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span></button>
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">امکانات<span class="caret"></span></button>
                         <span class="dropdown-arrow"></span>
-                        <ul class="dropdown-menu">
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            </ul>
+                        <ul class="dropdown-menu "  >
+                            <li ><a class="btn btn-xs" href="@Url.Action("Edit",new {Model.Id})">ویرایش</a></li>
+                            <li ><a class="btn btn-xs" href="@Url.Action("Delete",new {Model.Id})">حذف</a></li>
+                    
+                        </ul>
                     </div>
-                    <div class="btn-group" dropdown>
+                    @*<div class="btn-group" dropdown>
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
+                            <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right dropdown-light" role="menu">
+                            <li>
+                                <a href="@Url.Action("Edit",new {Model.Id})">
+                                    Edit
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Share
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Remove
+                                </a>
+                            </li>
+                        </ul>
+                    </div>*@
+                </div>
+            </td>
+
+
+            @* <td class="hidden-xs">@Model..ToLongPersianDate()</td>*@
+            @*<td class="center">
+            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
+                <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
+                <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+            </div>
+            @*<div class="visible-xs visible-sm hidden-md hidden-lg">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">عملیات<span class="caret"></span></button>
+                    <span class="dropdown-arrow"></span>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("Edit",new {Model.Id})">ویرایش</a></li>
+                        @*<li><a href="#fakelink">Sub Menu Element</a></li>
+                        <li><a href="#fakelink">Sub Menu Element</a></li>
+                        </ul>
+                </div>*@
+            @*<div class="btn-group" dropdown>
                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
                                 <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
                             </button>
@@ -51,7 +94,7 @@
                             </ul>
                         </div>
                 </div>
-            </td>
+            </td>*@
         </tr>
     </div>
 </div>

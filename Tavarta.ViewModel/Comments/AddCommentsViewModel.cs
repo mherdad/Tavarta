@@ -28,6 +28,8 @@ namespace Tavarta.ViewModel.Comments
         [Display(Name = "نظر", Prompt = "نظر")]
         public string Body { get; set; }
 
+        public Guid PostId { get; set; }
+
 
     }
 }

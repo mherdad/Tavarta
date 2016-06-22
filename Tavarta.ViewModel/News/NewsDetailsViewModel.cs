@@ -1,8 +1,9 @@
 ﻿using System;
+using Tavarta.Common.Fabrik;
 
 namespace Tavarta.ViewModel.News
 {
-    public class NewsDetailsViewModel
+    public class NewsDetailsViewModel 
     {
         public Guid Id { get; set; }
 
@@ -38,6 +39,24 @@ namespace Tavarta.ViewModel.News
 
         public string Image { get; set; }
 
-        
+
+
+        /// <summary>
+        /// gets or sets meta title for seo
+        /// </summary>
+        public  string MetaTitle { get; set; }
+
+        /// <summary>
+        /// gets or sets meta keywords for seo
+        /// </summary>
+        public  string MetaKeywords { get; set; }
+
+        /// <summary>
+        /// gets or sets meta description of the content
+        /// </summary>
+        public  string MetaDescription { get; set; }
+
+
+
     }
 }

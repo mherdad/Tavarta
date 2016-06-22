@@ -3,8 +3,8 @@
 @model Tavarta.ViewModel.Posts.AddPostViewModel
 
 @{
-    string temp = "";
-    temp = Model.Id != Guid.Empty ? "Edit" : "Create";
+    string actionName = "";
+    actionName = Model.Id != Guid.Empty ? "Edit" : "Create";
     var t = Model.Id.ToString();
 }
 
@@ -13,7 +13,7 @@
         <div class="box-register">
             <div class="modal-body">
 
-                @using (Html.BeginForm(temp, "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm(actionName, "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
 
                     <fieldset>
@@ -58,10 +58,10 @@
 
                         <div class="row form-group">
 
-                            @Html.LabelFor(m => m.HeadTitle, new { @class = "col-md-3 control-label" })
+                            @Html.LabelFor(m => m.Headline, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(m => m.HeadTitle, new { @class = "form-control", placeholder = "سر تیتر", autocomplete = "off" })
-                                @Html.ValidationMessageFor(m => m.HeadTitle, "", new { @class = "text-danger" })
+                                @Html.TextBoxFor(m => m.Headline, new { @class = "form-control", placeholder = "سر تیتر" })
+                                @Html.ValidationMessageFor(m => m.Headline, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -92,7 +92,7 @@
                         <div class="row pull-left">
                             <div class="row form-group ">
                                 <div class="col-md-12 col-md-pull-1 ">
-                                    @if (temp == "Create")
+                                    @if (actionName == "Create")
                                     {
                                         <button data-loading-text="در حال ارسال اطلاعات" class="btn btn-primary btn-md" type="submit">ثبت نوشته</button>
                                     }
@@ -103,9 +103,8 @@
                                     @*<button type="button" id="createUserButton" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'createUserForm')" data-loading-text="در حال ارسال اطلاعات" class="btn btn-success btn-md">
                                             ثبت کاربر
                                         </button>*@
-                                    <button class="btn btn-default btn-md" data-dismiss="modal" aria-hidden="true">
-                                        انصراف
-                                    </button>
+                                    <a class="btn btn-default btn-md" href="@Url.Action("List", "Post")"> انصراف</a>
+                                  
                                 </div>
                             </div>
                         </div>

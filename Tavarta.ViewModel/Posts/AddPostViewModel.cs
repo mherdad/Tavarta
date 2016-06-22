@@ -51,7 +51,7 @@ namespace Tavarta.ViewModel.Posts
         /// </summary>
 
         [Display(Name = "سر تیتر")]
-        public string HeadTitle { get; set; }
+        public string Headline { get; set; }
 
         public IEnumerable<SelectListItem> Categorizes { get; set; }
 

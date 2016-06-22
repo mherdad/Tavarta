@@ -16,5 +16,7 @@ namespace Tavarta.ServiceLayer.Contracts.Posts
         Task<AddPostViewModel> GetForEditAsync(Guid id);
         Task<Post> FindByIdAsync(Guid viewModel);
         Task EditUser(AddPostViewModel viewModel );
+        Task<DeleteViewModel> GetDeletePostAsync(Guid id);
+        Task DeletePost(Guid id);
     }
 }

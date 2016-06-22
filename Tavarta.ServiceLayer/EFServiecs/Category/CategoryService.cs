@@ -28,7 +28,13 @@ namespace Tavarta.ServiceLayer.EFServiecs.Category
             _categories = _unitOfWork.Set<DomainClasses.Entities.Postes.Category>();
         }
 
-
+        public DomainClasses.Entities.Postes.Category FindByName (string name)
+        {
+            var tt = _categories.AsNoTracking().Where(x => x.Name == name).ToList();
+            if (tt==null)
+                return null;
+            return new DomainClasses.Entities.Postes.Category();
+        }
 
         public async Task<IEnumerable<SelectListItem>> GetAllAsSelectList()
         {

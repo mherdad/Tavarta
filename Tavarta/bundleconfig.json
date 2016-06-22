@@ -1,0 +1,27 @@
+[
+  {
+    "outputFileName": "Content/css/Frontend/bundle.css",
+    "inputFiles": [
+      "Content/css/Frontend/PagedList.css",
+      "Content/css/Frontend/StyleSheet1.css",
+      "Content/css/Frontend/TavartaCommon.css",
+      "Content/css/Frontend/TavartaDefault.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/Frontend/FrontendBundel.css",
+    "inputFiles": [
+      "Content/css/Frontend/bootstrap.min.css",
+      "Content/css/Frontend/PagedList.css",
+      "Content/css/Frontend/StyleSheet1.css",
+      "Content/css/Frontend/TavartaCommon.css",
+      "Content/css/Frontend/TavartaDefault.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/Frontend/Frontendbundle.css",
+    "inputFiles": [
+      "Content/css/Frontend/Frontendbundle.css"
+    ]
+  }
+]

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using Tavarta.Common.Extentions;
 
 namespace Tavarta.ViewModel.News
 {
@@ -27,6 +29,7 @@ namespace Tavarta.ViewModel.News
         /// </summary>
         public virtual DateTime PublishedOn { get; set; }
 
+    
 
     }
 }

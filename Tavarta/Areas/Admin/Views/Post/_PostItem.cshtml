@@ -9,35 +9,36 @@
 
         <tr>
             <td class="center"><img src="~/Content/assets/images/avatar-1.jpg" class="img-rounded" alt="image"/></td>
-            <td class="hidden-xs">@Model.Title</td>
+            <td class="center">@Model.Title</td>
             <td class="hidden-xs">@Model.TagNames</td>
-            <td class="hidden-xs">@Model.Category.Name</td>
+            <td class="center">@Model.Category.Name</td>
             <td class="hidden-xs">@Model.Author.DisplayName</td>
-             <td class="hidden-xs"> <a href="@Url.Action("Edit",new {Model.Id})"> dfgff</a>   </td>
+             @*<td class="hidden-xs"> <a href="@Url.Action("Edit",new {Model.Id})">ویرایش</a>   </td>*@
 
-            <td class="hidden-xs">
+            @*<td class="hidden-xs">
                 <a href="#" rel="nofollow" target="_blank">
 
                 </a>
-            </td>
+            </td>*@
             <td class="hidden-xs">@Model.PublishedOn.ToFriendlyDateString("YYY-MM-dd").ToLongPersianDate()</td>
             <td class="center">
                 <div class="visible-md visible-lg hidden-sm hidden-xs">
-                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
-                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                    <a href="@Url.Action("Edit",new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="ویرایش"><i class="fa fa-pencil"></i></a>
+                    <a href="@Url.Action("Delete",new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="حذف"><i class="fa fa-times fa fa-white"></i></a>
+                    @*<a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>*@
+                    @*<a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>*@
                 </div>
                 <div class="visible-xs visible-sm hidden-md hidden-lg">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Dropdown<span class="caret"></span></button>
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">امکانات<span class="caret"></span></button>
                         <span class="dropdown-arrow"></span>
-                        <ul class="dropdown-menu">
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
-                            <li><a href="#fakelink">Sub Menu Element</a></li>
+                        <ul class="dropdown-menu "  >
+                            <li ><a class="btn btn-xs" href="@Url.Action("Edit",new {Model.Id})">ویرایش</a></li>
+                            <li ><a class="btn btn-xs" href="@Url.Action("Delete",new {Model.Id})">حذف</a></li>
+                    
                         </ul>
                     </div>
-                    <div class="btn-group" dropdown>
+                    @*<div class="btn-group" dropdown>
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
                             <i class="fa fa-cog"></i>&nbsp;<span class="caret"></span>
                         </button>
@@ -58,7 +59,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </td>
         </tr>

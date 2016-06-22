@@ -17,8 +17,8 @@
             <div class="col-md-2">
                 @Html.AntiForgeryToken()
                 @*<a href="#" class="btn btn-primary" id="btnCreate">ثبت اطلاعات  به كمك افزونه با فعال بودن اعتبارسنجي</a>*@
-                <a id="test" data-toggle="modal" data-target="#myModal" href="@renderModalPartialViewUrl" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" data-ajax="true" data-ajax-mode="replace" data-ajax-method="GET" data-ajax-success="onSuccessFormValidation(data, status, xhr,'createUserForm','modal')"
-                    data-ajax-update="#modal" data-ajax-url="@Url.Action("Create", "Post")" role="button"><i class="fa fa-plus"></i>درج نوشته جدید</a>
+                <a id="test" href="@Url.Action("Create", "SlideShow")" class="btn btn-wide btn-dark-purple  " style="margin-bottom: 5px" 
+                     role="button"><i class="fa fa-plus"></i>درج سلاید جدید</a>
             </div>
             <div class="col-md-8">
                 @using (Ajax.BeginForm("ListAjax", "", new AjaxOptions { AllowCache = false, HttpMethod = "POST", OnComplete = "searchOnComplete(xhr,status,'#progress','#userPager','#userList')" }, new { @class = "form-horizontal search", autocomplete = "off", id = "userSearchForm" }))
@@ -28,7 +28,7 @@
                         <div class="col-lg-6">
                             @* @Html.DropDownList("RoleId", Model.Category, "همه گروه ها", new {@class = "form-control"})*@
                         </div>
-                        <div class="col-lg-6">
+                        @*<div class="col-lg-6">
                             <div class="input-group">
                                 <input type="text" name="UserName" class="form-control" placeholder="نام کاربری">
                                 <span class="input-group-btn">
@@ -36,8 +36,8 @@
                                         <span><i class="fa fa-search"></i>  جستجو</span>
                                     </button>
                                 </span>
-                            </div><!-- /input-group -->
-                        </div><!-- /.col-lg-6 -->
+                            </div>
+                        </div>*@
                     </div>
                 }
             </div>
@@ -61,7 +61,7 @@
                                         <th class="hidden-xs">لینک</th>
                                      
                                         <th class="hidden-xs">ترتیب</th>
-                                        <th></th>
+                                        <th>عملیات</th>
                                     </tr>
                                 </thead>
                                 <tbody>

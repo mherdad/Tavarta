@@ -8,6 +8,7 @@ using EFSecondLevelCache;
 using EFSecondLevelCache.Contracts;
 using EntityFramework.Extensions;
 using Tavarta.Common.Extentions;
+using Tavarta.Common.Helpers;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses.Entities.Postes;
 using Tavarta.ServiceLayer.Contracts.Category;
@@ -59,19 +60,31 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
             //post.TagNames = "fghjk";
             //post.Headline = "dfghjk";
             post.PublishedOn = DateTime.Now;
+            post.Headline = viewModel.Headline;
             //post.Category.Id=viewModel.Categorizes.;
             post.LinkBackStatus = LinkBackStatus.Disable;
             post.DaysCountForSupportComment = 12;
             post.ShowWithRss = true;
             post.Agent = "ali";
+            
             post.AllowCommentForAnonymous = true;
             post.ApprovedCommentsCount = 1;
             post.CanonicalUrl = "asfds";
-            post.FocusKeyword = "gf";
+
+            //seo
+            post.FocusKeyword = viewModel.Headline;
+            
+            var metaDescription = viewModel.Body.CleanTags();
+            post.MetaDescription = metaDescription;
+            
+          
+            post.MetaTitle = viewModel.Title;
+            //seo
+
             post.IsDeleted = false;
-            post.MetaTitle = "gfd";
+            
             post.ModifiedOn = DateTime.Now;
-            post.SlugUrl = "fddf";
+            //post.SlugUrl = viewModel.Title.GenerateSlug();
 
             _posts.Add(post);
 
@@ -165,6 +178,29 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
             var post = await _posts.FirstOrDefaultAsync(x => x.Id == id);
 
             return post;
+        }
+
+        public async Task<DeleteViewModel> GetDeletePostAsync(Guid id)
+        {
+            //var posts = _posts.AsNoTracking().OrderBy(x => x.PublishedOn).AsQueryable();
+            //var query = await posts
+            //    .ProjectTo<PostViewModel>(_mappingEngine).ToListAsync();
+
+            var post =  _posts.AsNoTracking().Where(x => x.Id == id).AsQueryable();
+
+            
+            var viewModel = await post
+                .ProjectTo<DeleteViewModel>(_mappingEngine).FirstOrDefaultAsync();
+
+            return viewModel;
+
+        }
+
+        public async Task DeletePost(Guid id)
+        {
+            var post = await FindByIdAsync(id);
+            _posts.Remove(post);
+            await _unitOfWork.SaveChangesAsync();
         }
 
 

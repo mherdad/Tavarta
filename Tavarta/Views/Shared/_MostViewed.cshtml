@@ -1,16 +1,24 @@
-﻿@model Tavarta.ViewModel.News.NewsViewModel
+﻿@using Tavarta.Common.Extentions
+@using Tavarta.Controllers
+@model Tavarta.ViewModel.News.NewsViewModel
 
-    <div class="col-md-12">
-        <div class="ad-box-wrapper">
-            <a href="@Url.Action("Details","News",new {Model.Id})">
-                <div class="media">
-                    <div class="media-body">
-                        <h5 class="media-heading">
-                            <i class="fa fa-star"></i>
-                           @Model.Title
-                        </h5>
-                    </div>
+@{
+    var Id =  Model.Id.ToString();
+    Id=Id.Substring(0,5);
+  
+}
+<div class="col-md-12">
+    <div class="ad-box-wrapper">
+        @*<a href="/news/@Model.Id/@Model.Title.ToSeoUrl()">@Model.Title</a>*@
+        <a href="@Url.Action("Details", "News", new {Title = Model.Title.ToSeoUrl(), Model.Id})">
+            <div class="media">
+                <div class="media-body">
+                    <h5 class="media-heading">
+                        <i class="fa fa-star"></i>
+                        @Model.Title
+                    </h5>
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
+    </div>
     </div>

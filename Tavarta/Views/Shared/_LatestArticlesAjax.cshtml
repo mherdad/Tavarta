@@ -1,7 +1,9 @@
-﻿@model Tavarta.ViewModel.News.NewsListViewModel
+﻿@using Tavarta.Common.Extentions
+@model Tavarta.ViewModel.News.NewsListViewModel
 
+@{ var temp = 0;}
 <div class="row">
-    <div class="hidden-xxs hidden-xs col-sm-12" id="main-news-sidebar">
+    <div class="hidden-xxs hidden-xs col-sm-12 " id="main-news-sidebar">
         <div class="widget widget-bordered title-a latest-news-widget">
             <h2 class="">
                 آخرین مطالب
@@ -28,6 +30,8 @@
                             <ul class="list zebra">
                                 @foreach (var tt in Model.LastArticle)
                                 {
+                                    temp
+                                    ++;
                                 if (tt.Category.Name == "اختصاصی")
                                 {
 
@@ -36,7 +40,7 @@
                                         @tt.PublishedOn.TimeOfDay.ToHHMM()
                                     </time>
                                     <span class="text-default fa fa-video-camera"></span>
-                                    <a target="_blank" href="@Url.Action(" Details","News", new {tt.Id})" class="detail">
+                                    <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
 
                                         @tt.Title
                                     </a>
@@ -49,28 +53,38 @@
                                     <time class="" datetime="">
                                         @tt.PublishedOn.TimeOfDay.ToHHMM()
                                     </time>
+                                     
                                     <span class="text-default fa fa-camera"></span>
-                                    <a target="_blank" href="@Url.Action(" Details","News", new {tt.Id})" class="detail">
+                                    <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
 
                                         @tt.Title
                                     </a>
                                 </li>
-                                }
-                                else
-                                {
+                                    }
+                                    else
+                                    {
 
-                                <li>
-                                    <time class="" datetime="">
-                                        @tt.PublishedOn.TimeOfDay.ToHHMM()
-                                    </time>
+                                        if(temp<=34)
+                                        {
+                                            <li>
+                                                <time class="" datetime="">
+                                                    @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                                </time>
 
-                                    <a target="_blank" href="@Url.Action(" Details","News", new {tt.Id})" class="detail">
-                                        @tt.Title
-                                    </a>
-                                </li>
+                                                <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                                    @tt.Title
+                                                </a>
+                                            </li>
+                                            }
+                                          
                                 }
 
                                 }
+
+                                
+                                     
+
                             </ul>
                         </div>
 
@@ -78,7 +92,7 @@
                             <ul class="list zebra">
                                 @foreach (var tt in Model.LastArticle)
                                 {
-                                if (tt.Category.Name == "استان بوشهر")
+                                if (tt.Category.Name == "استان")
                                 {
 
                                 <li>
@@ -86,7 +100,7 @@
                                         @tt.PublishedOn.TimeOfDay.ToHHMM()
                                     </time>
 
-                                    <a target="_blank" href="@Url.Action(" Details","News", new {tt.Id})" class="detail">
+                                     <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
 
                                         @tt.Title
                                     </a>
@@ -110,7 +124,8 @@
                                         @tt.PublishedOn.TimeOfDay.ToHHMM()
                                     </time>
                                     <span class="text-default fa fa-video-camera"></span>
-                                    <a target="_blank" href="@Url.Action(" Details","News", new {tt.Id})" class="detail">
+                                      <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
                                         @tt.Title
                                     </a>
                                 </li>
@@ -133,7 +148,7 @@
                                         @tt.PublishedOn.TimeOfDay.ToHHMM()
                                     </time>
                                     <span class="text-default fa fa-video-camera"></span>
-                                    <a target="_blank" href="@Url.Action(" Details","News", new {tt.Id})" class="detail">
+                                      <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
 
                                         @tt.Title
                                     </a>

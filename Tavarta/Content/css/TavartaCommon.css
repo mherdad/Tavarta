@@ -33,20 +33,20 @@
         }
 
         #tv-schedule.widget .tvicon.tvthree {
-            background: url(/image/icons/tv/tv3.png) no-repeat;
+            background: url("") no-repeat;
         }
 
         #tv-schedule.widget .tvicon.tvsport {
-            background: url(/image/icons/tv/varzesh.png) no-repeat;
+            background: url("") no-repeat;
         }
 
         #tv-schedule.widget .tvicon.tvsshoma {
-            background: url(/image/icons/tv/shoma.png) no-repeat;
+            background: url("") no-repeat;
         }
 
         #tv-schedule.widget .tvicon.tvthreeorsport {
-            background: url(/image/icons/tv/tv3.png);
-            background: url(/image/icons/tv/tv3.png),url(/image/icons/tv/varzesh.png);
+            background: url("");
+            background: url(""),url("");
             background-position: center right;
             background-position: center right, center left;
             background-repeat: no-repeat;
@@ -65,15 +65,15 @@
         }
 
         #tv-schedule.widget .match-type-icon.football {
-            background: url("/image/icons/balls/football.png") center no-repeat;
+            background: url("") center no-repeat;
         }
 
         #tv-schedule.widget .match-type-icon.basketball {
-            background: url("/image/icons/balls/basketball.png") center no-repeat;
+            background: url("") center no-repeat;
         }
 
         #tv-schedule.widget .match-type-icon.volleyball {
-            background: url("/image/icons/balls/volleyball.png") center no-repeat;
+            background: url("") center no-repeat;
         }
 
     #tv-schedule.widget .boxes {

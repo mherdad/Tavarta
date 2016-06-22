@@ -17,6 +17,7 @@ using Tavarta.ViewModel.Role;
 
 namespace Tavarta.Areas.Admin.Controllers
 {
+    [Authorize]
     public class RoleController : Controller
     {
         #region Fields

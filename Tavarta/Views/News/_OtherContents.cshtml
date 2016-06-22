@@ -1,17 +1,22 @@
-﻿@model Tavarta.ViewModel.News.NewsViewModel
+﻿
+@using Tavarta.Common.Extentions
 
-    <div class="col-xxs-12 ">
-        <a href="@Url.Action("Details","News",new {Model.Id})">
-            <div class="media">
-                <div class="media-right">
-                    <img alt="@Model.Title" width="100" height="70" data-original="@Model.Image" class="hotnews" src="@Model.Image" />
-                </div>
-                <div class="media-body">
-                    <h6>@Model.Headline</h6>
-                    <h5 class="media-heading">
-                        @Model.Title
-                    </h5>
-                </div>
+@model Tavarta.ViewModel.News.NewsViewModel
+
+<div class="col-xxs-12 ">
+    <a href="@Url.Action("Details", "News", new {Title = Model.Title.ToSeoUrl(), Model.Id})">
+        @*<a href="@Url.Action("Details","News",new {Model.Id})">*@
+        <div class="media">
+            <div class="media-right">
+
+                <img alt="@Model.Title" width="100" height="70" class="hotnews" src="@Model.Image" />
             </div>
-        </a>
-    </div>
+            <div class="media-body">
+                <h6>@Model.Headline</h6>
+                <h5 class="media-heading">
+                    @Model.Title
+                </h5>
+            </div>
+        </div>
+    </a>
+</div>

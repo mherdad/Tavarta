@@ -1,5 +1,6 @@
 ﻿@using DNT.Extensions
 @using PagedList.Mvc
+@using Tavarta.Common.Extentions
 @model  PagedList.IPagedList<Tavarta.ViewModel.News.NewsViewModel>
 
 <main class="col-xs-12 col-md-8">
@@ -17,9 +18,10 @@
                     <header class="row">
                         <div class="col-xxs-12 col-xs-9">
                             <h3>
-                                <a href="@Url.Action("Details",new {tt.Id})">
-                                    @tt.Title
-                                </a>
+                                 <a  href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})">
+
+                                        @tt.Title
+                                    </a>
                             </h3>
                         </div>
                         <div class="col-xxs-12 col-xs-3 text-left">
@@ -56,87 +58,9 @@
 
             }
 
-            <article class="content">
-                <header class="row">
-                    <div class="col-xxs-12 col-xs-9">
-                        <h3>
-                            <a href="/news/255513/رجبزاده-به-بازی-با-العین-نمیرسد">
-                                رجب‌زاده به بازی با العین نمی‌رسد
-                            </a>
-                        </h3>
-                    </div>
-                    <div class="col-xxs-12 col-xs-3 text-left">
-                        <div class="small">
-                            <span>
-                                <i class="glyphicon glyphicon-calendar"></i>
-                                <span class="numbers">
-                                    ۱۳۹۵/۰۳/۰۵
-                                </span>
-                            </span>
-                            <span>
-                                <i class="glyphicon glyphicon-time"></i>
-                                <span class="numbers">
-                                    10:55
-                                </span>
-                            </span>
-                            <span>
-                                <i class="glyphicon glyphicon-user"></i>
-                                <span class="numbers">۱۸۶</span>
-                            </span>
-                        </div>
-                    </div>
-                </header>
-                <section class="list-content-body">
-                    <figure>
-                        <img alt="رجبزاده-به-بازی-با-العین-نمیرسد" width="150" height="105" data-original="http://static.90tv.ir/579c388e64dea616b150d61f4c82d6cc_150_105_cropCenter.jpg" class="lazy" src="" />
-                    </figure>
-                    <summary>
-                        مدیرعامل باشگاه ذوب آهن از غیبت مهاجم این تیم در بازی برگشت مقابل العین امارات خبر داد.
-                    </summary>
-                    <div class="clearfix"></div>
-                </section>
-            </article>
+            
 
-            <article class="content">
-                <header class="row">
-                    <div class="col-xxs-12 col-xs-9">
-                        <h3>
-                            <a href="/news/255508/خلعتبری-نویدکیا-اسطوره-سپاهان-است؛-دیگران-باید-بروند-نه-محرم">
-                                خلعتبری: نویدکیا اسطوره سپاهان است؛ دیگران باید بروند نه محرم
-                            </a>
-                        </h3>
-                    </div>
-                    <div class="col-xxs-12 col-xs-3 text-left">
-                        <div class="small">
-                            <span>
-                                <i class="glyphicon glyphicon-calendar"></i>
-                                <span class="numbers">
-                                    ۱۳۹۵/۰۳/۰۵
-                                </span>
-                            </span>
-                            <span>
-                                <i class="glyphicon glyphicon-time"></i>
-                                <span class="numbers">
-                                    10:48
-                                </span>
-                            </span>
-                            <span>
-                                <i class="glyphicon glyphicon-user"></i>
-                                <span class="numbers">۸۱۷</span>
-                            </span>
-                        </div>
-                    </div>
-                </header>
-                <section class="list-content-body">
-                    <figure>
-                        <img alt="خلعتبری-نویدکیا-اسطوره-سپاهان-است؛-دیگران-باید-بروند-نه-محرم" width="150" height="105" data-original="http://static.90tv.ir/0ed122cbf25f4cc1a0ab9e17d76fbddc_150_105_cropCenter.jpg" class="lazy" src="" />
-                    </figure>
-                    <summary>
-                        مهاجم فصل گذشته تیم فوتبال سپاهان اعتقاد دارد که عبدالله ویسی بهترین گزینه برای قبول هدایت این تیم بود.
-                    </summary>
-                    <div class="clearfix"></div>
-                </section>
-            </article>
+            
         </div>
         <div class="col-sm-12 ">
             @Html.PagedListPager(Model, page => Url.Action("List", new { page,ViewBag.Category }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< اولین", ContainerDivClasses = new[] { "col-md-pull-3", "col-md-6" }, LinkToPreviousPageFormat = " قبلی ", LinkToNextPageFormat = "بعدی ", LinkToLastPageFormat = "&Uacute;آخرین >>" })

@@ -8,6 +8,7 @@ using Tavarta.ViewModel.Comments;
 
 namespace Tavarta.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CommentsController : BaseController
     {
         private readonly IUnitOfWork _unitOfWork;

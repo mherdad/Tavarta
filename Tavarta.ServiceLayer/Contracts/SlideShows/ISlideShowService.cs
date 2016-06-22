@@ -12,5 +12,7 @@ namespace Tavarta.ServiceLayer.Contracts.SlideShows
         Task<AddSlideShowViewModel> GetForEditAsync(Guid id);
         Task<SlideShowImage> FindByIdAsync(Guid id);
         Task EditSlideShow(AddSlideShowViewModel viewModel);
+        Task<DeleteSlideShowViewModel> GetDeleteSlideAsync(Guid id);
+        Task DeleteSlide(Guid id);
     }
 }

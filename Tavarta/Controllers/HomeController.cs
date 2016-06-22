@@ -2,6 +2,7 @@
 
 namespace Tavarta.Controllers
 {
+    [Authorize]
     public class HomeController:Controller
     {
 

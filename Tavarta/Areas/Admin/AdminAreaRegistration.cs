@@ -18,7 +18,7 @@ namespace Tavarta.Areas.Admin
                  "Admin_default",
                  "Admin/{controller}/{action}/{id}",
                     new { action = "Index", id = UrlParameter.Optional },
-                    new { controller = "Account|Admin|User|Home|Role|Post|SlideShow|Comment" },
+                    new { controller = "Account|Admin|User|Home|Role|Post|SlideShow|Comments" },
                  new[] { "Tavarta.Areas.Admin.Controllers" }
   );
         }

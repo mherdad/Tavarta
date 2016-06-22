@@ -1,6 +1,10 @@
-﻿@model Tavarta.ViewModel.Comments.CommentListViewModel
+﻿@model Tavarta.ViewModel.Comments.AddCommentsViewModel
 
-<div class="row">
+@{
+//Model.PostId = ViewBag.PostId;
+}
+
+@*<div class="row">
     <div class="col-md-12" style="background-color: white">
 
         <div class="post-media post-comments margin-top-30">
@@ -25,41 +29,42 @@
     </div>
 </div>
 <div class="row" style="background-color: #f0f0f0"><br/> <br/>
-</div>
+</div>*@
 
 
 
 
 @using (Html.BeginForm("PostComments", "Comment", FormMethod.Post))
 {
-
+    
+    @Html.HiddenFor(x=>x.PostId)
     <div class="post-block post-leave-comment border-top border-dark">
         <h3>ارسال نظر</h3>
         <form action="" type="post">
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-6">
-                        @Html.LabelFor(x => Model.AddComments.Title)
-                        @Html.TextBoxFor(x => Model.AddComments.Title, new {@class = "form-control"})
+                        @Html.LabelFor(x => Model.Title)
+                        @Html.TextBoxFor(x => Model.Title, new {@class = "form-control"})
                     </div>
                     <div class="col-md-6">
-                        @Html.LabelFor(x => Model.AddComments.Email)
-                        @Html.TextBoxFor(x => Model.AddComments.Email, new {@class = "form-control"})
+                        @Html.LabelFor(x => Model.Email)
+                        @Html.TextBoxFor(x => Model.Email, new {@class = "form-control"})
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.LabelFor(x => Model.AddComments.Body)
-                        @Html.TextAreaFor(x => Model.AddComments.Body, new {@class = "form-control", maxlength = "5000", rows = "10"})
+                        @Html.LabelFor(x => Model.Body)
+                        @Html.TextAreaFor(x => Model.Body, new {@class = "form-control", maxlength = "5000", rows = "10"})
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-primary btn-wide  margin-top-15 pull-right" type="submit"> <span>ارسال نظر</span></button>
-                     <a href="blog_post.html" class="btn btn-primary btn-wide btn-scroll btn-scroll-top fa-arrow-right margin-top-15 pull-right" data-caption-class="fadeIn" data-caption-delay="900"> <span>ارسال نظر</span> </a>
+                     @*<a href="blog_post.html" class="btn btn-primary btn-wide btn-scroll btn-scroll-top fa-arrow-right margin-top-15 pull-right" data-caption-class="fadeIn" data-caption-delay="900"> <span>ارسال نظر</span> </a>*@
                 </div>
             </div>
         </form>

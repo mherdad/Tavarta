@@ -1,10 +1,12 @@
-﻿@model Tavarta.ViewModel.News.NewsViewModel
+﻿@using Tavarta.Common.Extentions
+@model Tavarta.ViewModel.News.NewsViewModel
 
 <div class="col-xxs-12 col-xs-6 col-sm-6">
-    <a href='@Url.Action("Details", "News", new {Model.Id})'>
+     <a href="@Url.Action("Details", "News", new {Title = Model.Title.ToSeoUrl(), Model.Id})">
+    @*<a href='@Url.Action("Details", "News", new {Model.Id})'>*@
         <div class="media">
             <div class="media-right">
-                <img src="" alt="@Model.Title" width="120" height="80" data-original="@Model.Image" class="hotnews" />
+                <amp-img src="@Model.Image" class="img-responsive lazy" alt="@Model.Title" width="120" height="80"  class="hotnews"> </amp-img>
             </div>
             <div class="media-body">
                 <h6>@Model.Headline</h6>

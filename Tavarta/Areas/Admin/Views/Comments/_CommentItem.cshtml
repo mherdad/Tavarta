@@ -2,27 +2,29 @@
 
 @using DNT.Extensions
 
-
-
-
 <div class="" id="user-@Model.Id">
     <div class="col-md-12 data-item">
 
         <tr>
-            <td class="center"><img src="~/Content/assets/images/avatar-1.jpg" class="img-rounded" alt="image"/></td>
-            <td class="hidden-xs">@Model.Title</td>
-            <td class="hidden-xs">@Model.CreatorDisplayName</td>
-            <td class="hidden-xs">@Model.Body</td>
-            <td class="hidden-xs">@Model.Email</td>
-             <td class="hidden-xs"> <a href="@Url.Action("Edit",new {Model.Id})"> dfgff</a>   </td>
-
-            <td class="hidden-xs">
-                <a href="#" rel="nofollow" target="_blank">
-
-                </a>
+               <td class="hidden-xs center">@Model.Title</td>
+            <td class="hidden-xs center">@Model.CreatorDisplayName</td>
+         
+            <td class="right " >@Model.Body</td>
+            <td class="hidden-xs center">@Model.Email</td>
+            <td class=" center">
+                <div class="visible-md visible-lg visible-xs  ">
+                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
+                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                    </div>
             </td>
-            <td class="hidden-xs"></td>
-            <td class="center">
+
+            @*<td class="hidden-xs">
+                <a href="#" rel="nofollow" target="_blank">
+                </a>
+            </td>*@
+            @*<td class="hidden-xs"></td>*@
+            @*<td class="center">
                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                     <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
                     <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
@@ -61,9 +63,8 @@
                         </ul>
                     </div>
                 </div>
-            </td>
+            </td>*@
         </tr>
-
     </div>
 </div>
 <!-- end: STRIPED ROWS -->

@@ -64,9 +64,11 @@
 <div class="main-content">
     <div class="wrap-content container" id="container">
        
-        @if (User.Identity.IsAuthenticated)
-        {
-             <!-- start: DASHBOARD TITLE -->
+        @*@if (User.Identity.IsAuthenticated)
+        {*@
+            <br/>
+            <br/>
+             @*<!-- start: DASHBOARD TITLE -->
             <section id="page-title" class="padding-top-15 padding-bottom-15">
                 <div class="row">
                     <div class="col-sm-7">
@@ -75,8 +77,8 @@
                     </div>
                 </div>
             </section>
-                    <!-- end: DASHBOARD TITLE -->
-        }
+                    <!-- end: DASHBOARD TITLE -->*@
+        @*}*@
 
         @RenderBody()
     </div>

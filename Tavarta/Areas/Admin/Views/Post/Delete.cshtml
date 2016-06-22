@@ -1,0 +1,81 @@
+﻿@using DNT.Extensions
+@using Tavarta.Common.Helpers
+@using Tavarta.Common.HtmlCleaner
+@model Tavarta.ViewModel.Posts.DeleteViewModel
+
+@{
+    var tt = Model.Body.StripHtml();
+    if (tt.Length >= 22)
+    {
+        tt = tt.Substring(0, 22);
+    }
+    
+}
+<div class="row">
+    <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-4 col-md-pull-4">
+        <div class="box-register">
+            <div class="modal-body">
+
+                @using (Html.BeginForm("Delete", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    <fieldset>
+                        <legend>
+                            حذف نوشته
+                        </legend>
+                        @*<div class="row form-group">
+                                @Html.DropDownList("CategoryId", Model.Categorizes, "همه گروه های کاربری", new { @class = "form-control" })
+                            </div>*@
+
+                        <div class="row form-group">
+
+                            @Html.LabelFor(m => m.Headline, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.DisplayTextFor(m => m.Headline)
+                                @Html.ValidationMessageFor(m => m.Headline, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            @Html.LabelFor(m => m.Title, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.DisplayTextFor(x => x.Title)
+                                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                                @Html.LabelFor(m => m.TagNames, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.DisplayTextFor(m => m.TagNames)
+                                    @Html.ValidationMessageFor(m => m.TagNames, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        <div class="row form-group">
+
+                                @Html.LabelFor(m => m.Body, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                               
+                                @Html.DisplayTextFor(x=>@tt)
+                                @Html.ValidationMessageFor(m => m.Body, "", new {@class = "text-danger"})
+                            </div>
+                            </div>
+
+                        <div class="row pull-left">
+                            <div class="row form-group ">
+                                <div class="col-md-12 col-md-pull-1 ">
+                                    <button data-loading-text="در حال ارسال اطلاعات" class="btn btn-primary btn-md" type="submit">حذف نوشته</button>
+                                    @*<button type="button" id="createUserButton" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'createUserForm')" data-loading-text="در حال ارسال اطلاعات" class="btn btn-success btn-md">
+                                            ثبت کاربر
+                                        </button>*@
+                                    <a class="btn btn-default btn-md" href="@Url.Action("List", "Post")"> انصراف</a>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

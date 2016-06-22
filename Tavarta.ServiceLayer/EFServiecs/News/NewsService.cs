@@ -14,6 +14,7 @@ using Tavarta.DomainClasses.Entities.SlideShows;
 using Tavarta.ServiceLayer.Contracts;
 using Tavarta.Utility;
 using Tavarta.ViewModel.News;
+using System.Net;
 
 namespace Tavarta.ServiceLayer.EFServiecs.News
 {
@@ -43,6 +44,17 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         #region GetLastNewsDetails
 
+
+        private Post  FindById(Guid? id)
+        {
+            var ff = _news.Find(id);
+            if (ff == null)
+                return null;
+            return new Post();
+
+        }
+
+
         /// <summary>
         /// جزییات آخرین خبر
         /// </summary>
@@ -51,6 +63,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         public async Task<NewsDetailsViewModel> GetLastNewsDetailsAsync(Guid? id)
         {
             //_mappingEngine.Map<Post>(viewModel);
+            if (FindById(id) == null)
+                return null;
+
 
             await UpdateViewCountAsync(id);
 
@@ -68,7 +83,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         {
             var post = _news.FirstOrDefault(x => x.Id == id);
 
-            if (post == null) throw new ArgumentNullException(nameof(post));
+           
             post.ViewCount += 1;
             return _unitOfWork.SaveChangesAsync();
         }
@@ -114,6 +129,48 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             };
         }
 
+
+
+        public async Task<NewsListViewModel> GetPagedListAsync2()
+        {
+            var news = await GetNewsAsync();
+
+            var sports = await GetSportAsync();
+
+            var environment = await GetEnvironmentAsync();
+
+            var healthEvents = await GetHealthEventAsync();
+
+            var mostViewed = await GetMostViewedAsync();
+
+            var literary = await GetLiteraryAsync();
+
+            var notes = await GetNotesAsync();
+
+            var carousel = await GetCarouselAsync();
+            var lastArticle = await GetLastArticleAsync();
+            var photoGallery = await GetPhotoGalleryAsync();
+
+            return new NewsListViewModel
+            {
+                News = news,
+                Sports = sports,
+                Environment = environment,
+                HealthEvents = healthEvents,
+                Literary = literary,
+                Notes = notes,
+                Carousel = carousel,
+                MostViewed = mostViewed,
+                LastArticle = lastArticle,
+                PhotoGallery = photoGallery
+            };
+        }
+
+
+
+
+
+
         public async Task<NewsListViewModel> GetOrderPage(int page, int itemsPerPage, string category)
         {
             List<NewsViewModel> query;
@@ -153,7 +210,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private async Task<List<NewsViewModel>> GetNewsAsync()
         {
-            var ostan = "استان بوشهر";
+            var ostan = "استان ";
             var iran = "ایران و جهان";
             var news = _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).AsQueryable();
             var query = await news.Where(x => x.Category.Name != ostan && x.Category.Name != iran)

@@ -1,5 +1,6 @@
 ﻿@using AttributeRouting.Helpers
 @using DNT.Extensions
+@using Tavarta.Common.Extentions
 @model Tavarta.ViewModel.News.NewsListViewModel
 @section scripts
 {
@@ -156,7 +157,7 @@
                                     <div class="blank-box-cell">
                                         <span class=" glyphicon glyphicon-camera"></span>
                                         <span class="glyphicon small glyphicon-plus"></span>
-                                        <a href="@Url.Action("List","Gallery",new {category="گالری تصاویر"})">
+                                        <a href="@Url.Action("List","Gallery",new {category="گالری تصاویر".ToSeoUrl()})">
                                             <span class="text">
                                                 تصاویر بیشتر
                                             </span>

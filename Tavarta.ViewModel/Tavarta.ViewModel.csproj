@@ -98,6 +98,7 @@
     <Compile Include="News\NewsListViewModel.cs" />
     <Compile Include="News\NewsViewModel.cs" />
     <Compile Include="Posts\AddPostViewModel.cs" />
+    <Compile Include="Posts\DeleteViewModel.cs" />
     <Compile Include="Posts\EditPostViewModel.cs" />
     <Compile Include="Posts\PostListViewModel.cs" />
     <Compile Include="Posts\PostViewModel.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Role\RoleSearchRequest.cs" />
     <Compile Include="Role\RoleViewModel.cs" />
     <Compile Include="SlideShow\AddSlideShowViewModel.cs" />
+    <Compile Include="SlideShow\DeleteSlideShowViewModel.cs" />
     <Compile Include="SlideShow\SlideShowItemModel.cs" />
     <Compile Include="SlideShow\SlideShowListViewModel.cs" />
     <Compile Include="SlideShow\SlideShowViewModel.cs" />

@@ -1,27 +1,37 @@
 ﻿using PagedList;
 using System;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Tavarta.Common.Extentions;
+using Tavarta.Common.Fabrik.ActionResults;
 using Tavarta.Common.Filters;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts;
+using Tavarta.ServiceLayer.Contracts.Category;
 using Tavarta.ViewModel.News;
+
 
 namespace Tavarta.Controllers
 {
+    
+  [RedirectToCanonicalUrl(true,true)]
     public class NewsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly INewsService _newsService;
-
-        public NewsController(INewsService newsService, IUnitOfWork unitOfWork)
+        private readonly ICategoryService _categoryService; 
+        public NewsController(INewsService newsService, IUnitOfWork unitOfWork, ICategoryService categoryService)
         {
+
             _newsService = newsService;
+            _categoryService = categoryService;
             _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
+        
         public virtual async Task<ActionResult> Index()
         {
             var viewModel = await _newsService.GetPagedListAsync();
@@ -31,8 +41,11 @@ namespace Tavarta.Controllers
             return View(viewModel);
         }
 
-        public async Task<ViewResult> List(int? page, string category)
+        public async Task<ActionResult> List(int? page, string category)
         {
+            if (_categoryService.FindByName(category) == null)
+                return RedirectToAction("NotFound", "Error");
+
             var pagenumber = (page ?? 1) - 1;
             ViewBag.Category = category;
             var totalCount = 0;
@@ -121,13 +134,43 @@ namespace Tavarta.Controllers
 
         [HttpGet]
         [NoBrowserCache]
+        [CompressFilter]
         //[OutputCache(Location = OutputCacheLocation.ServerAndClient,CacheProfile = "",VaryByParam = "id",Duration = 10,NoStore = false)]
-        public async Task<ActionResult> Details(Guid? id)
+        public async Task<ActionResult> Details(string title,Guid? id)
         {
-            var viewModel = await _newsService.GetLastNewsDetailsAsync(id);
 
+            var viewModel = await _newsService.GetLastNewsDetailsAsync(id);
+            if (viewModel == null)
+                return RedirectToAction("NotFound", "Error");
+            //return HttpNotFound();
+
+            string realTitle =viewModel.Title.ToSeoUrl();
+            string urlTitle = (title ?? "").Trim().ToLower();
+
+            if (realTitle != urlTitle)
+            {
+                string url = "/news/" + viewModel.Id + "/" + realTitle;
+                return new PermanentRedirectResult(url);
+            }
+
+
+
+
+            ViewBag.Title = viewModel.Title;
+            ViewBag.MetaDescription= viewModel.MetaDescription;
+            ViewBag.MetaKeywords= viewModel.MetaKeywords;
             //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return View(viewModel);
         }
+
+    
     }
+
+
+
+
+
+    
+
+
 }

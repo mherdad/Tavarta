@@ -1,22 +1,16 @@
-﻿@using Tavarta.Common.Extentions
-@model Tavarta.ViewModel.SlideShow.AddSlideShowViewModel
-@{
-    var temp = Model.Id != Guid.Empty ? "Edit" : "Create";
-}
-
-
+﻿@model Tavarta.ViewModel.SlideShow.DeleteSlideShowViewModel
 
 <div class="row">
     <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-4 col-md-pull-4">
         <div class="box-register">
             <div class="modal-body">
 
-                @using (Html.BeginForm(temp, "SlideShow", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Delete", "SlideShow", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
 
                     <fieldset>
                         <legend>
-                            درج برگ جدید
+                            حذف سلاید شو
                         </legend>
                         <div class="row form-group">
                         </div>
@@ -24,7 +18,7 @@
 
                             @Html.LabelFor(m => m.Title, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "عنوان", autocomplete = "off" })
+                                @Html.DisplayTextFor(m => m.Title)
                                 @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -32,7 +26,7 @@
                         <div class="row form-group">
                             @Html.LabelFor(m => m.Order, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(x => x.Order, new { @class = "form-control", @placeholder = "اولویت" })
+                                @Html.DisplayTextFor(x => x.Order)
                                 @Html.ValidationMessageFor(m => m.Order, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -40,7 +34,7 @@
                         <div class="row form-group">
                             @Html.LabelFor(m => m.Link, new { @class = "col-md-3 control-label" })
                             <div class="col-md-9">
-                                @Html.TextBoxFor(m => m.Link, new { @class = "form-control", @placeholder = "لینک" })
+                                @Html.DisplayTextFor(m => m.Link)
                                 @Html.ValidationMessageFor(m => m.Link, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -52,25 +46,13 @@
                                     {
                                         <li class="list-group-item">
                                             <a id="chooseImage" href="javascript:openCustomRoxy()">
-                                                <img id="customRoxyImage" src="@Model.Image">
+                                                <img id="customRoxyImage" src="@Model.Image" aria-readonly="true">
                                                 <span> انتخاب عکس</span>
                                             </a>
                                             @Html.HiddenFor(model => model.Image)
                                             <input type="hidden" name="@Html.NameFor(model => model.Order)" value="0" />
                                         </li>
                                     }
-                                    else
-                                    {
-                                        <li class="list-group-item">
-                                            <a id="chooseImage" href="javascript:openCustomRoxy()">
-                                                <img id="customRoxyImage">
-                                                <span> انتخاب عکس</span>
-                                            </a>
-                                            @Html.HiddenFor(model => model.Image)
-                                            <input type="hidden" name="@Html.NameFor(model => model.Order)" value="0" />
-                                        </li>
-                                    }
-
                                 </ul>
                             </div>
                         </div>
@@ -78,14 +60,8 @@
                         <div class="row pull-left">
                             <div class="row form-group ">
                                 <div class="col-md-12 col-md-pull-1 ">
-                                    @if(Model.Id != Guid.Empty)
-                                    {
-                                          <button class="btn btn-success"> <i class="fa fa-save fa-lg"></i> ویرایش</button>
-                                    }
-                                    else
-                                    {
-                                        <button class="btn btn-success"> <i class="fa fa-save fa-lg"></i> ذخیره</button>
-                                    }
+
+                                    <button class="btn btn-success"> <i class="fa fa-save fa-lg"></i> حذف</button>
 
                                     <a href="@Url.Action("List", "SlideShow")" class="btn btn-default"> <i class="fa fa-list fa-lg"></i> فهرست اسلاید‌ها</a>
                                 </div>

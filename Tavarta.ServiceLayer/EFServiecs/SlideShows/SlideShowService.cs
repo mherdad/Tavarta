@@ -115,14 +115,23 @@ namespace Tavarta.ServiceLayer.EFServiecs.SlideShows
             }).ToListAsync();
         }
 
-    
 
-        public void Delete(Guid slideShowItemId)
+
+        public async Task<DeleteSlideShowViewModel> GetDeleteSlideAsync(Guid id)
         {
-            var slideShowItem = new SlideShowImage() { Id = slideShowItemId };
-            _slideShow.Attach(slideShowItem);
-            _slideShow.Remove(slideShowItem);
+            var slideShow = _slideShow.AsNoTracking().Where(x => x.Id == id).AsQueryable();
+            var viewModel = await _slideShow
+                .ProjectTo<DeleteSlideShowViewModel>(_mappingEngine).FirstOrDefaultAsync();
+            return viewModel;
         }
+
+        public async Task DeleteSlide(Guid id)
+        {
+            var slide =await FindByIdAsync(id);
+            _slideShow.Remove(slide);
+             await _unitOfWork.SaveChangesAsync();
+        }
+
 
         public Task<SlideShowItemModel> Get(Guid slideShowItemId)
         {

@@ -13,6 +13,7 @@ using Tavarta.ViewModel.SlideShow;
 
 namespace Tavarta.Areas.Admin.Controllers
 {
+    [Authorize]
     public class SlideShowController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -88,16 +89,35 @@ namespace Tavarta.Areas.Admin.Controllers
 
             await _slideShowService.EditSlideShow(viewModel);
             return RedirectToAction("List");
-            return new JsonNetResult
-            {
-                Data =
-                new
-                {
-                    success = true,
-                    View = View("_UserItem")
-                }
-            };
+            //return new JsonNetResult
+            //{
+            //    Data =
+            //    new
+            //    {
+            //        success = true,
+            //        View = View("_UserItem")
+            //    }
+            //};
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var viewModel =await _slideShowService.GetDeleteSlideAsync(id);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+
+        public ActionResult Delete(DeleteSlideShowViewModel viewModel)
+        {
+             _slideShowService.DeleteSlide(viewModel.Id);
+            return RedirectToAction("List");
+
+        }
+
+
 
     }
 }
