@@ -56,6 +56,20 @@ namespace Tavarta.ServiceLayer.EFServiecs.Comments
             };
         }
 
+        public async Task<EditCommentViewModel> EditCommentDetails(Guid id)
+        {
+            var comment = await _comments.ProjectTo<EditCommentViewModel>(_mappingEngine).FirstOrDefaultAsync(x=>x.Id==id);
+            return comment;
+
+        }
+
+        public Task EditComment(EditCommentViewModel viewModel)
+        {
+            var comment = _comments.Find(viewModel.Id);
+            _mappingEngine.Map(viewModel, comment);
+            return _unitOfWork.SaveChangesAsync();
+        }
+
         public async Task<CommentListViewModel> GetComments(Guid postId)
         {
             var postComments = await _comments.Where(c => c.ReplyId == null && c.PostId == postId).ProjectTo<CommentViewModel>(_mappingEngine).ToListAsync();

@@ -1,0 +1,80 @@
+﻿@using DNT.Extensions
+@model Tavarta.ViewModel.Comments.EditCommentViewModel
+
+@{
+//var tt = Model.Body.StripHtml();
+//if (tt.Length >= 22)
+//{
+//    tt = tt.Substring(0, 22);
+//}
+
+}
+<div class="row">
+    <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-4 col-md-pull-4">
+        <div class="box-register">
+            <div class="modal-body">
+
+                @using (Html.BeginForm("Edit", "Comments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(x=>x.Id)
+
+                    <fieldset>
+                        <legend>
+                            ویرایش نظر
+                        </legend>
+                        @*<div class="row form-group">
+                                @Html.DropDownList("CategoryId", Model.Categorizes, "همه گروه های کاربری", new { @class = "form-control" })
+                            </div>*@
+
+                        <div class="row form-group">
+
+                            @Html.LabelFor(m => m.CreatorDisplayName, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.CreatorDisplayName,new { @class = "form-control"})
+                                @Html.ValidationMessageFor(m => m.CreatorDisplayName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @*<div class="row form-group">
+                            @Html.LabelFor(m => m.Title, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.DisplayTextFor(x => x.Title)
+                                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                        <div class="row form-group">
+                                @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(m => m.Email,new { @class = "form-control"})
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        <div class="row form-group">
+
+                                @Html.LabelFor(m => m.Body, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                               
+                                @Html.TextAreaFor(x=>@x.Body,new { @class = "form-control",@style="height: 100px"})
+                                @Html.ValidationMessageFor(m => m.Body, "", new {@class = "text-danger"})
+                            </div>
+                            </div>
+
+                        <div class="row pull-left">
+                            <div class="row form-group ">
+                                <div class="col-md-12 col-md-pull-1 ">
+                                    <button data-loading-text="در حال ارسال اطلاعات" class="btn btn-primary btn-md" type="submit">ویرایش</button>
+                                    @*<button type="button" id="createUserButton" autocomplete="off" onclick="AjaxForm.CustomSubmit(this, 'createUserForm')" data-loading-text="در حال ارسال اطلاعات" class="btn btn-success btn-md">
+                                            ثبت کاربر
+                                        </button>*@
+                                    <a class="btn btn-default btn-md" href="@Url.Action("List", "Comments")"> انصراف</a>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

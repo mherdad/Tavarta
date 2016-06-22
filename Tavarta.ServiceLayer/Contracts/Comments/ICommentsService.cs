@@ -15,5 +15,7 @@ namespace Tavarta.ServiceLayer.Contracts.Comments
         Task<CommentViewModel> AddComment(AddCommentsViewModel viewModel);
         Task<AddCommentsViewModel> GetPost(Guid postId);
         Task<Post> FindById(Guid id);
+        Task<EditCommentViewModel> EditCommentDetails(Guid id);
+        Task EditComment(EditCommentViewModel viewModel);
     }
 }

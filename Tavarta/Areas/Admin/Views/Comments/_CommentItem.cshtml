@@ -6,14 +6,14 @@
     <div class="col-md-12 data-item">
 
         <tr>
-               <td class="hidden-xs center">@Model.Title</td>
+               <td class=" center">@Model.Title</td>
             <td class="hidden-xs center">@Model.CreatorDisplayName</td>
          
             <td class="right " >@Model.Body</td>
             <td class="hidden-xs center">@Model.Email</td>
             <td class=" center">
-                <div class="visible-md visible-lg visible-xs  ">
-                    <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
+                <div class="visible-md visible-lg visible-xs visible-sm  ">
+                    <a href="@Url.Action("Edit",new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
                     <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
                     <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
                     </div>

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using PagedList;
 using Tavarta.Common.Controller;
@@ -37,6 +38,23 @@ namespace Tavarta.Areas.Admin.Controllers
         public ActionResult ListAjax()
         {
             return PartialView("_ListAjax");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(Guid id)
+        {
+            var viewModel = await _commentsService.EditCommentDetails(id);
+            return View(viewModel);
+        }
+
+        public ActionResult Edit(EditCommentViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+            _commentsService.EditComment(viewModel);
+            return RedirectToAction("List");
+
+
         }
 
     }
