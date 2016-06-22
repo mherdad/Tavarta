@@ -82,6 +82,7 @@
     <Compile Include="Comments\AddCommentsViewModel.cs" />
     <Compile Include="Comments\CommentListViewModel.cs" />
     <Compile Include="Comments\CommentViewModel.cs" />
+    <Compile Include="Comments\DeleteCommentViewModel.cs" />
     <Compile Include="Comments\EditCommentViewModel.cs" />
     <Compile Include="Comments\ReplyViewModel.cs" />
     <Compile Include="Common\BaseIsDelete.cs" />

@@ -17,6 +17,9 @@ namespace Tavarta.AutoMapperProfiles
                .IgnoreAllNonExisting();
             CreateMap<PostComment, EditCommentViewModel>()
                 .IgnoreAllNonExisting();
+
+            CreateMap<PostComment, DeleteCommentViewModel>()
+                .IgnoreAllNonExisting();
             CreateMap<EditCommentViewModel, PostComment>()
                 .IgnoreAllNonExisting();
         }

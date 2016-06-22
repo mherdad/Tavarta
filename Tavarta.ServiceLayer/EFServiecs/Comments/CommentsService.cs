@@ -63,6 +63,21 @@ namespace Tavarta.ServiceLayer.EFServiecs.Comments
 
         }
 
+        public async Task<DeleteCommentViewModel> DeleteCommentDetails(Guid id)
+        {
+            var comment =
+                await _comments.ProjectTo<DeleteCommentViewModel>(_mappingEngine).FirstOrDefaultAsync(x => x.Id == id);
+            return comment;
+
+        }
+
+        public async Task DeleteComment(DeleteCommentViewModel viewModel)
+        {
+            var comment =await _comments.FirstOrDefaultAsync(x=>x.Id==viewModel.Id);
+            _comments.Remove(comment);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
         public Task EditComment(EditCommentViewModel viewModel)
         {
             var comment = _comments.Find(viewModel.Id);

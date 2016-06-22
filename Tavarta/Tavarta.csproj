@@ -354,6 +354,7 @@
     <Content Include="Areas\Admin\Views\Comments\List.cshtml" />
     <Content Include="Areas\Admin\Views\Comments\_ListAjax.cshtml" />
     <Content Include="Areas\Admin\Views\Comments\_CommentItem.cshtml" />
+    <None Include="Areas\Admin\Views\Comments\Delete.cshtml" />
     <None Include="Areas\Admin\Views\Comments\Edit.cshtml" />
     <None Include="Areas\Admin\Views\Post\Delete.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\Create.cshtml" />

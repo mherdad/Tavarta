@@ -1,7 +1,7 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using PagedList;
 using Tavarta.Common.Controller;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts.Comments;
@@ -32,7 +32,6 @@ namespace Tavarta.Areas.Admin.Controllers
 
             IPagedList<CommentViewModel> pageOrders = new StaticPagedList<CommentViewModel>(posts.Comments, pagenumber + 1, 5, totalCount);
             return View(pageOrders);
-
         }
 
         public ActionResult ListAjax()
@@ -53,9 +52,21 @@ namespace Tavarta.Areas.Admin.Controllers
                 return View(viewModel);
             _commentsService.EditComment(viewModel);
             return RedirectToAction("List");
-
-
         }
+        [HttpGet]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var viewModel = await _commentsService.DeleteCommentDetails(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(DeleteCommentViewModel viewModel)
+        {
+            await _commentsService.DeleteComment(viewModel);
+            return RedirectToAction("List");
+        }
+
 
     }
 }
