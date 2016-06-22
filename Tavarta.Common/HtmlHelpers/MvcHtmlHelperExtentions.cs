@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Script.Serialization;
 using Tavarta.Common.Helpers;
 using Tavarta.Utility;
 
@@ -13,31 +16,36 @@ namespace Tavarta.Common.HtmlHelpers
     public static class MvcHtmlHelperExtentions
     {
         #region Input FormControls
+
         public static MvcHtmlString NoAutoCompleteTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             return html.TextBoxFor(expression, new { @class = "form-control", autocomplete = "off" });
         }
 
-
         public static MvcHtmlString NoAutoCompleteTextBoxForLtr<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             return html.TextBoxFor(expression, new { @class = "form-control", autocomplete = "off", dir = "ltr" });
         }
+
         public static MvcHtmlString NoAutoCompleteTextBoxForNumber<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             return html.TextBoxFor(expression, new { @class = "form-control", autocomplete = "off", dir = "ltr", data_val_number = "لطفا مقدار عددی وارد کنید" });
         }
+
         public static MvcHtmlString FormControlTextBoxFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             return html.TextBoxFor(expression, new { @class = "form-control" });
         }
+
         public static MvcHtmlString FormControlPasswordFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression)
         {
             return html.PasswordFor(expression, new { @class = "form-control password", placeholder = "پسورد" });
         }
-        #endregion
+
+        #endregion Input FormControls
 
         #region UrlGenerators
+
         public static MvcHtmlString ReturnUrl(this HtmlHelper htmlHelper, HttpContextBase contextBase,
             UrlHelper urlHelper)
         {
@@ -48,11 +56,13 @@ namespace Tavarta.Common.HtmlHelpers
             }
             return MvcHtmlString.Create(currentUrl);
         }
-        #endregion
+
+        #endregion UrlGenerators
 
         #region HelpAlerts
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="html"></param>
         /// <param name="iconPath"></param>
@@ -73,9 +83,11 @@ namespace Tavarta.Common.HtmlHelpers
             }
             return MvcHtmlString.Create(div.ToString());
         }
-        #endregion
+
+        #endregion HelpAlerts
 
         #region Images
+
         public static MvcHtmlString Image(this HtmlHelper html, byte[] image, string alt, string cssClass, int size = 100)
         {
             var img = string.Empty;
@@ -86,9 +98,9 @@ namespace Tavarta.Common.HtmlHelpers
             }
 
             return new MvcHtmlString("<img src='" + img + "' class='" + cssClass + "' alt='" + alt + "' width='" + size + "' height='" + size + "'/>");
-
         }
-        #endregion
+
+        #endregion Images
 
         #region GetSummaryFromHtml
 
@@ -112,24 +124,27 @@ namespace Tavarta.Common.HtmlHelpers
             return summaryHtml;
         }
 
-        #endregion
-        
+        #endregion GetSummaryFromHtml
+
         #region AparatPlayer
+
         public static MvcHtmlString AparatPlayer(this HtmlHelper helper, string mediafile, int height, int width)
         {
-            var player = @"<embed height=""{0}"" width=""{1}"" flashvars=""config=http://www.aparat.com//video/video/config/videohash/{2}/watchtype/embed"" 
-                                allowfullscreen=""true"" 
-                                quality=""high"" 
-                                name=""aparattv_{2}"" id=""aparattv_{2}"""" src=""http://host10.aparat.com/public/player/aparattv"" 
+            var player = @"<embed height=""{0}"" width=""{1}"" flashvars=""config=http://www.aparat.com//video/video/config/videohash/{2}/watchtype/embed""
+                                allowfullscreen=""true""
+                                quality=""high""
+                                name=""aparattv_{2}"" id=""aparattv_{2}"""" src=""http://host10.aparat.com/public/player/aparattv""
                                 type=""application/x-shockwave-flash"">";
 
             player = string.Format(player, height, width, mediafile);
             return new MvcHtmlString(player);
         }
-        #endregion
-        
+
+        #endregion AparatPlayer
+
         #region YouTubePalyer
-        //usage 
+
+        //usage
         //@Html.YouTubePlayer("Casablanca", "iLdqKUkkM6w", new YouTubePlayerOption()
         //                         {
         //                             Border = true
@@ -156,6 +171,37 @@ namespace Tavarta.Common.HtmlHelpers
                 '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
             };
 
+
+            /// <summary>
+            /// Determines if the browser is able to handle Data URIs based on its version.
+            /// </summary>
+            /// <returns>
+            ///   <c>true</c> if this instance [can browser handle data uris]; otherwise, <c>false</c>.
+            /// </returns>
+            private static bool CanBrowserHandleDataUris()
+            {
+                float browserVersion = -1;
+
+                HttpRequest httpRequest = HttpContext.Current.Request;
+                HttpBrowserCapabilities browser = httpRequest.Browser;
+
+                if (browser.Browser == "IE")
+                {
+                    browserVersion = (float)(browser.MajorVersion + browser.MinorVersion);
+                }
+
+                if (browserVersion > 8 || browserVersion == -1)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+           
+
+           
+
             public static string ConvertColorToHexaString(Color color)
             {
                 var bytes = new byte[3];
@@ -171,12 +217,145 @@ namespace Tavarta.Common.HtmlHelpers
                 }
                 return new string(chars);
             }
-
-
         }
+
+
+        /// <summary>
+        /// Detect if the current browser is capable
+        /// of handling WebP images
+        /// </summary>
+        /// <returns>A boolean based on the result.</returns>
+        private static bool CanBrowserHandleWebPImages()
+        {
+            HttpRequest httpRequest = HttpContext.Current.Request;
+            HttpBrowserCapabilities browser = httpRequest.Browser;
+
+            if (browser.Type.Contains("Chrome") || browser.Type.Contains("Opera") || browser.Type.Contains("Android"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
+
+        public static MvcHtmlString DrawImageWebP(this HtmlHelper helper, string imageUrl, string alt)
+        {
+            if (CanBrowserHandleWebPImages())
+            {
+                // Get the file type
+                string fileType = Path.GetExtension(imageUrl);
+                if (fileType != null)
+                {
+                    imageUrl = imageUrl.Replace(fileType, ".webp");
+                }
+
+                return new MvcHtmlString(String.Format("<img alt=\"{0}\" " + "src=\"{1}\" />", alt, imageUrl));
+            }
+
+            return new MvcHtmlString(String.Format("<img alt=\"{0}\" " + "src=\"{1}\" />", alt, imageUrl));
+        }
+
+
+
+        /// <summary>
+        /// Determines if the browser is able to handle Data URIs based on its version.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance [can browser handle data uris]; otherwise, <c>false</c>.
+        /// </returns>
+        private static bool CanBrowserHandleDataUris()
+        {
+            float browserVersion = -1;
+
+            HttpRequest httpRequest = HttpContext.Current.Request;
+            HttpBrowserCapabilities browser = httpRequest.Browser;
+
+            if (browser.Browser == "IE")
+            {
+                browserVersion = (float)(browser.MajorVersion + browser.MinorVersion);
+            }
+
+            if (browserVersion > 8 || browserVersion == -1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+   
+
+
+
+        /// <summary>
+        /// Determine if the size of the file matches the minimum requirements.
+        /// The size of the image needs to be less than 32KB.
+        /// </summary>
+        /// <param name="imageUrl"></param>
+        /// <returns></returns>
+        private static bool IsFileSizeCorrect(string imageUrl)
+        {
+            string imagepath = HttpContext.Current.Server.MapPath(imageUrl);
+
+            // determine the length
+            long fileLength = new FileInfo(imagepath).Length;
+
+            return fileLength < 32768;
+        }
+
+
+        /// <summary>
+        /// Converts the image to base64 string.
+        /// </summary>
+        /// <param name="imageUrl">The image URL.</param>
+        /// <returns></returns>
+        private static string ConvertImageToBase64String(string imageUrl)
+        {
+            string imagepath = HttpContext.Current.Server.MapPath(imageUrl);
+
+            using (Image image = System.Drawing.Image.FromFile(imagepath))
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    // Convert Image to byte[]
+                    image.Save(memoryStream, image.RawFormat);
+                    byte[] imageBytes = memoryStream.ToArray();
+
+                    // Convert byte[] to Base64 String
+                    string base64String = Convert.ToBase64String(imageBytes);
+                    return base64String;
+                }
+            }
+        }
+
+        public static MvcHtmlString DrawImage(this HtmlHelper helper, string imageUrl, string alt)
+        {
+            if (CanBrowserHandleDataUris() & IsFileSizeCorrect(imageUrl))
+            {
+                // Get the file type
+                string fileType = Path.GetExtension(imageUrl);
+                if (fileType != null)
+                {
+                    fileType = fileType.Replace(".", "");
+                }
+
+                // Convert the image
+                imageUrl = ConvertImageToBase64String(imageUrl);
+
+                return new MvcHtmlString(String.Format("<img alt=\"{0}\" " +
+                                      "src=\"data:image/{1};base64,{2}\" />", alt,
+                                      fileType, imageUrl));
+            }
+
+            return new MvcHtmlString(String.Format("<img alt=\"{0}\" src=\"{1}\" />", alt, imageUrl));
+        }
+
+
         public static MvcHtmlString YouTubePlayer(this HtmlHelper helper, string playerId, string mediaFile, YouTubePlayerOption youtubePlayerOption)
         {
-
             const string baseUrl = "http://www.youtube.com/v/";
 
             // YouTube Embedded Code
@@ -196,8 +375,9 @@ namespace Tavarta.Common.HtmlHelpers
             //Retrun Embedded Code
             return new MvcHtmlString(player);
         }
-        #endregion
-        
+
+        #endregion YouTubePalyer
+
         //#region ToRouteValueDictionaryWithCollection
         //public static RouteValueDictionary ToRouteValueDictionaryWithCollection<T>(this T routeValues)
         //{
@@ -241,6 +421,30 @@ namespace Tavarta.Common.HtmlHelpers
 
         //#endregion
 
+        public static MvcHtmlString TypeaheadFor<TModel, TValue>(
+        this HtmlHelper<TModel> htmlHelper,
+        Expression<Func<TModel, TValue>> expression,
+        IEnumerable<string> source,
+        int items = 8)
+        {
+            if (expression == null)
+                throw new ArgumentNullException(nameof(expression));
 
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            var jsonString = new JavaScriptSerializer().Serialize(source);
+
+            return htmlHelper.TextBoxFor(
+                expression,
+                new
+                {
+                    autocomplete = "off",
+                    data_provide = "typeahead",
+                    data_items = items,
+                    data_source = jsonString
+                }
+            );
+        }
     }
 }

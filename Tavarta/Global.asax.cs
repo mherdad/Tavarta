@@ -8,9 +8,11 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.WebPages;
 using StructureMap;
 using StructureMap.Web.Pipeline;
 using Tavarta.Common;
+using Tavarta.Common.DiplayMode;
 using Tavarta.DataLayer.Context;
 using Tavarta.DomainClasses;
 using Tavarta.IocConfig;
@@ -31,10 +33,15 @@ namespace Tavarta
         #region Application_Start
         protected void Application_Start()
         {
+            // Used for Google AMP (https://www.ampproject.org/docs/get_started/about-amp.html)
+            DisplayModeProvider.Instance.Modes.Clear();
+            DisplayModeProvider.Instance.Modes.Add(new GoogleAmpDisplayMode());
+            DisplayModeProvider.Instance.Modes.Add(new DefaultDisplayMode());
             //ScheduledTasksRegistry.Init();
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
             try
             {
+                ModelMetadataProviders.Current = new CachedDataAnnotationsModelMetadataProvider();
                 ViewEngines.Engines.Clear();
                 var razorEngine =new CSharpRazorViewEngine();
                 razorEngine.ViewLocationCache=new TwoLevelViewCache(razorEngine.ViewLocationCache);

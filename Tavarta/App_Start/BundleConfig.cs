@@ -20,6 +20,25 @@ namespace Tavarta
             //jqueryVal.Orderer = new NonOrderingBundleOrderer();
             //bundles.Add(jqueryVal);
 
+            bundles.Add(new StyleBundle("~/Content/FrontendCss")
+                .Include("~/Content/css/TavartaCommon.css")
+                .Include("~/Content/css/TavartaDefault.css")
+                .Include("~/css/fontawesome/css/font-awesome.min.css")
+                
+                );
+
+            bundles.Add(new StyleBundle("~/Content/FrontendCss2")
+                .Include("~/Content/css/Frontend/bootstrap/css/bootstrap1.min.css")
+                .Include("~/Content/css/Frontend/StyleSheet1.css")
+                );
+
+            bundles.Add(new ScriptBundle("~/Content/FrontendJs")
+                 .Include("~/js/JavaScript.js")
+                .Include("~/Content/js/TavartaJqueryLazyload.js")
+                .Include("~/Content/js/Amp.js")
+               
+                );
+
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/libs/modernizr-*"
             //           ));

@@ -165,6 +165,18 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NWebsec, Version=4.2.0.0, Culture=neutral, PublicKeyToken=3613da5f958908a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NWebsec.4.2.0\lib\45\NWebsec.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NWebsec.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3613da5f958908a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NWebsec.Core.1.5.0\lib\45\NWebsec.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NWebsec.Mvc, Version=4.2.0.0, Culture=neutral, PublicKeyToken=3613da5f958908a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NWebsec.Mvc.4.2.0\lib\45\NWebsec.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -339,13 +351,16 @@
     <Content Include="Areas\Admin\Views\Post\List.cshtml" />
     <Content Include="Areas\Admin\Views\Post\_ListAjax.cshtml" />
     <Content Include="Areas\Admin\Views\Post\_PostItem.cshtml" />
-    <Content Include="Areas\Admin\Views\Comment\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Comment\_ListAjax.cshtml" />
-    <Content Include="Areas\Admin\Views\Comment\_CommentItem.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\_ListAjax.cshtml" />
+    <Content Include="Areas\Admin\Views\Comments\_CommentItem.cshtml" />
+    <None Include="Areas\Admin\Views\Post\Delete.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\Create.cshtml" />
+    <None Include="Areas\Admin\Views\SlideShow\Delete.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\List.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\_ListAjax.cshtml" />
     <None Include="Areas\Admin\Views\SlideShow\_SlideItem.cshtml" />
+    <None Include="bundleconfig.json" />
     <None Include="Content\assets\jquery-2.1.4.intellisense.js" />
     <Content Include="Content\assets\jquery-2.1.4.js" />
     <Content Include="Content\assets\jquery-2.1.4.min.js" />
@@ -379,6 +394,26 @@
     <Content Include="Content\assets\My\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\assets\My\respond.min.js" />
     <Content Include="Content\assets\Test.js" />
+    <Content Include="Content\css\Frontend\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\css\Frontend\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap-rtl.css" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap-rtl.min.css" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap-theme.css" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap-theme.min.css" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap.css" />
+    <Content Include="Content\css\Frontend\bootstrap\css\bootstrap1.min.css" />
+    <Content Include="Content\css\Frontend\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\Frontend\dist\js\bootstrap.js" />
+    <Content Include="Content\css\Frontend\dist\js\bootstrap.min.js" />
+    <Content Include="Content\css\Frontend\fontello\fontello.css" />
+    <Content Include="Content\css\Frontend\fontello\font\fontello.svg" />
+    <Content Include="Content\css\Frontend\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\css\Frontend\PagedList.css" />
+    <Content Include="Content\css\Frontend\StyleSheet1.css" />
+    <Content Include="Content\css\Frontend\TavartaCommon.css" />
+    <Content Include="Content\css\Frontend\TavartaDefault.css" />
+    <Content Include="Content\js\Amp.js" />
+    <Content Include="Content\js\GulpMinify.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\fontawesome\css\font-awesome.css" />
@@ -1976,10 +2011,13 @@
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideShowController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Filters\ActivityAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2183,6 +2221,27 @@
     <Content Include="css\fontawesome\scss\_rotated-flipped.scss" />
     <Content Include="css\fontawesome\scss\_stacked.scss" />
     <Content Include="css\fontawesome\scss\_variables.scss" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap-theme.css.map" />
+    <Content Include="Content\css\Frontend\dist\css\bootstrap.css.map" />
+    <Content Include="Content\css\Frontend\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\css\Frontend\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\css\Frontend\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\Frontend\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\css\Frontend\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\css\Frontend\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\css\Frontend\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\css\Frontend\fonts\FontAwesome.otf" />
+    <Content Include="Content\css\Frontend\fontello\font\BYekan.ttf" />
+    <Content Include="Content\css\Frontend\fontello\font\fontello.eot" />
+    <Content Include="Content\css\Frontend\fontello\font\fontello.ttf" />
+    <Content Include="Content\css\Frontend\fontello\font\fontello.woff" />
+    <Content Include="css\fonts\IranNastaliq.ttf" />
+    <Content Include="css\fonts\Samim-Bold.ttf" />
+    <Content Include="css\fonts\Samim.ttf" />
+    <Content Include="Content\css\Frontend\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\css\Frontend\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\css\Frontend\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\Frontend\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2205,10 +2264,20 @@
     <Content Include="Views\Gallery\List.cshtml" />
     <Content Include="Views\Comment\Showcomment.cshtml" />
     <Content Include="Views\Comment\InsertComment.cshtml" />
+    <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Comment\PostComments.cshtml" />
     <None Include="Views\Comment\Temp.cshtml" />
     <None Include="Views\Comment\_AddPostComments.cshtml" />
     <None Include="Views\Comment\_Reply.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\InternalServerError.cshtml" />
+    <Content Include="Views\Error\LockOut.cshtml" />
+    <Content Include="Views\Error\MethodNotAllowed.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Unauthorized.cshtml" />
     <None Include="Views\Home\Single.cshtml">
       <Generator>RazorGenerator</Generator>
     </None>

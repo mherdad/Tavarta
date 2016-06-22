@@ -46,6 +46,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -97,6 +101,7 @@
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -157,6 +162,7 @@
     <Compile Include="Controller\StringToDateModelBinder.cs" />
     <Compile Include="CSharpRazorViewEngine.cs" />
     <Compile Include="DateAndTime\DateAndTime.cs" />
+    <Compile Include="DiplayMode\GoogleAmpDisplayMode.cs" />
     <Compile Include="Experimental\ObjectPool\ObjectPool.cs" />
     <Compile Include="Experimental\ObjectPool\ObjectPoolExtensions.cs" />
     <Compile Include="Experimental\ObjectPool\PooledObject.cs" />
@@ -183,6 +189,89 @@
     <Compile Include="Extentions\TypeExtentions.cs" />
     <Compile Include="Extentions\UrlHelperExtensions.cs" />
     <Compile Include="Extentions\XDocumentExtensions.cs" />
+    <Compile Include="Fabrik\ActionResultExtensions.cs" />
+    <Compile Include="Fabrik\ActionResults\AjaxAwareRedirectResult.cs" />
+    <Compile Include="Fabrik\ActionResults\AlertResult.cs" />
+    <Compile Include="Fabrik\ActionResults\AtomResult.cs" />
+    <Compile Include="Fabrik\ActionResults\FeedResult.cs" />
+    <Compile Include="Fabrik\ActionResults\HttpStatusCodePartialViewResult.cs" />
+    <Compile Include="Fabrik\ActionResults\HttpStatusCodeViewResult.cs" />
+    <Compile Include="Fabrik\ActionResults\JavaScriptRedirectResult.cs" />
+    <Compile Include="Fabrik\ActionResults\RssFeedResult.cs" />
+    <Compile Include="Fabrik\ActionResults\SitemapResult.cs" />
+    <Compile Include="Fabrik\ActionResults\PermanentRedirectResult.cs" />
+    <Compile Include="Fabrik\ActionResults\XmlResult.cs" />
+    <Compile Include="Fabrik\Alert.cs" />
+    <Compile Include="Fabrik\AlertType.cs" />
+    <Compile Include="Fabrik\AttributeMetadataPlugin.cs" />
+    <Compile Include="Fabrik\DefaultViewFactory.cs" />
+    <Compile Include="Fabrik\Filters\AutoFormatResultAttribute.cs" />
+    <Compile Include="Fabrik\Filters\ExportModelStateToTempDataAttribute.cs" />
+    <Compile Include="Fabrik\Filters\ImportModelStateFromTempDataAttribute.cs" />
+    <Compile Include="Fabrik\Filters\InjectPageMetadataAttribute.cs" />
+    <Compile Include="Fabrik\Filters\ModelStateTempDataTransfer.cs" />
+    <Compile Include="Fabrik\Filters\NullModelCheckAttribute.cs" />
+    <Compile Include="Fabrik\Filters\ValidateModelStateAttribute.cs" />
+    <Compile Include="Fabrik\ForceLowercaseUrlModule.cs" />
+    <Compile Include="Fabrik\HelperPage.cs" />
+    <Compile Include="Fabrik\HtmlHelperExtensions.cs" />
+    <Compile Include="Fabrik\HttpModuleBase.cs" />
+    <Compile Include="Fabrik\HttpPostedFileBaseExtensions.cs" />
+    <Compile Include="Fabrik\IGlobalFilterRegistry.cs" />
+    <Compile Include="Fabrik\IMetadataPlugin.cs" />
+    <Compile Include="Fabrik\IPageMetadata.cs" />
+    <Compile Include="Fabrik\IRouteRegistry.cs" />
+    <Compile Include="Fabrik\IViewBuilder.cs" />
+    <Compile Include="Fabrik\IViewFactory.cs" />
+    <Compile Include="Fabrik\IViewResultFormatter.cs" />
+    <Compile Include="Fabrik\JsonViewResultFormatter.cs" />
+    <Compile Include="Fabrik\LowercaseRoute.cs" />
+    <Compile Include="Fabrik\MediaTypeViewResultFormatter.cs" />
+    <Compile Include="Fabrik\ModelBinderMappingDictionary.cs" />
+    <Compile Include="Fabrik\ModelStateExtensions.cs" />
+    <Compile Include="Fabrik\NumberRouteConstraint.cs" />
+    <Compile Include="Fabrik\Others\Base36.cs" />
+    <Compile Include="Fabrik\Others\Base64Url.cs" />
+    <Compile Include="Fabrik\Others\DateTimeWithZone.cs" />
+    <Compile Include="Fabrik\Others\DictionaryExtensions.cs" />
+    <Compile Include="Fabrik\Others\Ensure.cs" />
+    <Compile Include="Fabrik\Others\EnumerableExtensions.cs" />
+    <Compile Include="Fabrik\Others\EnumUtils.cs" />
+    <Compile Include="Fabrik\Others\Equatable.cs" />
+    <Compile Include="Fabrik\Others\FunctionalExtensions.cs" />
+    <Compile Include="Fabrik\Others\GuidExtensions.cs" />
+    <Compile Include="Fabrik\Others\IOExtensions.cs" />
+    <Compile Include="Fabrik\Others\IStartupTask.cs" />
+    <Compile Include="Fabrik\Others\ListExtensions.cs" />
+    <Compile Include="Fabrik\Others\MimeMapping.cs" />
+    <Compile Include="Fabrik\Others\PagedList.cs" />
+    <Compile Include="Fabrik\Others\PathUtils.cs" />
+    <Compile Include="Fabrik\Others\QueryableExtensions.cs" />
+    <Compile Include="Fabrik\Others\RegexUtils.cs" />
+    <Compile Include="Fabrik\Others\StringExtensions.cs" />
+    <Compile Include="Fabrik\Others\StringValidationExtensions.cs" />
+    <Compile Include="Fabrik\Others\TypeExtensions.cs" />
+    <Compile Include="Fabrik\Others\XmlExtensions.cs" />
+    <Compile Include="Fabrik\PageMetadata.cs" />
+    <Compile Include="Fabrik\PartialViewResultFormatter.cs" />
+    <Compile Include="Fabrik\PluggableModelMetaDataProvider.cs" />
+    <Compile Include="Fabrik\RegexConstraint.cs" />
+    <Compile Include="Fabrik\RouteCollectionExtensions.cs" />
+    <Compile Include="Fabrik\RouteExtensions.cs" />
+    <Compile Include="Fabrik\SEO\ISitemapGenerator.cs" />
+    <Compile Include="Fabrik\SEO\ISitemapItem.cs" />
+    <Compile Include="Fabrik\SEO\SitemapChangeFrequency.cs" />
+    <Compile Include="Fabrik\SEO\SitemapGenerator.cs" />
+    <Compile Include="Fabrik\SEO\SitemapItem.cs" />
+    <Compile Include="Fabrik\SlugRouteConstraint.cs" />
+    <Compile Include="Fabrik\UrlHelperExtensions.cs" />
+    <Compile Include="Fabrik\Validation\MandatoryAttribute.cs" />
+    <Compile Include="Fabrik\ViewEngines\BuildManager.cs" />
+    <Compile Include="Fabrik\ViewEngines\ThemeableBuildManagerViewEngine.cs" />
+    <Compile Include="Fabrik\ViewEngines\ThemeableRazorViewEngine.cs" />
+    <Compile Include="Fabrik\ViewEngines\ThemeableVirtualPathProviderViewEngine.cs" />
+    <Compile Include="Fabrik\ViewResultFormatters.cs" />
+    <Compile Include="Fabrik\XmlViewResultFormatter.cs" />
     <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Filters\AllowUploadSafeFilesAttribute.cs" />
     <Compile Include="Filters\AllowUploadSpecialFilesAttribute.cs" />
@@ -210,10 +299,12 @@
     <Compile Include="Filters\RedirectToHttpsAttribute.cs" />
     <Compile Include="Filters\RemoveServerHeaderFilterAttribute.cs" />
     <Compile Include="Filters\SearchBotFilter.cs" />
+    <Compile Include="Filters\SeoFriendlyRoute.cs" />
     <Compile Include="Filters\SetIfModifiedSinceAttribute.cs" />
     <Compile Include="Filters\SignalrAuthorizeAttribute.cs" />
     <Compile Include="Filters\ThrottleAttribute.cs" />
     <Compile Include="Filters\TidyHtml.cs" />
+    <Compile Include="Filters\UseAmpImageAttribute.cs" />
     <Compile Include="Filters\ValidateHeaderAntiForgeryTokenAttribute.cs" />
     <Compile Include="Filters\WhitespaceFilterAttribute.cs" />
     <Compile Include="Helpers\AjaxDialog.cs" />
@@ -253,6 +344,7 @@
     <Compile Include="HttpCompress\Settings.cs" />
     <Compile Include="HttpModules\DosAttackModule.cs" />
     <Compile Include="HttpModules\IpBlockModule.cs" />
+    <Compile Include="HttpModules\RemoveETagModule.cs" />
     <Compile Include="Json\JsonExtensions.cs" />
     <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Json\JsonNetResult.cs" />
@@ -337,6 +429,11 @@
     <Compile Include="RSS\FeedItem.cs" />
     <Compile Include="RSS\FeedResult.cs" />
     <Compile Include="RSS\RtlHelper.cs" />
+    <Compile Include="SEO\ISitemapGenerator.cs" />
+    <Compile Include="SEO\ISitemapItem.cs" />
+    <Compile Include="SEO\SitemapChangeFrequency.cs" />
+    <Compile Include="SEO\SitemapGenerator.cs" />
+    <Compile Include="SEO\SitemapItem.cs" />
     <Compile Include="Sitemap\SitemapException.cs" />
     <Compile Include="Sitemap\SitemapFrequency.cs" />
     <Compile Include="Sitemap\SitemapGenerator.cs" />
@@ -371,6 +468,7 @@
       <Name>Tavarta.Utility</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

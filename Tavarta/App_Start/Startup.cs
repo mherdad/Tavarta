@@ -37,7 +37,7 @@ namespace Tavarta
             appBuilder.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/Admin/Account/Login"),
                 ExpireTimeSpan = TimeSpan.FromDays(oneWeeks),
                 SlidingExpiration = true,
                 CookieName = "tavarta",
