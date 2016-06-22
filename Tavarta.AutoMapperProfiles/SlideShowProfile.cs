@@ -17,6 +17,10 @@ namespace Tavarta.AutoMapperProfiles
 
             CreateMap<SlideShowImage, AddSlideShowViewModel>()
                 .IgnoreAllNonExisting();
+
+            CreateMap<SlideShowImage, DeleteSlideShowViewModel>()
+                .IgnoreAllNonExisting();
+
             CreateMap<AddSlideShowViewModel, SlideShowImage>()
                .IgnoreAllNonExisting();
 

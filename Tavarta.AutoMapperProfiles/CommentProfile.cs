@@ -15,6 +15,8 @@ namespace Tavarta.AutoMapperProfiles
                 .IgnoreAllNonExisting();
             CreateMap<AddCommentsViewModel, PostComment>()
                .IgnoreAllNonExisting();
+            CreateMap<CommentViewModel, CommentViewModel>()
+                .IgnoreAllNonExisting();
         }
 
         public override string ProfileName => GetType().Name;
