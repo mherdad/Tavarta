@@ -1,0 +1,24 @@
+﻿.navbar-default .navbar-toggle .icon-bar {
+    background: #FFF;
+}
+
+#tv-schedule.widget ul li {
+    border-color: #badcff;
+}
+
+    #tv-schedule.widget ul li .tvandtime {
+        background: #aad5ff;
+    }
+
+    #tv-schedule.widget ul li:nth-child(odd) {
+        background: #d3e9ff;
+    }
+
+    #tv-schedule.widget ul li:hover {
+        background: #c6e3ff;
+    }
+
+        #tv-schedule.widget ul li:hover .tvandtime {
+            background: #6db6ff;
+            color: #FFF;
+        }

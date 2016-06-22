@@ -1,0 +1,118 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+#tv-schedule.widget {
+    width: 100%;
+    color: #2B2B2B;
+}
+
+    #tv-schedule.widget ul {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        list-style: none;
+    }
+
+        #tv-schedule.widget ul li {
+            border-width: 0 3px;
+            border-style: solid;
+            font-family: tahoma;
+            margin-bottom: 1px;
+            padding: 5px;
+        }
+
+    #tv-schedule.widget .tvicon {
+        width: 21px;
+        height: 21px;
+    }
+
+        #tv-schedule.widget .tvicon:before, #tv-schedule.widget .tvicon:after {
+            content: '\0000a0';
+        }
+
+        #tv-schedule.widget .tvicon.tvthree {
+            background: url("") no-repeat;
+        }
+
+        #tv-schedule.widget .tvicon.tvsport {
+            background: url("") no-repeat;
+        }
+
+        #tv-schedule.widget .tvicon.tvsshoma {
+            background: url("") no-repeat;
+        }
+
+        #tv-schedule.widget .tvicon.tvthreeorsport {
+            background: url("");
+            background: url(""),url("");
+            background-position: center right;
+            background-position: center right, center left;
+            background-repeat: no-repeat;
+            width: 42px;
+        }
+
+    #tv-schedule.widget .match-type-icon {
+        width: 21px;
+        height: 21px;
+        float: right;
+        margin: 3px;
+    }
+
+        #tv-schedule.widget .match-type-icon:before, #tv-schedule.widget .match-type-icon:after {
+            content: '\0000a0';
+        }
+
+        #tv-schedule.widget .match-type-icon.football {
+            background: url("") center no-repeat;
+        }
+
+        #tv-schedule.widget .match-type-icon.basketball {
+            background: url("") center no-repeat;
+        }
+
+        #tv-schedule.widget .match-type-icon.volleyball {
+            background: url("") center no-repeat;
+        }
+
+    #tv-schedule.widget .boxes {
+        display: inline;
+    }
+
+    #tv-schedule.widget .datetimewrapper, #tv-schedule.widget .tvicon {
+        display: inline-block;
+    }
+
+    #tv-schedule.widget .text-right {
+        text-align: right;
+    }
+
+    #tv-schedule.widget .program-wrapper {
+        direction: rtl;
+    }
+
+    #tv-schedule.widget .program-wrapper, #tv-schedule.widget .b-b-wrapper {
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    #tv-schedule.widget .datetimewrapper, #tv-schedule.widget .desc {
+        line-height: 23px;
+    }
+
+    #tv-schedule.widget .datetime {
+        display: block;
+    }
+
+    #tv-schedule.widget .tvandtime {
+        line-height: 21px;
+        padding: 1px 3px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        display: inline-block;
+    }
+
+.widget-clean {
+    clear: both;
+}
