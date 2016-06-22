@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <div class=" col-md-8">
+        <div class="jumbotron text-center">
+            <h1 class=" text-center"><div class="text-info fa fa-warning"></div></h1>
+            <small class="text-info">خطا 404</small>
+            <h2 class="text-center">صفحه مورد نظر شما پیدا نشده است.</h2>
+            <small><p>شما تلاش کرده اید به صفحه ای دسترسی داشته باشید که موجود نیست یا شما اجازه دسترسی به آن را ندارید</p></small>
+            <h3 style="color:blue"><a href="@Url.Action("Index","News")">بازگشت به خانه</a></h3>
+            <br><br><br><br><br><br><br>
+        </div>
+    </div>
+
