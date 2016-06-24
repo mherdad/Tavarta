@@ -233,18 +233,18 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             var gallery = "گالری تصاویر";
             var sport =
                 _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == gallery).AsQueryable();
-            var query1 = await sport
+            var photoGalleryModel = await sport
                 .Take(7).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query1;
+            return photoGalleryModel;
         }
 
         private async Task<List<NewsViewModel>> GetMostViewedAsync()
         {
             var sport =
                 _news.AsNoTracking().OrderByDescending(x => x.ViewCount).AsQueryable();
-            var query1 = await sport
+            var mostViewedModel = await sport
                 .Take(5).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query1;
+            return mostViewedModel;
         }
 
         private async Task<List<NewsViewModel>> GetEnvironmentAsync()
@@ -254,9 +254,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 _news.AsNoTracking()
                 .OrderByDescending(x => x.PublishedOn)
                 .Where(x => x.Category.Name == environmentName).AsQueryable();
-            var query2 = await environment
+            var environmentViewModel = await environment
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query2;
+            return environmentViewModel;
         }
 
         private async Task<List<NewsViewModel>> GetHealthEventAsync()
@@ -268,9 +268,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                     .OrderByDescending(x => x.PublishedOn)
                     .Where(x => x.Category.Name == healthName || x.Category.Name == eventsName)
                     .AsQueryable();
-            var query3 = await healthEvent
+            var healthEventViewModel = await healthEvent
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query3;
+            return healthEventViewModel;
         }
 
         private async Task<List<NewsViewModel>> GetLiteraryAsync()
@@ -278,9 +278,9 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             var literaryName = "ادبی";
             var literary =
                 _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == literaryName).AsQueryable();
-            var query4 = await literary
+            var literaryViewModel = await literary
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query4;
+            return literaryViewModel;
         }
 
         public async Task<List<NewsViewModel>> GetNotesAsync()
@@ -288,25 +288,25 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             var noteName = "یادداشت ها";
             var notes =
                 _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == noteName).AsQueryable();
-            var query5 = await notes
+            var notesViewModel = await notes
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query5;
+            return notesViewModel;
         }
 
         public async Task<List<CarouselViewModel>> GetCarouselAsync()
         {
             var slideShow = _slideShow.AsNoTracking().OrderByDescending(x => x.Order).AsQueryable();
-            var query6 = await slideShow
+            var slideViewModel = await slideShow
                 .Take(6).ProjectTo<CarouselViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
-            return query6;
+            return slideViewModel;
         }
 
         public async Task<List<LastArticleViewModel>> GetLastArticleAsync()
         {
             var lastArticle = _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
-            var query6 = await lastArticle
+            var lastArticleViewModels = await lastArticle
                .Take(30).ProjectTo<LastArticleViewModel>(_mappingEngine).ToListAsync();
-            return query6;
+            return lastArticleViewModels;
         }
 
         #endregion GetPagedList
@@ -314,11 +314,11 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
         public async Task<NewsListViewModel> GetPagedSportNewsAsync(Guid id)
         {
             var sport = _news.AsNoTracking().OrderByDescending(x => x.PublishedOn).Where(x => x.CategoryId == id).AsQueryable();
-            var query = await sport
+            var sportViewModel = await sport
                 .Take(4).ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
             return new NewsListViewModel
             {
-                Sports = query
+                Sports = sportViewModel
             };
         }
     }

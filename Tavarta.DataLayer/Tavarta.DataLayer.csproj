@@ -105,6 +105,8 @@
     <Compile Include="HintExtension.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbConfigurations\TavartaDbConfiguration.cs" />
+    <Compile Include="DbConfigurations\SqlServerExecutionStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
