@@ -1,7 +1,7 @@
 ﻿@using Tavarta.Common.Extentions
 @model Tavarta.ViewModel.News.NewsViewModel
 
-    <div class="col-xs-6 col-sm-6 col-md-3">
+    <div class="col-xs-6 col-sm-6 col-md-3" style="margin-bottom: 2px">
          <a href="@Url.Action("Details", "News", new {Title = Model.Title.ToSeoUrl(), Model.Id})"  class="camera-thumbnail thumbnail">
         @*<a href="@Url.Action("",new {Model.Id})" class="camera-thumbnail thumbnail">*@
             <figure>

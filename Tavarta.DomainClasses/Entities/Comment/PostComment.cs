@@ -20,6 +20,8 @@ namespace Tavarta.DomainClasses.Entities.Comment
         }
         #endregion
 
+    public bool IsShow { get; set; }
+
         #region NavigationProperties
         /// <summary>
         /// gets or sets BlogComment's identifier for Replying and impelemention self referencing

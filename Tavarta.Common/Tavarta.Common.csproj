@@ -275,6 +275,7 @@
     <Compile Include="Filters\AjaxOnlyAttribute.cs" />
     <Compile Include="Filters\AllowUploadSafeFilesAttribute.cs" />
     <Compile Include="Filters\AllowUploadSpecialFilesAttribute.cs" />
+    <Compile Include="Filters\AuthorizeIPAddressAttribute.cs" />
     <Compile Include="Filters\ChallengeResult.cs" />
     <Compile Include="Filters\CheckReferrerAttribute.cs" />
     <Compile Include="Filters\CompressFilter.cs" />
@@ -285,6 +286,7 @@
     <Compile Include="Filters\ElmahHandledErrorLoggerFilter.cs" />
     <Compile Include="Filters\ElmahRequestValidationErrorFilter.cs" />
     <Compile Include="Filters\ETagAttribute.cs" />
+    <Compile Include="Filters\FilterIPAttribute.cs" />
     <Compile Include="Filters\ForceWww.cs" />
     <Compile Include="Filters\GZipFilter.cs" />
     <Compile Include="Filters\HttpOutputFilter.cs" />

@@ -39,7 +39,8 @@ namespace Tavarta.ServiceLayer.EFServiecs.Comments
                 CreatorDisplayName = comment.CreatorDisplayName,
                 Email = comment.Email,
                 Title = post.Title,
-                CreatedOn = comment.CreatedOn
+                CreatedOn = comment.CreatedOn,
+                IsShow = comment.IsShow
             }).OrderByDescending(x => x.CreatedOn).ToPagedQuery(itemsPerPage, page).ToListAsync();
 
             //  var query1 = await _comments.Include(x=>x.Post).OrderByDescending(x => x.CreatedOn)
@@ -78,6 +79,29 @@ namespace Tavarta.ServiceLayer.EFServiecs.Comments
             await _unitOfWork.SaveChangesAsync();
         }
 
+        public async Task<CommentViewModel> Disable(Guid id, bool flag)
+        {
+            var comments = await _comments.Where(x=>x.Id==id).FirstOrDefaultAsync();
+            comments.IsShow = flag;
+            await _unitOfWork.SaveChangesAsync();
+            var query =
+                await
+                    _comments.Join(_posts, comment => comment.PostId, post => post.Id,
+                        (comment, post) => new CommentViewModel
+                        {
+                            Id = comment.Id,
+
+                            Body = comment.Body,
+                            CreatorDisplayName = comment.CreatorDisplayName,
+                            Email = comment.Email,
+                            Title = post.Title,
+                            CreatedOn = comment.CreatedOn,
+                            IsShow = comment.IsShow
+                        }).FirstOrDefaultAsync(x => x.Id == id);
+            return query;
+        }
+
+
         public Task EditComment(EditCommentViewModel viewModel)
         {
             var comment = _comments.Find(viewModel.Id);
@@ -85,9 +109,15 @@ namespace Tavarta.ServiceLayer.EFServiecs.Comments
             return _unitOfWork.SaveChangesAsync();
         }
 
+        public async Task<int> TotalComments()
+        {
+            var total = await _comments.CountAsync();
+            return total;
+        }
+
         public async Task<CommentListViewModel> GetComments(Guid postId)
         {
-            var postComments = await _comments.Where(c => c.ReplyId == null && c.PostId == postId).ProjectTo<CommentViewModel>(_mappingEngine).ToListAsync();
+            var postComments = await _comments.Where(c => c.ReplyId == null && c.PostId == postId && c.IsShow ).ProjectTo<CommentViewModel>(_mappingEngine).ToListAsync();
             //var tt = await _comments.Where(x => x.ReplyId != null).ProjectTo<CommentViewModel>(_mappingEngine).ToListAsync();
 
             return new CommentListViewModel

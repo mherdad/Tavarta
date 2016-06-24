@@ -1,6 +1,6 @@
-﻿@model Tavarta.ViewModel.News.NewsListViewModel
+﻿@model IList<Tavarta.ViewModel.News.CarouselViewModel>
 
-@foreach (var carousel in Model.Carousel)
+@foreach (var carousel in Model)
 {
     @Html.Partial("_carouselItem",carousel)
 }

@@ -145,10 +145,10 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
             var literary = await GetLiteraryAsync();
 
-            var notes = await GetNotesAsync();
+            //var notes = await GetNotesAsync();
 
-            var carousel = await GetCarouselAsync();
-            var lastArticle = await GetLastArticleAsync();
+            //var carousel = await GetCarouselAsync();
+            //var lastArticle = await GetLastArticleAsync();
             var photoGallery = await GetPhotoGalleryAsync();
 
             return new NewsListViewModel
@@ -158,10 +158,10 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 Environment = environment,
                 HealthEvents = healthEvents,
                 Literary = literary,
-                Notes = notes,
-                Carousel = carousel,
+                //Notes = notes,
+                //Carousel = carousel,
                 MostViewed = mostViewed,
-                LastArticle = lastArticle,
+                //LastArticle = lastArticle,
                 PhotoGallery = photoGallery
             };
         }
@@ -283,7 +283,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             return query4;
         }
 
-        private async Task<List<NewsViewModel>> GetNotesAsync()
+        public async Task<List<NewsViewModel>> GetNotesAsync()
         {
             var noteName = "یادداشت ها";
             var notes =
@@ -293,7 +293,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             return query5;
         }
 
-        private async Task<List<CarouselViewModel>> GetCarouselAsync()
+        public async Task<List<CarouselViewModel>> GetCarouselAsync()
         {
             var slideShow = _slideShow.AsNoTracking().OrderByDescending(x => x.Order).AsQueryable();
             var query6 = await slideShow
@@ -301,7 +301,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             return query6;
         }
 
-        private async Task<List<LastArticleViewModel>> GetLastArticleAsync()
+        public async Task<List<LastArticleViewModel>> GetLastArticleAsync()
         {
             var lastArticle = _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
             var query6 = await lastArticle

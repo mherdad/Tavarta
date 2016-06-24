@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+@using Tavarta.Common.Extentions
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -241,11 +242,11 @@
                         <div class="row">
                             <div class="collapse navbar-collapse" id="main-nav">
                                 <ul class="nav navbar-nav" id="yw0">
-                                    <li class="dropdown wcup-fw"><a href="http://www.tavarta.ir"><i class="glyphicon glyphicon-home"></i>خانه</a></li>
+                                    <li class="dropdown wcup-fw"><a href="@Url.Action("Index","News")"><i class="glyphicon glyphicon-home"></i>خانه</a></li>
                                     <li class="dropdown wcup-fw"><a href="#"><i class="glyphicon glyphicon-list"></i>آرشیو</a></li>
-                                    <li class="dropdown wcup-fw"><a href="#"><i class="glyphicon glyphicon-facetime-video"></i>آب وهوا</a></li>
-                                    <li class="dropdown wcup-fw"><a href="#"><i class="glyphicon glyphicon-camera"></i>گالری تصاویر</a></li>
-                                    <li class="dropdown wcup-fw"><a href="#/"><i class="glyphicon glyphicon-list-alt"></i>اوقات شرعی</a></li>
+                                    <li class="dropdown wcup-fw"><a href="@Url.Action("Index","Weather")"><i class="glyphicon glyphicon-facetime-video"></i>آب وهوا</a></li>
+                                    <li class="dropdown wcup-fw"><a href="@Url.Action("List","Gallery",new {category="گالری تصاویر".ToSeoUrl()})"><i class="glyphicon glyphicon-camera"></i>گالری تصاویر</a></li>
+                                    <li class="dropdown wcup-fw"><a href="#"><i class="glyphicon glyphicon-list-alt"></i>اوقات شرعی</a></li>
                                     @*<li id="show-results-tables" class="dropdown wcup-fw"><a href="/site/#/"><i class="glyphicon glyphicon-th-large"></i>جداول و نتایج</a></li>
                                         <li class="dropdown wcup-fw"><a href="/frontcms/tag/viewcontents/id/1733/"><i class="glyphicon glyphicon-list-alt"></i>اخبار ورزشی افغانستان</a></li>*@
                                     @*<li class="dropdown wcup-fw"><a href="/livescore/"><i class="glyphicon glyphicon-record"></i>نتایج زنده</a></li>

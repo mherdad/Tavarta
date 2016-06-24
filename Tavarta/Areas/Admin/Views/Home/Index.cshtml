@@ -1,4 +1,32 @@
-﻿
+﻿@using DNT.Extensions
+
+@{
+    var comments =(string)ViewBag.TotalComments.ToString();
+    comments = comments.ToPersianContent(true);
+
+    var posts = (string)ViewBag.TotalPosts.ToString();
+    posts = posts.ToPersianContent(true);
+
+    var users =(string) ViewBag.TotalUsers.ToString();
+    users = users.ToPersianContent(true);
+
+  
+
+
+
+
+
+
+    <!-- Begin ToolsIR.com Oghat code -->
+<script src="http://oghat.toolsir.com/azan.php?mod=1&border=1&az=0&city=7-7" type="text/javascript"></script>
+<!-- End ToolsIR.com Oghat code -->
+}
+
+  
+
+
+
+<div style="display:none;"><h2><a href="http://www.toolsir.com/">دریافت کد اوقات شرعی</a></h2></div>
 
 @*<div id="app">
     <!-- sidebar -->
@@ -220,7 +248,7 @@
                                     <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
                                     <h2 class="StepTitle">مدیریت کاربران</h2>
                                     <p class="text-small">
-                                        اضافه کردن کاربران
+                                        تعداد کاربران : @users
                                     </p>
                                     <p class="links cl-effect-1">
                                         <a href="@Url.Action("List","User")">
@@ -234,7 +262,7 @@
                             <div class="panel panel-white no-radius text-center">
                                 <div class="panel-body">
                                     <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                                    <h2 class="StepTitle"> مدیریت کاربران</h2>
+                                    <h2 class="StepTitle"> مدیریت گروه ها</h2>
                                     <p class="text-small">
                                        انجام کار مدیریتی بر گروه
                                     </p>
@@ -268,18 +296,18 @@
                 <br />
                 <br />
                 <!-- start: FEATURED BOX LINKS2 -->
-                @*<div class="container-fluid container-fullw bg-white padding-bottom-10">
+                <div class="container-fluid container-fullw bg-white padding-bottom-10">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="panel panel-indigo no-radius text-center">
                                 <div class="panel-body">
                                     <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
-                                    <h2 class="StepTitle">مدیریت کاربران</h2>
+                                    <h2 class="StepTitle">مدیریت نظرات</h2>
                                     <p class="text-small">
-                                        اضافه کردن کاربران
+                                       تعداد کامنت : @comments
                                     </p>
                                     <p class="links cl-effect-1">
-                                        <a href>
+                                        <a href="@Url.Action("List","Comments")">
                                             بیشتر
                                         </a>
                                     </p>
@@ -290,12 +318,12 @@
                             <div class="panel panel-indigo no-radius text-center">
                                 <div class="panel-body">
                                     <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
-                                    <h2 class="StepTitle">نگهداری سیستم</h2>
+                                    <h2 class="StepTitle"> مدیرت نوشته ها</h2>
                                     <p class="text-small">
-                                        مدیریت خطاهای سیستم
+                                        تعداد پست : @posts
                                     </p>
                                     <p class="cl-effect-1">
-                                        <a href>
+                                        <a href="@Url.Action("List","Post")">
                                             بیشتر
                                         </a>
                                     </p>
@@ -319,7 +347,7 @@
                             </div>
                         </div>
                     </div>
-                </div>*@
+                </div>
                 <!-- end: FEATURED BOX LINKS2 -->
                 <br />
                 <br />

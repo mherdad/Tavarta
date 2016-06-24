@@ -19,5 +19,7 @@ namespace Tavarta.ServiceLayer.Contracts.Comments
         Task EditComment(EditCommentViewModel viewModel);
         Task<DeleteCommentViewModel> DeleteCommentDetails(Guid id);
         Task DeleteComment(DeleteCommentViewModel viewModel);
+        Task<CommentViewModel> Disable(Guid id, bool flag);
+        Task<int> TotalComments();
     }
 }

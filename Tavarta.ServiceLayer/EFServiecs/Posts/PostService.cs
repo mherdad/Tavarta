@@ -223,6 +223,12 @@ namespace Tavarta.ServiceLayer.EFServiecs.Posts
 
         }
 
+        public async Task<int> TotalPosts()
+        {
+            var posts = await _posts.CountAsync();
+            return posts;
+        }
+
 
 
     }

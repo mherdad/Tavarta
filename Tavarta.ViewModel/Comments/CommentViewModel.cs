@@ -24,6 +24,8 @@ namespace Tavarta.ViewModel.Comments
         /// نام
         /// </summary>
 
+        public bool IsShow { get; set; }
+
         public string CreatorDisplayName { get; set; }
 
         public Guid? ReplyId { get; set; }

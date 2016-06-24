@@ -2,29 +2,76 @@
 
 @using DNT.Extensions
 
-<div class="" id="user-@Model.Id">
-    <div class="col-md-12 data-item">
 
-        <tr>
-               <td class=" center">@Model.Title</td>
-            <td class="hidden-xs center">@Model.CreatorDisplayName</td>
-         
-            <td class="right " >@Model.Body</td>
-            <td class="hidden-xs center">@Model.Email</td>
-            <td class=" center">
-                <div class="visible-md visible-lg visible-xs visible-sm  ">
-                    <a href="@Url.Action("Edit",new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
-                    <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
-                    <a href="@Url.Action("Delete",new {Model.Id})" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
-                    </div>
-            </td>
 
-            @*<td class="hidden-xs">
+<div class="hidden">
+
+    <tr id="user-@Model.Id">
+        <td class=" center">@Model.Title</td>
+        <td class="hidden-xs center">@Model.CreatorDisplayName</td>
+
+        <td class="right ">@Model.Body</td>
+        <td class="hidden-xs center">@Model.Email</td>
+
+        <td class=" center">
+            <div class="visible-md visible-lg visible-xs visible-sm  ">
+                <a href="@Url.Action("Edit", new {Model.Id})" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
+                @*<a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>*@
+                <a href="@Url.Action("Delete", new {Model.Id})" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                @if (Model.IsShow)
+            {
+
+                    <a class="btn   btn-success btn-scroll btn-scroll-top fa fa-check-square-o "
+                       data-ajax="true" data-ajax-method="POST"
+                       data-ajax-mode="REPLACE-WITH"
+                       data-ajax-update="#user-@Model.Id"
+                       href="@Url.Action("EnableComment", new {Model.Id})" role="button">
+                        <span><i class="fa fa-check-square-o"></i>عدم نمایش</span>
+                    </a>
+                }
+                else
+                {
+                    <a class="btn  btn-dark-red btn-scroll btn-scroll-top fa fa-ban @(Model.IsShow ? "not-active" : "")"
+                       data-ajax="true" data-ajax-method="POST"
+                       data-ajax-mode="REPLACE-WITH"
+                       data-ajax-update="#user-@Model.Id"
+                       href="@Url.Action("DisableComment", new {Model.Id})" role="button">
+                        <span><i class="fa fa-ban"></i> نمایش </span>
+                    </a>
+                }
+            </div>
+        </td>
+        @*<td class=" center">
+
+            @if (Model.IsShow)
+            {
+
+                <a class="btn   btn-success btn-scroll btn-scroll-top fa fa-check-square-o "
+                   data-ajax="true" data-ajax-method="POST"
+                   data-ajax-mode="REPLACE-WITH"
+                   data-ajax-update="#user-@Model.Id"
+                   href="@Url.Action("EnableComment", new {Model.Id})" role="button">
+                    <span><i class="fa fa-check-square-o"></i>عدم تایید</span>
+                </a>
+            }
+            else
+            {
+                <a class="btn  btn-dark-red btn-scroll btn-scroll-top fa fa-ban @(Model.IsShow ? "not-active" : "")"
+                   data-ajax="true" data-ajax-method="POST"
+                   data-ajax-mode="REPLACE-WITH"
+                   data-ajax-update="#user-@Model.Id"
+                   href="@Url.Action("DisableComment", new {Model.Id})" role="button">
+                    <span><i class="fa fa-ban"></i> تایید  </span>
+                </a>
+            }
+        </td>*@
+
+        @*<td class="hidden-xs">
                 <a href="#" rel="nofollow" target="_blank">
                 </a>
             </td>*@
-            @*<td class="hidden-xs"></td>*@
-            @*<td class="center">
+        @*<td class="hidden-xs"></td>*@
+        @*<td class="center">
                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                     <a href="#" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
                     <a href="#" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Share"><i class="fa fa-share"></i></a>
@@ -64,7 +111,7 @@
                     </div>
                 </div>
             </td>*@
-        </tr>
-    </div>
+    </tr>
 </div>
+
 <!-- end: STRIPED ROWS -->

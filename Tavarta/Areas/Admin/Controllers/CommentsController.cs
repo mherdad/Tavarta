@@ -1,9 +1,13 @@
 ﻿using PagedList;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI;
+using Microsoft.Web.Mvc;
 using Tavarta.Common.Controller;
 using Tavarta.DataLayer.Context;
+using Tavarta.Filters;
 using Tavarta.ServiceLayer.Contracts.Comments;
 using Tavarta.ViewModel.Comments;
 
@@ -65,6 +69,37 @@ namespace Tavarta.Areas.Admin.Controllers
         {
             await _commentsService.DeleteComment(viewModel);
             return RedirectToAction("List");
+        }
+
+
+        [HttpPost]
+        [AjaxOnly]
+        //[CheckReferrer]
+        //[Activity(Description = "مسدود کردن حساب کاربر")]
+        [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
+        public virtual async Task<ActionResult> DisableComment(Guid? id)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //if (await _commentsService.IsShow(id.Value))
+            //{
+            //    return Content("system");
+            //}
+            var commentViewModel = await _commentsService.Disable(id.Value, true);
+            return PartialView("_CommentItem", commentViewModel);
+
+        }
+
+        [HttpPost]
+        [AjaxOnly]
+        //[CheckReferrer]
+        [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
+        //[Activity(Description = "مسدود کردن حساب کاربر")]
+        public virtual async Task<ActionResult> EnableComment(Guid? id)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var commentViewModel = await _commentsService.Disable(id.Value, false);
+            return PartialView("_CommentItem", commentViewModel);
+
         }
 
 

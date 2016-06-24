@@ -1,0 +1,117 @@
+﻿@section scripts
+{
+
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/vendor/modernizr/modernizr.js"></script>
+    <script src="~/vendor/jquery-cookie/jquery.cookie.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/vendor/switchery/switchery.min.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="~/vendor/Chart.js/Chart.min.js"></script>
+    <script src="~/vendor/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <!-- start: CLIP-TWO JAVASCRIPTS -->
+    <script src="~/Content/assets/js/main.js"></script>
+
+    <!-- start: JavaScript Event Handlers for this page -->
+    <script src="~/Content/assets/js/index.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            Index.init();
+        });
+    </script>
+    <!--
+    By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+    -->
+    <script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+    <script type="text/javascript">
+        $.noConflict();
+
+        jQuery(document)
+            .ready(function ($) {
+                // Code that uses jQuery's $ can follow here.
+                //document.getElementById("#link_video").remove() ;
+                $(function () {
+                    $('link_video').remove();
+                    //document.getElementById("#link_video").remove() ;
+                    $('link_video').css("display", "none");
+
+                });
+            });
+
+        // Code that uses other library's $ can follow here.
+    </script>
+    <script type="text/javascript">
+        //document.getElementById("#link_video").style.display = "";
+        jquery(document).ready(function () { jquery('link_video').empty(); });
+    </script>
+
+    <script type="text/javascript">
+        document.getElementById("link_video").remove();
+
+        // Select all elements with class name 'className' and remove them
+        $('#link_video').css('display', 'none');
+    </script>
+}
+<div class="col-md-8">
+    @*<div id="link_video"><p>sjdsjdjsdjh</p></div>*@
+    @*<a href="http://www.accuweather.com/en/ir/jam/207439/weather-forecast/207439" class="aw-widget-legal">
+        </a><div id="awcc1466730916995" class="aw-widget-current" data-locationkey="" data-unit="f" data-language="fa" data-useip="true" data-uid="awcc1466730916995"></div>*@
+
+    <a href="http://www.accuweather.com/fa/ir/jam/207439/weather-forecast/207439" class="aw-widget-legal">
+        </a>
+        <div id="awtd1466724111756" class="aw-widget-36hour" data-locationkey="" data-videolink="false" data-unit="c" data-language="fa" data-useip="false" data-uid="awtd1466724111756" data-editlocation="false"></div>
+</div>
+
+
+
+
+
+        
+        
+        
+
+        <div class="aw-more-block">
+            <div class="aw-more-inner">
+                <div class="aw-more-content">
+                    <a id="link_video" target="_blank" href="http://videowall.accuweather.com/detail/videos/trending-now/video/1683763382/world-sunny-and-warm-in-new-york?autoStart=true&amp;utm_source=accuweatheroap&amp;utm_medium=accuweatheroap&amp;utm_campaign=localforecastvideo&amp;utm_source=localhost&amp;utm_medium=oap_weather_widget&amp;utm_term=link_video&amp;utm_content=accuweather&amp;utm_campaign=threeday">
+
+                        <h3>ویدیوی پیشبینی آب و هوا</h3>
+                        <div class="video-still">
+                            <img src="http://brightcove01.brightcove.com/4/1612802193/201606/113/1612802193_4982375039001_vs-576cf967e4b0ffe4990a0831-4704275687001.jpg?pubId=1612802193" alt="Jun 24, 2016; 5:00 AM ET  It will be partly sunny London.">
+                            <div class="vid-play-button"></div><table class="vid-headline-box"><tbody><tr><td class="logo" style="width: 31px;"><img id="awxlogo" src="http://vortex.accuweather.com/adc2010/images/awx-orange-sun-logo.png"></td><td class="vid-name">World: Sunny and warm in New York</td></tr></tbody></table>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+
+<script type="text/javascript">
+    document.getElementById("link_video").remove();
+
+    // Select all elements with class name 'className' and remove them
+    $('#link_video').css('display', 'none');
+</script>
+
+<script type="text/javascript">
+    $.noConflict();
+
+    jQuery(document)
+        .ready(function ($) {
+            // Code that uses jQuery's $ can follow here.
+            //document.getElementById("#link_video").remove() ;
+            $(function () {
+                document.getElementById("link_video").remove();
+                $('link_video').css("display", "none");
+
+            });
+        });
+
+    // Code that uses other library's $ can follow here.
+</script>

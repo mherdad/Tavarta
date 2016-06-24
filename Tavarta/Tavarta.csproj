@@ -414,6 +414,7 @@
     <Content Include="Content\css\Frontend\StyleSheet1.css" />
     <Content Include="Content\css\Frontend\TavartaCommon.css" />
     <Content Include="Content\css\Frontend\TavartaDefault.css" />
+    <Content Include="Content\css\Frontend\weather.js" />
     <Content Include="Content\js\Amp.js" />
     <Content Include="Content\js\GulpMinify.js" />
     <Content Include="Content\PagedList.css" />
@@ -2020,6 +2021,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
+    <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="Filters\ActivityAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2304,6 +2306,7 @@
     <Content Include="Views\News\_PhotoGalleryListAjax.cshtml" />
     <Content Include="Views\News\_PhotoGalleryItem.cshtml" />
     <None Include="Views\News\_SportListAjax.cshtml" />
+    <Content Include="Views\Weather\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

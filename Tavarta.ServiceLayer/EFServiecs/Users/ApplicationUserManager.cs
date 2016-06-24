@@ -121,7 +121,11 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         #endregion
 
 
-
+        public async Task<int> TotalUsers()
+        {
+            var users=await _users.CountAsync();
+            return users;
+        }
 
         #region SeedDatabase
         public void SeedDatabase()

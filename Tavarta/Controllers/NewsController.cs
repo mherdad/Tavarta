@@ -101,8 +101,8 @@ namespace Tavarta.Controllers
 
         public async Task<ActionResult> NotesListAjax()
         {
-            var viewModel = await _newsService.GetPagedListAsync();
-            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            var viewModel = await _newsService.GetNotesAsync();
+            //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_NotesListAjax", viewModel);
         }
 
@@ -115,8 +115,8 @@ namespace Tavarta.Controllers
 
         public async Task<ActionResult> CarouselListAjax()
         {
-            var viewModel = await _newsService.GetPagedListAsync();
-            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            var viewModel = await _newsService.GetCarouselAsync();
+            //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_CarouselListAjax", viewModel);
         }
 
@@ -127,8 +127,8 @@ namespace Tavarta.Controllers
 
         public async Task<ActionResult> LatestArticlesAjax()
         {
-            var viewModel = await _newsService.GetPagedListAsync();
-            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            var viewModel = await _newsService.GetLastArticleAsync();
+            //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_LatestArticlesAjax", viewModel);
         }
 
