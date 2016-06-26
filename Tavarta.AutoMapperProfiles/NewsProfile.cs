@@ -12,6 +12,8 @@ namespace Tavarta.AutoMapperProfiles
         {
             CreateMap<Post, NewsViewModel>()
                 .IgnoreAllNonExisting();
+            CreateMap<Post, MostViewedViewModel>()
+                .IgnoreAllNonExisting();
 
             CreateMap<Post, NewsDetailsViewModel>()
                 .IgnoreAllNonExisting();

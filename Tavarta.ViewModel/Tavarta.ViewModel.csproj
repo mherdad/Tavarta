@@ -96,6 +96,8 @@
     <Compile Include="Gallery\GalleryViewModel.cs" />
     <Compile Include="News\CarouselViewModel.cs" />
     <Compile Include="News\LastArticleViewModel.cs" />
+    <Compile Include="News\ListMostViewedViewModel.cs" />
+    <Compile Include="News\MostViewedViewModel.cs" />
     <Compile Include="News\NewsDetailsViewModel.cs" />
     <Compile Include="News\NewsListViewModel.cs" />
     <Compile Include="News\NewsViewModel.cs" />

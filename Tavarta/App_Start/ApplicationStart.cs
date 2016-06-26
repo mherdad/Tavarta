@@ -61,9 +61,10 @@ namespace Tavarta
 
         static void ConfigEf()
         {
-            Database.SetInitializer<ApplicationDbContext>(null);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext,DataLayer.Migrations.Configuration>());
+
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, DataLayer.Migrations.Configuration>());
-            //ProjectObjectFactory.Container.GetInstance<IUnitOfWork>().ForceDatabaseInitialize();
+            ProjectObjectFactory.Container.GetInstance<IUnitOfWork>().ForceDatabaseInitialize();
 
             // config audit when your application is starting up...
             var auditConfiguration = AuditConfiguration.Default;

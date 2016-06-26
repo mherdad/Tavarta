@@ -10,6 +10,7 @@ using Tavarta.Common.Filters;
 using Tavarta.DataLayer.Context;
 using Tavarta.ServiceLayer.Contracts;
 using Tavarta.ServiceLayer.Contracts.Category;
+using Tavarta.ServiceLayer.Contracts.News;
 using Tavarta.ViewModel.News;
 
 
@@ -105,11 +106,12 @@ namespace Tavarta.Controllers
             //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_NotesListAjax", viewModel);
         }
-
+        
+        [ChildActionOnly]
         public async Task<ActionResult> MostViewedListAjax()
         {
-            var viewModel = await _newsService.GetPagedListAsync();
-            if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
+            var viewModel = await _newsService.GetMostViewedAsync();
+            //if (viewModel.News == null || !viewModel.News.Any()) return Content("no-more-info");
             return PartialView("_MostViewedListAjax", viewModel);
         }
 

@@ -15,6 +15,7 @@ using Tavarta.ServiceLayer.Contracts;
 using Tavarta.Utility;
 using Tavarta.ViewModel.News;
 using System.Net;
+using Tavarta.ServiceLayer.Contracts.News;
 
 namespace Tavarta.ServiceLayer.EFServiecs.News
 {
@@ -47,8 +48,8 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         private Post  FindById(Guid? id)
         {
-            var ff = _news.Find(id);
-            if (ff == null)
+            var news = _news.Find(id);
+            if (news == null)
                 return null;
             return new Post();
 
@@ -104,14 +105,14 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
             var healthEvents = await GetHealthEventAsync();
 
-            var mostViewed = await GetMostViewedAsync();
+            //var mostViewed = await GetMostViewedAsync();
 
             var literary = await GetLiteraryAsync();
 
-            var notes = await GetNotesAsync();
+            //var notes = await GetNotesAsync();
 
             var carousel = await GetCarouselAsync();
-            var lastArticle = await GetLastArticleAsync();
+            //var lastArticle = await GetLastArticleAsync();
             var photoGallery = await GetPhotoGalleryAsync();
 
             return new NewsListViewModel
@@ -121,10 +122,10 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 Environment = environment,
                 HealthEvents = healthEvents,
                 Literary = literary,
-                Notes = notes,
+                //Notes = notes,
                 Carousel = carousel,
-                MostViewed = mostViewed,
-                LastArticle = lastArticle,
+                //MostViewed = mostViewed,
+                //LastArticle = lastArticle,
                 PhotoGallery = photoGallery
             };
         }
@@ -141,7 +142,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
             var healthEvents = await GetHealthEventAsync();
 
-            var mostViewed = await GetMostViewedAsync();
+            //var mostViewed = await GetMostViewedAsync();
 
             var literary = await GetLiteraryAsync();
 
@@ -160,7 +161,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                 Literary = literary,
                 //Notes = notes,
                 //Carousel = carousel,
-                MostViewed = mostViewed,
+                //MostViewed = mostViewed,
                 //LastArticle = lastArticle,
                 PhotoGallery = photoGallery
             };
@@ -181,18 +182,18 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
                     totalCount = _news.Select(x => x.Id).Count();//return the number of pages
                     query = await _news.OrderByDescending(x => x.PublishedOn)
                         .ToPagedQuery(itemsPerPage, page)
-                        .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                        .ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
                     break;
                 case "سلامت و حوادث":
                     query = await _news.OrderByDescending(x => x.PublishedOn).Where(x=>x.Category.Name=="سلامت" || x.Category.Name=="حوادث")
                         .ToPagedQuery(itemsPerPage, page)
-                        .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                        .ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
                     totalCount = _news.Where(x => x.Category.Name == "سلامت" || x.Category.Name == "حوادث").Select(x => x.Id).Count();//return the number of pages
                     break;
                 default:
                     query = await _news.OrderByDescending(x => x.PublishedOn).Where(x => x.Category.Name == category)
                         .ToPagedQuery(itemsPerPage, page)
-                        .ProjectTo<NewsViewModel>(_mappingEngine).ToListAsync();
+                        .ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
                     totalCount = _news.Where(x => x.Category.Name == category).Select(x => x.Id).Count();//return the number of pages
                     break;
             }
@@ -238,14 +239,53 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             return photoGalleryModel;
         }
 
-        private async Task<List<NewsViewModel>> GetMostViewedAsync()
+        public async Task<ListMostViewedViewModel> GetMostViewedAsync()
         {
-            var sport =
-                _news.AsNoTracking().OrderByDescending(x => x.ViewCount).AsQueryable();
-            var mostViewedModel = await sport
-                .Take(5).ProjectTo<NewsViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
+            var newsWeek = await GetByWeek();
+            var newsMonth = await GetByMonth();
+            var newsYear = await GetByYear();
+            return new ListMostViewedViewModel
+            {
+                MostViewedMonth = newsMonth,
+                MostViewedWeek = newsWeek,
+                MostViewedYear = newsYear
+            };
+        }
+
+
+        private async Task<List<MostViewedViewModel>> GetByWeek()
+        {
+            var week = DateTime.Now.AddDays(-7);
+            var expirationQuery = new EFCachePolicy() { AbsoluteExpiration = DateTime.Now.Add(new TimeSpan(1,0,0)) };
+            var news =
+                _news.AsNoTracking().OrderByDescending(x => x.ViewCount).Where(x => x.PublishedOn >= week).AsQueryable();
+            var mostViewedModel = await news
+                .Take(5).ProjectTo<MostViewedViewModel>(_mappingEngine).Cacheable().ToListAsync();
             return mostViewedModel;
         }
+
+        private async Task<List<MostViewedViewModel>> GetByMonth()
+        {
+            var month = DateTime.Now.AddDays(-31);
+            var expirationQuery = new EFCachePolicy() { AbsoluteExpiration = DateTime.Now.Add(new TimeSpan(10,0,0)) };
+            var news =
+                _news.AsNoTracking().OrderByDescending(x => x.ViewCount).Where(x => x.PublishedOn >= month).Cacheable().AsQueryable();
+            var mostViewedModel = await news
+                .Take(5).ProjectTo<MostViewedViewModel>(_mappingEngine).ToListAsync();
+            return mostViewedModel;
+        }
+
+        private async Task<List<MostViewedViewModel>> GetByYear()
+        {
+            var year = DateTime.Now.AddDays(-365);
+            var expirationQuery = new EFCachePolicy() { AbsoluteExpiration = DateTime.Now.Add(new TimeSpan(10,0,0)) };
+            var news =
+                _news.AsNoTracking().OrderByDescending(x => x.ViewCount).Where(x => x.PublishedOn >= year).Cacheable().AsQueryable();
+            var mostViewedModel = await news
+                .Take(5).ProjectTo<MostViewedViewModel>(_mappingEngine).ToListAsync();
+            return mostViewedModel;
+        }
+
 
         private async Task<List<NewsViewModel>> GetEnvironmentAsync()
         {
@@ -303,11 +343,21 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
 
         public async Task<List<LastArticleViewModel>> GetLastArticleAsync()
         {
-            var lastArticle = _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
+            var lastArticle =
+                 _news.AsNoTracking().Include(x => x.Category).OrderByDescending(x => x.PublishedOn).AsQueryable();
+            //.GetViewModelAsync(new LastArticleViewModel(),30,_expirationTimeCachePolicy,_mappingEngine);
+            //var t= await GetViewModel(30, new LastArticleViewModel(), lastArticle, _expirationTimeCachePolicy);
             var lastArticleViewModels = await lastArticle
-               .Take(30).ProjectTo<LastArticleViewModel>(_mappingEngine).ToListAsync();
+               .Take(30).ProjectTo<LastArticleViewModel>(_mappingEngine).Cacheable(_expirationTimeCachePolicy).ToListAsync();
             return lastArticleViewModels;
         }
+
+        //public async Task<List<T>> GetViewModel<T, TE>(int count, T viewModel, IQueryable<TE> query, EFCachePolicy expirationTimePolicy) where TE : class 
+        //{
+        //    var listViewModel = await query
+        //        .Take(count).ProjectTo<T>(_mappingEngine).Cacheable(expirationTimePolicy).ToListAsync();
+        //    return listViewModel;
+        //}
 
         #endregion GetPagedList
 
@@ -322,4 +372,21 @@ namespace Tavarta.ServiceLayer.EFServiecs.News
             };
         }
     }
+
+    public static class AutoMapperHelper
+    {
+        public static async Task<List<TE>> GetViewModelAsync<T,TE>(this IQueryable<T> query,TE viewModel, int count, EFCachePolicy cachePolicy,IMappingEngine mapEngine)
+        {
+            var listViewModel = await query
+               .Take(count).ProjectTo<TE>(mapEngine).Cacheable(cachePolicy).ToListAsync();
+            return listViewModel;
+        }
+        public static async Task<List<TE>> GetViewModelAsync<T,TE>(this IQueryable<T> query,TE viewModel, int count, IMappingEngine mapEngine)
+        {
+            var listViewModel = await query
+               .Take(count).ProjectTo<TE>(mapEngine).ToListAsync();
+            return listViewModel;
+        }
+    }
+
 }

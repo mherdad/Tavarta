@@ -9,6 +9,9 @@ namespace Tavarta.DomainClasses.Configurations.Comment
         public PostCommentConfig()
         {
             Property(x => x.PostId).IsOptional();
+            Property(x => x.CreatorDisplayName).HasMaxLength(200);
+            Property(x => x.Email).HasMaxLength(200);
+            
 
         }
     }

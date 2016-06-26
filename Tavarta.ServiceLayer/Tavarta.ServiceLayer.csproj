@@ -174,7 +174,7 @@
     <Compile Include="Contracts\Common\ISettingService.cs" />
     <Compile Include="Contracts\Common\IStateService.cs" />
     <Compile Include="Contracts\Galleryes\IGalleryService.cs" />
-    <Compile Include="Contracts\INewsService.cs" />
+    <Compile Include="Contracts\News\INewsService.cs" />
     <Compile Include="Contracts\Posts\IPostService.cs" />
     <Compile Include="Contracts\SlideShows\ISlideShowService.cs" />
     <Compile Include="Contracts\Users\IActivityLogService.cs" />

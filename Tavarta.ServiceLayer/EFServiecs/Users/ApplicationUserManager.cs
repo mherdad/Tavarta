@@ -48,6 +48,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         private readonly IApplicationRoleManager _roleManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDbSet<User> _users;
+        private readonly IDbSet<DomainClasses.Entities.Postes.Category> _categories;
         private readonly IDataProtectionProvider _dataProtectionProvider;
         private readonly IMappingEngine _mappingEngine;
 
@@ -71,6 +72,7 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
             SmsService = smsService;
             _unitOfWork = unitOfWork;
             _users = _unitOfWork.Set<User>();
+            _categories = _unitOfWork.Set<DomainClasses.Entities.Postes.Category>();
             _roleManager = roleManager;
             _identity = identity;
             CreateApplicationUserManager();
@@ -135,6 +137,32 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
             const string systemAdminEmail = "Admin@gmail.com";
             const string systemAdminDisplayName = "مدیر سیستم";
 
+            const string environment = "محیط زیست";
+            const string health = "سلامت";
+            const string events = "حوادث";
+            const string literary = "ادبی";
+            const string note = "یادداشت ها";
+            const string gallery = "گالری تصاویر";
+            const string sport = "ورزشی";
+            const string ostan = "استان ";
+            const string iran = "ایران و جهان";
+
+            var categories = new List<DomainClasses.Entities.Postes.Category>
+            {
+                new DomainClasses.Entities.Postes.Category {Name = environment},
+                new DomainClasses.Entities.Postes.Category {Name = health},
+                new DomainClasses.Entities.Postes.Category {Name = events},
+                new DomainClasses.Entities.Postes.Category {Name = literary},
+                new DomainClasses.Entities.Postes.Category {Name = note},
+                new DomainClasses.Entities.Postes.Category {Name = gallery},
+                new DomainClasses.Entities.Postes.Category {Name = sport},
+                new DomainClasses.Entities.Postes.Category {Name = ostan},
+                new DomainClasses.Entities.Postes.Category {Name = iran}
+            };
+
+
+
+
             using (var dbcontext = new ApplicationDbContext())
             {
                 var user = dbcontext.Users.Select(user1 => new
@@ -161,6 +189,8 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
                     
                     this.Create(user2, systemAdminPassword);
                     this.SetLockoutEnabled(user2.Id, false);
+                    _unitOfWork.AddThisRange(categories);
+                    _unitOfWork.SaveChangesAsync();
                 }
                 
 
@@ -513,18 +543,18 @@ namespace Tavarta.ServiceLayer.EFServiecs.Users
         //}
 
 
-        public async Task<User> GetById(Guid userId)
+        public Task<User> GetById(Guid userId)
         {
 
 
-            var tempUser = await _users.Select(x=>new {x.Id,x.UserName}).FirstOrDefaultAsync(x => x.Id.Equals(userId));
-            var user1=new User
-            {
-                Id = tempUser.Id,
-                UserName = tempUser.UserName
-            };
-            return user1;
-            //return await _users.FirstOrDefaultAsync(x => x.Id == userId);
+            //var tempUser = await _users.Select(x=>new {x.Id,x.UserName}).FirstOrDefaultAsync(x => x.Id.Equals(userId));
+            //var user1=new User
+            //{
+            //    Id = tempUser.Id,
+            //    UserName = tempUser.UserName
+            //};
+            //return user1;
+            return _users.FirstOrDefaultAsync(x => x.Id == userId);
         }
 
 

@@ -306,7 +306,8 @@
                                         <div class="ads-boxes">
 
                                             <div class="row" style="margin-top: 15px; margin-right: 3px">
-                                                @Html.Action("NotesListAjax", "News")
+                                                @*@Html.Action("NotesListAjax", "News")*@
+                                                @{Html.RenderAction("NotesListAjax","News");}
 
                                                 <div class="col-md-5 col-xs-5 col-xxs-6">
 
@@ -335,7 +336,8 @@
                                             <div class="row">
                                                 <br />
 
-                                                @Html.Action("MostViewedListAjax", "News")
+                                               
+                                                @{Html.RenderAction("MostViewedListAjax","News");}
                                             </div>
                                         </div>
                                     </div>
@@ -378,7 +380,8 @@
                         </div>
                         <!-- /Nezar sangi-->
                         <!-- LastArticle -->
-                        @Html.Action("LatestArticlesAjax", "News")
+                        @{Html.RenderAction("LatestArticlesAjax","News");}
+                        @*@Html.Action("LatestArticlesAjax", "News")*@
                         <!-- LastArticle -->
                     </aside>
                 </div>

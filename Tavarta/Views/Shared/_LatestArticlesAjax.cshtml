@@ -28,43 +28,44 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="news-all">
                             <ul class="list zebra">
+                                
                                 @foreach (var tt in Model)
                                 {
                                     temp
-                                    ++;
-                                if (tt.Category.Name == "اختصاصی")
-                                {
+                                        ++;
+                                    if (tt.Category.Name == "اختصاصی")
+                                    {
 
-                                <li>
-                                    <time class="special" datetime="">
-                                        @tt.PublishedOn.TimeOfDay.ToHHMM()
-                                    </time>
-                                    <span class="text-default fa fa-video-camera"></span>
-                                    <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+                                        <li>
+                                            <time class="special" datetime="">
+                                                @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                            </time>
+                                            <span class="text-default fa fa-video-camera"></span>
+                                            <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
 
-                                        @tt.Title
-                                    </a>
-                                </li>
+                                                @tt.Title
+                                            </a>
+                                        </li>
 
-                                }
-                                else if (tt.Category.Name == "گالری تصاویر")
-                                {
-                                <li>
-                                    <time class="" datetime="">
-                                        @tt.PublishedOn.TimeOfDay.ToHHMM()
-                                    </time>
-                                     
-                                    <span class="text-default fa fa-camera"></span>
-                                    <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+                                    }
+                                    else if (tt.Category.Name == "گالری تصاویر")
+                                    {
+                                        <li>
+                                            <time class="" datetime="">
+                                                @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                            </time>
 
-                                        @tt.Title
-                                    </a>
-                                </li>
+                                            <span class="text-default fa fa-camera"></span>
+                                            <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                                @tt.Title
+                                            </a>
+                                        </li>
                                     }
                                     else
                                     {
 
-                                        if(temp<=34)
+                                        if (temp <= 34)
                                         {
                                             <li>
                                                 <time class="" datetime="">
@@ -76,14 +77,14 @@
                                                     @tt.Title
                                                 </a>
                                             </li>
-                                            }
-                                          
-                                }
+                                        }
+
+                                    }
 
                                 }
 
-                                
-                                     
+
+
 
                             </ul>
                         </div>

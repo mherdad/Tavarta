@@ -1,6 +1,170 @@
-﻿@model Tavarta.ViewModel.News.NewsListViewModel
+﻿@using Tavarta.Common.Extentions
+@model Tavarta.ViewModel.News.ListMostViewedViewModel
 
-@foreach (var mostViewed in Model.MostViewed)
-{
-    @Html.Partial("_MostViewed",mostViewed)
-}
+@*@foreach (var mostViewed in Model.MostViewed)
+    {
+        @Html.Partial("_MostViewed",mostViewed)
+    }*@
+
+<ul class="nav nav-list padding-x nav-justified" style="margin-top: -25px">
+    <li role="presentation" class="  active">
+        <a href="#news-week" data-toggle="tab">هفته</a>
+    </li>
+    <li role="presentation" class="  ">
+        <a href="#news-month" data-toggle="tab">ماه</a>
+    </li>
+    <li role="presentation" class="  ">
+        <a href="#news-year" data-toggle="tab">سال</a>
+    </li>
+
+    @*<li role="presentation" class="  special ">
+            <a href="#news-special" data-toggle="tab">pp</a>
+        </li>*@
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="news-week">
+        <ul class="list zebra">
+            
+            @foreach (var mostViewed in Model.MostViewedWeek)
+            {
+                @Html.Partial("_MostViewed", mostViewed)
+            }
+            @*@foreach (var tt in Model.MostViewed)
+                {
+                    temp
+                        ++;
+                    if (tt.Category.Name == "اختصاصی")
+                    {
+
+                        <li>
+                            <time class="special" datetime="">
+                                @tt.PublishedOn.TimeOfDay.ToHHMM()
+                            </time>
+                            <span class="text-default fa fa-video-camera"></span>
+                            <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                @tt.Title
+                            </a>
+                        </li>
+
+                    }
+                    else if (tt.Category.Name == "گالری تصاویر")
+                    {
+                        <li>
+                            <time class="" datetime="">
+                                @tt.PublishedOn.TimeOfDay.ToHHMM()
+                            </time>
+
+                            <span class="text-default fa fa-camera"></span>
+                            <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                @tt.Title
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                        if (temp <= 34)
+                        {
+                            <li>
+                                <time class="" datetime="">
+                                    @tt.PublishedOn.TimeOfDay.ToHHMM()
+                                </time>
+
+                                <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                    @tt.Title
+                                </a>
+                            </li>
+                        }
+
+                    }
+
+                }*@
+        </ul>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="news-month">
+        <ul class="list zebra">
+            @foreach (var mostViewed in Model.MostViewedMonth)
+            {
+                @Html.Partial("_MostViewed", mostViewed)
+            }
+            @*@foreach (var tt in Model)
+                        {
+                        if (tt.Category.Name == "استان")
+                        {
+
+                        <li>
+                            <time class="" datetime="">
+                                @tt.PublishedOn.TimeOfDay.ToHHMM()
+                            </time>
+
+                             <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                @tt.Title
+                            </a>
+                        </li>
+
+                        }
+
+                        }
+                    </ul>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="news-external">
+                    <ul class="list zebra">
+                        @foreach (var tt in Model)
+                        {
+                        if (tt.Category.Name == "ایران و جهان")
+                        {
+
+                        <li>
+                            <time class="" datetime="">
+                                @tt.PublishedOn.TimeOfDay.ToHHMM()
+                            </time>
+                            <span class="text-default fa fa-video-camera"></span>
+                              <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                                @tt.Title
+                            </a>
+                        </li>
+
+                        }
+
+                        }*@
+        </ul>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="news-year">
+        <ul class="list zebra">
+            @foreach (var mostViewed in Model.MostViewedYear)
+            {
+                @Html.Partial("_MostViewed", mostViewed)
+            }
+            @*@foreach (var tt in Model)
+                {
+                if (tt.Category.Name == "اختصاصی")
+                {
+
+                <li>
+                    <time class="special" datetime="">
+                        @tt.PublishedOn.TimeOfDay.ToHHMM()
+                    </time>
+                    <span class="text-default fa fa-video-camera"></span>
+                      <a target="_blank" href="@Url.Action("Details", "News", new {Title = tt.Title.ToSeoUrl(), tt.Id})"class="detail">
+
+                        @tt.Title
+                    </a>
+                </li>
+
+                }
+
+                }*@
+        </ul>
+    </div>
+
+    @*@{ Html.RenderPartial("_LatestArticlesAjax", Model);}*@
+</div>

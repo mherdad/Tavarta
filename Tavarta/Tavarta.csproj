@@ -274,6 +274,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MyTestDb.mdf" />
+    <Content Include="App_Data\MyTestDb_log.ldf">
+      <DependentUpon>MyTestDb.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\TavartaData.mdf" />
     <Content Include="App_Data\TavartaData_log.ldf">
       <DependentUpon>TavartaData.mdf</DependentUpon>

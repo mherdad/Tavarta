@@ -2,6 +2,7 @@
 @using DNT.Extensions
 @using Tavarta.Common.Extentions
 @model Tavarta.ViewModel.News.NewsListViewModel
+    
 @section scripts
 {
     <script type="text/javascript">
@@ -25,8 +26,8 @@
                     <li data-target="#news-slider" data-slide-to="4" class=" numbers">6</li>
                 </ol>
                 <div class="carousel-inner">
-
-                    @{ Html.RenderPartial("_CarouselListAjax", Model.Carousel);}
+                    @*@{ Html.RenderAction("CarouselListAjax"); }*@
+                    @{ Html.RenderPartial("_CarouselListAjax",Model.Carousel);}
                 </div>
                 <a class="right carousel-control" href="#news-slider" data-slide="next">
                     <span class="glyphicon glyphicon-menu-right"></span>
@@ -71,6 +72,7 @@
                 <div class="content">
                     <div class="row">
                         @{ Html.RenderPartial("_LastNewsAjax", Model);}
+                       
                         <a class="color blue" style=" color: #304FFE;" href="@Url.Action("List", new {category="اخبار"})">سایر</a>
                     </div>
                     <br />

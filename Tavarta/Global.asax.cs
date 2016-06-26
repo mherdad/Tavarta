@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -33,6 +34,8 @@ namespace Tavarta
         #region Application_Start
         protected void Application_Start()
         {
+           
+
             // Used for Google AMP (https://www.ampproject.org/docs/get_started/about-amp.html)
             DisplayModeProvider.Instance.Modes.Clear();
             DisplayModeProvider.Instance.Modes.Add(new GoogleAmpDisplayMode());
